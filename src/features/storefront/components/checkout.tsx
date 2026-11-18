@@ -86,7 +86,7 @@ export function Checkout() {
       labelledBy="checkoutTitle"
     >
       <div className="panel-top">
-        <h2 id="checkoutTitle">{t("checkoutAction")}</h2>
+        <h2 id="checkoutTitle">{t("checkoutTitle")}</h2>
         <button
           type="button"
           className="icon-button close-button"
@@ -161,7 +161,9 @@ export function Checkout() {
                     key={field.name}
                     htmlFor={`${id}-${field.name}`}
                     className={
-                      field.name === "email" ? "field-full" : undefined
+                      field.name === "email" || field.name === "phone"
+                        ? "contact-wide"
+                        : undefined
                     }
                   >
                     {t(field.name)}

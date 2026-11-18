@@ -7,6 +7,9 @@ import { useStorefront } from "../storefront-context";
 import { collarPrices, leashPrices, harnessPrices } from "../lib/catalog";
 import { ProductDetail } from "./product-detail";
 
+const categoryImageSizes =
+  "(max-width: 540px) 94vw, (max-width: 1480px) 31vw, 424px";
+
 export function Catalog() {
   const { t, category, money } = useStorefront((state) => ({
     t: state.t,
@@ -19,8 +22,9 @@ export function Catalog() {
         <h2 id="catalogTitle" tabIndex={-1}>
           <BrandText>{t("collectionTitle")}</BrandText>
         </h2>
+        <p className="catalog-offer">{t("catalogSetOffer")}</p>
       </div>
-      <nav className="catalog-filters" aria-label="Collection categories">
+      <nav className="catalog-filters" aria-label={t("catalogCategories")}>
         <a
           href="#collection"
           data-category="all"
@@ -59,11 +63,11 @@ export function Catalog() {
           <a className="catalog-preview" href="#collection/collars">
             <Image
               src="/assets/collar-khaki.webp"
-              alt="Collars"
+              alt=""
               loading="lazy"
               width={1312}
               height={1199}
-              sizes="(max-width: 760px) 100vw, 50vw"
+              sizes={categoryImageSizes}
             />
             <div>
               <h3>{t("cat_collars")}</h3>
@@ -76,11 +80,11 @@ export function Catalog() {
           <a className="catalog-preview" href="#collection/leashes">
             <Image
               src="/assets/leash-black.webp"
-              alt="Leashes"
+              alt=""
               loading="lazy"
               width={1086}
               height={1448}
-              sizes="(max-width: 760px) 100vw, 50vw"
+              sizes={categoryImageSizes}
             />
             <div>
               <h3>{t("cat_leashes")}</h3>
@@ -93,11 +97,11 @@ export function Catalog() {
           <a className="catalog-preview" href="#collection/harnesses">
             <Image
               src="/assets/harness-khaki.webp"
-              alt="Harnesses"
+              alt=""
               loading="lazy"
               width={1312}
               height={1199}
-              sizes="(max-width: 760px) 100vw, 50vw"
+              sizes={categoryImageSizes}
             />
             <div>
               <h3>{t("cat_harnesses")}</h3>

@@ -9,9 +9,7 @@ export function Hero() {
   return (
     <section className="hero">
       <div className="hero-copy">
-        <div className="eyebrow">
-          <span>{t("heroEyebrow")}</span>
-        </div>
+        <p className="eyebrow">{t("heroEyebrow")}</p>
         <h1>
           <span>{t("heroDog")}</span>
           <br />
@@ -20,7 +18,7 @@ export function Hero() {
           <em>{t("heroIdentity")}</em>
         </h1>
         <a className="btn" href="#collection">
-          <span>{t("viewCollection")}</span>
+          {t("viewCollection")}
         </a>
       </div>
       <div className="hero-art">
@@ -30,7 +28,7 @@ export function Hero() {
           fetchPriority="high"
           width={1152}
           height={2048}
-          sizes="(max-width: 760px) 100vw, 50vw"
+          sizes="(max-width: 540px) 100vw, 50vw"
           loading="eager"
         />
       </div>

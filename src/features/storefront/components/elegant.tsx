@@ -4,6 +4,9 @@ import Image from "next/image";
 
 import { useStorefront } from "../storefront-context";
 
+const imageSizes =
+  "(max-width: 460px) calc(100vw - 40px), (max-width: 800px) 416px, (max-width: 1240px) 45vw, 560px";
+
 export function Elegant() {
   const {
     t,
@@ -81,9 +84,9 @@ export function Elegant() {
                 id="elegantImage"
                 src={elegantPhoto("leash")}
                 alt="Elegant — black leash with wooden ring handle and antique brass hardware"
-                width={1312}
-                height={1199}
-                sizes="(max-width: 760px) 100vw, 50vw"
+                width={1122}
+                height={1402}
+                sizes={imageSizes}
               />
             </div>
             <div className="gallery-thumbs" aria-label="Elegant gallery">
@@ -154,9 +157,9 @@ export function Elegant() {
                 id="elegantCollarImage"
                 src={elegantPhoto("collar")}
                 alt="Elegant dark brown collar with antique brass buckle"
-                width={1312}
-                height={1199}
-                sizes="(max-width: 760px) 100vw, 50vw"
+                width={1122}
+                height={1402}
+                sizes={imageSizes}
               />
             </div>
             <div className="gallery-thumbs">

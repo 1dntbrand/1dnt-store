@@ -19,7 +19,11 @@ export function OrderItems({ editable = false }: { editable?: boolean }) {
   return (
     <ul className="cart-list">
       {cart.map((item) => (
-        <li key={item.id} className="cart-item" data-cart-item>
+        <li
+          key={item.id}
+          className={editable ? "cart-item cart-item-editable" : "cart-item"}
+          data-cart-item
+        >
           <div className="cart-photo">
             <Image
               src={productPhoto(item.kind, item.colour)}
@@ -33,35 +37,7 @@ export function OrderItems({ editable = false }: { editable?: boolean }) {
               <BrandText>{t(productOptions[item.kind].titleKey)}</BrandText>
             </h3>
             <p>{choiceSummary(item.colour, item.size)}</p>
-            {editable ? (
-              <div className="cart-actions">
-                <div className="quantity-control">
-                  <button
-                    type="button"
-                    aria-label={`${t("decrease")} · ${t(productOptions[item.kind].titleKey)}`}
-                    onClick={() => changeQuantity(item.id, item.qty - 1)}
-                  >
-                    −
-                  </button>
-                  <output aria-label={t("quantity")}>{item.qty}</output>
-                  <button
-                    type="button"
-                    aria-label={`${t("increase")} · ${t(productOptions[item.kind].titleKey)}`}
-                    disabled={item.qty >= 99}
-                    onClick={() => changeQuantity(item.id, item.qty + 1)}
-                  >
-                    +
-                  </button>
-                </div>
-                <button
-                  type="button"
-                  className="text-button cart-remove"
-                  onClick={() => changeQuantity(item.id, 0)}
-                >
-                  {t("remove")}
-                </button>
-              </div>
-            ) : (
+            {!editable && (
               <p>
                 {t("quantity")}: {item.qty}
               </p>
@@ -77,6 +53,35 @@ export function OrderItems({ editable = false }: { editable?: boolean }) {
               )}
             </span>
           </div>
+          {editable && (
+            <div className="cart-actions">
+              <div className="quantity-control">
+                <button
+                  type="button"
+                  aria-label={`${t("decrease")} · ${t(productOptions[item.kind].titleKey)}`}
+                  onClick={() => changeQuantity(item.id, item.qty - 1)}
+                >
+                  −
+                </button>
+                <output aria-label={t("quantity")}>{item.qty}</output>
+                <button
+                  type="button"
+                  aria-label={`${t("increase")} · ${t(productOptions[item.kind].titleKey)}`}
+                  disabled={item.qty >= 99}
+                  onClick={() => changeQuantity(item.id, item.qty + 1)}
+                >
+                  +
+                </button>
+              </div>
+              <button
+                type="button"
+                className="text-button cart-remove"
+                onClick={() => changeQuantity(item.id, 0)}
+              >
+                {t("remove")}
+              </button>
+            </div>
+          )}
         </li>
       ))}
     </ul>
@@ -114,15 +119,15 @@ export function OrderTotals() {
   );
 }
 export function Cart() {
-  const { t, cartCount, closeDialog, openDialog, pricing, cartNotice } =
-    useStorefront((state) => ({
+  const { t, cartCount, closeDialog, openDialog, cartNotice } = useStorefront(
+    (state) => ({
       t: state.t,
       cartCount: state.cartCount,
       closeDialog: state.closeDialog,
       openDialog: state.openDialog,
-      pricing: state.pricing,
       cartNotice: state.cartNotice,
-    }));
+    }),
+  );
   return (
     <Dialog
       id="cartPanel"
@@ -160,9 +165,6 @@ export function Cart() {
               </p>
             )}
             <OrderItems editable />
-            {pricing.discount > 0 && (
-              <p className="cart-discount-message">{t("discountApplied")}</p>
-            )}
           </div>
           <div className="cart-footer">
             <OrderTotals />

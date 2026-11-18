@@ -77,6 +77,18 @@
     "ru": "Коллекция Base BioThane®",
     "uk": "Колекція Base BioThane®"
   },
+  "catalogCategories": {
+    "en": "Base collection categories",
+    "pl": "Kategorie kolekcji Base",
+    "ru": "Категории коллекции Base",
+    "uk": "Категорії колекції Base"
+  },
+  "catalogSetOffer": {
+    "en": "Save 5% on a leash with a collar or harness, or 10% when you buy all three together.",
+    "pl": "Smycz z obrożą lub szelkami kupisz 5% taniej, a komplet wszystkich trzech produktów 10% taniej.",
+    "ru": "Поводок в паре с ошейником или шлейкой — со скидкой 5%. В комплекте из всех трёх изделий — скидка 10%.",
+    "uk": "Повідець у парі з нашийником або шлеєю — зі знижкою 5%. Комплект з усіх трьох виробів — зі знижкою 10%."
+  },
   "cat_collars": {
     "en": "Collars",
     "pl": "Obroże",
@@ -114,10 +126,10 @@
     "uk": "Додати до кошика"
   },
   "vatShipping": {
-    "en": "Price includes delivery and 23% VAT.",
-    "pl": "Cena obejmuje dostawę i 23% VAT.",
-    "ru": "Доставка и 23% VAT включены в цену.",
-    "uk": "Доставка та 23% VAT включені у ціну."
+    "en": "Price includes InPost delivery within Poland and 23% VAT.",
+    "pl": "Cena obejmuje dostawę InPost na terenie Polski i 23% VAT.",
+    "ru": "Доставка InPost по Польше и 23% VAT включены в цену.",
+    "uk": "Доставка InPost у межах Польщі та 23% VAT включені в ціну."
   },
   "totalLabel": {
     "en": "Total",
@@ -946,16 +958,16 @@
     "pl": "O marce"
   },
   "heroEyebrow": {
-    "en": "Everyday Together",
-    "pl": "Codziennie razem",
-    "ru": "Каждый день вместе",
-    "uk": "Щодня разом"
+    "en": "Handmade collars, leashes and harnesses",
+    "pl": "Ręcznie robione obroże, smycze i szelki",
+    "ru": "Ошейники, поводки и шлейки ручной работы",
+    "uk": "Нашийники, повідці та шлеї ручної роботи"
   },
   "viewCollection": {
-    "en": "See Collection",
-    "pl": "Zobacz kolekcję",
-    "ru": "Смотреть коллекцию",
-    "uk": "Переглянути колекцію"
+    "en": "Explore the Base collection",
+    "pl": "Zobacz kolekcję Base",
+    "ru": "Смотреть коллекцию Base",
+    "uk": "Переглянути колекцію Base"
   },
   "storyEyebrow": {
     "en": "Philosophy",
@@ -1065,6 +1077,12 @@
     "ru": "Оформить заказ",
     "uk": "Оформити замовлення"
   },
+  "checkoutTitle": {
+    "en": "Checkout",
+    "pl": "Zamówienie",
+    "ru": "Оформление заказа",
+    "uk": "Оформлення замовлення"
+  },
   "backToBag": {
     "en": "Back to bag",
     "pl": "Wróć do koszyka",
@@ -1088,12 +1106,6 @@
     "pl": "W cenie",
     "ru": "Включено",
     "uk": "Включено"
-  },
-  "discountApplied": {
-    "en": "Your set discount has been applied automatically.",
-    "pl": "Rabat na zestaw został naliczony automatycznie.",
-    "ru": "Скидка на комплект применена автоматически.",
-    "uk": "Знижку на комплект застосовано автоматично."
   },
   "contactDetails": {
     "en": "Contact details",

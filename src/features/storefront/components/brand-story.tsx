@@ -5,7 +5,7 @@ import { FaqSection } from "./faq-section";
 export function BrandStory() {
   const { t } = useStorefront((state) => ({ t: state.t }));
   return (
-    <section className="section philosophy-section">
+    <section>
       <div className="philosophy" id="philosophy">
         <div className="eyebrow">{t("storyEyebrow")}</div>
         <div>
