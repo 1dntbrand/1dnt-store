@@ -1,33 +1,25 @@
 "use client";
 import { useStorefront } from "../storefront-context";
-import { prices, type ProductKind } from "../lib/catalog";
+import { prices, type ProductKind } from "@/domain/commerce/catalog";
 import { productOptions, swatchColours } from "../lib/product-options";
 import { BrandText } from "./brand-text";
 import { ProductGallery } from "./product-gallery";
 import { BundleBuilder } from "./bundle-builder";
+import { ProductPurchase } from "./product-purchase";
 import { ProductSafety } from "./product-safety";
 
 export function ProductDetail({ kind }: { kind: ProductKind }) {
   const config = productOptions[kind];
-  const {
-    t,
-    fields,
-    category,
-    chooseColour,
-    setField,
-    openSizeGuide,
-    money,
-    addItem,
-  } = useStorefront((state) => ({
-    t: state.t,
-    fields: state.fields,
-    category: state.category,
-    chooseColour: state.chooseColour,
-    setField: state.setField,
-    openSizeGuide: state.openSizeGuide,
-    money: state.money,
-    addItem: state.addItem,
-  }));
+  const { t, fields, category, chooseColour, setField, openSizeGuide, money } =
+    useStorefront((state) => ({
+      t: state.t,
+      fields: state.fields,
+      category: state.category,
+      chooseColour: state.chooseColour,
+      setField: state.setField,
+      openSizeGuide: state.openSizeGuide,
+      money: state.money,
+    }));
   const size = fields[config.sizeField];
   const colour = fields[config.colourField];
   return (
@@ -80,7 +72,7 @@ export function ProductDetail({ kind }: { kind: ProductKind }) {
               <button
                 className="text-button size-help"
                 type="button"
-                onClick={() => openSizeGuide(kind, config.sizeField)}
+                onClick={() => openSizeGuide(kind, size)}
               >
                 {t("sizeGuideLabel")}
               </button>
@@ -107,16 +99,10 @@ export function ProductDetail({ kind }: { kind: ProductKind }) {
               <p className="field-hint">{t("harnessMeasureHint")}</p>
             )}
           </fieldset>
-          <button
-            id={`add${kind[0].toUpperCase()}${kind.slice(1)}`}
-            className="btn add-product"
-            type="button"
-            onClick={() => addItem(kind)}
-          >
-            <span>{t("addCart")}</span>
-            <span>{money(prices[kind][size])}</span>
-          </button>
-          <p className="product-dispatch">{t("madeToOrder")}</p>
+          <ProductPurchase
+            variant={{ collection: "base", kind, colour, size }}
+            buttonId={`add${kind[0].toUpperCase()}${kind.slice(1)}`}
+          />
           <ProductInformation kind={kind} />
         </div>
       </div>

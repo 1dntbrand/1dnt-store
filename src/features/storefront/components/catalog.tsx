@@ -4,7 +4,11 @@ import { BrandText } from "./brand-text";
 import Image from "next/image";
 
 import { useStorefront } from "../storefront-context";
-import { collarPrices, leashPrices, harnessPrices } from "../lib/catalog";
+import {
+  collarPrices,
+  leashPrices,
+  harnessPrices,
+} from "@/domain/commerce/catalog";
 import { ProductDetail } from "./product-detail";
 
 const categoryImageSizes =

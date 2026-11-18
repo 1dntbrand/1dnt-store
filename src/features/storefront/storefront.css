@@ -671,6 +671,86 @@ summary::-webkit-details-marker {
   font-weight: 500;
 }
 
+/* Availability and restock requests. */
+.btn:disabled {
+  cursor: not-allowed;
+  border-color: var(--line);
+  background: var(--surface);
+  color: var(--muted);
+}
+.stock-label,
+.cart-stock-message {
+  color: var(--error);
+  font-size: 13px;
+  font-weight: 500;
+}
+.product-info > .stock-announcement:not(:empty) {
+  margin-top: var(--space-5);
+}
+.restock-form {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  margin-top: var(--space-2);
+  border: 1px solid var(--line);
+  border-radius: var(--control-radius);
+  background: var(--brand-warm);
+}
+.restock-intro {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.restock-form label {
+  font-size: 13px;
+  font-weight: 500;
+}
+.restock-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 172px), 1fr));
+  gap: var(--space-2);
+}
+.restock-controls input {
+  min-width: 0;
+  min-height: 48px;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--control-line);
+  border-radius: var(--control-radius);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 16px;
+}
+.restock-controls .btn {
+  min-height: 48px;
+  padding-inline: var(--space-3);
+}
+.restock-form .field-hint {
+  margin: 0;
+}
+.restock-status,
+.restock-error {
+  font-size: 13px;
+}
+.restock-status:empty {
+  margin-top: calc(-1 * var(--space-2));
+}
+.restock-error {
+  color: var(--error);
+}
+.bundle-restock {
+  margin-top: var(--space-3);
+}
+.bundle-restock summary {
+  cursor: pointer;
+  min-height: 44px;
+  align-content: center;
+}
+.bundle-stock-note {
+  margin-top: var(--space-3);
+}
+.cart-item-body .cart-stock-message {
+  color: var(--error);
+}
+
 /* Complete sets share the same variant controls and price source. */
 .bundle-builder {
   margin-top: clamp(32px, 4vw, 56px);
@@ -794,7 +874,7 @@ summary::-webkit-details-marker {
   color: var(--olive);
 }
 
-/* Upcoming collection. */
+/* Elegant collection. */
 .elegant-section {
   --line: #d8d2c6;
   border-top: 1px solid var(--line);
@@ -808,7 +888,7 @@ summary::-webkit-details-marker {
 .elegant-product {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: center;
+  align-items: start;
   gap: clamp(24px, 4vw, 64px);
 }
 .elegant-main {
@@ -827,7 +907,9 @@ summary::-webkit-details-marker {
 .elegant-product .product-info h3 {
   font-size: clamp(26px, 2.5vw, 38px);
   letter-spacing: -0.025em;
-  margin-block: var(--space-2) var(--space-3);
+}
+.elegant-specs {
+  margin: var(--space-4) 0 0;
 }
 .elegant-spec {
   display: flex;
@@ -837,29 +919,14 @@ summary::-webkit-details-marker {
   padding-block: var(--space-3);
   border-bottom: 1px solid var(--line);
 }
-.elegant-spec:first-of-type {
-  margin-top: 20px;
-}
-.elegant-spec strong {
-  font-weight: 400;
+.elegant-spec dd {
+  margin: 0;
   text-align: right;
 }
 .elegant-note {
   margin-top: var(--space-4);
   font-size: 13px;
 }
-.elegant-coming {
-  padding: 40px 0;
-  max-width: 480px;
-}
-.elegant-coming .eyebrow {
-  display: none;
-}
-.elegant-coming h3 {
-  font-size: 28px;
-  margin-bottom: 16px;
-}
-
 /* Brand story and customer questions. */
 .philosophy {
   --line: #dedbd2;

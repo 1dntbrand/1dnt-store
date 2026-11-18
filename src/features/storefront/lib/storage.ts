@@ -1,4 +1,6 @@
-import { isCartItem, type CartItem, languages } from "./catalog";
+import { cartLineLimit } from "@/domain/commerce/availability";
+import { variantKey, type CartItem } from "@/domain/commerce/catalog";
+import { isCartItem, languages } from "./catalog";
 
 export const defaultFields = {
   collarColour: "khaki",
@@ -56,9 +58,17 @@ function migrateCart(values: unknown): CartItem[] {
     if (!value || typeof value !== "object") continue;
     const raw = value as Record<string, unknown>;
     const kind = raw.kind;
+    const collection =
+      raw.collection == null || raw.collection === "Base"
+        ? "base"
+        : raw.collection === "Elegant"
+          ? "elegant"
+          : raw.collection;
+    if (collection !== "base" && collection !== "elegant") continue;
     if (["set", "collar-set", "harness-set"].includes(String(kind))) {
       const accessory = kind === "harness-set" ? "harness" : "collar";
       items.push({
+        collection,
         id: `${raw.id}-leash`,
         kind: "leash",
         colour: raw.colour as string,
@@ -67,6 +77,7 @@ function migrateCart(values: unknown): CartItem[] {
       });
       if (kind === "harness-set" && raw.collarSize)
         items.push({
+          collection,
           id: `${raw.id}-collar`,
           kind: "collar",
           colour: raw.collarColour as string,
@@ -74,6 +85,7 @@ function migrateCart(values: unknown): CartItem[] {
           qty: raw.qty as number,
         });
       items.push({
+        collection,
         id: `${raw.id}-${accessory}`,
         kind: accessory,
         colour: raw[`${accessory}Colour`] as string,
@@ -82,16 +94,25 @@ function migrateCart(values: unknown): CartItem[] {
       });
     } else {
       items.push({
-        ...raw,
+        id: raw.id,
+        collection,
+        kind,
+        colour: raw.colour,
         size: kind === "leash" ? (raw.length ?? raw.size) : raw.size,
+        qty: raw.qty,
       } as CartItem);
     }
   }
-  return items
-    .filter(isCartItem)
-    .filter(
-      (item, i, all) => all.findIndex((other) => other.id === item.id) === i,
-    );
+  const seen = new Set<string>();
+  const lines = new Map<string, CartItem>();
+  for (const item of items) {
+    if (!isCartItem(item) || seen.has(item.id)) continue;
+    seen.add(item.id);
+    const id = variantKey(item);
+    const qty = Math.min(cartLineLimit, (lines.get(id)?.qty ?? 0) + item.qty);
+    lines.set(id, { ...item, id, qty });
+  }
+  return [...lines.values()];
 }
 
 export function readSnapshot(): Snapshot {

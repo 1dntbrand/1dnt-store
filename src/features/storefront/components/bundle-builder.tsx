@@ -1,93 +1,128 @@
 "use client";
-import Image from "next/image";
-import { useState } from "react";
-import { useStorefront } from "../storefront-context";
-import { productPhoto, setPrices, type ProductKind } from "../lib/catalog";
-import { productOptions } from "../lib/product-options";
-import type { FieldName } from "../lib/storage";
-import { BrandText } from "./brand-text";
 
-interface BundlePart {
-  kind: ProductKind;
-  colourField: FieldName;
-  sizeField: FieldName;
-}
+import Image from "next/image";
+import { useId, useState } from "react";
+import { variantLimit } from "@/domain/commerce/availability";
+import {
+  calculateCart,
+  PAIR_DISCOUNT,
+  TRIO_DISCOUNT,
+  variantColours,
+  variantKey,
+  type ProductKind,
+  type ProductVariant,
+} from "@/domain/commerce/catalog";
+import { variantPhoto } from "../lib/catalog";
+import {
+  productOptions,
+  productTitleKey,
+  variantColourLabel,
+  variantSizeOptions,
+} from "../lib/product-options";
+import type { FieldName } from "../lib/storage";
+import { useStorefront } from "../storefront-context";
+import { BrandText } from "./brand-text";
+import { RestockForm } from "./restock-form";
+
+export type BundlePartSelection = {
+  variant: ProductVariant;
+  chooseColour: (colour: string) => void;
+  chooseSize?: (size: string) => void;
+};
 
 export function BundleBuilder({ kind }: { kind: ProductKind }) {
-  const [includeCollar, setIncludeCollar] = useState(true);
-  const {
-    t,
-    fields,
-    money,
-    bundlePrices,
-    collarSetPrices,
-    harnessSetPrices,
-    addItem,
-  } = useStorefront((state) => ({
-    t: state.t,
+  const { fields, setField } = useStorefront((state) => ({
     fields: state.fields,
-    money: state.money,
-    bundlePrices: state.bundlePrices,
-    collarSetPrices: state.collarSetPrices,
-    harnessSetPrices: state.harnessSetPrices,
-    addItem: state.addItem,
+    setField: state.setField,
   }));
   const current = productOptions[kind];
-  const parts: BundlePart[] = [
-    { kind, colourField: current.colourField, sizeField: current.sizeField },
-  ];
-  if (kind === "leash")
-    parts.push({
-      kind: "collar",
-      colourField: "collarBundleColour",
-      sizeField: "collarSize",
-    });
-  else
-    parts.push({
-      kind: "leash",
-      colourField:
-        kind === "collar" ? "collarSetLeashColour" : "harnessSetLeashColour",
-      sizeField:
-        kind === "collar" ? "collarSetLeashLength" : "harnessSetLeashLength",
-    });
-  if (kind === "harness" && includeCollar)
-    parts.push({
-      kind: "collar",
-      colourField: "tripleCollarColour",
-      sizeField: "tripleCollarSize",
-    });
-  let pricing = kind === "collar" ? collarSetPrices : bundlePrices;
-  if (kind === "harness")
-    pricing = includeCollar
-      ? harnessSetPrices
-      : setPrices("harness", fields.harnessSetLeashLength, fields.harnessSize);
-  const rate = parts.length === 3 ? 10 : 5;
-  const action =
-    kind === "leash"
-      ? "set"
-      : kind === "collar"
-        ? "collar-set"
-        : includeCollar
-          ? "harness-set"
-          : "harness-pair";
+  const part = (
+    kind: ProductKind,
+    colourField: FieldName,
+    sizeField: FieldName,
+  ): BundlePartSelection => ({
+    variant: {
+      collection: "base",
+      kind,
+      colour: fields[colourField],
+      size: fields[sizeField],
+    },
+    chooseColour: (colour) => setField(colourField, colour),
+    chooseSize: (size) => setField(sizeField, size),
+  });
+  const primary = part(kind, current.colourField, current.sizeField);
+  if (kind === "leash") {
+    return (
+      <BundleOffer
+        parts={[primary, part("collar", "collarBundleColour", "collarSize")]}
+      />
+    );
+  }
+  const leash =
+    kind === "collar"
+      ? part("leash", "collarSetLeashColour", "collarSetLeashLength")
+      : part("leash", "harnessSetLeashColour", "harnessSetLeashLength");
+
   return (
-    <section
-      className="bundle-builder"
-      aria-labelledby={`${kind}-bundle-title`}
-    >
+    <BundleOffer
+      parts={[primary, leash]}
+      extra={
+        kind === "harness"
+          ? part("collar", "tripleCollarColour", "tripleCollarSize")
+          : undefined
+      }
+      includeExtraInitially
+    />
+  );
+}
+
+export function BundleOffer({
+  parts,
+  extra,
+  includeExtraInitially = false,
+}: {
+  parts: readonly BundlePartSelection[];
+  extra?: BundlePartSelection;
+  includeExtraInitially?: boolean;
+}) {
+  const [includeExtra, setIncludeExtra] = useState(includeExtraInitially);
+  const { t, money, addItems } = useStorefront((state) => ({
+    t: state.t,
+    money: state.money,
+    addItems: state.addItems,
+  }));
+  const id = useId();
+  const selected = extra && includeExtra ? [...parts, extra] : parts;
+  const variants = selected.map(({ variant }) => variant);
+  const pricing = calculateCart(
+    variants.map((variant) => ({
+      ...variant,
+      id: variantKey(variant),
+      qty: 1,
+    })),
+  );
+  const rate = pricing.trios
+    ? TRIO_DISCOUNT
+    : pricing.pairs
+      ? PAIR_DISCOUNT
+      : 0;
+  const unavailable = variants.some((variant) => variantLimit(variant) === 0);
+
+  return (
+    <section className="bundle-builder" aria-labelledby={id}>
       <div className="bundle-heading">
         <div>
-          <h4 id={`${kind}-bundle-title`}>{t("buildYourSet")}</h4>
+          <h4 id={id}>{t("buildYourSet")}</h4>
           <p>{t("mixHarnessSet")}</p>
         </div>
-        <span className="bundle-discount">−{rate}%</span>
+        {rate > 0 && <span className="bundle-discount">−{rate * 100}%</span>}
       </div>
-      {kind === "harness" && (
+      {extra && (
         <label className="bundle-extra">
           <input
             type="checkbox"
-            checked={includeCollar}
-            onChange={(event) => setIncludeCollar(event.target.checked)}
+            checked={includeExtra}
+            onChange={(event) => setIncludeExtra(event.target.checked)}
           />
           <span>{t("includeCollar")}</span>
         </label>
@@ -95,45 +130,63 @@ export function BundleBuilder({ kind }: { kind: ProductKind }) {
       <div
         className="bundle-parts"
         style={{
-          gridTemplateColumns: `repeat(${parts.length}, minmax(0, 1fr))`,
+          gridTemplateColumns: `repeat(${selected.length}, minmax(0, 1fr))`,
         }}
       >
-        {parts.map((part) => (
-          <BundlePart key={part.kind} {...part} />
+        {selected.map((part) => (
+          <BundlePart key={part.variant.kind} {...part} />
         ))}
       </div>
       <div className="bundle-bottom">
         <div>
-          <span className="bundle-original">{money(pricing.original)}</span>
+          {pricing.discount > 0 && (
+            <span className="bundle-original">{money(pricing.subtotal)}</span>
+          )}
           <strong>{money(pricing.total)}</strong>
-          <span className="bundle-saving">
-            {t("saveLabel")}
-            {money(pricing.saving)}
-          </span>
+          {pricing.discount > 0 && (
+            <span className="bundle-saving">
+              {t("saveLabel")}
+              {money(pricing.discount)}
+            </span>
+          )}
         </div>
-        <button type="button" className="btn" onClick={() => addItem(action)}>
+        <button
+          type="button"
+          className="btn"
+          disabled={unavailable}
+          onClick={() => addItems(variants)}
+        >
           {t("addSetToCart")}
         </button>
+      </div>
+      <div role="status" className="stock-announcement">
+        {unavailable && (
+          <p className="field-hint bundle-stock-note">
+            {t("bundleStockIssue")}
+          </p>
+        )}
       </div>
     </section>
   );
 }
-function BundlePart({ kind, colourField, sizeField }: BundlePart) {
-  const config = productOptions[kind];
-  const { t, colour, size, setField } = useStorefront((state) => ({
-    t: state.t,
-    colour: state.fields[colourField],
-    size: state.fields[sizeField],
-    setField: state.setField,
-  }));
+
+function BundlePart({
+  variant,
+  chooseColour,
+  chooseSize,
+}: BundlePartSelection) {
+  const t = useStorefront((state) => state.t);
+  const { collection, kind, colour, size } = variant;
+  const title = t(productTitleKey(variant));
+
   return (
     <div className="bundle-part">
       <div className="bundle-part-heading">
         <div className="bundle-photo">
-          <Image src={productPhoto(kind, colour)} alt="" fill sizes="64px" />
+          <Image src={variantPhoto(variant)} alt="" fill sizes="64px" />
         </div>
         <h5>
-          <BrandText>{t(config.titleKey)}</BrandText>
+          <BrandText>{title}</BrandText>
         </h5>
       </div>
       <div className="bundle-fields">
@@ -141,11 +194,11 @@ function BundlePart({ kind, colourField, sizeField }: BundlePart) {
           {t("colourLabel")}
           <select
             value={colour}
-            onChange={(event) => setField(colourField, event.target.value)}
+            onChange={(event) => chooseColour(event.target.value)}
           >
-            {config.colours.map((value) => (
+            {variantColours(collection, kind).map((value) => (
               <option key={value} value={value}>
-                {t(value)}
+                {variantColourLabel(value, t)}
               </option>
             ))}
           </select>
@@ -154,9 +207,10 @@ function BundlePart({ kind, colourField, sizeField }: BundlePart) {
           {t(kind === "leash" ? "lengthLabel" : "sizeOnly")}
           <select
             value={size}
-            onChange={(event) => setField(sizeField, event.target.value)}
+            disabled={!chooseSize}
+            onChange={(event) => chooseSize?.(event.target.value)}
           >
-            {config.sizes.map((option) => (
+            {variantSizeOptions(variant).map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
                 {option.detail ? ` · ${option.detail}` : ""}
@@ -165,6 +219,14 @@ function BundlePart({ kind, colourField, sizeField }: BundlePart) {
           </select>
         </label>
       </div>
+      {variantLimit(variant) === 0 && (
+        <details className="bundle-restock">
+          <summary className="stock-label">
+            {t("outOfStock")} · {t("restockAction")}
+          </summary>
+          <RestockForm variant={variant} />
+        </details>
+      )}
     </div>
   );
 }

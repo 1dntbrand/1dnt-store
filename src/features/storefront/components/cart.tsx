@@ -1,8 +1,10 @@
 "use client";
 import Image from "next/image";
 import { useStorefront } from "../storefront-context";
-import { productPhoto, itemPrice } from "../lib/catalog";
-import { productOptions } from "../lib/product-options";
+import { itemPrice } from "@/domain/commerce/catalog";
+import { variantLimit } from "@/domain/commerce/availability";
+import { variantPhoto } from "../lib/catalog";
+import { productTitleKey } from "../lib/product-options";
 import { Dialog } from "./dialog";
 import { BrandText } from "./brand-text";
 
@@ -18,72 +20,79 @@ export function OrderItems({ editable = false }: { editable?: boolean }) {
     }));
   return (
     <ul className="cart-list">
-      {cart.map((item) => (
-        <li
-          key={item.id}
-          className={editable ? "cart-item cart-item-editable" : "cart-item"}
-          data-cart-item
-        >
-          <div className="cart-photo">
-            <Image
-              src={productPhoto(item.kind, item.colour)}
-              alt=""
-              fill
-              sizes="80px"
-            />
-          </div>
-          <div className="cart-item-body">
-            <h3>
-              <BrandText>{t(productOptions[item.kind].titleKey)}</BrandText>
-            </h3>
-            <p>{choiceSummary(item.colour, item.size)}</p>
-            {!editable && (
-              <p>
-                {t("quantity")}: {item.qty}
-              </p>
-            )}
-          </div>
-          <div className="cart-line-price">
-            {pricing.discounts[item.id] > 0 && (
-              <s>{money(itemPrice(item) * item.qty)}</s>
-            )}
-            <span>
-              {money(
-                itemPrice(item) * item.qty - (pricing.discounts[item.id] ?? 0),
+      {cart.map((item) => {
+        const limit = variantLimit(item);
+        const title = t(productTitleKey(item));
+        return (
+          <li
+            key={item.id}
+            className={editable ? "cart-item cart-item-editable" : "cart-item"}
+            data-cart-item
+          >
+            <div className="cart-photo">
+              <Image src={variantPhoto(item)} alt="" fill sizes="80px" />
+            </div>
+            <div className="cart-item-body">
+              <h3>
+                <BrandText>{title}</BrandText>
+              </h3>
+              <p>{choiceSummary(item.colour, item.size)}</p>
+              {item.qty > limit && (
+                <p className="cart-stock-message">
+                  {limit === 0
+                    ? t("outOfStock")
+                    : `${t("cartAvailableQuantity")} ${limit}`}
+                </p>
               )}
-            </span>
-          </div>
-          {editable && (
-            <div className="cart-actions">
-              <div className="quantity-control">
+              {!editable && (
+                <p>
+                  {t("quantity")}: {item.qty}
+                </p>
+              )}
+            </div>
+            <div className="cart-line-price">
+              {pricing.discounts[item.id] > 0 && (
+                <s>{money(itemPrice(item) * item.qty)}</s>
+              )}
+              <span>
+                {money(
+                  itemPrice(item) * item.qty -
+                    (pricing.discounts[item.id] ?? 0),
+                )}
+              </span>
+            </div>
+            {editable && (
+              <div className="cart-actions">
+                <div className="quantity-control">
+                  <button
+                    type="button"
+                    aria-label={`${t("decrease")} · ${title}`}
+                    onClick={() => changeQuantity(item.id, item.qty - 1)}
+                  >
+                    −
+                  </button>
+                  <output aria-label={t("quantity")}>{item.qty}</output>
+                  <button
+                    type="button"
+                    aria-label={`${t("increase")} · ${title}`}
+                    disabled={item.qty >= limit}
+                    onClick={() => changeQuantity(item.id, item.qty + 1)}
+                  >
+                    +
+                  </button>
+                </div>
                 <button
                   type="button"
-                  aria-label={`${t("decrease")} · ${t(productOptions[item.kind].titleKey)}`}
-                  onClick={() => changeQuantity(item.id, item.qty - 1)}
+                  className="text-button cart-remove"
+                  onClick={() => changeQuantity(item.id, 0)}
                 >
-                  −
-                </button>
-                <output aria-label={t("quantity")}>{item.qty}</output>
-                <button
-                  type="button"
-                  aria-label={`${t("increase")} · ${t(productOptions[item.kind].titleKey)}`}
-                  disabled={item.qty >= 99}
-                  onClick={() => changeQuantity(item.id, item.qty + 1)}
-                >
-                  +
+                  {t("remove")}
                 </button>
               </div>
-              <button
-                type="button"
-                className="text-button cart-remove"
-                onClick={() => changeQuantity(item.id, 0)}
-              >
-                {t("remove")}
-              </button>
-            </div>
-          )}
-        </li>
-      ))}
+            )}
+          </li>
+        );
+      })}
     </ul>
   );
 }
@@ -92,7 +101,6 @@ export function OrderTotals() {
     t: state.t,
     money: state.money,
     pricing: state.pricing,
-    cartNotice: state.cartNotice,
   }));
   return (
     <div className="order-totals" aria-live="polite" aria-atomic="true">
@@ -119,15 +127,21 @@ export function OrderTotals() {
   );
 }
 export function Cart() {
-  const { t, cartCount, closeDialog, openDialog, cartNotice } = useStorefront(
-    (state) => ({
-      t: state.t,
-      cartCount: state.cartCount,
-      closeDialog: state.closeDialog,
-      openDialog: state.openDialog,
-      cartNotice: state.cartNotice,
-    }),
-  );
+  const {
+    t,
+    cartCount,
+    closeDialog,
+    openDialog,
+    cartNotice,
+    cartHasStockIssue,
+  } = useStorefront((state) => ({
+    t: state.t,
+    cartCount: state.cartCount,
+    closeDialog: state.closeDialog,
+    openDialog: state.openDialog,
+    cartNotice: state.cartNotice,
+    cartHasStockIssue: state.cartHasStockIssue,
+  }));
   return (
     <Dialog
       id="cartPanel"
@@ -168,9 +182,15 @@ export function Cart() {
           </div>
           <div className="cart-footer">
             <OrderTotals />
+            {cartHasStockIssue && (
+              <p className="cart-stock-message" role="status">
+                {t("cartStockIssue")}
+              </p>
+            )}
             <button
               type="button"
               className="btn"
+              disabled={cartHasStockIssue}
               onClick={() => openDialog("checkoutPanel")}
             >
               {t("checkoutAction")}

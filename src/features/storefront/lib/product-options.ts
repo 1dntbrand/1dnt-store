@@ -1,6 +1,16 @@
+import {
+  elegantProducts,
+  elegantColours,
+  type ElegantColour,
+} from "../data/elegant-products";
 import { collarMeasurements, harnessMeasurements } from "../data/measurements";
 import type { FieldName } from "./storage";
-import type { ProductKind } from "./catalog";
+import {
+  variantColours,
+  variantPrices,
+  type ProductKind,
+  type ProductVariant,
+} from "@/domain/commerce/catalog";
 
 export interface VariantOption {
   value: string;
@@ -13,11 +23,10 @@ interface ProductConfiguration {
   introKey: string;
   colourField: FieldName;
   sizeField: FieldName;
-  colours: string[];
+  colours: readonly string[];
   sizes: VariantOption[];
   galleryLabels: string[];
 }
-const standardColours = ["black", "khaki", "orange"];
 export const productOptions: Record<ProductKind, ProductConfiguration> = {
   collar: {
     category: "collars",
@@ -25,7 +34,7 @@ export const productOptions: Record<ProductKind, ProductConfiguration> = {
     introKey: "collarPracticalIntro",
     colourField: "collarColour",
     sizeField: "collarProductSize",
-    colours: standardColours,
+    colours: variantColours("base", "collar"),
     sizes: collarMeasurements.map((item) => ({
       value: item.size,
       label: item.size,
@@ -39,7 +48,7 @@ export const productOptions: Record<ProductKind, ProductConfiguration> = {
     introKey: "leashPracticalIntro",
     colourField: "leashColour",
     sizeField: "length",
-    colours: [...standardColours, "khaki-orange", "black-orange"],
+    colours: variantColours("base", "leash"),
     sizes: [
       { value: "1.5", label: "1.5 m" },
       { value: "2.5", label: "2.5 m" },
@@ -52,7 +61,7 @@ export const productOptions: Record<ProductKind, ProductConfiguration> = {
     introKey: "harnessPracticalIntro",
     colourField: "harnessColour",
     sizeField: "harnessSize",
-    colours: [...standardColours, "khaki-orange", "black-orange"],
+    colours: variantColours("base", "harness"),
     sizes: harnessMeasurements.map((item) => ({
       value: item.size,
       label: item.size,
@@ -68,3 +77,24 @@ export const swatchColours: Record<string, string> = {
   "khaki-orange": "linear-gradient(135deg,#6d7357 50%,#dc6b2f 50%)",
   "black-orange": "linear-gradient(135deg,#252622 50%,#dc6b2f 50%)",
 };
+
+export function productTitleKey({ collection, kind }: ProductVariant) {
+  return collection === "base"
+    ? productOptions[kind].titleKey
+    : elegantProducts.find((product) => product.kind === kind)!.titleKey;
+}
+
+export function variantColourLabel(colour: string, t: (key: string) => string) {
+  return elegantColours[colour as ElegantColour]?.label ?? t(colour);
+}
+
+export function variantSizeOptions({
+  collection,
+  kind,
+}: Pick<ProductVariant, "collection" | "kind">) {
+  const sizes = productOptions[kind].sizes;
+  if (collection === "base") return sizes;
+  return sizes.filter(({ value }) =>
+    Object.hasOwn(variantPrices(collection, kind), value),
+  );
+}

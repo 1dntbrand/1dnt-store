@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useStorefront } from "../storefront-context";
-import { productPhoto, type ProductKind } from "../lib/catalog";
+import type { ProductKind } from "@/domain/commerce/catalog";
+import { productPhoto } from "../lib/catalog";
 import { productOptions } from "../lib/product-options";
 
 export function ProductGallery({ kind }: { kind: ProductKind }) {

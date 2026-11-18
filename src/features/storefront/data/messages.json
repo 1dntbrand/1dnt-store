@@ -827,12 +827,6 @@
     "ru": "До запуска магазина мы опубликуем адрес возврата и подробные инструкции в разделе «Возвраты и претензии». Обращение за инструкцией не является условием реализации законного права на отказ от покупки.",
     "uk": "До запуску магазину ми опублікуємо адресу повернення та докладні інструкції в розділі «Повернення та претензії». Звернення за інструкцією не є умовою реалізації законного права на відмову від покупки."
   },
-  "elegantPreview": {
-    "en": "DESIGN PREVIEW",
-    "pl": "ZAPOWIEDŹ PROJEKTU",
-    "ru": "ПРЕВЬЮ ДИЗАЙНА",
-    "uk": "ПРЕВ’Ю ДИЗАЙНУ"
-  },
   "elegantLeash": {
     "en": "Leash Elegant",
     "pl": "Smycz Elegant",
@@ -840,22 +834,22 @@
     "uk": "Повідець Elegant"
   },
   "elegantCollars": {
-    "en": "Collars Elegant",
-    "pl": "Obroże Elegant",
-    "ru": "Ошейники Elegant",
-    "uk": "Нашийники Elegant"
+    "en": "Collar Elegant",
+    "pl": "Obroża Elegant",
+    "ru": "Ошейник Elegant",
+    "uk": "Нашийник Elegant"
   },
   "elegantHarnesses": {
-    "en": "Harnesses Elegant",
+    "en": "Harness Elegant",
     "pl": "Szelki Elegant",
-    "ru": "Шлейки Elegant",
-    "uk": "Шлеї Elegant"
+    "ru": "Шлейка Elegant",
+    "uk": "Шлея Elegant"
   },
   "elegantDescription": {
-    "en": "A clean dark brown strap, a wooden ring handle and antique brass hardware. Warm texture meets a precise silhouette.",
-    "pl": "Ciemnobrązowy pasek, drewniana rączka w kształcie koła i okucia w odcieniu starego mosiądzu. Ciepła faktura i wyrazista forma.",
-    "ru": "Лаконичная тёмно-коричневая лента, деревянное кольцо-ручка и фурнитура в оттенке состаренной латуни. Тёплая фактура и выразительная форма.",
-    "uk": "Лаконічна темно-коричнева стрічка, дерев’яне кільце-ручка та фурнітура у відтінку зістареної латуні. Тепла фактура й виразна форма."
+    "en": "A simple strap with a wooden ring in place of a traditional loop handle.",
+    "pl": "Prosty pasek z drewnianym kołem zamiast tradycyjnej pętli.",
+    "ru": "Лаконичный поводок с деревянным кольцом вместо обычной петли.",
+    "uk": "Лаконічний повідець із дерев’яним кільцем замість звичайної петлі."
   },
   "elegantHandle": {
     "en": "Handle",
@@ -875,18 +869,6 @@
     "ru": "Фурнитура",
     "uk": "Фурнітура"
   },
-  "elegantNote": {
-    "en": "A concept visualization of the upcoming collection. Final specifications, sizes and prices will follow.",
-    "pl": "Wizualizacja koncepcji nowej kolekcji. Ostateczne parametry, rozmiary i ceny podamy później.",
-    "ru": "Визуализация концепции новой коллекции. Характеристики, размеры и цены появятся позже.",
-    "uk": "Візуалізація концепції нової колекції. Характеристики, розміри й ціни з’являться пізніше."
-  },
-  "elegantComing": {
-    "en": "In development. We will introduce the design and details here soon.",
-    "pl": "W przygotowaniu. Projekt i szczegóły pojawią się tutaj wkrótce.",
-    "ru": "В разработке. Скоро здесь появятся дизайн и подробности модели.",
-    "uk": "У розробці. Незабаром тут з’являться дизайн і подробиці моделі."
-  },
   "menuCollections": {
     "en": "Collections",
     "pl": "Kolekcje",
@@ -894,10 +876,16 @@
     "uk": "Колекції"
   },
   "elegantCollarDescription": {
-    "en": "Dark brown, a traditional prong buckle and matching antique brass hardware. Clean lines without a logo.",
-    "ru": "Тёмно-коричневый ошейник с классической пряжкой и всей фурнитурой в оттенке Antique Brass. Лаконичная форма без логотипа.",
-    "pl": "Ciemnobrązowa obroża z klasyczną klamrą i okuciami w odcieniu Antique Brass. Prosta forma bez logo.",
-    "uk": "Темно-коричневий нашийник із класичною пряжкою та фурнітурою у відтінку Antique Brass. Лаконічна форма без логотипа."
+    "en": "A collar with a traditional prong buckle and a simple, logo-free design.",
+    "ru": "Ошейник с классической пряжкой и лаконичной формой без логотипа.",
+    "pl": "Obroża z klasyczną klamrą i prostą formą bez logo.",
+    "uk": "Нашийник із класичною пряжкою та лаконічною формою без логотипа."
+  },
+  "elegantHarnessDescription": {
+    "en": "A harness with adjustable straps and hardware in an antique brass finish.",
+    "pl": "Szelki z regulowanymi paskami i okuciami w odcieniu starego mosiądzu.",
+    "ru": "Шлейка с регулируемыми ремнями и фурнитурой в оттенке состаренной латуни.",
+    "uk": "Шлея з регульованими ременями та фурнітурою у відтінку зістареної латуні."
   },
   "setDiscounts": {
     "en": "Set discounts",
@@ -1238,5 +1226,83 @@
     "pl": "Regulowane, wodoodporne szelki z BioThane®. Dobierz rozmiar według obwodu szyi i klatki piersiowej.",
     "ru": "Регулируемая шлейка из водостойкого BioThane®. Выбирайте размер по обхвату шеи и груди.",
     "uk": "Регульована шлея з водостійкого BioThane®. Обирайте розмір за обхватом шиї та грудей."
+  },
+  "elegantLeashLength": {
+    "en": "Total length 1.5 m, including the handle. Ring diameter 14 cm.",
+    "pl": "Długość całkowita 1,5 m razem z rączką. Średnica pierścienia 14 cm.",
+    "ru": "Длина с ручкой 1,5 м. Диаметр кольца 14 см.",
+    "uk": "Довжина з ручкою 1,5 м. Діаметр кільця 14 см."
+  },
+  "outOfStock": {
+    "en": "Out of stock",
+    "pl": "Niedostępny",
+    "ru": "Нет в наличии",
+    "uk": "Немає в наявності"
+  },
+  "restockIntro": {
+    "en": "Leave your email to hear when this variant is available.",
+    "pl": "Zostaw adres e-mail, a damy znać, gdy ten wariant będzie dostępny.",
+    "ru": "Оставьте почту, и мы сообщим, когда этот вариант появится.",
+    "uk": "Залиште пошту, і ми повідомимо, коли цей варіант з’явиться."
+  },
+  "restockAction": {
+    "en": "Notify me",
+    "pl": "Powiadom mnie",
+    "ru": "Сообщить о поступлении",
+    "uk": "Повідомити про надходження"
+  },
+  "restockEmailUse": {
+    "en": "We’ll use this email to let you know when this variant is back in stock.",
+    "pl": "Użyjemy tego adresu tylko do powiadomienia o dostępności tego wariantu.",
+    "ru": "Эта почта нужна только для уведомления о поступлении выбранного варианта.",
+    "uk": "Ця пошта потрібна лише для сповіщення про надходження вибраного варіанта."
+  },
+  "restockUnavailable": {
+    "en": "Email notifications will be available soon.",
+    "pl": "Powiadomienia e-mail będą dostępne wkrótce.",
+    "ru": "Уведомления по почте появятся позже.",
+    "uk": "Сповіщення поштою з’являться пізніше."
+  },
+  "restockSending": {
+    "en": "Saving…",
+    "pl": "Zapisywanie…",
+    "ru": "Сохраняем…",
+    "uk": "Зберігаємо…"
+  },
+  "restockSaved": {
+    "en": "Request saved. We’ll email you when this variant is available.",
+    "pl": "Zgłoszenie zapisane. Powiadomimy Cię, gdy ten wariant będzie dostępny.",
+    "ru": "Заявка сохранена. Напишем, когда этот вариант появится.",
+    "uk": "Заявку збережено. Напишемо, коли цей варіант з’явиться."
+  },
+  "restockError": {
+    "en": "We couldn’t save your request. Please try again.",
+    "pl": "Nie udało się zapisać zgłoszenia. Spróbuj ponownie.",
+    "ru": "Не удалось сохранить заявку. Попробуйте ещё раз.",
+    "uk": "Не вдалося зберегти заявку. Спробуйте ще раз."
+  },
+  "bundleStockIssue": {
+    "en": "Choose an available variant for each item to add the set.",
+    "pl": "Wybierz dostępny wariant każdego produktu, by dodać zestaw.",
+    "ru": "Выберите доступный вариант для каждого изделия, чтобы добавить комплект.",
+    "uk": "Виберіть доступний варіант кожного виробу, щоб додати комплект."
+  },
+  "cartStockIssue": {
+    "en": "Remove unavailable items or reduce the quantity to continue.",
+    "pl": "Usuń niedostępne produkty lub zmniejsz ich liczbę, aby kontynuować.",
+    "ru": "Уберите недоступные позиции или уменьшите количество, чтобы продолжить.",
+    "uk": "Видаліть недоступні позиції або зменште кількість, щоб продовжити."
+  },
+  "cartStockLimit": {
+    "en": "The selected quantity exceeds what’s available for this variant.",
+    "pl": "Wybrana liczba przekracza dostępność tego wariantu.",
+    "ru": "Выбрано больше единиц, чем доступно для этого варианта.",
+    "uk": "Вибрано більше одиниць, ніж доступно для цього варіанта."
+  },
+  "cartAvailableQuantity": {
+    "en": "Available quantity",
+    "pl": "Dostępna liczba",
+    "ru": "Доступное количество",
+    "uk": "Доступна кількість"
   }
 }

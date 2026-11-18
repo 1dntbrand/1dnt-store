@@ -1,230 +1,295 @@
 "use client";
 
 import Image from "next/image";
-
+import {
+  elegantColourIds,
+  itemPrice,
+  type ProductVariant,
+} from "@/domain/commerce/catalog";
+import { useState, type KeyboardEvent } from "react";
+import {
+  elegantColours,
+  elegantProducts,
+  elegantViews,
+  type ElegantColour,
+  type ElegantProduct,
+  type ElegantView,
+} from "../data/elegant-products";
 import { useStorefront } from "../storefront-context";
+import { variantSizeOptions } from "../lib/product-options";
+import { BundleOffer, type BundlePartSelection } from "./bundle-builder";
+import { ProductPurchase } from "./product-purchase";
 
 const imageSizes =
   "(max-width: 460px) calc(100vw - 40px), (max-width: 800px) 416px, (max-width: 1240px) 45vw, 560px";
 
 export function Elegant() {
-  const {
-    t,
-    elegantTab,
-    setElegantTab,
-    elegantViews,
-    setElegantView,
-    elegantPhoto,
-    navigateElegantTab,
-  } = useStorefront((state) => ({
-    t: state.t,
-    elegantTab: state.elegantTab,
-    setElegantTab: state.setElegantTab,
-    elegantViews: state.elegantViews,
-    setElegantView: state.setElegantView,
-    elegantPhoto: state.elegantPhoto,
-    navigateElegantTab: state.navigateElegantTab,
-  }));
+  const t = useStorefront((state) => state.t);
+  const [tab, setTab] = useState<ElegantProduct["category"]>("leashes");
+
+  function navigateTab(event: KeyboardEvent<HTMLButtonElement>, index: number) {
+    const last = elegantProducts.length - 1;
+    let next: number;
+    switch (event.key) {
+      case "ArrowRight":
+        next = index === last ? 0 : index + 1;
+        break;
+      case "ArrowLeft":
+        next = index === 0 ? last : index - 1;
+        break;
+      case "Home":
+        next = 0;
+        break;
+      case "End":
+        next = last;
+        break;
+      default:
+        return;
+    }
+    event.preventDefault();
+    setTab(elegantProducts[next].category);
+    event.currentTarget.parentElement
+      ?.querySelectorAll<HTMLButtonElement>('[role="tab"]')
+      [next]?.focus();
+  }
+
   return (
-    <section className="section elegant-section" id="elegant">
+    <section
+      className="section elegant-section"
+      id="elegant"
+      aria-labelledby="elegantTitle"
+    >
       <div className="catalog-heading">
-        <h2>{"Elegant"}</h2>
-      </div>
-      <div className="elegant-tabs" role="tablist" aria-label="Elegant">
-        <button
-          role="tab"
-          id="elegantTabCollars"
-          aria-controls="elegant-collars"
-          aria-selected={elegantTab === "collars"}
-          tabIndex={elegantTab === "collars" ? 0 : -1}
-          data-elegant-tab="collars"
-          onClick={() => setElegantTab("collars")}
-          onKeyDown={(event) => navigateElegantTab(event, "collars")}
-          type="button"
-        >
-          {t("cat_collars")}
-        </button>
-        <button
-          role="tab"
-          id="elegantTabLeashes"
-          aria-controls="elegant-leashes"
-          aria-selected={elegantTab === "leashes"}
-          data-elegant-tab="leashes"
-          onClick={() => setElegantTab("leashes")}
-          tabIndex={elegantTab === "leashes" ? 0 : -1}
-          onKeyDown={(event) => navigateElegantTab(event, "leashes")}
-          type="button"
-        >
-          {t("cat_leashes")}
-        </button>
-        <button
-          role="tab"
-          id="elegantTabHarnesses"
-          aria-controls="elegant-harnesses"
-          aria-selected={elegantTab === "harnesses"}
-          tabIndex={elegantTab === "harnesses" ? 0 : -1}
-          data-elegant-tab="harnesses"
-          onClick={() => setElegantTab("harnesses")}
-          onKeyDown={(event) => navigateElegantTab(event, "harnesses")}
-          type="button"
-        >
-          {t("cat_harnesses")}
-        </button>
+        <h2 id="elegantTitle">Elegant</h2>
       </div>
       <div
-        id="elegant-leashes"
-        role="tabpanel"
-        aria-labelledby="elegantTabLeashes"
-        hidden={elegantTab !== "leashes"}
+        className="elegant-tabs"
+        role="tablist"
+        aria-labelledby="elegantTitle"
       >
-        <div className="product elegant-product">
-          <div>
-            <div className="elegant-main">
-              <Image
-                id="elegantImage"
-                src={elegantPhoto("leash")}
-                alt="Elegant — black leash with wooden ring handle and antique brass hardware"
-                width={1122}
-                height={1402}
-                sizes={imageSizes}
-              />
-            </div>
-            <div className="gallery-thumbs" aria-label="Elegant gallery">
-              <button
-                className="gallery-thumb"
-                data-elegant-view="product"
-                aria-pressed={elegantViews.leash === "product"}
-                aria-label="Product photo"
-                onClick={() => setElegantView("leash", "product")}
-                type="button"
-              >
-                <Image
-                  src="/assets/elegant-leash-brown-product.webp"
-                  alt=""
-                  width={1122}
-                  height={1402}
-                  sizes="96px"
-                />
-              </button>
-              <button
-                className="gallery-thumb"
-                data-elegant-view="lifestyle"
-                aria-pressed={elegantViews.leash === "lifestyle"}
-                aria-label="On a walk"
-                onClick={() => setElegantView("leash", "lifestyle")}
-                type="button"
-              >
-                <Image
-                  src="/assets/elegant-leash-brown-lifestyle.webp"
-                  alt=""
-                  width={1122}
-                  height={1402}
-                  sizes="96px"
-                />
-              </button>
-            </div>
-          </div>
-          <div className="product-info">
-            <div className="eyebrow">{t("elegantPreview")}</div>
-            <h3>{t("elegantLeash")}</h3>
-            <p>{t("elegantDescription")}</p>
-            <div className="elegant-spec">
-              <span>{t("colourLabel")}</span>
-              <strong>{"Dark Brown / Golden Oak"}</strong>
-            </div>
-            <div className="elegant-spec">
-              <span>{t("elegantHandle")}</span>
-              <strong>{t("elegantWood")}</strong>
-            </div>
-            <div className="elegant-spec">
-              <span>{t("elegantHardware")}</span>
-              <strong>{"Antique Brass"}</strong>
-            </div>
-            <p className="note elegant-note">{t("elegantNote")}</p>
-          </div>
-        </div>
+        {elegantProducts.map(({ category, categoryKey }, index) => (
+          <button
+            key={category}
+            type="button"
+            role="tab"
+            id={`elegant-tab-${category}`}
+            aria-controls={`elegant-${category}`}
+            aria-selected={tab === category}
+            tabIndex={tab === category ? 0 : -1}
+            data-elegant-tab={category}
+            onClick={() => setTab(category)}
+            onKeyDown={(event) => navigateTab(event, index)}
+          >
+            {t(categoryKey)}
+          </button>
+        ))}
       </div>
-      <div
-        id="elegant-collars"
-        role="tabpanel"
-        aria-labelledby="elegantTabCollars"
-        hidden={elegantTab !== "collars"}
-      >
-        <div className="product elegant-product">
-          <div className="elegant-collar-gallery">
-            <div className="elegant-main">
-              <Image
-                id="elegantCollarImage"
-                src={elegantPhoto("collar")}
-                alt="Elegant dark brown collar with antique brass buckle"
-                width={1122}
-                height={1402}
-                sizes={imageSizes}
-              />
-            </div>
-            <div className="gallery-thumbs">
-              <button
-                className="gallery-thumb"
-                data-elegant-collar-view="product"
-                aria-pressed={elegantViews.collar === "product"}
-                aria-label="Product photo"
-                onClick={() => setElegantView("collar", "product")}
-                type="button"
-              >
-                <Image
-                  src="/assets/elegant-collar-brown.webp"
-                  alt=""
-                  width={1122}
-                  height={1402}
-                  sizes="96px"
-                />
-              </button>
-              <button
-                className="gallery-thumb"
-                data-elegant-collar-view="lifestyle"
-                aria-pressed={elegantViews.collar === "lifestyle"}
-                aria-label="On a walk"
-                onClick={() => setElegantView("collar", "lifestyle")}
-                type="button"
-              >
-                <Image
-                  src="/assets/elegant-collar-lifestyle.webp"
-                  alt=""
-                  width={1122}
-                  height={1402}
-                  sizes="96px"
-                />
-              </button>
-            </div>
-          </div>
-          <div className="product-info">
-            <div className="eyebrow">{t("elegantPreview")}</div>
-            <h3>{t("elegantCollars")}</h3>
-            <p>{t("elegantCollarDescription")}</p>
-            <div className="elegant-spec">
-              <span>{t("colourLabel")}</span>
-              <strong>{"Dark Brown"}</strong>
-            </div>
-            <div className="elegant-spec">
-              <span>{t("elegantHardware")}</span>
-              <strong>{"Antique Brass"}</strong>
-            </div>
-            <p className="note elegant-note">{t("elegantNote")}</p>
-          </div>
-        </div>
-      </div>
-      <div
-        id="elegant-harnesses"
-        role="tabpanel"
-        aria-labelledby="elegantTabHarnesses"
-        hidden={elegantTab !== "harnesses"}
-      >
-        <div className="elegant-coming">
-          <span className="eyebrow">{"ELEGANT / 03"}</span>
-          <h3>{t("elegantHarnesses")}</h3>
-          <p>{t("elegantComing")}</p>
-        </div>
-      </div>
+      {elegantProducts.map((product) => (
+        <ElegantProductPanel
+          key={product.category}
+          product={product}
+          active={tab === product.category}
+        />
+      ))}
     </section>
+  );
+}
+
+function ElegantProductPanel({
+  product,
+  active,
+}: {
+  product: ElegantProduct;
+  active: boolean;
+}) {
+  const { t, money, openSizeGuide } = useStorefront((state) => ({
+    t: state.t,
+    money: state.money,
+    openSizeGuide: state.openSizeGuide,
+  }));
+  const { kind } = product;
+  const [size, setSize] = useState(kind === "leash" ? "1.5" : "S");
+  const [colour, setColour] = useState<ElegantColour>("dark-brown");
+  const [view, setView] = useState<ElegantView>("product");
+  const colourName = elegantColours[colour].label;
+  const photo = product.gallery[colour][view];
+  const title = t(product.titleKey);
+  const variant: ProductVariant = { collection: "elegant", kind, colour, size };
+  const sizes = variantSizeOptions(variant);
+
+  return (
+    <div
+      id={`elegant-${product.category}`}
+      role="tabpanel"
+      aria-labelledby={`elegant-tab-${product.category}`}
+      tabIndex={0}
+      hidden={!active}
+    >
+      <div className="elegant-product">
+        <div>
+          <div className="elegant-main">
+            <Image
+              src={`/assets/${photo}`}
+              alt={`${title} · ${colourName} · ${t(view === "product" ? "galleryProduct" : "galleryWalk")}`}
+              width={1122}
+              height={1402}
+              sizes={imageSizes}
+            />
+          </div>
+          <div
+            className="gallery-thumbs"
+            role="group"
+            aria-label={t("productPhotos")}
+          >
+            {elegantViews.map(({ id, label }) => (
+              <button
+                key={id}
+                className="gallery-thumb"
+                type="button"
+                aria-label={t(label)}
+                aria-pressed={view === id}
+                onClick={() => setView(id)}
+              >
+                <Image
+                  src={`/assets/${product.gallery[colour][id]}`}
+                  alt=""
+                  fill
+                  sizes="72px"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="product-info">
+          <div className="product-heading">
+            <h3>{title}</h3>
+            <p className="product-price">{money(itemPrice(variant))}</p>
+          </div>
+          <p className="product-intro">{t(product.descriptionKey)}</p>
+          <p className="product-price-note">{t("vatShipping")}</p>
+          <fieldset className="variant-group">
+            <legend>
+              {t("colourLabel")} <span>{colourName}</span>
+            </legend>
+            <div className="swatches">
+              {elegantColourIds.map((option) => (
+                <button
+                  key={option}
+                  className="swatch"
+                  type="button"
+                  aria-label={elegantColours[option].label}
+                  aria-pressed={colour === option}
+                  onClick={() => setColour(option)}
+                >
+                  <span style={{ background: elegantColours[option].swatch }} />
+                  {colour === option && (
+                    <span className="swatch-check" aria-hidden="true">
+                      ✓
+                    </span>
+                  )}
+                </button>
+              ))}
+            </div>
+          </fieldset>
+          {kind === "leash" ? (
+            <p className="elegant-note">{t("elegantLeashLength")}</p>
+          ) : (
+            <fieldset className="variant-group">
+              <legend className="sr-only">{t("sizeOnly")}</legend>
+              <div className="variant-label-row">
+                <span>{t("sizeOnly")}</span>
+                <button
+                  className="text-button size-help"
+                  type="button"
+                  onClick={() => openSizeGuide(kind, size)}
+                >
+                  {t("sizeGuideLabel")}
+                </button>
+              </div>
+              <div
+                className="size-options"
+                style={{
+                  gridTemplateColumns: `repeat(${sizes.length}, minmax(0, 1fr))`,
+                }}
+              >
+                {sizes.map((option) => (
+                  <button
+                    key={option.value}
+                    type="button"
+                    aria-pressed={size === option.value}
+                    onClick={() => setSize(option.value)}
+                  >
+                    <span>{option.label}</span>
+                    {option.detail && <small>{option.detail}</small>}
+                  </button>
+                ))}
+              </div>
+              {kind === "harness" && (
+                <p className="field-hint">{t("harnessMeasureHint")}</p>
+              )}
+            </fieldset>
+          )}
+          <ProductPurchase variant={variant} />
+          <dl className="elegant-specs">
+            {"woodenHandle" in product && (
+              <div className="elegant-spec">
+                <dt>{t("elegantHandle")}</dt>
+                <dd>{t("elegantWood")}</dd>
+              </div>
+            )}
+            <div className="elegant-spec">
+              <dt>{t("elegantHardware")}</dt>
+              <dd>Antique Brass</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+      {kind !== "leash" && (
+        <ElegantBundle
+          primary={{
+            variant,
+            chooseColour: (value) => setColour(value as ElegantColour),
+            chooseSize: setSize,
+          }}
+        />
+      )}
+    </div>
+  );
+}
+
+function ElegantBundle({ primary }: { primary: BundlePartSelection }) {
+  const [leashColour, setLeashColour] = useState("dark-brown");
+  const [collarColour, setCollarColour] = useState("dark-brown");
+  const [collarSize, setCollarSize] = useState("S");
+
+  return (
+    <BundleOffer
+      parts={[
+        primary,
+        {
+          variant: {
+            collection: "elegant",
+            kind: "leash",
+            colour: leashColour,
+            size: "1.5",
+          },
+          chooseColour: setLeashColour,
+        },
+      ]}
+      extra={
+        primary.variant.kind === "harness"
+          ? {
+              variant: {
+                collection: "elegant",
+                kind: "collar",
+                colour: collarColour,
+                size: collarSize,
+              },
+              chooseColour: setCollarColour,
+              chooseSize: setCollarSize,
+            }
+          : undefined
+      }
+    />
   );
 }
