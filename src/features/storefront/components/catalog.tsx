@@ -10,6 +10,7 @@ import {
   harnessPrices,
 } from "@/domain/commerce/catalog";
 import { ProductDetail } from "./product-detail";
+import { CollectionSwitch } from "./collection-switch";
 
 const categoryImageSizes =
   "(max-width: 540px) 94vw, (max-width: 1480px) 31vw, 424px";
@@ -22,6 +23,7 @@ export function Catalog() {
   }));
   return (
     <section className="section catalog-section" id="collection">
+      <CollectionSwitch active="base" />
       <div className="catalog-heading">
         <h2 id="catalogTitle" tabIndex={-1}>
           <BrandText>{t("collectionTitle")}</BrandText>

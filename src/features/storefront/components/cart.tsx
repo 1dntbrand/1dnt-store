@@ -172,8 +172,13 @@ export function Cart() {
         </div>
       ) : (
         <>
+          {cartNotice === "cartAdded" && (
+            <p className="cart-added" role="status">
+              {t("cartAdded")}
+            </p>
+          )}
           <div className="cart-scroll">
-            {cartNotice && (
+            {cartNotice && cartNotice !== "cartAdded" && (
               <p className="integration-notice" role="status">
                 {t(cartNotice)}
               </p>

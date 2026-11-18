@@ -6,7 +6,7 @@ import {
   itemPrice,
   type ProductVariant,
 } from "@/domain/commerce/catalog";
-import { useState, type KeyboardEvent } from "react";
+import { useRef, useState, type KeyboardEvent } from "react";
 import {
   elegantColours,
   elegantProducts,
@@ -19,6 +19,8 @@ import { useStorefront } from "../storefront-context";
 import { variantSizeOptions } from "../lib/product-options";
 import { BundleOffer, type BundlePartSelection } from "./bundle-builder";
 import { ProductPurchase } from "./product-purchase";
+import { ProductSizeOptions } from "./product-size-options";
+import { CollectionSwitch } from "./collection-switch";
 
 const imageSizes =
   "(max-width: 460px) calc(100vw - 40px), (max-width: 800px) 416px, (max-width: 1240px) 45vw, 560px";
@@ -59,6 +61,7 @@ export function Elegant() {
       id="elegant"
       aria-labelledby="elegantTitle"
     >
+      <CollectionSwitch active="elegant" />
       <div className="catalog-heading">
         <h2 id="elegantTitle">Elegant</h2>
       </div>
@@ -108,6 +111,8 @@ function ElegantProductPanel({
     openSizeGuide: state.openSizeGuide,
   }));
   const { kind } = product;
+  const infoRef = useRef<HTMLDivElement>(null);
+  const optionsRef = useRef<HTMLFieldSetElement>(null);
   const [size, setSize] = useState(kind === "leash" ? "1.5" : "S");
   const [colour, setColour] = useState<ElegantColour>("dark-brown");
   const [view, setView] = useState<ElegantView>("product");
@@ -160,14 +165,14 @@ function ElegantProductPanel({
             ))}
           </div>
         </div>
-        <div className="product-info">
+        <div className="product-info" ref={infoRef}>
           <div className="product-heading">
             <h3>{title}</h3>
             <p className="product-price">{money(itemPrice(variant))}</p>
           </div>
           <p className="product-intro">{t(product.descriptionKey)}</p>
           <p className="product-price-note">{t("vatShipping")}</p>
-          <fieldset className="variant-group">
+          <fieldset className="variant-group" ref={optionsRef} tabIndex={-1}>
             <legend>
               {t("colourLabel")} <span>{colourName}</span>
             </legend>
@@ -194,42 +199,20 @@ function ElegantProductPanel({
           {kind === "leash" ? (
             <p className="elegant-note">{t("elegantLeashLength")}</p>
           ) : (
-            <fieldset className="variant-group">
-              <legend className="sr-only">{t("sizeOnly")}</legend>
-              <div className="variant-label-row">
-                <span>{t("sizeOnly")}</span>
-                <button
-                  className="text-button size-help"
-                  type="button"
-                  onClick={() => openSizeGuide(kind, size)}
-                >
-                  {t("sizeGuideLabel")}
-                </button>
-              </div>
-              <div
-                className="size-options"
-                style={{
-                  gridTemplateColumns: `repeat(${sizes.length}, minmax(0, 1fr))`,
-                }}
-              >
-                {sizes.map((option) => (
-                  <button
-                    key={option.value}
-                    type="button"
-                    aria-pressed={size === option.value}
-                    onClick={() => setSize(option.value)}
-                  >
-                    <span>{option.label}</span>
-                    {option.detail && <small>{option.detail}</small>}
-                  </button>
-                ))}
-              </div>
-              {kind === "harness" && (
-                <p className="field-hint">{t("harnessMeasureHint")}</p>
-              )}
-            </fieldset>
+            <ProductSizeOptions
+              kind={kind}
+              options={sizes}
+              selected={size}
+              onSelect={setSize}
+              onOpenGuide={() => openSizeGuide(kind, size, setSize)}
+            />
           )}
-          <ProductPurchase variant={variant} />
+          <ProductPurchase
+            variant={variant}
+            active={active}
+            infoRef={infoRef}
+            optionsRef={optionsRef}
+          />
           <dl className="elegant-specs">
             {"woodenHandle" in product && (
               <div className="elegant-spec">

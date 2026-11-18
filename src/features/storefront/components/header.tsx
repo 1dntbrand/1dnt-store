@@ -44,7 +44,7 @@ export function Header() {
       </nav>
       <div className="header-tools">
         <select
-          className="language-select"
+          className="language-select select-control"
           aria-label={t("languageLabel")}
           value={language}
           onChange={(event) => setLanguage(event.target.value)}

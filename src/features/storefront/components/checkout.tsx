@@ -125,7 +125,7 @@ export function Checkout() {
                   {t("orderSummary")} ({cartCount})
                 </span>
                 <strong>{money(total)}</strong>
-                <span aria-hidden="true">{reviewOpen ? "−" : "+"}</span>
+                <span className="disclosure-chevron" aria-hidden="true" />
               </button>
             ) : (
               <h3>{t("orderSummary")}</h3>
@@ -239,7 +239,8 @@ export function Checkout() {
             </section>
             <div className="checkout-submit">
               <button className="btn" type="submit">
-                {t("continuePayment")}
+                <span>{t("continuePayment")}</span>
+                <span className="checkout-payment-total">{money(total)}</span>
               </button>
               <p className="field-hint">{t("checkoutPreviewNotice")}</p>
             </div>

@@ -14,6 +14,7 @@ import {
 } from "@/domain/commerce/catalog";
 import { variantPhoto } from "../lib/catalog";
 import {
+  productBundleId,
   productOptions,
   productTitleKey,
   variantColourLabel,
@@ -109,7 +110,12 @@ export function BundleOffer({
   const unavailable = variants.some((variant) => variantLimit(variant) === 0);
 
   return (
-    <section className="bundle-builder" aria-labelledby={id}>
+    <section
+      className="bundle-builder"
+      id={productBundleId(parts[0].variant)}
+      aria-labelledby={id}
+      tabIndex={-1}
+    >
       <div className="bundle-heading">
         <div>
           <h4 id={id}>{t("buildYourSet")}</h4>
@@ -175,50 +181,63 @@ function BundlePart({
   chooseColour,
   chooseSize,
 }: BundlePartSelection) {
-  const t = useStorefront((state) => state.t);
+  const { t, choiceSummary } = useStorefront((state) => ({
+    t: state.t,
+    choiceSummary: state.choiceSummary,
+  }));
   const { collection, kind, colour, size } = variant;
   const title = t(productTitleKey(variant));
 
   return (
     <div className="bundle-part">
-      <div className="bundle-part-heading">
-        <div className="bundle-photo">
-          <Image src={variantPhoto(variant)} alt="" fill sizes="64px" />
+      <details className="bundle-part-options">
+        <summary className="bundle-part-heading">
+          <span className="bundle-photo">
+            <Image src={variantPhoto(variant)} alt="" fill sizes="48px" />
+          </span>
+          <span className="bundle-part-summary">
+            <span className="bundle-part-title">
+              <BrandText>{title}</BrandText>
+            </span>
+            <span className="bundle-part-choice">
+              {choiceSummary(colour, size)}
+            </span>
+          </span>
+          <span className="disclosure-chevron" aria-hidden="true" />
+        </summary>
+        <div className="bundle-fields">
+          <label>
+            {t("colourLabel")}
+            <select
+              className="select-control"
+              value={colour}
+              onChange={(event) => chooseColour(event.target.value)}
+            >
+              {variantColours(collection, kind).map((value) => (
+                <option key={value} value={value}>
+                  {variantColourLabel(value, t)}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            {t(kind === "leash" ? "lengthLabel" : "sizeOnly")}
+            <select
+              className="select-control"
+              value={size}
+              disabled={!chooseSize}
+              onChange={(event) => chooseSize?.(event.target.value)}
+            >
+              {variantSizeOptions(variant).map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                  {option.detail ? ` · ${option.detail}` : ""}
+                </option>
+              ))}
+            </select>
+          </label>
         </div>
-        <h5>
-          <BrandText>{title}</BrandText>
-        </h5>
-      </div>
-      <div className="bundle-fields">
-        <label>
-          {t("colourLabel")}
-          <select
-            value={colour}
-            onChange={(event) => chooseColour(event.target.value)}
-          >
-            {variantColours(collection, kind).map((value) => (
-              <option key={value} value={value}>
-                {variantColourLabel(value, t)}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          {t(kind === "leash" ? "lengthLabel" : "sizeOnly")}
-          <select
-            value={size}
-            disabled={!chooseSize}
-            onChange={(event) => chooseSize?.(event.target.value)}
-          >
-            {variantSizeOptions(variant).map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-                {option.detail ? ` · ${option.detail}` : ""}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
+      </details>
       {variantLimit(variant) === 0 && (
         <details className="bundle-restock">
           <summary className="stock-label">

@@ -1,0 +1,13 @@
+# Git launched from an editor may use an older system Node.
+if ! node -e 'process.exit(Number(process.versions.node.split(".")[0]) >= 24 ? 0 : 1)' >/dev/null 2>&1; then
+  nvm_script="${NVM_DIR:-$HOME/.nvm}/nvm.sh"
+  if [ -s "$nvm_script" ]; then
+    . "$nvm_script" --no-use
+    project_node="$(nvm version "$(cat .nvmrc)")"
+    if [ "$project_node" != "N/A" ]; then
+      nvm use --silent "$project_node"
+    fi
+  fi
+fi
+
+npm run lint:staged

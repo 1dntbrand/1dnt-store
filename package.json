@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint --max-warnings=0",
+    "lint:staged": "lint-staged",
+    "typecheck": "next typegen && tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run lint && npm run typecheck && npm run format:check",
+    "prepare": "node .husky/install.mjs"
   },
   "dependencies": {
     "next": "16.4.6",
@@ -20,6 +26,16 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
+    "husky": "9.1.7",
+    "lint-staged": "17.6.1",
+    "prettier": "3.10.1",
     "typescript": "^5"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,jsx,ts,tsx,mts,cts}": [
+      "eslint --max-warnings=0",
+      "prettier --write"
+    ],
+    "*.{css,gs,json,md,yaml,yml}": "prettier --write"
   }
 }

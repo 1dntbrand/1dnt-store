@@ -9,7 +9,6 @@ export function Hero() {
   return (
     <section className="hero">
       <div className="hero-copy">
-        <p className="eyebrow">{t("heroEyebrow")}</p>
         <h1>
           <span>{t("heroDog")}</span>
           <br />
@@ -17,6 +16,7 @@ export function Hero() {
           <br />
           <em>{t("heroIdentity")}</em>
         </h1>
+        <p className="hero-summary">{t("heroSummary")}</p>
         <a className="btn" href="#collection">
           {t("viewCollection")}
         </a>

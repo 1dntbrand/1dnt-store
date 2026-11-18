@@ -98,3 +98,10 @@ export function variantSizeOptions({
     Object.hasOwn(variantPrices(collection, kind), value),
   );
 }
+
+export function productBundleId({
+  collection,
+  kind,
+}: Pick<ProductVariant, "collection" | "kind">) {
+  return `bundle-${collection}-${kind}`;
+}

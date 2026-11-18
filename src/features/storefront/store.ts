@@ -76,7 +76,12 @@ interface StorefrontActions {
   setCategory: (category: string) => void;
   openDialog: (id: string) => void;
   closeDialog: () => void;
-  openSizeGuide: (kind: ProductKind, size: string) => void;
+  openSizeGuide: (
+    kind: ProductKind,
+    size: string,
+    onSelect?: (size: string) => void,
+  ) => void;
+  applyGuideSize: (size: string) => void;
   openService: (id: string) => void;
   addItems: (variants: readonly ProductVariant[]) => void;
   changeQuantity: (id: string, quantity: number) => void;
@@ -95,6 +100,7 @@ export type StorefrontState = Snapshot &
 
 export function createStorefrontStore() {
   return createStore<StorefrontState>()((set, get) => {
+    let applySize: ((size: string) => void) | undefined;
     function save() {
       saveSnapshot(get());
     }
@@ -141,18 +147,27 @@ export function createStorefrontStore() {
       },
       openDialog(id) {
         if (id === "checkoutPanel" && get().cartHasStockIssue) return;
-        set({ activeDialog: id });
+        applySize = undefined;
+        if (id === "cartPanel") set({ activeDialog: id, cartNotice: null });
+        else set({ activeDialog: id });
       },
       closeDialog() {
+        applySize = undefined;
         set({ activeDialog: null });
       },
-      openSizeGuide(kind, size) {
+      openSizeGuide(kind, size, onSelect) {
+        applySize = onSelect;
         set({
           guideSize: size,
           activeDialog: `${kind}SizeGuide`,
         });
       },
+      applyGuideSize(size) {
+        applySize?.(size);
+        get().closeDialog();
+      },
       openService(id) {
+        applySize = undefined;
         set({
           serviceIndex: serviceIds.indexOf(id),
           activeDialog: "serviceDialog",
@@ -179,7 +194,7 @@ export function createStorefrontStore() {
         set({
           ...cartState([...next.values()]),
           activeDialog: "cartPanel",
-          cartNotice: null,
+          cartNotice: "cartAdded",
         });
         save();
       },

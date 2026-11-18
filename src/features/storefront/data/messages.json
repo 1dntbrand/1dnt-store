@@ -216,16 +216,16 @@
     "uk": "Таблиця розмірів"
   },
   "collarGuideTitle": {
-    "en": "Collar — size guide",
-    "pl": "Obroża — tabela rozmiarów",
-    "ru": "Ошейник — таблица размеров",
-    "uk": "Нашийник — таблиця розмірів"
+    "en": "Find a collar size",
+    "pl": "Dobierz rozmiar obroży",
+    "ru": "Подбор размера ошейника",
+    "uk": "Підбір розміру нашийника"
   },
   "harnessGuideTitle": {
-    "en": "Harness — size guide",
-    "pl": "Szelki — tabela rozmiarów",
-    "ru": "Шлейка — таблица размеров",
-    "uk": "Шлея — таблиця розмірів"
+    "en": "Find a harness size",
+    "pl": "Dobierz rozmiar szelek",
+    "ru": "Подбор размера шлейки",
+    "uk": "Підбір розміру шлеї"
   },
   "neckCm": {
     "en": "Neck circumference (cm)",
@@ -945,17 +945,11 @@
     "en": "About",
     "pl": "O marce"
   },
-  "heroEyebrow": {
-    "en": "Handmade collars, leashes and harnesses",
-    "pl": "Ręcznie robione obroże, smycze i szelki",
-    "ru": "Ошейники, поводки и шлейки ручной работы",
-    "uk": "Нашийники, повідці та шлеї ручної роботи"
-  },
   "viewCollection": {
-    "en": "Explore the Base collection",
-    "pl": "Zobacz kolekcję Base",
-    "ru": "Смотреть коллекцию Base",
-    "uk": "Переглянути колекцію Base"
+    "en": "Shop the collection",
+    "pl": "Zobacz produkty",
+    "ru": "Выбрать амуницию",
+    "uk": "Обрати амуніцію"
   },
   "storyEyebrow": {
     "en": "Philosophy",
@@ -1036,10 +1030,10 @@
     "uk": "Обхват шиї / грудей. Перевірте обидва виміри."
   },
   "madeToOrder": {
-    "en": "Handmade to order. We confirm the production time when ordering.",
-    "pl": "Wykonujemy ręcznie na zamówienie. Termin wykonania potwierdzamy przy zamówieniu.",
-    "ru": "Изготавливаем вручную под заказ. Срок изготовления уточняем при оформлении.",
-    "uk": "Виготовляємо вручну на замовлення. Термін виготовлення уточнюємо при оформленні."
+    "en": "Handmade to order.",
+    "pl": "Wykonujemy ręcznie na zamówienie.",
+    "ru": "Изготавливаем вручную под заказ.",
+    "uk": "Виготовляємо вручну на замовлення."
   },
   "buildYourSet": {
     "en": "Make it a set",
@@ -1304,5 +1298,71 @@
     "pl": "Dostępna liczba",
     "ru": "Доступное количество",
     "uk": "Доступна кількість"
+  },
+  "heroSummary": {
+    "en": "Handmade collars, leashes and harnesses",
+    "pl": "Ręcznie robione obroże, smycze i szelki",
+    "ru": "Ошейники, поводки и шлейки ручной работы",
+    "uk": "Нашийники, повідці та шлеї ручної роботи"
+  },
+  "chooseVariant": {
+    "en": "Choose options",
+    "pl": "Wybierz wariant",
+    "ru": "Выбрать вариант",
+    "uk": "Обрати варіант"
+  },
+  "productReturnPolicy": {
+    "en": "Returns",
+    "pl": "Zwroty",
+    "ru": "Условия возврата",
+    "uk": "Умови повернення"
+  },
+  "fitGuideLabel": {
+    "en": "Find your size",
+    "pl": "Dobierz rozmiar",
+    "ru": "Подобрать размер",
+    "uk": "Підібрати розмір"
+  },
+  "fitCheck": {
+    "en": "Check measurements",
+    "pl": "Sprawdź wymiary",
+    "ru": "Проверить по меркам",
+    "uk": "Перевірити за мірками"
+  },
+  "fitInvalid": {
+    "en": "Enter a positive number in centimetres.",
+    "pl": "Podaj dodatnią liczbę w centymetrach.",
+    "ru": "Введите положительное число в сантиметрах.",
+    "uk": "Введіть додатне число в сантиметрах."
+  },
+  "fitMatches": {
+    "en": "Sizes within these measurements. Tap a size to select it.",
+    "pl": "Rozmiary pasujące do wymiarów. Wybierz jeden, aby go zastosować.",
+    "ru": "Размеры в пределах ваших мерок. Нажмите на размер, чтобы выбрать его.",
+    "uk": "Розміри в межах ваших мірок. Натисніть на розмір, щоб обрати його."
+  },
+  "fitNoMatch": {
+    "en": "These measurements do not fall within one size. Get in touch and we’ll help you choose.",
+    "pl": "Podane wymiary nie mieszczą się w jednym rozmiarze. Skontaktuj się z nami, pomożemy dobrać rozmiar.",
+    "ru": "Эти мерки не укладываются в один размер. Напишите нам, и мы поможем подобрать.",
+    "uk": "Ці мірки не вкладаються в один розмір. Напишіть нам, і ми допоможемо підібрати."
+  },
+  "fitAskHelp": {
+    "en": "Ask about sizing",
+    "pl": "Zapytaj o rozmiar",
+    "ru": "Спросить о размере",
+    "uk": "Запитати про розмір"
+  },
+  "centimetreUnit": {
+    "en": "cm",
+    "pl": "cm",
+    "ru": "см",
+    "uk": "см"
+  },
+  "cartAdded": {
+    "en": "Added to your cart",
+    "pl": "Dodano do koszyka",
+    "ru": "Добавлено в корзину",
+    "uk": "Додано до кошика"
   }
 }

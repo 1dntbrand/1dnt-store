@@ -1,4 +1,5 @@
 "use client";
+import { useRef } from "react";
 import { useStorefront } from "../storefront-context";
 import { prices, type ProductKind } from "@/domain/commerce/catalog";
 import { productOptions, swatchColours } from "../lib/product-options";
@@ -7,8 +8,11 @@ import { ProductGallery } from "./product-gallery";
 import { BundleBuilder } from "./bundle-builder";
 import { ProductPurchase } from "./product-purchase";
 import { ProductSafety } from "./product-safety";
+import { ProductSizeOptions } from "./product-size-options";
 
 export function ProductDetail({ kind }: { kind: ProductKind }) {
+  const infoRef = useRef<HTMLDivElement>(null);
+  const optionsRef = useRef<HTMLFieldSetElement>(null);
   const config = productOptions[kind];
   const { t, fields, category, chooseColour, setField, openSizeGuide, money } =
     useStorefront((state) => ({
@@ -30,7 +34,7 @@ export function ProductDetail({ kind }: { kind: ProductKind }) {
     >
       <div className="product-layout">
         <ProductGallery kind={kind} />
-        <div className="product-info">
+        <div className="product-info" ref={infoRef}>
           <div className="product-heading">
             <h3>
               <BrandText>{t(config.titleKey)}</BrandText>
@@ -39,7 +43,7 @@ export function ProductDetail({ kind }: { kind: ProductKind }) {
           </div>
           <p className="product-intro">{t(config.introKey)}</p>
           <p className="product-price-note">{t("vatShipping")}</p>
-          <fieldset className="variant-group">
+          <fieldset className="variant-group" ref={optionsRef} tabIndex={-1}>
             <legend>
               {t("colourLabel")} <span>{t(colour)}</span>
             </legend>
@@ -63,43 +67,21 @@ export function ProductDetail({ kind }: { kind: ProductKind }) {
               ))}
             </div>
           </fieldset>
-          <fieldset className="variant-group">
-            <legend className="sr-only">
-              {t(kind === "leash" ? "lengthLabel" : "sizeOnly")}
-            </legend>
-            <div className="variant-label-row">
-              <span>{t(kind === "leash" ? "lengthLabel" : "sizeOnly")}</span>
-              <button
-                className="text-button size-help"
-                type="button"
-                onClick={() => openSizeGuide(kind, size)}
-              >
-                {t("sizeGuideLabel")}
-              </button>
-            </div>
-            <div
-              className="size-options"
-              style={{
-                gridTemplateColumns: `repeat(${config.sizes.length}, minmax(0, 1fr))`,
-              }}
-            >
-              {config.sizes.map((option) => (
-                <button
-                  key={option.value}
-                  type="button"
-                  aria-pressed={size === option.value}
-                  onClick={() => setField(config.sizeField, option.value)}
-                >
-                  <span>{option.label}</span>
-                  {option.detail && <small>{option.detail}</small>}
-                </button>
-              ))}
-            </div>
-            {kind === "harness" && (
-              <p className="field-hint">{t("harnessMeasureHint")}</p>
-            )}
-          </fieldset>
+          <ProductSizeOptions
+            kind={kind}
+            options={config.sizes}
+            selected={size}
+            onSelect={(value) => setField(config.sizeField, value)}
+            onOpenGuide={() =>
+              openSizeGuide(kind, size, (value) =>
+                setField(config.sizeField, value),
+              )
+            }
+          />
           <ProductPurchase
+            active={category === config.category}
+            infoRef={infoRef}
+            optionsRef={optionsRef}
             variant={{ collection: "base", kind, colour, size }}
             buttonId={`add${kind[0].toUpperCase()}${kind.slice(1)}`}
           />
