@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 1DNT storefront
 
-## Getting Started
+Локальная витрина ONE IDENTITY на Next.js App Router, React, TypeScript и Zustand.
+Дизайн и контент перенесены из переданного архива и более свежей опубликованной версии сайта Нади. Уточнения по скидкам, доставке и VAT учтены в интерфейсе.
 
-First, run the development server:
+## Разработка
+
+Используйте актуальную LTS-версию Node.js. Проект проверен на Node.js 24.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Локальный адрес — http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+npx tsc --noEmit
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Структура
 
-## Learn More
+- `src/app` — маршруты, метаданные и общие стили.
+- `src/features/storefront/components` — общие компоненты галереи и карточки товара, конструктор комплектов, FAQ, корзина, экран оформления и диалоги.
+- `src/features/storefront/lib/product-options.ts` — конфигурация вариантов товаров.
+- `src/features/storefront/data/measurements.ts` — единые размеры для выбора товара и размерных таблиц.
+- `src/features/storefront/store.ts` — Zustand store с действиями интерфейса.
+- `src/features/storefront/storefront-context.tsx` — создание отдельного store для дерева страницы и выборочные подписки компонентов.
+- `src/features/storefront/lib/catalog.ts` — цены в грошах, варианты и чистый расчёт скидок.
+- `src/features/storefront/lib/storage.ts` — проверка и сохранение данных браузера, чтение прежнего формата корзины.
+- `src/features/storefront/data` — переводы и справочные тексты на EN, PL, RU и UK.
+- `public/assets` — фотографии из исходного проекта и опубликованного сайта.
 
-To learn more about Next.js, take a look at the following resources:
+К каждому товару в корзине применяется одна скидка. Сначала формируются комплекты из поводка, ошейника и шлейки со скидкой 10%, затем подходящие пары с поводком со скидкой 5%. Цвета и размеры могут различаться. Для распределения скидок сначала выбираются более дорогие варианты.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Цены Base взяты с опубликованного сайта и отображаются в PLN. Доставка и 23% VAT включены по уточнению Нади. Elegant отображается как коллекция в подготовке с доступными фотографиями. Цена и характеристики для продажи Elegant ещё нужны. Точную ссылку Instagram предстоит добавить в `src/features/storefront/data/brand.ts`. До этого ссылка скрыта. Реквизиты продавца и окончательные условия нужно получить от Нади и инкубатора.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Текущее состояние
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Интерфейс пока работает как локальная витрина. Экран оформления проверяет контактные поля и показывает состав заказа. Кнопка выбора InPost отображает состояние до подключения сервиса, фактическое оформление и отправка данных пока отсутствуют. Оплата, приём заказов и внешние сервисы будут включаться на соответствующих этапах. Перед оплатой сервер должен заново проверить товары, варианты, доступность доставки и сумму заказа.

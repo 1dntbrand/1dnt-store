@@ -1,0 +1,1230 @@
+{
+  "philosophyBond": {
+    "en": "Our brand is for those who share more than walks with their dog.",
+    "pl": "Nasza marka jest dla tych, którzy dzielą ze swoim psem więcej niż spacery.",
+    "ru": "Наш бренд для тех, кто делит со своей собакой больше, чем прогулки.",
+    "uk": "Наш бренд для тих, хто ділить зі своїм собакою більше, ніж прогулянки."
+  },
+  "philosophyReflection": {
+    "en": "We believe a dog is a reflection of their person — an extension of their character and style.",
+    "pl": "Wierzymy, że pies jest odzwierciedleniem swojego człowieka — przedłużeniem jego charakteru i stylu.",
+    "ru": "Мы верим, что собака — это отражение своего человека, продолжение его характера и стиля.",
+    "uk": "Ми віримо, що собака — це відображення своєї людини, продовження її характеру та стилю."
+  },
+  "philosophyFounded": {
+    "en": "Founded in 2026.",
+    "pl": "Marka powstała w 2026 roku.",
+    "ru": "Бренд основан в 2026 году.",
+    "uk": "Бренд засновано у 2026 році."
+  },
+  "philosophyHandmade": {
+    "en": "Each piece is made by hand, with care for form, colour and every detail. What matters to us is not only how an accessory looks, but how it becomes part of your life together.",
+    "pl": "Każdy produkt tworzymy ręcznie, z dbałością o formę, kolor i każdy detal. Liczy się dla nas nie tylko to, jak akcesorium wygląda, ale też jak staje się częścią Waszego wspólnego życia.",
+    "ru": "Каждое изделие мы создаём вручную, уделяя внимание форме, цвету и каждой детали. Для нас важно не только то, как выглядит аксессуар, но и то, как он становится частью вашей жизни вместе.",
+    "uk": "Кожен виріб ми створюємо вручну, приділяючи увагу формі, кольору та кожній деталі. Для нас важливо не лише те, як виглядає аксесуар, а й те, як він стає частиною вашого спільного життя."
+  },
+  "menuTitle": {
+    "en": "Explore",
+    "pl": "Odkrywaj",
+    "ru": "Меню",
+    "uk": "Меню"
+  },
+  "menuAbout": {
+    "en": "About the brand",
+    "pl": "O marce",
+    "ru": "О бренде",
+    "uk": "Про бренд"
+  },
+  "menuFAQ": {
+    "en": "Questions & answers",
+    "pl": "Pytania i odpowiedzi",
+    "ru": "Вопросы и ответы",
+    "uk": "Запитання та відповіді"
+  },
+  "cartTitle": {
+    "en": "Your bag",
+    "pl": "Twój koszyk",
+    "ru": "Ваша корзина",
+    "uk": "Ваш кошик"
+  },
+  "cartEmpty": {
+    "en": "Your bag is empty.",
+    "pl": "Twój koszyk jest pusty.",
+    "ru": "Ваша корзина пуста.",
+    "uk": "Ваш кошик порожній."
+  },
+  "cartIntro": {
+    "en": "Find an everyday essential for your next journey together.",
+    "pl": "Znajdź coś na Wasz kolejny wspólny spacer.",
+    "ru": "Выберите аксессуар для вашего следующего совместного маршрута.",
+    "uk": "Оберіть аксесуар для вашого наступного спільного маршруту."
+  },
+  "cartBrowse": {
+    "en": "See Collection",
+    "pl": "Zobacz kolekcję",
+    "ru": "Смотреть коллекцию",
+    "uk": "Переглянути колекцію"
+  },
+  "allCategories": {
+    "en": "All",
+    "pl": "Wszystko",
+    "ru": "Все",
+    "uk": "Усі"
+  },
+  "collectionTitle": {
+    "en": "Collection Base BioThane®",
+    "pl": "Kolekcja Base BioThane®",
+    "ru": "Коллекция Base BioThane®",
+    "uk": "Колекція Base BioThane®"
+  },
+  "cat_collars": {
+    "en": "Collars",
+    "pl": "Obroże",
+    "ru": "Ошейники",
+    "uk": "Нашийники"
+  },
+  "cat_leashes": {
+    "en": "Leashes",
+    "pl": "Smycze",
+    "ru": "Поводки",
+    "uk": "Повідці"
+  },
+  "cat_harnesses": {
+    "en": "Harnesses",
+    "pl": "Szelki",
+    "ru": "Шлейки",
+    "uk": "Шлеї"
+  },
+  "colourLabel": {
+    "en": "Colour",
+    "pl": "Kolor",
+    "ru": "Цвет",
+    "uk": "Колір"
+  },
+  "lengthLabel": {
+    "en": "Length",
+    "pl": "Długość",
+    "ru": "Длина",
+    "uk": "Довжина"
+  },
+  "addCart": {
+    "en": "Add to Cart",
+    "pl": "Dodaj do koszyka",
+    "ru": "Добавить в корзину",
+    "uk": "Додати до кошика"
+  },
+  "vatShipping": {
+    "en": "Price includes delivery and 23% VAT.",
+    "pl": "Cena obejmuje dostawę i 23% VAT.",
+    "ru": "Доставка и 23% VAT включены в цену.",
+    "uk": "Доставка та 23% VAT включені у ціну."
+  },
+  "totalLabel": {
+    "en": "Total",
+    "pl": "Razem",
+    "ru": "Итого",
+    "uk": "Разом"
+  },
+  "cartSubtotal": {
+    "en": "Subtotal",
+    "pl": "Suma częściowa",
+    "ru": "Сумма товаров",
+    "uk": "Сума товарів"
+  },
+  "black": {
+    "en": "Onyx Black",
+    "pl": "Onyx Black",
+    "ru": "Onyx Black",
+    "uk": "Onyx Black"
+  },
+  "khaki": {
+    "en": "Military Olive",
+    "pl": "Military Olive",
+    "ru": "Military Olive",
+    "uk": "Military Olive"
+  },
+  "orange": {
+    "en": "Burnt Orange",
+    "pl": "Burnt Orange",
+    "ru": "Burnt Orange",
+    "uk": "Burnt Orange"
+  },
+  "continueShopping": {
+    "en": "Continue shopping",
+    "pl": "Kontynuuj zakupy",
+    "ru": "Продолжить покупки",
+    "uk": "Продовжити покупки"
+  },
+  "sizeOnly": {
+    "en": "Size",
+    "pl": "Rozmiar",
+    "ru": "Размер",
+    "uk": "Розмір"
+  },
+  "galleryProduct": {
+    "en": "Product photo",
+    "pl": "Zdjęcie produktu",
+    "ru": "Фото изделия",
+    "uk": "Фото виробу"
+  },
+  "galleryLeft": {
+    "en": "On dog — left view",
+    "pl": "Na psie — widok z lewej",
+    "ru": "На собаке — вид слева",
+    "uk": "На собаці — вигляд зліва"
+  },
+  "galleryRight": {
+    "en": "On dog — right view",
+    "pl": "Na psie — widok z prawej",
+    "ru": "На собаке — вид справа",
+    "uk": "На собаці — вигляд справа"
+  },
+  "leashColour": {
+    "en": "Leash colour",
+    "pl": "Kolor smyczy",
+    "ru": "Цвет поводка",
+    "uk": "Колір повідця"
+  },
+  "galleryWalk": {
+    "en": "On a walk",
+    "pl": "Na spacerze",
+    "ru": "На прогулке",
+    "uk": "На прогулянці"
+  },
+  "mixHarnessSet": {
+    "en": "Choose any colours and sizes for your set.",
+    "pl": "Wybierz dowolne kolory i rozmiary zestawu.",
+    "ru": "Сочетайте любые цвета и размеры в комплекте.",
+    "uk": "Поєднуйте будь-які кольори та розміри у комплекті."
+  },
+  "sizeGuideLabel": {
+    "en": "Size guide",
+    "pl": "Tabela rozmiarów",
+    "ru": "Таблица размеров",
+    "uk": "Таблиця розмірів"
+  },
+  "collarGuideTitle": {
+    "en": "Collar — size guide",
+    "pl": "Obroża — tabela rozmiarów",
+    "ru": "Ошейник — таблица размеров",
+    "uk": "Нашийник — таблиця розмірів"
+  },
+  "harnessGuideTitle": {
+    "en": "Harness — size guide",
+    "pl": "Szelki — tabela rozmiarów",
+    "ru": "Шлейка — таблица размеров",
+    "uk": "Шлея — таблиця розмірів"
+  },
+  "neckCm": {
+    "en": "Neck circumference (cm)",
+    "pl": "Obwód szyi (cm)",
+    "ru": "Обхват шеи (см)",
+    "uk": "Обхват шиї (см)"
+  },
+  "chestCm": {
+    "en": "Chest circumference (cm)",
+    "pl": "Obwód klatki piersiowej (cm)",
+    "ru": "Обхват груди (см)",
+    "uk": "Обхват грудей (см)"
+  },
+  "widthCm": {
+    "en": "Strap width (cm)",
+    "pl": "Szerokość paska (cm)",
+    "ru": "Ширина ленты (см)",
+    "uk": "Ширина стрічки (см)"
+  },
+  "measureTitle": {
+    "en": "How to measure",
+    "pl": "Jak zmierzyć psa",
+    "ru": "Как измерить",
+    "uk": "Як виміряти"
+  },
+  "measureCollar": {
+    "en": "Measure around the part of the neck where the collar sits, using a soft measuring tape.",
+    "pl": "Miękką miarką zmierz obwód szyi w miejscu, w którym znajduje się obroża.",
+    "ru": "Измерьте обхват шеи в месте, где располагается ошейник, мягкой сантиметровой лентой.",
+    "uk": "Виміряйте обхват шиї в місці, де розташовується нашийник, м’якою сантиметровою стрічкою."
+  },
+  "measureHarness": {
+    "en": "Measure the neck at its base and the chest around its widest part, behind the front legs.",
+    "pl": "Zmierz obwód szyi u jej nasady oraz obwód klatki piersiowej w najszerszym miejscu, za przednimi łapami.",
+    "ru": "Измерьте обхват шеи у её основания и обхват груди в самом широком месте, за передними лапами.",
+    "uk": "Виміряйте обхват шиї біля її основи та обхват грудей у найширшому місці, за передніми лапами."
+  },
+  "guideClose": {
+    "en": "Close",
+    "pl": "Zamknij",
+    "ru": "Закрыть",
+    "uk": "Закрити"
+  },
+  "measureNeckLabel": {
+    "en": "Neck circumference",
+    "pl": "Obwód szyi",
+    "ru": "Обхват шеи",
+    "uk": "Обхват шиї"
+  },
+  "measureChestLabel": {
+    "en": "Chest circumference",
+    "pl": "Obwód klatki piersiowej",
+    "ru": "Обхват груди",
+    "uk": "Обхват грудей"
+  },
+  "measureCollarGraphic": {
+    "en": "Dog with a dashed line around the neck showing where to measure.",
+    "pl": "Pies z przerywaną linią wokół szyi wskazującą miejsce pomiaru.",
+    "ru": "Собака с пунктирной линией вокруг шеи, показывающей место измерения.",
+    "uk": "Собака з пунктирною лінією навколо шиї, що показує місце вимірювання."
+  },
+  "measureHarnessGraphic": {
+    "en": "Dog with dashed lines around the base of the neck (A) and the chest behind the front legs (B).",
+    "pl": "Pies z przerywanymi liniami wokół nasady szyi (A) i klatki piersiowej za przednimi łapami (B).",
+    "ru": "Собака с пунктирными линиями вокруг основания шеи (A) и груди за передними лапами (B).",
+    "uk": "Собака з пунктирними лініями навколо основи шиї (A) та грудей за передніми лапами (B)."
+  },
+  "leashGuideTitle": {
+    "en": "Leash — size guide",
+    "pl": "Smycz — tabela rozmiarów",
+    "ru": "Поводок — длина и способы использования",
+    "uk": "Повідець — довжина та способи використання"
+  },
+  "leashTotalLength": {
+    "en": "Total length",
+    "pl": "Długość całkowita",
+    "ru": "Общая длина",
+    "uk": "Загальна довжина"
+  },
+  "leashUse": {
+    "en": "Ways to wear",
+    "pl": "Sposób użycia",
+    "ru": "Способы использования",
+    "uk": "Способи використання"
+  },
+  "handHeldOnly": {
+    "en": "Hand-held · fixed handle",
+    "pl": "W dłoni · stała rączka",
+    "ru": "В руке · фиксированная ручка",
+    "uk": "У руці · фіксована ручка"
+  },
+  "convertibleUse": {
+    "en": "Hand-held / hands-free",
+    "pl": "W dłoni / hands-free",
+    "ru": "В руке / со свободными руками",
+    "uk": "У руці / з вільними руками"
+  },
+  "leashFixedTitle": {
+    "en": "01 · Full length — 2.50 m",
+    "pl": "01 · Pełna długość — 2,50 m",
+    "ru": "01 · Полная длина — 2,50 м",
+    "uk": "01 · Повна довжина — 2,50 м"
+  },
+  "leashLongTitle": {
+    "en": "02 · Shortened — 2.00 m",
+    "pl": "02 · Krótsza smycz — 2,00 m",
+    "ru": "02 · Укороченный вариант — 2,00 м",
+    "uk": "02 · Укорочений варіант — 2,00 м"
+  },
+  "leashFixedCaption": {
+    "en": "Fasten the snap hook to the first attachment point for a small handle. Overall length, including the handle: 2.50 m.",
+    "pl": "Zapnij karabińczyk w pierwszym punkcie, tworząc małą rączkę. Długość całkowita wraz z rączką: 2,50 m.",
+    "ru": "Пристегните карабин к первому креплению, чтобы получилась небольшая ручка. Общая длина вместе с ручкой: 2,50 м.",
+    "uk": "Пристебніть карабін до першого кріплення, щоб утворилася невелика ручка. Загальна довжина разом із ручкою: 2,50 м."
+  },
+  "leashLongCaption": {
+    "en": "Move the snap hook to the second attachment point. Hold the larger loop as a handle for a 2.00 m leash.",
+    "pl": "Przepnij karabińczyk do drugiego punktu. Trzymaj większą pętlę jak rączkę — długość smyczy wynosi 2,00 m.",
+    "ru": "Перестегните карабин на второе крепление. Используйте увеличенную петлю как ручку — длина поводка составит 2,00 м.",
+    "uk": "Перестебніть карабін на друге кріплення. Використовуйте збільшену петлю як ручку — довжина повідця становитиме 2,00 м."
+  },
+  "leashHandsFreeTitle": {
+    "en": "03 · Hands-free — 150 cm loop",
+    "pl": "03 · Hands-free — pętla 150 cm",
+    "ru": "03 · Свободные руки — петля 150 см",
+    "uk": "03 · Вільні руки — петля 150 см"
+  },
+  "leashHandsFreeCaption": {
+    "en": "Use the same second attachment point and wear the loop across your body. The loop circumference is 150 cm.",
+    "pl": "Użyj tego samego drugiego punktu i załóż pętlę przez ramię. Obwód pętli wynosi 150 cm.",
+    "ru": "Используйте то же второе крепление и наденьте петлю через плечо. Обхват петли — 150 см.",
+    "uk": "Використовуйте те саме друге кріплення та надягніть петлю через плече. Обхват петлі — 150 см."
+  },
+  "leashHandsFreeNote": {
+    "en": "The three diagrams describe the 2.5 m model. 150 cm is the circumference of the body loop, not the distance from you to your dog. Diagrams are not to scale.",
+    "pl": "Trzy schematy dotyczą modelu 2,5 m. 150 cm to obwód pętli wokół ciała, a nie odległość od Ciebie do psa. Schematy nie są wykonane w skali.",
+    "ru": "Три схемы показывают модель 2,5 м. 150 см — это обхват петли вокруг тела, а не расстояние от вас до собаки. Схемы выполнены не в масштабе.",
+    "uk": "Три схеми показують модель 2,5 м. 150 см — це обхват петлі навколо тіла, а не відстань від вас до собаки. Схеми виконано не в масштабі."
+  },
+  "fixedLeashGraphic": {
+    "en": "Standard leash with a fixed hand loop and one snap hook.",
+    "pl": "Zwykła smycz ze stałą rączką i jednym karabińczykiem.",
+    "ru": "Обычный поводок с фиксированной ручкой и одним карабином.",
+    "uk": "Звичайний повідець із фіксованою ручкою та одним карабіном."
+  },
+  "longLeashGraphic": {
+    "en": "Convertible leash with the end snap hook fastened to a ring to form a hand loop.",
+    "pl": "Smycz przepinana z końcowym karabińczykiem zapiętym do pierścienia, tworzącym rączkę.",
+    "ru": "Перестёжной поводок: карабин пристёгнут к кольцу, образуя ручку.",
+    "uk": "Перестібний повідець: карабін пристебнуто до кільця, утворюючи ручку."
+  },
+  "handsFreeGraphic": {
+    "en": "Person wearing a leash across the body, with the snap hook attached to the ring at the hip and the remaining leash leading to the dog.",
+    "pl": "Osoba ze smyczą przez ramię, karabińczykiem zapiętym do pierścienia na biodrze i pozostałą częścią smyczy prowadzącą do psa.",
+    "ru": "Человек с поводком через плечо: карабин закреплён на кольце у бедра, свободная часть поводка ведёт к собаке.",
+    "uk": "Людина з повідцем через плече: карабін закріплено на кільці біля стегна, вільна частина повідця веде до собаки."
+  },
+  "leashModesHeading": {
+    "en": "2.5 m · Three ways to walk",
+    "pl": "2,5 m · Trzy sposoby na spacer",
+    "ru": "2,5 м · Три способа гулять",
+    "uk": "2,5 м · Три способи гуляти"
+  },
+  "shortLeashGuideCaption": {
+    "en": "A standard leash with a small handle. Total length including the handle: 1.50 m.",
+    "pl": "Zwykła smycz z małą rączką. Długość całkowita wraz z rączką: 1,50 m.",
+    "ru": "Обычный поводок с небольшой ручкой. Общая длина вместе с ручкой: 1,50 м.",
+    "uk": "Звичайний повідець із невеликою ручкою. Загальна довжина разом із ручкою: 1,50 м."
+  },
+  "collarWidthMm": {
+    "en": "Strap width (mm)",
+    "pl": "Szerokość paska (mm)",
+    "ru": "Ширина ленты (мм)",
+    "uk": "Ширина стрічки (мм)"
+  },
+  "baseDescriptionTitle": {
+    "en": "Description",
+    "pl": "Opis",
+    "ru": "Описание",
+    "uk": "Опис"
+  },
+  "baseFeaturesTitle": {
+    "en": "Features",
+    "pl": "Cechy",
+    "ru": "Особенности",
+    "uk": "Особливості"
+  },
+  "baseCareTitle": {
+    "en": "Care",
+    "pl": "Pielęgnacja",
+    "ru": "Уход",
+    "uk": "Догляд"
+  },
+  "baseDescription": {
+    "en": "Base is a collection of collars, leashes and harnesses made from original BioThane®, created for your everyday life together. Clean forms and considered colour combinations highlight character and style, while waterproof webbing and easy care make the accessories comfortable and practical. We make each piece by hand, with attention to colour, form and detail.",
+    "pl": "Base to kolekcja obroży, smyczy i szelek z oryginalnego BioThane®, stworzona z myślą o Waszej wspólnej codzienności. Proste formy i przemyślane połączenia kolorów podkreślają charakter i styl, a wodoodporna taśma i łatwa pielęgnacja sprawiają, że akcesoria są wygodne i praktyczne. Każdy produkt tworzymy ręcznie, z dbałością o kolor, formę i detale.",
+    "ru": "Base — коллекция ошейников, поводков и шлеек из оригинального BioThane®, созданная для вашей повседневной жизни вместе. Лаконичные формы и продуманные цветовые сочетания подчёркивают характер и стиль, а водонепроницаемая лента и простой уход делают аксессуары удобными и практичными. Каждое изделие мы создаём вручную, уделяя внимание цвету, форме и деталям.",
+    "uk": "Base — колекція нашийників, повідців і шлей з оригінального BioThane®, створена для вашого повсякденного життя разом. Лаконічні форми та продумані поєднання кольорів підкреслюють характер і стиль, а водонепроникна стрічка та простий догляд роблять аксесуари зручними й практичними. Кожен виріб ми створюємо вручну, приділяючи увагу кольору, формі та деталям."
+  },
+  "baseWebbing": {
+    "en": "Webbing: 100% original BioThane®.",
+    "pl": "Taśma: 100% oryginalny BioThane®.",
+    "ru": "Лента: 100% оригинальный BioThane®.",
+    "uk": "Стрічка: 100% оригінальний BioThane®."
+  },
+  "baseWaterproof": {
+    "en": "Waterproof material",
+    "pl": "Wodoodporny materiał",
+    "ru": "Водонепроницаемый материал",
+    "uk": "Водонепроникний матеріал"
+  },
+  "baseAdjustable": {
+    "en": "Adjustable fit",
+    "pl": "Regulowane dopasowanie",
+    "ru": "Регулируемая посадка",
+    "uk": "Регульована посадка"
+  },
+  "baseHandmade": {
+    "en": "Handmade",
+    "pl": "Wykonane ręcznie",
+    "ru": "Ручная работа",
+    "uk": "Ручна робота"
+  },
+  "baseEasyCare": {
+    "en": "Easy care",
+    "pl": "Łatwa pielęgnacja",
+    "ru": "Простой уход",
+    "uk": "Простий догляд"
+  },
+  "baseVegan": {
+    "en": "100% vegan",
+    "pl": "100% wegańskie",
+    "ru": "100% веган",
+    "uk": "100% веган"
+  },
+  "baseLeashAdjustable": {
+    "en": "2.5 m model: adjustable length and hands-free use",
+    "pl": "Model 2,5 m: regulowana długość i tryb hands-free",
+    "ru": "Модель 2,5 м: регулируемая длина и использование со свободными руками",
+    "uk": "Модель 2,5 м: регульована довжина та використання з вільними руками"
+  },
+  "baseCare": {
+    "en": "Clean the webbing with warm water and mild soap, then rinse with clean water. After washing, wipe the item with a soft cloth, paying particular attention to the hardware, and allow it to dry before storing.",
+    "pl": "Czyść taśmę ciepłą wodą z łagodnym mydłem, a następnie opłucz czystą wodą. Po umyciu wytrzyj produkt miękką ściereczką, zwracając szczególną uwagę na okucia, i pozostaw do wyschnięcia przed przechowywaniem.",
+    "ru": "Очищайте ленту тёплой водой с мягким мылом, затем ополосните чистой водой. После мытья вытрите изделие мягкой тканью, уделяя особое внимание фурнитуре, и дайте высохнуть перед хранением.",
+    "uk": "Очищуйте стрічку теплою водою з м’яким милом, потім сполосніть чистою водою. Після миття витріть виріб м’якою тканиною, приділяючи особливу увагу фурнітурі, та дайте висохнути перед зберіганням."
+  },
+  "heroDog": {
+    "en": "Your dog.",
+    "pl": "Twój pies.",
+    "ru": "Твоя собака.",
+    "uk": "Твій собака."
+  },
+  "heroStyle": {
+    "en": "Your style.",
+    "pl": "Twój styl.",
+    "ru": "Твой стиль.",
+    "uk": "Твій стиль."
+  },
+  "heroIdentity": {
+    "en": "One identity.",
+    "pl": "Jedna tożsamość.",
+    "ru": "Одна идентичность.",
+    "uk": "Одна ідентичність."
+  },
+  "footerTogether": {
+    "en": "Everyday, together.",
+    "pl": "Codziennie, razem.",
+    "ru": "Каждый день вместе.",
+    "uk": "Щодня разом."
+  },
+  "productCollar": {
+    "en": "Collar Base BioThane®",
+    "pl": "Obroża Base BioThane®",
+    "ru": "Ошейник Base BioThane®",
+    "uk": "Нашийник Base BioThane®"
+  },
+  "productLeash": {
+    "en": "Leash Base BioThane®",
+    "pl": "Smycz Base BioThane®",
+    "ru": "Поводок Base BioThane®",
+    "uk": "Повідець Base BioThane®"
+  },
+  "productHarness": {
+    "en": "Harness Base BioThane®",
+    "pl": "Szelki Base BioThane®",
+    "ru": "Шлейка Base BioThane®",
+    "uk": "Шлея Base BioThane®"
+  },
+  "saveLabel": {
+    "en": "You save ",
+    "pl": "Oszczędzasz ",
+    "ru": "Вы экономите ",
+    "uk": "Ви заощаджуєте "
+  },
+  "decrease": {
+    "en": "Decrease quantity",
+    "pl": "Zmniejsz liczbę sztuk",
+    "ru": "Уменьшить количество",
+    "uk": "Зменшити кількість"
+  },
+  "increase": {
+    "en": "Increase quantity",
+    "pl": "Zwiększ liczbę sztuk",
+    "ru": "Увеличить количество",
+    "uk": "Збільшити кількість"
+  },
+  "harnessColour": {
+    "en": "Harness colour",
+    "pl": "Kolor szelek",
+    "ru": "Цвет шлейки",
+    "uk": "Колір шлеї"
+  },
+  "longGuideNote": {
+    "en": "2.5 m · Multifunctional leash",
+    "pl": "2,5 m · Smycz wielofunkcyjna",
+    "ru": "2,5 м · Многофункциональный поводок",
+    "uk": "2,5 м · Багатофункціональний повідець"
+  },
+  "shortGuideNote": {
+    "en": "1.5 m · Standard leash",
+    "pl": "1,5 m · Zwykła smycz",
+    "ru": "1,5 м · Обычный поводок",
+    "uk": "1,5 м · Звичайний повідець"
+  },
+  "menuOpen": {
+    "en": "Open menu",
+    "pl": "Otwórz menu",
+    "ru": "Открыть меню",
+    "uk": "Відкрити меню"
+  },
+  "bagAction": {
+    "en": "Shopping bag",
+    "pl": "Koszyk",
+    "ru": "Корзина",
+    "uk": "Кошик"
+  },
+  "mUnit": {
+    "en": "m",
+    "pl": "m",
+    "ru": "м",
+    "uk": "м"
+  },
+  "shortDiagramTitle": {
+    "en": "1.5 m standard leash with a small handle",
+    "pl": "Zwykła smycz 1,5 m z małą rączką",
+    "ru": "Обычный поводок 1,5 м с небольшой ручкой",
+    "uk": "Звичайний повідець 1,5 м із невеликою ручкою"
+  },
+  "khaki-orange": {
+    "en": "Military Olive / Burnt Orange",
+    "pl": "Military Olive / Burnt Orange",
+    "ru": "Military Olive / Burnt Orange",
+    "uk": "Military Olive / Burnt Orange"
+  },
+  "black-orange": {
+    "en": "Onyx Black / Burnt Orange",
+    "pl": "Onyx Black / Burnt Orange",
+    "ru": "Onyx Black / Burnt Orange",
+    "uk": "Onyx Black / Burnt Orange"
+  },
+  "footerSignature": {
+    "en": "YOUR DOG. YOUR STYLE. ONE IDENTITY.",
+    "pl": "TWÓJ PIES. TWÓJ STYL. ONE IDENTITY.",
+    "ru": "ТВОЯ СОБАКА. ТВОЙ СТИЛЬ. ONE IDENTITY.",
+    "uk": "ТВІЙ СОБАКА. ТВІЙ СТИЛЬ. ONE IDENTITY."
+  },
+  "fidlockFeature": {
+    "en": "FIDLOCK magnetic-mechanical fastening",
+    "pl": "Zapięcie magnetyczno-mechaniczne FIDLOCK",
+    "ru": "Магнитно-механическая застёжка FIDLOCK",
+    "uk": "Магнітно-механічна застібка FIDLOCK"
+  },
+  "fidlockExplanation": {
+    "en": "FIDLOCK technology combines magnetic attraction with mechanical locking.",
+    "pl": "Technologia FIDLOCK łączy przyciąganie magnetyczne z mechaniczną blokadą.",
+    "ru": "Технология FIDLOCK сочетает магнитное притяжение с механической фиксацией.",
+    "uk": "Технологія FIDLOCK поєднує магнітне притягання з механічною фіксацією."
+  },
+  "baseOdourFeature": {
+    "en": "Does not absorb odours",
+    "pl": "Nie chłonie zapachów",
+    "ru": "Не впитывает запахи",
+    "uk": "Не вбирає запахи"
+  },
+  "harnessLowerCm": {
+    "en": "Lower strap (cm)",
+    "pl": "Dolny pasek (cm)",
+    "ru": "Нижняя перемычка (см)",
+    "uk": "Нижня перемичка (см)"
+  },
+  "harnessUpperCm": {
+    "en": "Upper back strap (cm)",
+    "pl": "Pasek grzbietowy (cm)",
+    "ru": "Верхняя перемычка (см)",
+    "uk": "Верхня перемичка (см)"
+  },
+  "harnessSTableNote": {
+    "en": "Neck, chest and lower strap are adjustable; the upper back strap is fixed.",
+    "pl": "Obwód szyi, klatki piersiowej i dolny pasek są regulowane; pasek grzbietowy jest stały.",
+    "ru": "Обхваты шеи и груди и нижняя перемычка регулируются; верхняя спинная перемычка фиксированная.",
+    "uk": "Обхвати шиї та грудей і нижня перемичка регулюються; верхня спинна перемичка фіксована."
+  },
+  "faqCareCategory": {
+    "en": "BioThane® — care",
+    "pl": "BioThane® — pielęgnacja",
+    "ru": "BioThane® — уход",
+    "uk": "BioThane® — догляд"
+  },
+  "faqCleanQuestion": {
+    "en": "How can I clean my accessory?",
+    "pl": "Jak wyczyścić akcesorium?",
+    "ru": "Как я могу очистить изделие?",
+    "uk": "Як я можу очистити виріб?"
+  },
+  "faqMachineQuestion": {
+    "en": "Can I wash it in a washing machine?",
+    "pl": "Czy mogę prać produkt w pralce?",
+    "ru": "Можно ли стирать изделие в стиральной машине?",
+    "uk": "Чи можна прати виріб у пральній машині?"
+  },
+  "faqMachineAnswer": {
+    "en": "No. Machine washing can damage the hardware on the accessory. Please clean it by hand.",
+    "pl": "Nie. Pranie w pralce może uszkodzić okucia produktu. Czyść go ręcznie.",
+    "ru": "Нет. Машинная стирка может повредить фурнитуру изделия. Очищайте изделие вручную.",
+    "uk": "Ні. Машинне прання може пошкодити фурнітуру виробу. Очищуйте виріб вручну."
+  },
+  "faqSizesTitle": {
+    "en": "Sizes",
+    "pl": "Rozmiary",
+    "ru": "Размеры",
+    "uk": "Розміри"
+  },
+  "faqMeasureQ": {
+    "en": "How do I measure my dog correctly?",
+    "pl": "Jak prawidłowo zmierzyć psa?",
+    "ru": "Как правильно измерить собаку?",
+    "uk": "Як правильно виміряти собаку?"
+  },
+  "faqMeasureIntro": {
+    "en": "Use a soft measuring tape. Your dog should stand naturally on all four paws on a level surface. Keep the tape close to the body without tightening it or compressing the coat.",
+    "pl": "Użyj miękkiej miarki krawieckiej. Pies powinien stać naturalnie na czterech łapach na równym podłożu. Miarka powinna przylegać do ciała, ale nie uciskać ani nie ściskać sierści.",
+    "ru": "Используйте мягкую сантиметровую ленту. Собака должна спокойно стоять на четырёх лапах на ровной поверхности. Лента должна прилегать к телу, но не стягивать его и не сдавливать шерсть.",
+    "uk": "Використовуйте м’яку сантиметрову стрічку. Собака має спокійно стояти на чотирьох лапах на рівній поверхні. Стрічка повинна прилягати до тіла, але не стягувати його й не стискати шерсть."
+  },
+  "faqMeasureNeck": {
+    "en": "Neck: for a collar, measure around the neck where the collar will sit. For a harness, measure around the base of the neck, following the diagram in that product’s size guide.",
+    "pl": "Szyja: w przypadku obroży zmierz obwód szyi w miejscu, w którym będzie leżeć obroża. W przypadku szelek zmierz obwód u nasady szyi zgodnie ze schematem w tabeli rozmiarów danego produktu.",
+    "ru": "Обхват шеи: для ошейника измерьте шею по кругу в месте его посадки. Для шлейки измерьте обхват у основания шеи, ориентируясь на схему в таблице размеров конкретного изделия.",
+    "uk": "Обхват шиї: для нашийника виміряйте шию по колу в місці його посадки. Для шлейки виміряйте обхват біля основи шиї, орієнтуючись на схему в таблиці розмірів конкретного виробу."
+  },
+  "faqMeasureChest": {
+    "en": "Chest: measure all the way around the widest part of the rib cage, behind the front legs. Make sure the tape is not twisted.",
+    "pl": "Klatka piersiowa: zmierz pełny obwód w najszerszym miejscu klatki piersiowej, za przednimi łapami. Miarka nie powinna być skręcona.",
+    "ru": "Обхват груди: проведите ленту по кругу вокруг самой широкой части грудной клетки, за передними лапами. Следите, чтобы лента не перекручивалась.",
+    "uk": "Обхват грудей: проведіть стрічку по колу навколо найширшої частини грудної клітки, за передніми лапами. Стежте, щоб стрічка не перекручувалася."
+  },
+  "faqMeasureEnd": {
+    "en": "Write down the measurements in centimetres and check them again before choosing a size.",
+    "pl": "Zapisz wymiary w centymetrach i sprawdź je ponownie przed wyborem rozmiaru.",
+    "ru": "Запишите мерки в сантиметрах и проверьте их ещё раз перед выбором размера.",
+    "uk": "Запишіть мірки в сантиметрах і перевірте їх ще раз перед вибором розміру."
+  },
+  "faqChooseSizeQ": {
+    "en": "How do I choose the right size for my dog?",
+    "pl": "Jak wybrać odpowiedni rozmiar dla psa?",
+    "ru": "Как подобрать правильный размер для собаки?",
+    "uk": "Як підібрати правильний розмір для собаки?"
+  },
+  "faqChooseSizeA": {
+    "en": "Open the guide for the accessory you have chosen and find the range that includes your dog’s measurements. For a collar, compare the neck circumference; for a harness, check both neck and chest measurements — both must fall within the same size’s adjustment ranges.",
+    "pl": "Otwórz tabelę wybranego akcesorium i znajdź zakres obejmujący wymiary Twojego psa. Dla obroży porównaj obwód szyi; dla szelek sprawdź obwód szyi i klatki piersiowej — oba wymiary muszą mieścić się w zakresach regulacji tego samego rozmiaru.",
+    "ru": "Откройте таблицу выбранного аксессуара и найдите диапазон, в который входят мерки вашей собаки. Для ошейника сравните обхват шеи, для шлейки — обхват шеи и груди. Оба значения должны входить в диапазон регулировки одного размера.",
+    "uk": "Відкрийте таблицю вибраного аксесуара та знайдіть діапазон, до якого входять мірки вашого собаки. Для нашийника порівняйте обхват шиї; для шлейки — обхвати шиї та грудей: обидва значення мають входити в діапазони регулювання одного розміру."
+  },
+  "faqChooseSizeEnd": {
+    "en": "Use the chart for the specific product rather than breed or a size used by another brand. If the measurements do not fit one size, contact us before ordering.",
+    "pl": "Korzystaj z tabeli konkretnego produktu, zamiast kierować się wyłącznie rasą lub rozmiarem innej marki. Jeśli wymiary nie pasują do jednego rozmiaru, skontaktuj się z nami przed zamówieniem.",
+    "ru": "Ориентируйтесь на таблицу конкретного изделия, а не только на породу или размер другой марки. Если мерки не подходят под один размер, свяжитесь с нами перед заказом.",
+    "uk": "Орієнтуйтеся на таблицю конкретного виробу, а не лише на породу чи розмір іншої марки. Якщо мірки не підходять під один розмір, зв’яжіться з нами перед замовленням."
+  },
+  "faqDeliveryTitle": {
+    "en": "Shipping",
+    "pl": "Dostawa",
+    "ru": "Доставка",
+    "uk": "Доставка"
+  },
+  "faqDeliveryCarriersQ": {
+    "en": "Which delivery options are available?",
+    "pl": "Jakie opcje dostawy są dostępne?",
+    "ru": "Какие способы доставки доступны?",
+    "uk": "Які способи доставки доступні?"
+  },
+  "faqDeliveryCarriersA": {
+    "en": "We ship only within Poland to InPost pickup points.",
+    "pl": "Wysyłamy wyłącznie na terenie Polski, do punktów odbioru InPost.",
+    "ru": "Доставляем только по Польше, в пункты выдачи InPost.",
+    "uk": "Доставляємо лише в межах Польщі, до пунктів видачі InPost."
+  },
+  "faqDeliveryTrackingQ": {
+    "en": "How can I track my order?",
+    "pl": "Jak śledzić zamówienie?",
+    "ru": "Как отследить мой заказ?",
+    "uk": "Як відстежити моє замовлення?"
+  },
+  "faqDeliveryTrackingA": {
+    "en": "Once your parcel has been dispatched, we will email you a shipping confirmation with a tracking number or link. Use it to check your parcel’s progress on the carrier’s website.",
+    "pl": "Po nadaniu przesyłki wyślemy e-mail z potwierdzeniem wysyłki oraz numerem lub linkiem do śledzenia. Dzięki niemu sprawdzisz status przesyłki na stronie przewoźnika.",
+    "ru": "После отправки посылки мы пришлём на вашу электронную почту подтверждение с трек-номером или ссылкой для отслеживания. По ней вы сможете проверять статус доставки на сайте перевозчика.",
+    "uk": "Після відправлення посилки ми надішлемо на вашу електронну пошту підтвердження з трек-номером або посиланням для відстеження. За ним ви зможете перевіряти статус доставки на сайті перевізника."
+  },
+  "faqDeliveryCostQ": {
+    "en": "How much does shipping cost?",
+    "pl": "Ile kosztuje dostawa?",
+    "ru": "Сколько стоит доставка?",
+    "uk": "Скільки коштує доставка?"
+  },
+  "faqDeliveryCostA": {
+    "en": "Delivery is included in the product price.",
+    "pl": "Dostawa jest wliczona w cenę produktu.",
+    "ru": "Доставка уже включена в стоимость товара.",
+    "uk": "Доставка вже включена у вартість товару."
+  },
+  "faqDeliveryTimeQ": {
+    "en": "How long does delivery take?",
+    "pl": "Jak długo trwa dostawa?",
+    "ru": "Сколько времени занимает доставка?",
+    "uk": "Скільки часу займає доставка?"
+  },
+  "faqDeliveryTimeA": {
+    "en": "The delivery time depends on the InPost pickup point and the dispatch date. We confirm the production time separately when you order.",
+    "pl": "Czas dostawy zależy od punktu odbioru InPost i daty nadania. Termin wykonania ustalamy osobno przy zamówieniu.",
+    "ru": "Срок доставки зависит от пункта InPost и даты отправки. Срок изготовления уточняем отдельно при заказе.",
+    "uk": "Строк доставки залежить від пункту InPost і дати відправлення. Строк виготовлення уточнюємо окремо під час замовлення."
+  },
+  "faqPayTitle": {
+    "en": "Payment",
+    "pl": "Płatności",
+    "ru": "Оплата",
+    "uk": "Оплата"
+  },
+  "faqPayQ": {
+    "en": "Which payment methods are available?",
+    "pl": "Jakie metody płatności są dostępne?",
+    "ru": "Какие способы оплаты доступны?",
+    "uk": "Які способи оплати доступні?"
+  },
+  "faqPayA": {
+    "en": "Online ordering and payment are not available in this collection preview yet. Available payment methods will be listed here before the store launches.",
+    "pl": "W tym podglądzie kolekcji zamówienia i płatności online nie są jeszcze dostępne. Dostępne metody płatności opublikujemy tutaj przed uruchomieniem sklepu.",
+    "ru": "В текущей версии сайта представлены образцы коллекции: оформление и оплата заказов пока недоступны. Доступные способы оплаты будут опубликованы здесь перед запуском магазина.",
+    "uk": "У поточній версії сайту представлені зразки колекції: оформлення та оплата замовлень поки недоступні. Доступні способи оплати будуть опубліковані тут перед запуском магазину."
+  },
+  "faqReturnTitle": {
+    "en": "Returns",
+    "pl": "Zwroty",
+    "ru": "Возврат",
+    "uk": "Повернення"
+  },
+  "faqChangeQ": {
+    "en": "Can I change or cancel my order?",
+    "pl": "Czy mogę zmienić lub anulować zamówienie?",
+    "ru": "Можно ли изменить или отменить заказ?",
+    "uk": "Чи можна змінити або скасувати замовлення?"
+  },
+  "faqChangeA": {
+    "en": "Contact us as soon as possible with your order number and the change you need. We will check the order status and confirm whether it can be updated before dispatch. If it has already been sent, we will explain the return process. This does not limit your statutory right to withdraw from an online purchase.",
+    "pl": "Skontaktuj się z nami jak najszybciej, podając numer zamówienia i opis zmiany. Sprawdzimy status i potwierdzimy, czy możemy wprowadzić zmianę przed wysyłką. Jeśli przesyłka została już nadana, wyjaśnimy procedurę zwrotu. Nie ogranicza to ustawowego prawa odstąpienia od umowy zawartej przez internet.",
+    "ru": "Свяжитесь с нами как можно скорее, указав номер заказа и желаемое изменение. Мы проверим статус заказа и подтвердим, можем ли внести изменения до отправки. Если посылка уже отправлена, подскажем порядок возврата. Это не ограничивает ваше законное право отказаться от покупки, оформленной через интернет.",
+    "uk": "Зв’яжіться з нами якомога швидше, вказавши номер замовлення та бажану зміну. Ми перевіримо статус замовлення й підтвердимо, чи можемо внести зміни до відправлення. Якщо посилку вже відправлено, пояснимо порядок повернення. Це не обмежує ваше законне право відмовитися від покупки, оформленої через інтернет."
+  },
+  "faqFitReturnQ": {
+    "en": "What if the size does not fit?",
+    "pl": "Co zrobić, jeśli rozmiar nie pasuje?",
+    "ru": "Что делать, если размер не подошёл?",
+    "uk": "Що робити, якщо розмір не підійшов?"
+  },
+  "faqFitReturnA": {
+    "en": "Contact us with your order number, the size you ordered and your dog’s neck and chest measurements. We will help you check the fit and choose a suitable size, and explain the return procedure. Try the accessory on indoors and avoid using it for walks until you have checked the fit.",
+    "pl": "Napisz do nas, podając numer zamówienia, wybrany rozmiar oraz obwód szyi i klatki piersiowej psa. Pomożemy sprawdzić dopasowanie i wybrać odpowiedni rozmiar oraz wyjaśnimy procedurę zwrotu. Przymierz akcesorium w domu i nie używaj go na spacerach, dopóki nie sprawdzisz dopasowania.",
+    "ru": "Напишите нам номер заказа, выбранный размер и мерки собаки — обхваты шеи и груди. Мы поможем проверить посадку, подобрать подходящий размер и объясним порядок возврата. Примеряйте аксессуар дома и не используйте его на прогулках, пока не убедитесь, что размер подходит.",
+    "uk": "Напишіть нам номер замовлення, вибраний розмір і мірки собаки — обхвати шиї та грудей. Ми допоможемо перевірити посадку, підібрати відповідний розмір і пояснимо порядок повернення. Приміряйте аксесуар вдома та не використовуйте його на прогулянках, доки не переконаєтеся, що розмір підходить."
+  },
+  "faqReturnQ": {
+    "en": "Can I return an accessory?",
+    "pl": "Czy mogę zwrócić produkt?",
+    "ru": "Могу ли я вернуть изделие?",
+    "uk": "Чи можу я повернути виріб?"
+  },
+  "faqReturnA": {
+    "en": "Yes. For a standard online consumer purchase, you can notify us that you wish to withdraw without giving a reason within 14 days of receiving the accessory. Send the item back within 14 days of that notification. You may inspect and try it on as you would in a shop; handling beyond what is necessary to check its nature, features and fit may result in a deduction for diminished value.",
+    "pl": "Tak. W przypadku standardowego zakupu konsumenckiego przez internet możesz poinformować nas o odstąpieniu od umowy bez podawania przyczyny w ciągu 14 dni od otrzymania produktu. Odeślij produkt w ciągu kolejnych 14 dni od zgłoszenia odstąpienia. Możesz go obejrzeć i przymierzyć tak jak w sklepie; korzystanie wykraczające poza sprawdzenie charakteru, cech i dopasowania może skutkować pomniejszeniem zwrotu o utratę wartości.",
+    "ru": "Да. При обычной потребительской покупке через интернет вы можете сообщить нам об отказе от покупки без объяснения причин в течение 14 дней после получения изделия. После уведомления отправьте изделие обратно в течение следующих 14 дней. Его можно осмотреть и примерить, как в магазине; использование сверх необходимого для проверки свойств и посадки может повлечь удержание суммы уменьшения стоимости.",
+    "uk": "Так. За звичайної споживчої покупки через інтернет ви можете повідомити нас про відмову від покупки без пояснення причин протягом 14 днів після отримання виробу. Після повідомлення надішліть виріб назад протягом наступних 14 днів. Його можна оглянути та приміряти, як у магазині; використання понад необхідне для перевірки властивостей і посадки може спричинити утримання суми зменшення вартості."
+  },
+  "faqReturnNote": {
+    "en": "Before the store launches, we will publish the return address and detailed instructions in Returns & complaints. Contacting us for guidance is not a requirement for exercising your statutory withdrawal right.",
+    "pl": "Przed uruchomieniem sklepu opublikujemy adres zwrotów i szczegółowe instrukcje w sekcji Zwroty i reklamacje. Kontakt z prośbą o instrukcje nie jest warunkiem skorzystania z ustawowego prawa odstąpienia.",
+    "ru": "До запуска магазина мы опубликуем адрес возврата и подробные инструкции в разделе «Возвраты и претензии». Обращение за инструкцией не является условием реализации законного права на отказ от покупки.",
+    "uk": "До запуску магазину ми опублікуємо адресу повернення та докладні інструкції в розділі «Повернення та претензії». Звернення за інструкцією не є умовою реалізації законного права на відмову від покупки."
+  },
+  "elegantPreview": {
+    "en": "DESIGN PREVIEW",
+    "pl": "ZAPOWIEDŹ PROJEKTU",
+    "ru": "ПРЕВЬЮ ДИЗАЙНА",
+    "uk": "ПРЕВ’Ю ДИЗАЙНУ"
+  },
+  "elegantLeash": {
+    "en": "Leash Elegant",
+    "pl": "Smycz Elegant",
+    "ru": "Поводок Elegant",
+    "uk": "Повідець Elegant"
+  },
+  "elegantCollars": {
+    "en": "Collars Elegant",
+    "pl": "Obroże Elegant",
+    "ru": "Ошейники Elegant",
+    "uk": "Нашийники Elegant"
+  },
+  "elegantHarnesses": {
+    "en": "Harnesses Elegant",
+    "pl": "Szelki Elegant",
+    "ru": "Шлейки Elegant",
+    "uk": "Шлеї Elegant"
+  },
+  "elegantDescription": {
+    "en": "A clean dark brown strap, a wooden ring handle and antique brass hardware. Warm texture meets a precise silhouette.",
+    "pl": "Ciemnobrązowy pasek, drewniana rączka w kształcie koła i okucia w odcieniu starego mosiądzu. Ciepła faktura i wyrazista forma.",
+    "ru": "Лаконичная тёмно-коричневая лента, деревянное кольцо-ручка и фурнитура в оттенке состаренной латуни. Тёплая фактура и выразительная форма.",
+    "uk": "Лаконічна темно-коричнева стрічка, дерев’яне кільце-ручка та фурнітура у відтінку зістареної латуні. Тепла фактура й виразна форма."
+  },
+  "elegantHandle": {
+    "en": "Handle",
+    "pl": "Rączka",
+    "ru": "Ручка",
+    "uk": "Ручка"
+  },
+  "elegantWood": {
+    "en": "Wooden ring",
+    "pl": "Drewniane koło",
+    "ru": "Деревянное кольцо",
+    "uk": "Дерев’яне кільце"
+  },
+  "elegantHardware": {
+    "en": "Hardware",
+    "pl": "Okucia",
+    "ru": "Фурнитура",
+    "uk": "Фурнітура"
+  },
+  "elegantNote": {
+    "en": "A concept visualization of the upcoming collection. Final specifications, sizes and prices will follow.",
+    "pl": "Wizualizacja koncepcji nowej kolekcji. Ostateczne parametry, rozmiary i ceny podamy później.",
+    "ru": "Визуализация концепции новой коллекции. Характеристики, размеры и цены появятся позже.",
+    "uk": "Візуалізація концепції нової колекції. Характеристики, розміри й ціни з’являться пізніше."
+  },
+  "elegantComing": {
+    "en": "In development. We will introduce the design and details here soon.",
+    "pl": "W przygotowaniu. Projekt i szczegóły pojawią się tutaj wkrótce.",
+    "ru": "В разработке. Скоро здесь появятся дизайн и подробности модели.",
+    "uk": "У розробці. Незабаром тут з’являться дизайн і подробиці моделі."
+  },
+  "menuCollections": {
+    "en": "Collections",
+    "pl": "Kolekcje",
+    "ru": "Коллекции",
+    "uk": "Колекції"
+  },
+  "elegantCollarDescription": {
+    "en": "Dark brown, a traditional prong buckle and matching antique brass hardware. Clean lines without a logo.",
+    "ru": "Тёмно-коричневый ошейник с классической пряжкой и всей фурнитурой в оттенке Antique Brass. Лаконичная форма без логотипа.",
+    "pl": "Ciemnobrązowa obroża z klasyczną klamrą i okuciami w odcieniu Antique Brass. Prosta forma bez logo.",
+    "uk": "Темно-коричневий нашийник із класичною пряжкою та фурнітурою у відтінку Antique Brass. Лаконічна форма без логотипа."
+  },
+  "setDiscounts": {
+    "en": "Set discounts",
+    "pl": "Rabaty na zestawy",
+    "ru": "Скидки на комплекты",
+    "uk": "Знижки на комплекти"
+  },
+  "remove": {
+    "en": "Remove",
+    "pl": "Usuń",
+    "ru": "Удалить",
+    "uk": "Видалити"
+  },
+  "quantity": {
+    "en": "Quantity",
+    "pl": "Liczba sztuk",
+    "ru": "Количество",
+    "uk": "Кількість"
+  },
+  "skipContent": {
+    "en": "Skip to content",
+    "pl": "Przejdź do treści",
+    "ru": "К содержимому",
+    "uk": "До вмісту"
+  },
+  "hardwareTitle": {
+    "en": "Hardware",
+    "pl": "Okucia",
+    "ru": "Фурнитура",
+    "uk": "Фурнітура"
+  },
+  "fidlockQuestion": {
+    "en": "How does the FIDLOCK fastening work?",
+    "pl": "Jak działa zapięcie FIDLOCK?",
+    "ru": "Как работает застёжка FIDLOCK?",
+    "uk": "Як працює застібка FIDLOCK?"
+  },
+  "fidlockVideo": {
+    "en": "Watch the FIDLOCK demonstration",
+    "pl": "Zobacz, jak działa FIDLOCK",
+    "ru": "Посмотреть, как работает FIDLOCK",
+    "uk": "Подивитися, як працює FIDLOCK"
+  },
+  "watchYoutube": {
+    "en": "Open on YouTube",
+    "pl": "Otwórz w YouTube",
+    "ru": "Открыть на YouTube",
+    "uk": "Відкрити на YouTube"
+  },
+  "heroPhotoAlt": {
+    "en": "A dog wearing a Military Olive collar on a walk",
+    "pl": "Pies w obroży Military Olive na spacerze",
+    "ru": "Собака в ошейнике Military Olive на прогулке",
+    "uk": "Собака в нашийнику Military Olive на прогулянці"
+  },
+  "navAbout": {
+    "en": "About",
+    "pl": "O marce"
+  },
+  "heroEyebrow": {
+    "en": "Everyday Together",
+    "pl": "Codziennie razem",
+    "ru": "Каждый день вместе",
+    "uk": "Щодня разом"
+  },
+  "viewCollection": {
+    "en": "See Collection",
+    "pl": "Zobacz kolekcję",
+    "ru": "Смотреть коллекцию",
+    "uk": "Переглянути колекцію"
+  },
+  "storyEyebrow": {
+    "en": "Philosophy",
+    "pl": "Filozofia",
+    "ru": "Философия",
+    "uk": "Філософія"
+  },
+  "storyHeadingFirst": {
+    "en": "Everyone has their own path.",
+    "pl": "Każdy ma swoją drogę.",
+    "ru": "У каждого свой маршрут.",
+    "uk": "У кожного свій маршрут."
+  },
+  "storyHeadingSecond": {
+    "en": "Yours is made for two.",
+    "pl": "Wasza jest wspólna.",
+    "ru": "У вас — один на двоих.",
+    "uk": "У вас — один на двох."
+  },
+  "storyIntro": {
+    "en": "ONE IDENTITY creates accessories for dogs and people who appreciate clean lines, minimalism and understated, solid colours.",
+    "pl": "ONE IDENTITY tworzy akcesoria dla psów i ludzi, którym bliskie są proste linie, minimalizm i stonowane, jednolite kolory.",
+    "ru": "ONE IDENTITY создаёт аксессуары для собак и людей, которым близки чистые линии, минимализм и сдержанные однотонные оттенки.",
+    "uk": "ONE IDENTITY створює аксесуари для собак і людей, яким близькі чисті лінії, мінімалізм і стримані однотонні відтінки."
+  },
+  "faqEyebrow": {
+    "en": "Questions and Answers",
+    "pl": "Pytania i odpowiedzi",
+    "ru": "Вопросы и ответы",
+    "uk": "Запитання та відповіді"
+  },
+  "footerCollectionLink": {
+    "en": "Collection",
+    "pl": "Kolekcja",
+    "ru": "Коллекция",
+    "uk": "Колекція"
+  },
+  "footerAboutLink": {
+    "en": "About",
+    "pl": "O marce",
+    "ru": "О бренде",
+    "uk": "Про бренд"
+  },
+  "footerFaqLink": {
+    "en": "FAQ",
+    "pl": "Pytania",
+    "ru": "Вопросы и ответы",
+    "uk": "Запитання та відповіді"
+  },
+  "previewStatus": {
+    "en": "COLLECTION PREVIEW",
+    "pl": "PODGLĄD KOLEKCJI",
+    "ru": "ПРЕДВАРИТЕЛЬНЫЙ ПРОСМОТР КОЛЛЕКЦИИ",
+    "uk": "ПОПЕРЕДНІЙ ПЕРЕГЛЯД КОЛЕКЦІЇ"
+  },
+  "priceFrom": {
+    "en": "From",
+    "pl": "Od",
+    "ru": "От",
+    "uk": "Від"
+  },
+  "languageLabel": {
+    "en": "Language",
+    "pl": "Język",
+    "ru": "Язык",
+    "uk": "Мова"
+  },
+  "productPhotos": {
+    "en": "Product photos",
+    "pl": "Zdjęcia produktu",
+    "ru": "Фотографии товара",
+    "uk": "Фотографії товару"
+  },
+  "harnessMeasureHint": {
+    "en": "Neck / chest circumference. Check both measurements.",
+    "pl": "Obwód szyi / klatki piersiowej. Sprawdź oba wymiary.",
+    "ru": "Обхват шеи / груди. Проверьте оба измерения.",
+    "uk": "Обхват шиї / грудей. Перевірте обидва виміри."
+  },
+  "madeToOrder": {
+    "en": "Handmade to order. We confirm the production time when ordering.",
+    "pl": "Wykonujemy ręcznie na zamówienie. Termin wykonania potwierdzamy przy zamówieniu.",
+    "ru": "Изготавливаем вручную под заказ. Срок изготовления уточняем при оформлении.",
+    "uk": "Виготовляємо вручну на замовлення. Термін виготовлення уточнюємо при оформленні."
+  },
+  "buildYourSet": {
+    "en": "Make it a set",
+    "pl": "Stwórz swój zestaw",
+    "ru": "Соберите комплект",
+    "uk": "Зберіть комплект"
+  },
+  "includeCollar": {
+    "en": "Add a collar for 10% off the complete set",
+    "pl": "Dodaj obrożę i zyskaj 10% rabatu na cały zestaw",
+    "ru": "Добавить ошейник и получить скидку 10% на весь комплект",
+    "uk": "Додати нашийник та отримати знижку 10% на весь комплект"
+  },
+  "addSetToCart": {
+    "en": "Add set to bag",
+    "pl": "Dodaj zestaw do koszyka",
+    "ru": "Добавить комплект в корзину",
+    "uk": "Додати комплект до кошика"
+  },
+  "checkoutAction": {
+    "en": "Checkout",
+    "pl": "Przejdź do zamówienia",
+    "ru": "Оформить заказ",
+    "uk": "Оформити замовлення"
+  },
+  "backToBag": {
+    "en": "Back to bag",
+    "pl": "Wróć do koszyka",
+    "ru": "Назад в корзину",
+    "uk": "Назад до кошика"
+  },
+  "orderSummary": {
+    "en": "Your order",
+    "pl": "Twoje zamówienie",
+    "ru": "Ваш заказ",
+    "uk": "Ваше замовлення"
+  },
+  "editOrder": {
+    "en": "Edit order",
+    "pl": "Zmień zamówienie",
+    "ru": "Изменить заказ",
+    "uk": "Змінити замовлення"
+  },
+  "included": {
+    "en": "Included",
+    "pl": "W cenie",
+    "ru": "Включено",
+    "uk": "Включено"
+  },
+  "discountApplied": {
+    "en": "Your set discount has been applied automatically.",
+    "pl": "Rabat na zestaw został naliczony automatycznie.",
+    "ru": "Скидка на комплект применена автоматически.",
+    "uk": "Знижку на комплект застосовано автоматично."
+  },
+  "contactDetails": {
+    "en": "Contact details",
+    "pl": "Dane kontaktowe",
+    "ru": "Контактные данные",
+    "uk": "Контактні дані"
+  },
+  "guestCheckout": {
+    "en": "Order as a guest. We will send order updates to your email.",
+    "pl": "Zamów bez rejestracji. Informacje o zamówieniu wyślemy na Twój e-mail.",
+    "ru": "Оформление без регистрации. На эту почту придут сведения о заказе.",
+    "uk": "Оформлення без реєстрації. На цю пошту надійдуть відомості про замовлення."
+  },
+  "firstName": {
+    "en": "First name",
+    "pl": "Imię",
+    "ru": "Имя",
+    "uk": "Ім’я"
+  },
+  "lastName": {
+    "en": "Last name",
+    "pl": "Nazwisko",
+    "ru": "Фамилия",
+    "uk": "Прізвище"
+  },
+  "email": {
+    "en": "Email",
+    "pl": "E-mail",
+    "ru": "Электронная почта",
+    "uk": "Електронна пошта"
+  },
+  "phone": {
+    "en": "Phone number",
+    "pl": "Numer telefonu",
+    "ru": "Телефон",
+    "uk": "Телефон"
+  },
+  "deliveryTitle": {
+    "en": "Delivery",
+    "pl": "Dostawa",
+    "ru": "Доставка",
+    "uk": "Доставка"
+  },
+  "pickupDescription": {
+    "en": "Choose an InPost pickup point for your order. Delivery is included in the price.",
+    "pl": "Wybierz punkt odbioru InPost. Dostawa jest wliczona w cenę.",
+    "ru": "Выберите пункт выдачи InPost для вашего заказа. Доставка уже включена в цену.",
+    "uk": "Оберіть пункт видачі InPost для вашого замовлення. Доставка вже включена у ціну."
+  },
+  "choosePickupPoint": {
+    "en": "Choose pickup point",
+    "pl": "Wybierz punkt odbioru",
+    "ru": "Выбрать пункт выдачи",
+    "uk": "Обрати пункт видачі"
+  },
+  "pickupPreviewNotice": {
+    "en": "Pickup point selection will be available when the store launches.",
+    "pl": "Wybór punktu odbioru będzie dostępny po uruchomieniu sklepu.",
+    "ru": "Выбор пунктов выдачи будет доступен после запуска магазина.",
+    "uk": "Вибір пунктів видачі буде доступний після запуску магазину."
+  },
+  "continuePayment": {
+    "en": "Continue to payment",
+    "pl": "Przejdź do płatności",
+    "ru": "Перейти к оплате",
+    "uk": "Перейти до оплати"
+  },
+  "checkoutPreviewNotice": {
+    "en": "Store preview. Orders and payments are not submitted.",
+    "pl": "Podgląd sklepu. Zamówienia i płatności nie są wysyłane.",
+    "ru": "Предварительный просмотр магазина. Заказы и платежи пока не отправляются.",
+    "uk": "Попередній перегляд магазину. Замовлення та платежі поки не надсилаються."
+  },
+  "requiredField": {
+    "en": "Please fill in this field.",
+    "pl": "Uzupełnij to pole.",
+    "ru": "Заполните это поле.",
+    "uk": "Заповніть це поле."
+  },
+  "validEmail": {
+    "en": "Enter a valid email address.",
+    "pl": "Wpisz prawidłowy adres e-mail.",
+    "ru": "Проверьте адрес электронной почты.",
+    "uk": "Перевірте адресу електронної пошти."
+  },
+  "validPhone": {
+    "en": "Enter a valid phone number.",
+    "pl": "Wpisz prawidłowy numer telefonu.",
+    "ru": "Проверьте номер телефона.",
+    "uk": "Перевірте номер телефону."
+  },
+  "readOurStory": {
+    "en": "More about the brand",
+    "pl": "Więcej o marce",
+    "ru": "Больше о бренде",
+    "uk": "Більше про бренд"
+  },
+  "faqTopic": {
+    "en": "Question topic",
+    "pl": "Temat pytania",
+    "ru": "Тема вопроса",
+    "uk": "Тема запитання"
+  },
+  "showOrderItems": {
+    "en": "View items",
+    "pl": "Zobacz produkty",
+    "ru": "Посмотреть товары",
+    "uk": "Переглянути товари"
+  },
+  "quantityLimit": {
+    "en": "The maximum quantity for one variant is 99. Adjust your bag before adding this set.",
+    "pl": "Maksymalna liczba sztuk jednego wariantu to 99. Zmień koszyk przed dodaniem zestawu.",
+    "ru": "Максимум для одного варианта — 99 штук. Измените количество в корзине перед добавлением комплекта.",
+    "uk": "Максимум для одного варіанта — 99 штук. Змініть кількість у кошику перед додаванням комплекту."
+  },
+  "collarPracticalIntro": {
+    "en": "An adjustable, waterproof BioThane® collar with a FIDLOCK magnetic-mechanical fastening.",
+    "pl": "Regulowana, wodoodporna obroża z BioThane® z zapięciem magnetyczno-mechanicznym FIDLOCK.",
+    "ru": "Регулируемый ошейник из водостойкого BioThane® с магнитно-механической застёжкой FIDLOCK.",
+    "uk": "Регульований нашийник із водостійкого BioThane® з магнітно-механічною застібкою FIDLOCK."
+  },
+  "leashPracticalIntro": {
+    "en": "A waterproof BioThane® leash in two lengths. Choose the standard 1.5 m model or the multifunctional 2.5 m model.",
+    "pl": "Wodoodporna smycz z BioThane® w dwóch długościach. Wybierz klasyczny model 1,5 m lub wielofunkcyjny model 2,5 m.",
+    "ru": "Водостойкий поводок из BioThane® в двух длинах. Выберите обычный поводок 1,5 м или многофункциональную модель 2,5 м.",
+    "uk": "Водостійкий повідець із BioThane® у двох довжинах. Оберіть звичайний повідець 1,5 м або багатофункціональну модель 2,5 м."
+  },
+  "harnessPracticalIntro": {
+    "en": "An adjustable, waterproof BioThane® harness. Choose the size using both neck and chest measurements.",
+    "pl": "Regulowane, wodoodporne szelki z BioThane®. Dobierz rozmiar według obwodu szyi i klatki piersiowej.",
+    "ru": "Регулируемая шлейка из водостойкого BioThane®. Выбирайте размер по обхвату шеи и груди.",
+    "uk": "Регульована шлея з водостійкого BioThane®. Обирайте розмір за обхватом шиї та грудей."
+  }
+}

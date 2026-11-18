@@ -1,0 +1,492 @@
+{
+  "en": {
+    "heading": "Customer care",
+    "close": "Close",
+    "draft": "Pre-launch information. This preview does not accept orders or payments. Details marked “To be confirmed” will be completed before sales open.",
+    "labels": [
+      "Contact & seller details",
+      "Shipping & payment",
+      "Returns & complaints",
+      "Store terms",
+      "Privacy",
+      "Cookies & storage"
+    ],
+    "pages": [
+      [
+        [
+          "ONE IDENTITY",
+          "Handmade accessories for your everyday life together."
+        ],
+        [
+          "Seller details",
+          "To be confirmed: legal business name, business address, NIP and applicable registration details."
+        ],
+        [
+          "Contact",
+          "To be confirmed: customer service email, telephone number and service hours."
+        ],
+        ["Returns and complaints address", "To be confirmed before sales open."]
+      ],
+      [
+        [
+          "Delivery",
+          "We ship only within Poland to InPost pickup points. Delivery is included in the product price. Production and dispatch times will be stated separately from transit time."
+        ],
+        [
+          "Payment",
+          "Payment methods and providers will be confirmed before sales open. No payment details are collected in this preview."
+        ],
+        [
+          "Before ordering",
+          "The final total, taxes and delivery charges will be displayed before an order with an obligation to pay can be placed."
+        ]
+      ],
+      [
+        [
+          "Withdrawal from a purchase",
+          "For standard consumer purchases online, the usual withdrawal period is 14 days from receipt. Handmade production alone does not exclude this right. Any lawful exception for a genuinely personalised product must be explained before purchase."
+        ],
+        [
+          "How to return",
+          "To be confirmed: notification email, return address, return shipping costs and refund procedure. A model withdrawal form will be available before sales open."
+        ],
+        [
+          "Complaints",
+          "A complaint concerning a product that does not conform to the contract is separate from a change-of-mind return. Statutory consumer rights are not replaced by an optional commercial guarantee."
+        ],
+        [
+          "Submitting a complaint",
+          "To be confirmed: contact channel and address. Provide the order reference, description of the problem and requested remedy; photographs may help explain the issue."
+        ]
+      ],
+      [
+        [
+          "Scope of this preview",
+          "The catalogue, cart and set calculations demonstrate the future store. They do not currently allow a sales contract, checkout or payment."
+        ],
+        [
+          "Before sales open",
+          "The final terms will identify the seller and describe ordering, contract conclusion, payment, production, delivery, withdrawal, complaints and applicable out-of-court dispute resolution information."
+        ],
+        [
+          "Accounts and services",
+          "Customer accounts and newsletters are not active. Their service terms will be provided if these features are introduced."
+        ],
+        [
+          "Pricing and sets",
+          "Leash + collar or harness: 5% off. All three: 10% off. Any colours and sizes."
+        ]
+      ],
+      [
+        [
+          "Controller",
+          "To be confirmed: the legal entity responsible for personal data and its contact details. This is a draft information page, not the final privacy notice."
+        ],
+        [
+          "Current preview",
+          "The store interface has no active checkout, registration, newsletter subscription or contact submission form. Cart contents, language and product choices are saved locally in your browser. Hosting and access services may process technical connection data."
+        ],
+        [
+          "Before sales open",
+          "This notice will specify actual processing purposes and legal bases, recipients and service providers, retention periods, any transfers outside the EEA, data subject rights and how to contact the controller or lodge a complaint with UODO."
+        ],
+        [
+          "Future integrations",
+          "Payment, delivery, analytics and marketing providers will be named after they are selected. The notice will be updated before those functions are activated."
+        ]
+      ],
+      [
+        [
+          "Browser storage",
+          "This preview uses local browser storage to remember your language, cart and product selections. This storage is distinct from cookies."
+        ],
+        [
+          "Analytics and advertising",
+          "No analytics or advertising trackers are included in the store code. If optional tracking is introduced, consent controls and information about providers and purposes must be added before activation."
+        ],
+        [
+          "Your controls",
+          "Use your browser’s site-data settings to clear saved selections and cart contents. This also resets your saved language. Hosting or sign-in cookies are managed by the hosting service and are outside this store interface’s controls."
+        ]
+      ]
+    ],
+    "safetyTitle": "Manufacturer & product safety",
+    "safety": [
+      [
+        "Manufacturer",
+        "To be confirmed: manufacturer’s legal name, postal address and electronic contact."
+      ],
+      [
+        "Product identification",
+        "Base BioThane® collection. Final product codes and traceability markings will be added before sales open."
+      ],
+      [
+        "Use and inspection",
+        "Use the accessory for its intended walking purpose. Check the webbing, fastenings, buckles and snap hooks before use. Stop using an item if damaged or if a closure does not work correctly."
+      ],
+      [
+        "Before launch",
+        "Model-specific instructions, limitations and any necessary warnings will be finalised after product assessment. The preview does not establish suitability for car restraint, running or a particular pulling load."
+      ]
+    ]
+  },
+  "ru": {
+    "heading": "Для покупателей",
+    "close": "Закрыть",
+    "draft": "Информация перед запуском. Здесь пока нельзя оформить или оплатить заказ. Поля «Будет уточнено» заполним до начала продаж.",
+    "labels": [
+      "Контакты и продавец",
+      "Доставка и оплата",
+      "Возвраты и претензии",
+      "Условия магазина",
+      "Конфиденциальность",
+      "Cookies и хранение данных"
+    ],
+    "pages": [
+      [
+        [
+          "ONE IDENTITY",
+          "Аксессуары ручной работы для вашей повседневной жизни вместе."
+        ],
+        [
+          "Данные продавца",
+          "Будет уточнено: юридическое название бизнеса, адрес, NIP и применимые регистрационные данные."
+        ],
+        [
+          "Связь с нами",
+          "Будет уточнено: электронная почта, телефон и часы работы поддержки."
+        ],
+        ["Адрес для возвратов и претензий", "Будет указан до начала продаж."]
+      ],
+      [
+        [
+          "Доставка",
+          "Доставляем только по Польше, в пункты выдачи InPost. Доставка включена в цену товара. Сроки изготовления и отправки будут указаны отдельно от срока доставки."
+        ],
+        [
+          "Оплата",
+          "Способы оплаты и платёжные операторы будут указаны до начала продаж. В этом примере платёжные данные не собираются."
+        ],
+        [
+          "Перед оформлением",
+          "Итоговая сумма, налоги и стоимость доставки будут показаны до оформления заказа с обязательством оплаты."
+        ]
+      ],
+      [
+        [
+          "Отказ от покупки",
+          "Для стандартных потребительских покупок онлайн обычный срок отказа — 14 дней с получения товара. Ручная работа сама по себе не отменяет это право. Законное исключение для действительно индивидуального изделия должно быть объяснено до покупки."
+        ],
+        [
+          "Как оформить возврат",
+          "Будет уточнено: почта для уведомления, адрес возврата, расходы на пересылку и порядок возврата денег. До начала продаж добавим образец заявления об отказе от договора."
+        ],
+        [
+          "Претензии к качеству",
+          "Претензия о несоответствии товара договору отличается от возврата, когда покупатель передумал. Законные права покупателя не заменяются добровольной гарантией."
+        ],
+        [
+          "Как подать претензию",
+          "Контакты и адрес будут уточнены. Укажите номер заказа, описание проблемы и желаемое решение; фотографии помогут пояснить ситуацию."
+        ]
+      ],
+      [
+        [
+          "Статус сайта",
+          "Каталог, корзина и расчёт комплектов демонстрируют будущий магазин. Заключение договора продажи, оформление и оплата сейчас недоступны."
+        ],
+        [
+          "До начала продаж",
+          "Окончательные условия будут содержать данные продавца, порядок заказа и заключения договора, оплату, изготовление, доставку, отказ от покупки, претензии и применимую информацию о внесудебном разрешении споров."
+        ],
+        [
+          "Аккаунт и дополнительные сервисы",
+          "Личный кабинет и подписка на рассылку не работают. Если мы их запустим, добавим условия использования."
+        ],
+        [
+          "Цены и комплекты",
+          "Поводок + ошейник или шлейка — скидка 5%. Все три — 10%. Любые цвета и размеры."
+        ]
+      ],
+      [
+        [
+          "Ответственный за данные",
+          "Будет уточнено: юридическое лицо или предприниматель, отвечающий за обработку персональных данных, и его контакты. Это проект информационной страницы, а не окончательная политика."
+        ],
+        [
+          "Текущий пример сайта",
+          "На сайте нет действующего оформления заказа, регистрации, подписки на рассылку или отправки контактной формы. Корзина, язык и варианты товаров сохраняются локально в вашем браузере. Хостинг и система доступа могут обрабатывать технические данные соединения."
+        ],
+        [
+          "До начала продаж",
+          "Укажем реальные цели и правовые основания обработки, получателей данных и сервисы, сроки хранения, возможные передачи за пределы ЕЭЗ, права пользователей, контакты ответственного и порядок обращения в UODO."
+        ],
+        [
+          "Будущие подключения",
+          "Платёжные, логистические, аналитические и рекламные сервисы укажем после выбора. Обновим сведения до включения этих функций."
+        ]
+      ],
+      [
+        [
+          "Хранение в браузере",
+          "Этот пример использует локальное хранилище браузера для языка, корзины и выбранных вариантов товаров. Такое хранилище отличается от cookies."
+        ],
+        [
+          "Аналитика и реклама",
+          "В код магазина не включены аналитические или рекламные трекеры. Если добавим необязательное отслеживание, до его включения появятся настройки согласия и сведения о целях и провайдерах."
+        ],
+        [
+          "Управление данными",
+          "Удалить сохранённый выбор и корзину можно в настройках данных сайта вашего браузера. Выбранный язык тоже сбросится. Cookies хостинга и входа управляются сервисом размещения, а не интерфейсом магазина."
+        ]
+      ]
+    ],
+    "safetyTitle": "Производитель и безопасность",
+    "safety": [
+      [
+        "Производитель",
+        "Будет уточнено: юридическое название производителя, почтовый адрес и электронный контакт."
+      ],
+      [
+        "Идентификация изделия",
+        "Коллекция Base BioThane®. Окончательные артикулы и маркировку для прослеживаемости добавим до начала продаж."
+      ],
+      [
+        "Использование и проверка",
+        "Используйте аксессуар по назначению для прогулок. Перед использованием проверяйте ленту, крепления, застёжки и карабины. Не используйте повреждённое изделие или изделие с неисправной застёжкой."
+      ],
+      [
+        "Перед запуском",
+        "Инструкции, ограничения и необходимые предупреждения для каждой модели уточним после оценки изделий. Этот пример не подтверждает пригодность для фиксации в автомобиле, бега или определённой тяговой нагрузки."
+      ]
+    ]
+  },
+  "pl": {
+    "heading": "Obsługa klienta",
+    "close": "Zamknij",
+    "draft": "Informacje przed premierą. Podgląd nie umożliwia zamówień ani płatności. Pola „Do uzupełnienia” zostaną uzupełnione przed rozpoczęciem sprzedaży.",
+    "labels": [
+      "Kontakt i dane sprzedawcy",
+      "Dostawa i płatności",
+      "Zwroty i reklamacje",
+      "Regulamin sklepu",
+      "Prywatność",
+      "Cookies i zapis danych"
+    ],
+    "pages": [
+      [
+        [
+          "ONE IDENTITY",
+          "Ręcznie tworzone akcesoria do Waszej wspólnej codzienności."
+        ],
+        [
+          "Dane sprzedawcy",
+          "Do uzupełnienia: pełna nazwa firmy, adres, NIP oraz właściwe dane rejestrowe."
+        ],
+        [
+          "Kontakt",
+          "Do uzupełnienia: e-mail, telefon, godziny obsługi oraz adres do zwrotów i reklamacji."
+        ]
+      ],
+      [
+        [
+          "Dostawa",
+          "Wysyłamy wyłącznie na terenie Polski, do punktów odbioru InPost. Dostawa jest wliczona w cenę produktu. Terminy wykonania i nadania podamy oddzielnie od czasu dostawy."
+        ],
+        [
+          "Płatności",
+          "Metody i operatorzy płatności: do uzupełnienia. Podgląd nie zbiera danych płatniczych. Przed złożeniem płatnego zamówienia zostanie pokazana łączna cena z podatkami i dostawą."
+        ]
+      ],
+      [
+        [
+          "Odstąpienie od umowy",
+          "Przy standardowych zakupach konsumenckich online termin odstąpienia wynosi zwykle 14 dni od odbioru. Ręczne wykonanie samo w sobie nie wyłącza tego prawa. Ewentualne ustawowe wyłączenie dla produktu rzeczywiście spersonalizowanego musi być wyjaśnione przed zakupem."
+        ],
+        [
+          "Zwroty",
+          "Do uzupełnienia: e-mail do zgłoszeń, adres zwrotu, koszty przesyłki oraz procedura zwrotu pieniędzy. Wzór formularza odstąpienia zostanie dodany przed sprzedażą."
+        ],
+        [
+          "Reklamacje",
+          "Niezgodność towaru z umową to inna kwestia niż zwrot po zmianie decyzji. Gwarancja dobrowolna nie zastępuje praw ustawowych. Kontakt: do uzupełnienia. Podaj numer zamówienia, opis problemu i żądanie; zdjęcia mogą pomóc."
+        ]
+      ],
+      [
+        [
+          "Status podglądu",
+          "Katalog, koszyk i kalkulacja zestawów pokazują przyszły sklep. Zawarcie umowy sprzedaży, zamówienia i płatności nie są obecnie możliwe."
+        ],
+        [
+          "Przed sprzedażą",
+          "Regulamin zostanie uzupełniony o dane sprzedawcy, zamówienia i zawarcie umowy, płatności, produkcję, dostawę, odstąpienie, reklamacje i właściwe informacje o pozasądowym rozwiązywaniu sporów."
+        ],
+        [
+          "Konta i zestawy",
+          "Smycz + obroża lub szelki: 5% rabatu. Wszystkie trzy: 10%. Dowolne kolory i rozmiary."
+        ]
+      ],
+      [
+        [
+          "Administrator danych",
+          "Do uzupełnienia: tożsamość administratora i kontakt. To projekt informacji, nie ostateczna polityka prywatności."
+        ],
+        [
+          "Obecny podgląd",
+          "Brak aktywnego składania zamówień, rejestracji, newslettera i formularza kontaktowego. Koszyk, język i warianty są zapisywane lokalnie w przeglądarce. Hosting i usługi dostępu mogą przetwarzać techniczne dane połączenia."
+        ],
+        [
+          "Przed uruchomieniem",
+          "Zostaną podane rzeczywiste cele i podstawy prawne, odbiorcy i dostawcy usług, okresy przechowywania, transfery poza EOG, prawa osób, kontakt i prawo skargi do UODO. Dostawcy płatności, dostaw, analityki i marketingu zostaną wskazani po wyborze, przed aktywacją."
+        ]
+      ],
+      [
+        [
+          "Pamięć przeglądarki",
+          "Podgląd używa lokalnej pamięci do zapisywania języka, koszyka i wybranych wariantów. Nie jest to to samo co cookies."
+        ],
+        [
+          "Analityka i reklama",
+          "Kod sklepu nie zawiera trackerów analitycznych ani reklamowych. Przed dodaniem opcjonalnego śledzenia zostaną wdrożone zgody oraz informacje o celach i dostawcach."
+        ],
+        [
+          "Ustawienia",
+          "Zapisane wybory i koszyk można usunąć w ustawieniach danych witryny w przeglądarce. Zresetuje to też język. Cookies hostingu i logowania są zarządzane przez usługę hostingową, poza interfejsem sklepu."
+        ]
+      ]
+    ],
+    "safetyTitle": "Producent i bezpieczeństwo",
+    "safety": [
+      [
+        "Producent",
+        "Do uzupełnienia: pełna nazwa producenta, adres pocztowy i elektroniczny."
+      ],
+      [
+        "Identyfikacja",
+        "Kolekcja Base BioThane®. Ostateczne kody i oznaczenia identyfikacyjne zostaną dodane przed sprzedażą."
+      ],
+      [
+        "Użytkowanie",
+        "Akcesoria służą do spacerów zgodnie z przeznaczeniem. Przed użyciem sprawdź taśmę, mocowania, klamry i karabińczyki. Nie używaj uszkodzonego produktu ani niesprawnego zapięcia."
+      ],
+      [
+        "Przed premierą",
+        "Instrukcje, ograniczenia i niezbędne ostrzeżenia dla modeli zostaną ustalone po ocenie produktów. Podgląd nie potwierdza przydatności do zabezpieczania w samochodzie, biegania ani określonego obciążenia."
+      ]
+    ]
+  },
+  "uk": {
+    "heading": "Для покупців",
+    "close": "Закрити",
+    "draft": "Інформація перед запуском. Тут поки неможливо оформити чи оплатити замовлення. Поля «Буде уточнено» заповнимо до початку продажів.",
+    "labels": [
+      "Контакти та продавець",
+      "Доставка й оплата",
+      "Повернення та претензії",
+      "Умови магазину",
+      "Конфіденційність",
+      "Cookies і зберігання даних"
+    ],
+    "pages": [
+      [
+        [
+          "ONE IDENTITY",
+          "Аксесуари ручної роботи для вашого повсякденного життя разом."
+        ],
+        [
+          "Дані продавця",
+          "Буде уточнено: юридична назва бізнесу, адреса, NIP та відповідні реєстраційні дані."
+        ],
+        [
+          "Контакти",
+          "Буде уточнено: електронна пошта, телефон, години підтримки та адреса для повернень і претензій."
+        ]
+      ],
+      [
+        [
+          "Доставка",
+          "Доставляємо лише в межах Польщі, до пунктів видачі InPost. Доставка входить у вартість товару. Строки виготовлення та відправлення вкажемо окремо від строку доставки."
+        ],
+        [
+          "Оплата",
+          "Способи й оператори оплати будуть уточнені. Цей приклад не збирає платіжних даних. До оформлення платного замовлення буде показано підсумкову суму з податками та доставкою."
+        ]
+      ],
+      [
+        [
+          "Відмова від покупки",
+          "Для стандартних споживчих покупок онлайн звичайний строк відмови — 14 днів після отримання. Ручна робота сама собою не скасовує це право. Законний виняток для справді індивідуального виробу має бути пояснено до покупки."
+        ],
+        [
+          "Повернення",
+          "Буде уточнено: пошта для повідомлень, адреса, витрати на пересилання та порядок повернення грошей. Зразок заяви про відмову від договору додамо до початку продажів."
+        ],
+        [
+          "Претензії",
+          "Претензія щодо невідповідності товару договору відрізняється від повернення через зміну рішення. Добровільна гарантія не замінює законні права. Контакти будуть уточнені. Вкажіть номер замовлення, проблему та бажане рішення; фото можуть допомогти."
+        ]
+      ],
+      [
+        [
+          "Статус сайту",
+          "Каталог, кошик і розрахунок комплектів демонструють майбутній магазин. Укладення договору продажу, оформлення та оплата зараз недоступні."
+        ],
+        [
+          "До початку продажів",
+          "Остаточні умови міститимуть дані продавця, порядок замовлення й укладення договору, оплату, виготовлення, доставку, відмову від покупки, претензії та належну інформацію про позасудове вирішення спорів."
+        ],
+        [
+          "Акаунти й комплекти",
+          "Повідець + нашийник або шлея — знижка 5%. Усі три — 10%. Будь-які кольори та розміри."
+        ]
+      ],
+      [
+        [
+          "Відповідальний за дані",
+          "Буде уточнено: особа, відповідальна за обробку даних, та її контакти. Це проєкт інформаційної сторінки, а не остаточна політика."
+        ],
+        [
+          "Поточний приклад",
+          "Немає активного оформлення замовлень, реєстрації, розсилки та контактної форми. Кошик, мова й варіанти товарів зберігаються локально в браузері. Хостинг і система доступу можуть обробляти технічні дані з’єднання."
+        ],
+        [
+          "До запуску",
+          "Укажемо реальні цілі й правові підстави, одержувачів та сервіси, строки зберігання, передачі за межі ЄЕЗ, права користувачів, контакти та порядок звернення до UODO. Платіжні, логістичні, аналітичні й рекламні сервіси назвемо після вибору, до їх увімкнення."
+        ]
+      ],
+      [
+        [
+          "Зберігання в браузері",
+          "Приклад використовує локальне сховище для мови, кошика й обраних варіантів. Це відрізняється від cookies."
+        ],
+        [
+          "Аналітика й реклама",
+          "Код магазину не містить аналітичних або рекламних трекерів. Перед додаванням необов’язкового відстеження з’являться налаштування згоди та інформація про цілі й провайдерів."
+        ],
+        [
+          "Керування",
+          "Видалити вибір і кошик можна в налаштуваннях даних сайту вашого браузера. Мова також скинеться. Cookies хостингу та входу керуються сервісом розміщення, поза інтерфейсом магазину."
+        ]
+      ]
+    ],
+    "safetyTitle": "Виробник і безпека",
+    "safety": [
+      [
+        "Виробник",
+        "Буде уточнено: юридична назва виробника, поштова адреса й електронний контакт."
+      ],
+      [
+        "Ідентифікація",
+        "Колекція Base BioThane®. Остаточні артикули та маркування для простежуваності додамо до початку продажів."
+      ],
+      [
+        "Використання",
+        "Використовуйте аксесуар за призначенням для прогулянок. Перед використанням перевіряйте стрічку, кріплення, застібки й карабіни. Не використовуйте пошкоджений виріб або несправну застібку."
+      ],
+      [
+        "Перед запуском",
+        "Інструкції, обмеження й необхідні попередження для моделей уточнимо після оцінки виробів. Приклад не підтверджує придатність для фіксації в автомобілі, бігу або певного тягового навантаження."
+      ]
+    ]
+  }
+}
