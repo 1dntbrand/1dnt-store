@@ -216,10 +216,7 @@ export function Checkout() {
               className="delivery-section"
               aria-labelledby="deliveryTitle"
             >
-              <div className="delivery-heading">
-                <h3 id="deliveryTitle">{t("deliveryTitle")}</h3>
-                <span>{t("included")}</span>
-              </div>
+              <h3 id="deliveryTitle">{t("deliveryTitle")}</h3>
               <p>{t("pickupDescription")}</p>
               <button
                 ref={pickup}

@@ -30,7 +30,7 @@
       [
         [
           "Delivery",
-          "We ship only within Poland to InPost pickup points. Delivery is included in the product price. Production and dispatch times will be stated separately from transit time."
+          "We ship only within Poland to pickup points. Delivery is included in the product price. Production and dispatch times will be stated separately from transit time."
         ],
         [
           "Payment",
@@ -161,7 +161,7 @@
       [
         [
           "Доставка",
-          "Доставляем только по Польше, в пункты выдачи InPost. Доставка включена в цену товара. Сроки изготовления и отправки будут указаны отдельно от срока доставки."
+          "Доставляем только по Польше, в пункты выдачи. Доставка включена в цену товара. Сроки изготовления и отправки будут указаны отдельно от срока доставки."
         ],
         [
           "Оплата",
@@ -291,7 +291,7 @@
       [
         [
           "Dostawa",
-          "Wysyłamy wyłącznie na terenie Polski, do punktów odbioru InPost. Dostawa jest wliczona w cenę produktu. Terminy wykonania i nadania podamy oddzielnie od czasu dostawy."
+          "Wysyłamy wyłącznie na terenie Polski, do punktów odbioru. Dostawa jest wliczona w cenę produktu. Terminy wykonania i nadania podamy oddzielnie od czasu dostawy."
         ],
         [
           "Płatności",
@@ -405,7 +405,7 @@
       [
         [
           "Доставка",
-          "Доставляємо лише в межах Польщі, до пунктів видачі InPost. Доставка входить у вартість товару. Строки виготовлення та відправлення вкажемо окремо від строку доставки."
+          "Доставляємо лише в межах Польщі, до пунктів видачі. Доставка входить у вартість товару. Строки виготовлення та відправлення вкажемо окремо від строку доставки."
         ],
         [
           "Оплата",

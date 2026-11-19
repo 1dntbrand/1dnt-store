@@ -126,10 +126,10 @@
     "uk": "Додати до кошика"
   },
   "vatShipping": {
-    "en": "Price includes InPost delivery within Poland and 23% VAT.",
-    "pl": "Cena obejmuje dostawę InPost na terenie Polski i 23% VAT.",
-    "ru": "Доставка InPost по Польше и 23% VAT включены в цену.",
-    "uk": "Доставка InPost у межах Польщі та 23% VAT включені в ціну."
+    "en": "Price includes delivery within Poland and 23% VAT.",
+    "pl": "Cena obejmuje dostawę na terenie Polski i 23% VAT.",
+    "ru": "Доставка по Польше и 23% НДС включены в стоимость.",
+    "uk": "Доставка в межах Польщі та 23% ПДВ включені у вартість."
   },
   "totalLabel": {
     "en": "Total",
@@ -720,10 +720,10 @@
     "uk": "Які способи доставки доступні?"
   },
   "faqDeliveryCarriersA": {
-    "en": "We ship only within Poland to InPost pickup points.",
-    "pl": "Wysyłamy wyłącznie na terenie Polski, do punktów odbioru InPost.",
-    "ru": "Доставляем только по Польше, в пункты выдачи InPost.",
-    "uk": "Доставляємо лише в межах Польщі, до пунктів видачі InPost."
+    "en": "We deliver within Poland to pickup points. You can choose a point at checkout.",
+    "pl": "Dostarczamy na terenie Polski do punktów odbioru. Punkt wybierzesz podczas składania zamówienia.",
+    "ru": "Доставляем по Польше в пункты выдачи. Пункт можно выбрать при оформлении заказа.",
+    "uk": "Доставляємо в межах Польщі до пунктів видачі. Пункт можна обрати під час оформлення замовлення."
   },
   "faqDeliveryTrackingQ": {
     "en": "How can I track my order?",
@@ -756,10 +756,10 @@
     "uk": "Скільки часу займає доставка?"
   },
   "faqDeliveryTimeA": {
-    "en": "The delivery time depends on the InPost pickup point and the dispatch date. We confirm the production time separately when you order.",
-    "pl": "Czas dostawy zależy od punktu odbioru InPost i daty nadania. Termin wykonania ustalamy osobno przy zamówieniu.",
-    "ru": "Срок доставки зависит от пункта InPost и даты отправки. Срок изготовления уточняем отдельно при заказе.",
-    "uk": "Строк доставки залежить від пункту InPost і дати відправлення. Строк виготовлення уточнюємо окремо під час замовлення."
+    "en": "The delivery time depends on the pickup point and the dispatch date. We confirm the production time separately when you order.",
+    "pl": "Czas dostawy zależy od punktu odbioru i daty nadania. Termin wykonania ustalamy osobno przy zamówieniu.",
+    "ru": "Срок доставки зависит от пункта и даты отправки. Срок изготовления уточняем отдельно при заказе.",
+    "uk": "Строк доставки залежить від пункту і дати відправлення. Строк виготовлення уточнюємо окремо під час замовлення."
   },
   "faqPayTitle": {
     "en": "Payment",
@@ -1132,10 +1132,10 @@
     "uk": "Доставка"
   },
   "pickupDescription": {
-    "en": "Choose an InPost pickup point for your order. Delivery is included in the price.",
-    "pl": "Wybierz punkt odbioru InPost. Dostawa jest wliczona w cenę.",
-    "ru": "Выберите пункт выдачи InPost для вашего заказа. Доставка уже включена в цену.",
-    "uk": "Оберіть пункт видачі InPost для вашого замовлення. Доставка вже включена у ціну."
+    "en": "Delivery within Poland is included in the order total.",
+    "pl": "Dostawa na terenie Polski jest wliczona w cenę zamówienia.",
+    "ru": "Доставка по Польше включена в стоимость заказа.",
+    "uk": "Доставка в межах Польщі включена у вартість замовлення."
   },
   "choosePickupPoint": {
     "en": "Choose pickup point",

@@ -115,7 +115,7 @@ export function OrderTotals() {
         </div>
       )}
       <div>
-        <span>InPost</span>
+        <span>{t("deliveryTitle")}</span>
         <span>{t("included")}</span>
       </div>
       <div className="cart-subtotal">
