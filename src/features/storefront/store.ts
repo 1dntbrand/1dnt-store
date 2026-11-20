@@ -4,6 +4,7 @@ import {
   isProductVariant,
   variantKey,
   type CartItem,
+  type Collection,
   type ProductKind,
   type ProductVariant,
 } from "@/domain/commerce/catalog";
@@ -13,10 +14,14 @@ import services from "./data/services.json";
 import { languages, type Language } from "./lib/catalog";
 import { variantColourLabel } from "./lib/product-options";
 import {
+  defaultBundleExtras,
+  defaultCategories,
   defaultFields,
   readSnapshot,
-  saveSnapshot,
+  saveCartAndLanguage,
+  saveSelection,
   validField,
+  type Category,
   type FieldName,
   type Snapshot,
 } from "./lib/storage";
@@ -73,7 +78,8 @@ interface StorefrontActions {
   setField: (name: FieldName, value: string) => void;
   setView: (kind: ProductKind, view: number) => void;
   chooseColour: (name: FieldName, value: string, kind: ProductKind) => void;
-  setCategory: (category: string) => void;
+  setCategory: (collection: Collection, category: Category) => void;
+  setBundleExtra: (collection: Collection, includeExtra: boolean) => void;
   openDialog: (id: string) => void;
   closeDialog: () => void;
   openSizeGuide: (
@@ -90,7 +96,6 @@ export type StorefrontState = Snapshot &
   StorefrontActions &
   typeof languageHelpers.en &
   ReturnType<typeof cartState> & {
-    category: string;
     activeDialog: string | null;
     guideSize: string;
     cartNotice: string | null;
@@ -101,14 +106,13 @@ export type StorefrontState = Snapshot &
 export function createStorefrontStore() {
   return createStore<StorefrontState>()((set, get) => {
     let applySize: ((size: string) => void) | undefined;
-    function save() {
-      saveSnapshot(get());
-    }
     function updateField(name: FieldName, value: string) {
-      if (!validField(name, value)) return;
+      if (get().fields[name] === value || !validField(name, value))
+        return false;
       const fields = { ...get().fields, [name]: value };
       set({ fields });
-      save();
+      saveSelection(get());
+      return true;
     }
     return {
       language: "en",
@@ -116,7 +120,8 @@ export function createStorefrontStore() {
       ...languageHelpers.en,
       ...cartState([]),
       cartNotice: null,
-      category: "all",
+      categories: { ...defaultCategories },
+      bundleExtras: { ...defaultBundleExtras },
       activeDialog: null,
       guideSize: "S",
       serviceIndex: 0,
@@ -132,18 +137,26 @@ export function createStorefrontStore() {
       setLanguage(language) {
         if (!languages.includes(language as Language)) return;
         set({ language, ...languageHelpers[language as Language] });
-        save();
+        saveCartAndLanguage(get());
       },
       setField: updateField,
       setView(kind, view) {
         set((state) => ({ views: { ...state.views, [kind]: view } }));
       },
       chooseColour(name, value, kind) {
-        updateField(name, value);
-        get().setView(kind, 0);
+        if (updateField(name, value)) get().setView(kind, 0);
       },
-      setCategory(category) {
-        set({ category });
+      setCategory(collection, category) {
+        const { categories } = get();
+        if (categories[collection] === category) return;
+        set({ categories: { ...categories, [collection]: category } });
+        saveSelection(get());
+      },
+      setBundleExtra(collection, includeExtra) {
+        set((state) => ({
+          bundleExtras: { ...state.bundleExtras, [collection]: includeExtra },
+        }));
+        saveSelection(get());
       },
       openDialog(id) {
         if (id === "checkoutPanel" && get().cartHasStockIssue) return;
@@ -196,7 +209,7 @@ export function createStorefrontStore() {
           activeDialog: "cartPanel",
           cartNotice: "cartAdded",
         });
-        save();
+        saveCartAndLanguage(get());
       },
       changeQuantity(id, quantity) {
         if (!Number.isInteger(quantity)) return;
@@ -209,7 +222,7 @@ export function createStorefrontStore() {
           )
           .filter((item) => item.qty > 0);
         set({ ...cartState(cart), cartNotice: null });
-        save();
+        saveCartAndLanguage(get());
       },
     };
   });

@@ -1,4 +1,6 @@
 "use client";
+import { parseContactPhone } from "@/domain/commerce/phone";
+import type { CountryCode } from "libphonenumber-js/max";
 import {
   useId,
   useRef,
@@ -9,6 +11,7 @@ import {
 import { useStorefront } from "../storefront-context";
 import { Dialog } from "./dialog";
 import { OrderItems, OrderTotals } from "./cart";
+import { CheckoutPhone } from "./checkout-phone";
 
 const compactQuery = "(max-width: 800px)";
 function subscribeToLayout(listener: () => void) {
@@ -53,17 +56,20 @@ export function Checkout() {
     compactSnapshot,
     serverSnapshot,
   );
+  const [phoneCountry, setPhoneCountry] = useState<CountryCode>("PL");
   const [reviewOpen, setReviewOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [pickupNotice, setPickupNotice] = useState(false);
   const form = useRef<HTMLFormElement>(null);
   const pickup = useRef<HTMLButtonElement>(null);
   const id = useId();
+  const phone = parseContactPhone(values.phone, phoneCountry);
+
   function invalid(name: ContactField) {
     const value = values[name].trim();
     if (!value) return true;
     if (name === "email") return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-    if (name === "phone") return value.replace(/\D/g, "").length < 7;
+    if (name === "phone") return phone?.country !== phoneCountry;
     return false;
   }
   function submit(event: FormEvent) {
@@ -156,60 +162,64 @@ export function Checkout() {
               <h3 id="contactTitle">{t("contactDetails")}</h3>
               <p className="field-hint">{t("guestCheckout")}</p>
               <div className="contact-fields">
-                {contactFields.map((field) => (
-                  <label
-                    key={field.name}
-                    htmlFor={`${id}-${field.name}`}
-                    className={
-                      field.name === "email" || field.name === "phone"
-                        ? "contact-wide"
-                        : undefined
-                    }
-                  >
-                    {t(field.name)}
-                    <input
-                      id={`${id}-${field.name}`}
-                      name={field.name}
-                      type={field.type}
-                      autoComplete={field.autocomplete}
-                      maxLength={
-                        field.name === "email"
-                          ? 254
-                          : field.name === "phone"
-                            ? 32
-                            : 100
-                      }
-                      required
-                      value={values[field.name]}
-                      aria-invalid={submitted && invalid(field.name)}
-                      aria-describedby={
-                        submitted && invalid(field.name)
-                          ? `${id}-${field.name}-error`
-                          : undefined
-                      }
-                      onChange={(event) =>
-                        setValues((current) => ({
-                          ...current,
-                          [field.name]: event.target.value,
-                        }))
+                {contactFields.map((field) =>
+                  field.name === "phone" ? (
+                    <CheckoutPhone
+                      key={field.name}
+                      id={`${id}-phone`}
+                      country={phoneCountry}
+                      value={values.phone}
+                      invalid={submitted && invalid("phone")}
+                      onCountryChange={setPhoneCountry}
+                      onChange={(value) =>
+                        setValues((current) => ({ ...current, phone: value }))
                       }
                     />
-                    {submitted && invalid(field.name) && (
-                      <span
-                        id={`${id}-${field.name}-error`}
-                        className="field-error"
-                      >
-                        {t(
-                          field.name === "email"
-                            ? "validEmail"
-                            : field.name === "phone"
-                              ? "validPhone"
+                  ) : (
+                    <label
+                      key={field.name}
+                      htmlFor={`${id}-${field.name}`}
+                      className={
+                        field.name === "email" ? "contact-wide" : undefined
+                      }
+                    >
+                      {t(field.name)}
+                      <input
+                        id={`${id}-${field.name}`}
+                        name={field.name}
+                        type={field.type}
+                        autoComplete={field.autocomplete}
+                        maxLength={field.name === "email" ? 254 : 100}
+                        required
+                        value={values[field.name]}
+                        aria-invalid={submitted && invalid(field.name)}
+                        aria-describedby={
+                          submitted && invalid(field.name)
+                            ? `${id}-${field.name}-error`
+                            : undefined
+                        }
+                        onChange={(event) =>
+                          setValues((current) => ({
+                            ...current,
+                            [field.name]: event.target.value,
+                          }))
+                        }
+                      />
+                      {submitted && invalid(field.name) && (
+                        <span
+                          id={`${id}-${field.name}-error`}
+                          className="field-error"
+                        >
+                          {t(
+                            field.name === "email"
+                              ? "validEmail"
                               : "requiredField",
-                        )}
-                      </span>
-                    )}
-                  </label>
-                ))}
+                          )}
+                        </span>
+                      )}
+                    </label>
+                  ),
+                )}
               </div>
             </section>
             <section

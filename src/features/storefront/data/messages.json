@@ -969,6 +969,12 @@
     "ru": "У вас — один на двоих.",
     "uk": "У вас — один на двох."
   },
+  "storyPhotoAlt": {
+    "en": "A woman in an orange hat holds the front paws of a dog on an orange leash.",
+    "pl": "Kobieta w pomarańczowej czapce trzyma za przednie łapy psa na pomarańczowej smyczy.",
+    "ru": "Женщина в оранжевой шапке держит за передние лапы собаку с оранжевым поводком.",
+    "uk": "Жінка в помаранчевій шапці тримає за передні лапи собаку на помаранчевому повідці."
+  },
   "storyIntro": {
     "en": "ONE IDENTITY creates accessories for dogs and people who appreciate clean lines, minimalism and understated, solid colours.",
     "pl": "ONE IDENTITY tworzy akcesoria dla psów i ludzi, którym bliskie są proste linie, minimalizm i stonowane, jednolite kolory.",
@@ -1125,6 +1131,18 @@
     "ru": "Телефон",
     "uk": "Телефон"
   },
+  "phoneCountry": {
+    "en": "Phone country or region",
+    "pl": "Kraj lub region numeru telefonu",
+    "ru": "Страна или регион номера",
+    "uk": "Країна або регіон номера"
+  },
+  "checkoutLoading": {
+    "en": "Loading checkout…",
+    "pl": "Wczytywanie zamówienia…",
+    "ru": "Загружаем оформление заказа…",
+    "uk": "Завантажуємо оформлення замовлення…"
+  },
   "deliveryTitle": {
     "en": "Delivery",
     "pl": "Dostawa",
@@ -1174,10 +1192,10 @@
     "uk": "Перевірте адресу електронної пошти."
   },
   "validPhone": {
-    "en": "Enter a valid phone number.",
-    "pl": "Wpisz prawidłowy numer telefonu.",
-    "ru": "Проверьте номер телефона.",
-    "uk": "Перевірте номер телефону."
+    "en": "Enter a valid phone number for the selected country.",
+    "pl": "Wpisz prawidłowy numer telefonu dla wybranego kraju.",
+    "ru": "Введите действительный номер для выбранной страны.",
+    "uk": "Введіть дійсний номер телефону для вибраної країни."
   },
   "readOurStory": {
     "en": "More about the brand",

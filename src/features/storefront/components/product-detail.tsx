@@ -14,23 +14,30 @@ export function ProductDetail({ kind }: { kind: ProductKind }) {
   const infoRef = useRef<HTMLDivElement>(null);
   const optionsRef = useRef<HTMLFieldSetElement>(null);
   const config = productOptions[kind];
-  const { t, fields, category, chooseColour, setField, openSizeGuide, money } =
-    useStorefront((state) => ({
-      t: state.t,
-      fields: state.fields,
-      category: state.category,
-      chooseColour: state.chooseColour,
-      setField: state.setField,
-      openSizeGuide: state.openSizeGuide,
-      money: state.money,
-    }));
-  const size = fields[config.sizeField];
-  const colour = fields[config.colourField];
+  const {
+    t,
+    size,
+    colour,
+    active,
+    chooseColour,
+    setField,
+    openSizeGuide,
+    money,
+  } = useStorefront((state) => ({
+    t: state.t,
+    size: state.fields[config.sizeField],
+    colour: state.fields[config.colourField],
+    active: state.categories.base === config.category,
+    chooseColour: state.chooseColour,
+    setField: state.setField,
+    openSizeGuide: state.openSizeGuide,
+    money: state.money,
+  }));
   return (
     <div
       className="catalog-pane product-detail"
       id={`catalog-${config.category}`}
-      hidden={category !== config.category}
+      hidden={!active}
     >
       <div className="product-layout">
         <ProductGallery kind={kind} />
@@ -79,7 +86,7 @@ export function ProductDetail({ kind }: { kind: ProductKind }) {
             }
           />
           <ProductPurchase
-            active={category === config.category}
+            active={active}
             infoRef={infoRef}
             optionsRef={optionsRef}
             variant={{ collection: "base", kind, colour, size }}

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useId, useState } from "react";
+import { useId } from "react";
 import { variantLimit } from "@/domain/commerce/availability";
 import {
   calculateCart,
@@ -32,9 +32,10 @@ export type BundlePartSelection = {
 };
 
 export function BundleBuilder({ kind }: { kind: ProductKind }) {
-  const { fields, setField } = useStorefront((state) => ({
+  const { fields, setField, chooseColour } = useStorefront((state) => ({
     fields: state.fields,
     setField: state.setField,
+    chooseColour: state.chooseColour,
   }));
   const current = productOptions[kind];
   const part = (
@@ -48,7 +49,11 @@ export function BundleBuilder({ kind }: { kind: ProductKind }) {
       colour: fields[colourField],
       size: fields[sizeField],
     },
-    chooseColour: (colour) => setField(colourField, colour),
+    chooseColour: (colour) => {
+      if (colourField === current.colourField)
+        chooseColour(colourField, colour, kind);
+      else setField(colourField, colour);
+    },
     chooseSize: (size) => setField(sizeField, size),
   });
   const primary = part(kind, current.colourField, current.sizeField);
@@ -72,7 +77,6 @@ export function BundleBuilder({ kind }: { kind: ProductKind }) {
           ? part("collar", "tripleCollarColour", "tripleCollarSize")
           : undefined
       }
-      includeExtraInitially
     />
   );
 }
@@ -80,18 +84,20 @@ export function BundleBuilder({ kind }: { kind: ProductKind }) {
 export function BundleOffer({
   parts,
   extra,
-  includeExtraInitially = false,
 }: {
   parts: readonly BundlePartSelection[];
   extra?: BundlePartSelection;
-  includeExtraInitially?: boolean;
 }) {
-  const [includeExtra, setIncludeExtra] = useState(includeExtraInitially);
-  const { t, money, addItems } = useStorefront((state) => ({
-    t: state.t,
-    money: state.money,
-    addItems: state.addItems,
-  }));
+  const { collection } = parts[0].variant;
+  const { t, money, addItems, includeExtra, setBundleExtra } = useStorefront(
+    (state) => ({
+      t: state.t,
+      money: state.money,
+      addItems: state.addItems,
+      includeExtra: extra ? state.bundleExtras[collection] : false,
+      setBundleExtra: state.setBundleExtra,
+    }),
+  );
   const id = useId();
   const selected = extra && includeExtra ? [...parts, extra] : parts;
   const variants = selected.map(({ variant }) => variant);
@@ -128,7 +134,9 @@ export function BundleOffer({
           <input
             type="checkbox"
             checked={includeExtra}
-            onChange={(event) => setIncludeExtra(event.target.checked)}
+            onChange={(event) =>
+              setBundleExtra(collection, event.target.checked)
+            }
           />
           <span>{t("includeCollar")}</span>
         </label>

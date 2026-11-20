@@ -1,5 +1,12 @@
 import { cartLineLimit } from "@/domain/commerce/availability";
-import { variantKey, type CartItem } from "@/domain/commerce/catalog";
+import {
+  collections,
+  variantColours,
+  variantKey,
+  variantPrices,
+  type CartItem,
+  type Collection,
+} from "@/domain/commerce/catalog";
 import { isCartItem, languages } from "./catalog";
 
 export const defaultFields = {
@@ -17,34 +24,92 @@ export const defaultFields = {
   tripleCollarSize: "S",
   harnessSetLeashColour: "black",
   harnessSetLeashLength: "1.5",
+  elegantCollarColour: "dark-brown",
+  elegantCollarSize: "S",
+  elegantLeashColour: "dark-brown",
+  elegantHarnessColour: "dark-brown",
+  elegantHarnessSize: "S",
+  elegantCollarSetLeashColour: "dark-brown",
+  elegantHarnessSetLeashColour: "dark-brown",
+  elegantTripleCollarColour: "dark-brown",
+  elegantTripleCollarSize: "S",
 };
 export type FieldName = keyof typeof defaultFields;
 export type Fields = typeof defaultFields;
+export type Category = "all" | "collars" | "leashes" | "harnesses";
+
+export const defaultCategories: Record<Collection, Category> = {
+  base: "all",
+  elegant: "leashes",
+};
+export const defaultBundleExtras: Record<Collection, boolean> = {
+  base: true,
+  elegant: false,
+};
+
+export function validCategory(
+  collection: Collection,
+  value: unknown,
+): value is Category {
+  return (
+    (collection === "base" && value === "all") ||
+    value === "collars" ||
+    value === "leashes" ||
+    value === "harnesses"
+  );
+}
+
 export interface Snapshot {
   language: string;
   fields: Fields;
+  categories: Record<Collection, Category>;
+  bundleExtras: Record<Collection, boolean>;
   cart: CartItem[];
 }
+
 const STORAGE_KEY = "one-identity-store-v1";
-const allowed: Record<FieldName, string[]> = Object.fromEntries(
-  Object.keys(defaultFields).map((key) => [
-    key,
-    /[Ss]ize/.test(key)
-      ? ["S", "M", "L"]
-      : /[Ll]ength/.test(key)
-        ? ["1.5", "2.5"]
-        : /collarColour|collarBundleColour|tripleCollarColour/.test(key)
-          ? ["black", "khaki", "orange"]
-          : ["black", "khaki", "orange", "khaki-orange", "black-orange"],
-  ]),
-) as Record<FieldName, string[]>;
+const SELECTION_KEY = "one-identity-selection-v1";
+const baseCollarColours = variantColours("base", "collar");
+const baseLeashColours = variantColours("base", "leash");
+const baseCollarSizes = Object.keys(variantPrices("base", "collar"));
+const baseLeashLengths = Object.keys(variantPrices("base", "leash"));
+const elegantColours = variantColours("elegant", "collar");
+const elegantCollarSizes = Object.keys(variantPrices("elegant", "collar"));
+const allowed: Record<FieldName, readonly string[]> = {
+  collarColour: baseCollarColours,
+  collarProductSize: baseCollarSizes,
+  leashColour: baseLeashColours,
+  length: baseLeashLengths,
+  collarBundleColour: baseCollarColours,
+  collarSize: baseCollarSizes,
+  harnessColour: variantColours("base", "harness"),
+  harnessSize: Object.keys(variantPrices("base", "harness")),
+  collarSetLeashColour: baseLeashColours,
+  collarSetLeashLength: baseLeashLengths,
+  tripleCollarColour: baseCollarColours,
+  tripleCollarSize: baseCollarSizes,
+  harnessSetLeashColour: baseLeashColours,
+  harnessSetLeashLength: baseLeashLengths,
+  elegantCollarColour: elegantColours,
+  elegantCollarSize: elegantCollarSizes,
+  elegantLeashColour: elegantColours,
+  elegantHarnessColour: elegantColours,
+  elegantHarnessSize: Object.keys(variantPrices("elegant", "harness")),
+  elegantCollarSetLeashColour: elegantColours,
+  elegantHarnessSetLeashColour: elegantColours,
+  elegantTripleCollarColour: elegantColours,
+  elegantTripleCollarSize: elegantCollarSizes,
+};
 
 export function validField(name: FieldName, value: string) {
   return allowed[name].includes(value);
 }
-function read(key: string) {
+function read(
+  key: string,
+  storage: "localStorage" | "sessionStorage" = "localStorage",
+) {
   try {
-    return JSON.parse(localStorage.getItem(key) ?? "null");
+    return JSON.parse(window[storage].getItem(key) ?? "null");
   } catch {
     return null;
   }
@@ -117,6 +182,9 @@ function migrateCart(values: unknown): CartItem[] {
 
 export function readSnapshot(): Snapshot {
   const saved = read(STORAGE_KEY);
+  const savedSelection = read(SELECTION_KEY, "sessionStorage");
+  const selection = savedSelection ?? saved;
+  const legacyKeys: string[] = [];
   const fields = { ...defaultFields };
   const oldChoices = [
     ["collar-choice", { colour: "collarColour", size: "collarProductSize" }],
@@ -131,18 +199,32 @@ export function readSnapshot(): Snapshot {
       { colour: "harnessSetLeashColour", length: "harnessSetLeashLength" },
     ],
   ] as const;
-  for (const [key, mapping] of oldChoices) {
-    const choice = read(`one-identity-${key}`);
-    for (const [oldKey, field] of Object.entries(mapping)) {
-      const value = choice?.[oldKey];
-      if (typeof value === "string" && validField(field as FieldName, value))
-        fields[field as FieldName] = value;
+  if (savedSelection === null) {
+    for (const [name, mapping] of oldChoices) {
+      const key = `one-identity-${name}`;
+      const choice = read(key);
+      if (choice === null) continue;
+      legacyKeys.push(key);
+      for (const [oldKey, field] of Object.entries(mapping)) {
+        const value = choice[oldKey];
+        if (typeof value === "string" && validField(field, value))
+          fields[field] = value;
+      }
     }
   }
   for (const name of Object.keys(defaultFields) as FieldName[]) {
-    const value = saved?.fields?.[name];
+    const value = selection?.fields?.[name];
     if (typeof value === "string" && validField(name, value))
       fields[name] = value;
+  }
+  const categories = { ...defaultCategories };
+  const bundleExtras = { ...defaultBundleExtras };
+  for (const collection of collections) {
+    const category: unknown = selection?.categories?.[collection];
+    const includeExtra: unknown = selection?.bundleExtras?.[collection];
+    if (validCategory(collection, category)) categories[collection] = category;
+    if (typeof includeExtra === "boolean")
+      bundleExtras[collection] = includeExtra;
   }
   let language = saved?.language;
   try {
@@ -151,21 +233,52 @@ export function readSnapshot(): Snapshot {
     /* Storage can be unavailable in private browsing. */
   }
   if (!languages.includes(language)) language = "en";
-  return {
+  const snapshot: Snapshot = {
     language,
     fields,
+    categories,
+    bundleExtras,
     cart: migrateCart(saved?.cart ?? read("one-identity-cart-v1")),
   };
+
+  const hasLegacySelection =
+    saved?.fields || saved?.categories || saved?.bundleExtras;
+  if ((hasLegacySelection || legacyKeys.length) && saveSelection(snapshot)) {
+    if (!hasLegacySelection || saveCartAndLanguage(snapshot)) {
+      try {
+        for (const key of legacyKeys) localStorage.removeItem(key);
+      } catch {
+        /* The session copy remains available when cleanup is blocked. */
+      }
+    }
+  }
+  return snapshot;
 }
 
-export function saveSnapshot(snapshot: Snapshot) {
-  const { language, fields, cart } = snapshot;
+export function saveSelection({
+  fields,
+  categories,
+  bundleExtras,
+}: Pick<Snapshot, "fields" | "categories" | "bundleExtras">) {
   try {
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({ language, fields, cart }),
+    sessionStorage.setItem(
+      SELECTION_KEY,
+      JSON.stringify({ fields, categories, bundleExtras }),
     );
+    return true;
   } catch {
-    /* Continue in memory when browser storage is unavailable. */
+    return false;
+  }
+}
+
+export function saveCartAndLanguage({
+  language,
+  cart,
+}: Pick<Snapshot, "language" | "cart">) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ language, cart }));
+    return true;
+  } catch {
+    return false;
   }
 }

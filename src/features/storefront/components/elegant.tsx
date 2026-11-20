@@ -4,6 +4,7 @@ import Image from "next/image";
 import {
   elegantColourIds,
   itemPrice,
+  type ProductKind,
   type ProductVariant,
 } from "@/domain/commerce/catalog";
 import { useRef, useState, type KeyboardEvent } from "react";
@@ -17,6 +18,7 @@ import {
 } from "../data/elegant-products";
 import { useStorefront } from "../storefront-context";
 import { variantSizeOptions } from "../lib/product-options";
+import type { FieldName } from "../lib/storage";
 import { BundleOffer, type BundlePartSelection } from "./bundle-builder";
 import { ProductPurchase } from "./product-purchase";
 import { ProductSizeOptions } from "./product-size-options";
@@ -25,9 +27,28 @@ import { CollectionSwitch } from "./collection-switch";
 const imageSizes =
   "(max-width: 460px) calc(100vw - 40px), (max-width: 800px) 416px, (max-width: 1240px) 45vw, 560px";
 
+const elegantFields = {
+  collar: { colour: "elegantCollarColour", size: "elegantCollarSize" },
+  leash: { colour: "elegantLeashColour", size: null },
+  harness: { colour: "elegantHarnessColour", size: "elegantHarnessSize" },
+} as const satisfies Record<
+  ProductKind,
+  { colour: FieldName; size: FieldName | null }
+>;
+
+function navigateToCategory(category: ElegantProduct["category"]) {
+  window.location.hash = `elegant/${category}`;
+}
+
 export function Elegant() {
-  const t = useStorefront((state) => state.t);
-  const [tab, setTab] = useState<ElegantProduct["category"]>("leashes");
+  const { t, tab } = useStorefront((state) => ({
+    t: state.t,
+    tab: state.categories.elegant,
+  }));
+
+  function selectTab(category: ElegantProduct["category"]) {
+    if (category !== tab) navigateToCategory(category);
+  }
 
   function navigateTab(event: KeyboardEvent<HTMLButtonElement>, index: number) {
     const last = elegantProducts.length - 1;
@@ -49,7 +70,7 @@ export function Elegant() {
         return;
     }
     event.preventDefault();
-    setTab(elegantProducts[next].category);
+    selectTab(elegantProducts[next].category);
     event.currentTarget.parentElement
       ?.querySelectorAll<HTMLButtonElement>('[role="tab"]')
       [next]?.focus();
@@ -80,7 +101,7 @@ export function Elegant() {
             aria-selected={tab === category}
             tabIndex={tab === category ? 0 : -1}
             data-elegant-tab={category}
-            onClick={() => setTab(category)}
+            onClick={() => selectTab(category)}
             onKeyDown={(event) => navigateTab(event, index)}
           >
             {t(categoryKey)}
@@ -105,22 +126,36 @@ function ElegantProductPanel({
   product: ElegantProduct;
   active: boolean;
 }) {
-  const { t, money, openSizeGuide } = useStorefront((state) => ({
-    t: state.t,
-    money: state.money,
-    openSizeGuide: state.openSizeGuide,
-  }));
   const { kind } = product;
+  const config = elegantFields[kind];
+  const { t, money, openSizeGuide, colour, size, setField } = useStorefront(
+    (state) => ({
+      t: state.t,
+      money: state.money,
+      openSizeGuide: state.openSizeGuide,
+      colour: state.fields[config.colour] as ElegantColour,
+      size: config.size ? state.fields[config.size] : "1.5",
+      setField: state.setField,
+    }),
+  );
   const infoRef = useRef<HTMLDivElement>(null);
   const optionsRef = useRef<HTMLFieldSetElement>(null);
-  const [size, setSize] = useState(kind === "leash" ? "1.5" : "S");
-  const [colour, setColour] = useState<ElegantColour>("dark-brown");
   const [view, setView] = useState<ElegantView>("product");
   const colourName = elegantColours[colour].label;
   const photo = product.gallery[colour][view];
   const title = t(product.titleKey);
   const variant: ProductVariant = { collection: "elegant", kind, colour, size };
   const sizes = variantSizeOptions(variant);
+
+  function setColour(value: string) {
+    if (value === colour) return;
+    setField(config.colour, value);
+    setView("product");
+  }
+
+  function setSize(value: string) {
+    if (config.size) setField(config.size, value);
+  }
 
   return (
     <div
@@ -231,7 +266,7 @@ function ElegantProductPanel({
         <ElegantBundle
           primary={{
             variant,
-            chooseColour: (value) => setColour(value as ElegantColour),
+            chooseColour: setColour,
             chooseSize: setSize,
           }}
         />
@@ -241,9 +276,18 @@ function ElegantProductPanel({
 }
 
 function ElegantBundle({ primary }: { primary: BundlePartSelection }) {
-  const [leashColour, setLeashColour] = useState("dark-brown");
-  const [collarColour, setCollarColour] = useState("dark-brown");
-  const [collarSize, setCollarSize] = useState("S");
+  const leashColourField =
+    primary.variant.kind === "collar"
+      ? "elegantCollarSetLeashColour"
+      : "elegantHarnessSetLeashColour";
+  const { leashColour, collarColour, collarSize, setField } = useStorefront(
+    (state) => ({
+      leashColour: state.fields[leashColourField],
+      collarColour: state.fields.elegantTripleCollarColour,
+      collarSize: state.fields.elegantTripleCollarSize,
+      setField: state.setField,
+    }),
+  );
 
   return (
     <BundleOffer
@@ -256,7 +300,7 @@ function ElegantBundle({ primary }: { primary: BundlePartSelection }) {
             colour: leashColour,
             size: "1.5",
           },
-          chooseColour: setLeashColour,
+          chooseColour: (value) => setField(leashColourField, value),
         },
       ]}
       extra={
@@ -268,8 +312,9 @@ function ElegantBundle({ primary }: { primary: BundlePartSelection }) {
                 colour: collarColour,
                 size: collarSize,
               },
-              chooseColour: setCollarColour,
-              chooseSize: setCollarSize,
+              chooseColour: (value) =>
+                setField("elegantTripleCollarColour", value),
+              chooseSize: (value) => setField("elegantTripleCollarSize", value),
             }
           : undefined
       }

@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test": "node --import tsx --test \"tests/**/*.test.ts\"",
     "lint": "eslint --max-warnings=0",
     "lint:staged": "lint-staged",
     "typecheck": "next typegen && tsc --noEmit",
@@ -15,9 +16,11 @@
     "prepare": "node .husky/install.mjs"
   },
   "dependencies": {
+    "libphonenumber-js": "1.13.17",
     "next": "16.4.6",
     "react": "19.3.0",
     "react-dom": "19.3.0",
+    "zod": "^4.6.7",
     "zustand": "^5.1.0"
   },
   "devDependencies": {
@@ -29,6 +32,7 @@
     "husky": "9.1.7",
     "lint-staged": "17.6.1",
     "prettier": "3.10.1",
+    "tsx": "4.23.15",
     "typescript": "^5"
   },
   "lint-staged": {

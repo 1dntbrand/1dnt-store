@@ -104,17 +104,28 @@ function priceCollection(items: CartItem[], collection: Collection) {
   const harnesses = byKind("harness");
   const count = (group: CartItem[]) =>
     group.reduce((sum, item) => sum + remaining.get(item.id)!, 0);
+  const groupsByItemId: Record<string, { qty: number; unitAmount: number }[]> =
+    {};
   const allocate = (group: CartItem[], units: number, rate: number) => {
     let left = units;
     for (const item of group) {
       if (!left) break;
       const available = remaining.get(item.id)!;
       const quantity = Math.min(left, available);
+
       discounts[item.id] =
         (discounts[item.id] ?? 0) +
         Math.round(itemPrice(item) * rate) * quantity;
       remaining.set(item.id, available - quantity);
       left -= quantity;
+      const discountPerUnit = Math.round(itemPrice(item) * rate);
+
+      if (quantity > 0) {
+        (groupsByItemId[item.id] ??= []).push({
+          qty: quantity,
+          unitAmount: itemPrice(item) - discountPerUnit,
+        });
+      }
     }
   };
   const trios = Math.min(count(leashes), count(collars), count(harnesses));
@@ -127,7 +138,16 @@ function priceCollection(items: CartItem[], collection: Collection) {
   const pairs = Math.min(count(leashes), count(accessories));
   allocate(leashes, pairs, PAIR_DISCOUNT);
   allocate(accessories, pairs, PAIR_DISCOUNT);
-  return { discounts, trios, pairs };
+  for (const item of items) {
+    const qty = remaining.get(item.id) ?? 0;
+    if (qty > 0) {
+      (groupsByItemId[item.id] ??= []).push({
+        qty,
+        unitAmount: itemPrice(item),
+      });
+    }
+  }
+  return { discounts, trios, pairs, groupsByItemId };
 }
 
 /** Allocate each unit once, within its own collection. */
@@ -156,5 +176,6 @@ export function calculateCart(items: CartItem[]) {
     discounts,
     trios: base.trios + elegant.trios,
     pairs: base.pairs + elegant.pairs,
+    groupsByItemId: { ...base.groupsByItemId, ...elegant.groupsByItemId },
   };
 }

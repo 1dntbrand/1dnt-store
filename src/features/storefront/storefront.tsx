@@ -1,5 +1,7 @@
 "use client";
 
+import dynamic from "next/dynamic";
+import { useState } from "react";
 import { StorefrontProvider, useStorefront } from "./storefront-context";
 import { Header } from "./components/header";
 import { Hero } from "./components/hero";
@@ -9,11 +11,54 @@ import { BrandStory } from "./components/brand-story";
 import { Footer } from "./components/footer";
 import { Menu } from "./components/menu";
 import { Cart } from "./components/cart";
-import { Checkout } from "./components/checkout";
+import { Dialog } from "./components/dialog";
 import { CollarGuide } from "./components/collar-guide";
 import { HarnessGuide } from "./components/harness-guide";
 import { LeashGuide } from "./components/leash-guide";
 import { Service } from "./components/service";
+
+const Checkout = dynamic(
+  () => import("./components/checkout").then((module) => module.Checkout),
+  { loading: CheckoutLoading },
+);
+
+function CheckoutLoading() {
+  const { t, closeDialog } = useStorefront((state) => ({
+    t: state.t,
+    closeDialog: state.closeDialog,
+  }));
+
+  return (
+    <Dialog
+      id="checkoutPanel"
+      labelledBy="checkoutLoadingTitle"
+      className="checkout-panel"
+    >
+      <div className="panel-top">
+        <h2 id="checkoutLoadingTitle" role="status">
+          {t("checkoutLoading")}
+        </h2>
+        <button
+          type="button"
+          className="btn icon-button close-button"
+          aria-label={t("guideClose")}
+          onClick={closeDialog}
+        >
+          ×
+        </button>
+      </div>
+    </Dialog>
+  );
+}
+
+function DeferredCheckout() {
+  const isOpen = useStorefront(
+    (state) => state.activeDialog === "checkoutPanel",
+  );
+  const [hasOpened, setHasOpened] = useState(false);
+  if (isOpen && !hasOpened) setHasOpened(true);
+  return hasOpened ? <Checkout /> : null;
+}
 
 function StorefrontContent() {
   const { t } = useStorefront((state) => ({ t: state.t }));
@@ -32,7 +77,7 @@ function StorefrontContent() {
       <Footer />
       <Menu />
       <Cart />
-      <Checkout />
+      <DeferredCheckout />
       <CollarGuide />
       <HarnessGuide />
       <LeashGuide />

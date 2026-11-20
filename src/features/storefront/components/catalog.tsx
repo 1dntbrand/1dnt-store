@@ -18,7 +18,7 @@ const categoryImageSizes =
 export function Catalog() {
   const { t, category, money } = useStorefront((state) => ({
     t: state.t,
-    category: state.category,
+    category: state.categories.base,
     money: state.money,
   }));
   return (
@@ -32,7 +32,7 @@ export function Catalog() {
       </div>
       <nav className="catalog-filters" aria-label={t("catalogCategories")}>
         <a
-          href="#collection"
+          href="#collection/all"
           data-category="all"
           aria-current={category === "all" ? "page" : undefined}
         >

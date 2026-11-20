@@ -10,6 +10,7 @@ import {
 import { useStore } from "zustand";
 import { useShallow } from "zustand/react/shallow";
 import { createStorefrontStore, type StorefrontState } from "./store";
+import { validCategory } from "./lib/storage";
 
 const StorefrontContext = createContext<ReturnType<
   typeof createStorefrontStore
@@ -19,20 +20,23 @@ export function StorefrontProvider({ children }: { children: ReactNode }) {
   const [store] = useState(createStorefrontStore);
   useEffect(() => {
     store.getState().restore();
+    let pendingScroll = 0;
     function syncHash() {
-      const requested = window.location.hash.split("/")[1];
+      window.cancelAnimationFrame(pendingScroll);
+      const [section, requested] = window.location.hash.slice(1).split("/");
       const state = store.getState();
-      state.setCategory(
-        ["collars", "leashes", "harnesses"].includes(requested)
-          ? requested
-          : "all",
-      );
       state.closeDialog();
-      if (window.location.hash.startsWith("#collection")) {
-        requestAnimationFrame(() =>
-          document
-            .getElementById("collection")
-            ?.scrollIntoView({ block: "start" }),
+      const collection =
+        section === "collection"
+          ? "base"
+          : section === "elegant"
+            ? "elegant"
+            : null;
+      if (collection) {
+        if (validCategory(collection, requested))
+          state.setCategory(collection, requested);
+        pendingScroll = window.requestAnimationFrame(() =>
+          document.getElementById(section)?.scrollIntoView({ block: "start" }),
         );
       }
     }
@@ -45,6 +49,7 @@ export function StorefrontProvider({ children }: { children: ReactNode }) {
     window.addEventListener("hashchange", syncHash);
     return () => {
       unsubscribe();
+      window.cancelAnimationFrame(pendingScroll);
       window.removeEventListener("hashchange", syncHash);
     };
   }, [store]);

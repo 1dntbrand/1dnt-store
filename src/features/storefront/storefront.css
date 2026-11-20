@@ -842,6 +842,7 @@ summary::-webkit-details-marker {
 .bundle-restock[open] > summary::after,
 .guide-detail[open] > summary::after,
 .bundle-part-options[open] > summary .disclosure-chevron,
+.story-more[open] > summary .disclosure-chevron,
 .mobile-order-toggle[aria-expanded="true"] .disclosure-chevron {
   transform: translateY(2px) rotate(225deg);
 }
@@ -1062,34 +1063,79 @@ summary::-webkit-details-marker {
 /* Brand story and customer questions. */
 .philosophy {
   --line: #dedbd2;
-  padding: var(--section-space) var(--content-gutter);
+  padding: clamp(40px, 6vw, 88px) var(--content-gutter);
   background: var(--brand-warm);
   border-top: 1px solid var(--line);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  align-items: start;
-  gap: clamp(24px, 4vw, 56px);
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+  grid-template-rows: 1fr auto auto 1fr;
+  grid-template-areas:
+    ". photo"
+    "heading photo"
+    "copy photo"
+    ". photo";
+  column-gap: clamp(32px, 6vw, 88px);
 }
-.philosophy blockquote {
-  font-size: clamp(28px, 3vw, 42px);
-  letter-spacing: -0.04em;
-  line-height: 1.2;
-  margin-bottom: var(--space-5);
+.philosophy-heading {
+  grid-area: heading;
+  padding-bottom: var(--space-5);
 }
-.philosophy p {
-  max-width: 62ch;
+.philosophy-heading > .eyebrow {
+  margin-bottom: var(--space-4);
+}
+.philosophy-title {
+  font-size: clamp(31px, 4.2vw, 60px);
+  line-height: 1.07;
+  letter-spacing: -0.045em;
+}
+.philosophy-title > :is(span, em) {
+  display: block;
+  text-wrap: balance;
+}
+.philosophy-title em {
+  margin-top: var(--space-1);
+  color: var(--olive);
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+.philosophy-photo {
+  grid-area: photo;
+  width: min(100%, 520px);
+  aspect-ratio: 3 / 4;
+  align-self: center;
+  justify-self: end;
+  overflow: hidden;
+  border-radius: var(--media-radius);
+  background: var(--surface);
+}
+.philosophy-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 6%;
+}
+.philosophy-copy {
+  grid-area: copy;
+  max-width: 53ch;
+}
+.philosophy-copy > p + p,
+.story-more > p + p {
   margin-top: var(--space-3);
 }
 .story-more {
-  margin-top: var(--space-2);
+  margin-top: var(--space-4);
+  border-top: 1px solid var(--line);
 }
 .story-more > summary {
-  display: inline-flex;
+  display: flex;
   min-height: 44px;
   align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
   font-size: 13px;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+}
+.story-more > p {
+  font-size: 14px;
 }
 .faq {
   --line: #b9c3a4;
@@ -1786,6 +1832,62 @@ dialog::backdrop {
 .contact-fields input[aria-invalid="true"] {
   border-color: var(--error);
 }
+.checkout-phone {
+  display: grid;
+  grid-column: 1 / -1;
+  gap: var(--space-1);
+}
+
+.checkout-phone-control {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: var(--space-2);
+}
+
+.checkout-phone-country {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding-inline: var(--space-3);
+  border: 1px solid var(--control-line);
+  border-radius: var(--control-radius);
+  background: var(--brand-warm);
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.checkout-phone-country:hover {
+  border-color: var(--ink);
+}
+
+.checkout-phone-country:focus-within {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.checkout-phone-country select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.checkout-phone-country .disclosure-chevron {
+  width: 7px;
+  height: 7px;
+  margin-top: -3px;
+}
+
+.checkout-phone input {
+  font-size: 16px;
+}
+
 .field-error {
   color: var(--error);
   font-size: 12px;
@@ -2026,7 +2128,19 @@ dialog::backdrop {
   .elegant-main {
     width: min(100%, 416px);
   }
-  .philosophy,
+  .philosophy {
+    grid-template-columns: minmax(0, 520px);
+    grid-template-rows: auto;
+    grid-template-areas:
+      "heading"
+      "photo"
+      "copy";
+    justify-content: center;
+    gap: var(--space-5);
+  }
+  .philosophy-heading {
+    padding-bottom: 0;
+  }
   .faq {
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-4);
