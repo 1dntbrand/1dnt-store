@@ -15,7 +15,9 @@ import { Dialog } from "./components/dialog";
 import { CollarGuide } from "./components/collar-guide";
 import { HarnessGuide } from "./components/harness-guide";
 import { LeashGuide } from "./components/leash-guide";
+import { ElegantLeashGuide } from "./components/elegant-leash-guide";
 import { Service } from "./components/service";
+import { useRevealOnScroll } from "./lib/use-reveal";
 
 const Checkout = dynamic(
   () => import("./components/checkout").then((module) => module.Checkout),
@@ -62,6 +64,7 @@ function DeferredCheckout() {
 
 function StorefrontContent() {
   const { t } = useStorefront((state) => ({ t: state.t }));
+  useRevealOnScroll();
   return (
     <>
       <a className="skip-link" href="#main">
@@ -81,6 +84,7 @@ function StorefrontContent() {
       <CollarGuide />
       <HarnessGuide />
       <LeashGuide />
+      <ElegantLeashGuide />
       <Service />
     </>
   );

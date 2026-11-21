@@ -30,7 +30,7 @@
       [
         [
           "Delivery",
-          "We ship only within Poland to pickup points. Delivery is included in the product price. Production and dispatch times will be stated separately from transit time."
+          "We ship within Poland to InPost pickup points. Delivery costs {shippingPrice}; orders from {freeShippingFrom} ship free. The delivery cost is shown in your bag and at checkout before payment."
         ],
         [
           "Payment",
@@ -110,7 +110,7 @@
         ]
       ]
     ],
-    "safetyTitle": "Manufacturer & product safety",
+    "safetyTitle": "Safety information",
     "safety": [
       [
         "Manufacturer",
@@ -118,15 +118,15 @@
       ],
       [
         "Product identification",
-        "Base BioThane® collection. Final product codes and traceability markings will be added before sales open."
+        "Collection, product type, colour and size are shown on this page and in your order confirmation."
       ],
       [
         "Use and inspection",
         "Use the accessory for its intended walking purpose. Check the webbing, fastenings, buckles and snap hooks before use. Stop using an item if damaged or if a closure does not work correctly."
       ],
       [
-        "Before launch",
-        "Model-specific instructions, limitations and any necessary warnings will be finalised after product assessment. The preview does not establish suitability for car restraint, running or a particular pulling load."
+        "Warnings",
+        "Do not leave your dog unattended in a collar or harness or tied on a leash. Not intended as a car safety restraint."
       ]
     ]
   },
@@ -161,7 +161,7 @@
       [
         [
           "Доставка",
-          "Доставляем только по Польше, в пункты выдачи. Доставка включена в цену товара. Сроки изготовления и отправки будут указаны отдельно от срока доставки."
+          "Доставляем по Польше в пункты InPost. Доставка стоит {shippingPrice}, заказы от {freeShippingFrom} доставляем бесплатно. Стоимость доставки видна в корзине и при оформлении до оплаты."
         ],
         [
           "Оплата",
@@ -241,7 +241,7 @@
         ]
       ]
     ],
-    "safetyTitle": "Производитель и безопасность",
+    "safetyTitle": "Информация о безопасности",
     "safety": [
       [
         "Производитель",
@@ -249,15 +249,15 @@
       ],
       [
         "Идентификация изделия",
-        "Коллекция Base BioThane®. Окончательные артикулы и маркировку для прослеживаемости добавим до начала продаж."
+        "Коллекция, тип изделия, цвет и размер указаны на этой странице и в подтверждении заказа."
       ],
       [
         "Использование и проверка",
         "Используйте аксессуар по назначению для прогулок. Перед использованием проверяйте ленту, крепления, застёжки и карабины. Не используйте повреждённое изделие или изделие с неисправной застёжкой."
       ],
       [
-        "Перед запуском",
-        "Инструкции, ограничения и необходимые предупреждения для каждой модели уточним после оценки изделий. Этот пример не подтверждает пригодность для фиксации в автомобиле, бега или определённой тяговой нагрузки."
+        "Предупреждения",
+        "Не оставляйте собаку без присмотра в ошейнике или шлейке и привязанной на поводке. Изделие не предназначено для фиксации собаки в автомобиле."
       ]
     ]
   },
@@ -291,7 +291,7 @@
       [
         [
           "Dostawa",
-          "Wysyłamy wyłącznie na terenie Polski, do punktów odbioru. Dostawa jest wliczona w cenę produktu. Terminy wykonania i nadania podamy oddzielnie od czasu dostawy."
+          "Wysyłamy na terenie Polski do punktów InPost. Dostawa kosztuje {shippingPrice}, a zamówienia od {freeShippingFrom} wysyłamy za darmo. Koszt dostawy widzisz w koszyku i przy składaniu zamówienia przed płatnością."
         ],
         [
           "Płatności",
@@ -355,23 +355,23 @@
         ]
       ]
     ],
-    "safetyTitle": "Producent i bezpieczeństwo",
+    "safetyTitle": "Informacje o bezpieczeństwie",
     "safety": [
       [
         "Producent",
         "Do uzupełnienia: pełna nazwa producenta, adres pocztowy i elektroniczny."
       ],
       [
-        "Identyfikacja",
-        "Kolekcja Base BioThane®. Ostateczne kody i oznaczenia identyfikacyjne zostaną dodane przed sprzedażą."
+        "Identyfikacja produktu",
+        "Kolekcja, rodzaj produktu, kolor i rozmiar są podane na tej stronie i w potwierdzeniu zamówienia."
       ],
       [
         "Użytkowanie",
         "Akcesoria służą do spacerów zgodnie z przeznaczeniem. Przed użyciem sprawdź taśmę, mocowania, klamry i karabińczyki. Nie używaj uszkodzonego produktu ani niesprawnego zapięcia."
       ],
       [
-        "Przed premierą",
-        "Instrukcje, ograniczenia i niezbędne ostrzeżenia dla modeli zostaną ustalone po ocenie produktów. Podgląd nie potwierdza przydatności do zabezpieczania w samochodzie, biegania ani określonego obciążenia."
+        "Ostrzeżenia",
+        "Nie zostawiaj psa bez nadzoru w obroży, szelkach ani przywiązanego na smyczy. Produkt nie służy do zabezpieczania psa w samochodzie."
       ]
     ]
   },
@@ -405,7 +405,7 @@
       [
         [
           "Доставка",
-          "Доставляємо лише в межах Польщі, до пунктів видачі. Доставка входить у вартість товару. Строки виготовлення та відправлення вкажемо окремо від строку доставки."
+          "Доставляємо в межах Польщі до пунктів InPost. Доставка коштує {shippingPrice}, замовлення від {freeShippingFrom} доставляємо безкоштовно. Вартість доставки видно в кошику й під час оформлення до оплати."
         ],
         [
           "Оплата",
@@ -469,23 +469,23 @@
         ]
       ]
     ],
-    "safetyTitle": "Виробник і безпека",
+    "safetyTitle": "Інформація про безпеку",
     "safety": [
       [
         "Виробник",
         "Буде уточнено: юридична назва виробника, поштова адреса й електронний контакт."
       ],
       [
-        "Ідентифікація",
-        "Колекція Base BioThane®. Остаточні артикули та маркування для простежуваності додамо до початку продажів."
+        "Ідентифікація виробу",
+        "Колекція, тип виробу, колір і розмір вказані на цій сторінці та в підтвердженні замовлення."
       ],
       [
         "Використання",
         "Використовуйте аксесуар за призначенням для прогулянок. Перед використанням перевіряйте стрічку, кріплення, застібки й карабіни. Не використовуйте пошкоджений виріб або несправну застібку."
       ],
       [
-        "Перед запуском",
-        "Інструкції, обмеження й необхідні попередження для моделей уточнимо після оцінки виробів. Приклад не підтверджує придатність для фіксації в автомобілі, бігу або певного тягового навантаження."
+        "Попередження",
+        "Не залишайте собаку без нагляду в нашийнику чи шлеї та прив’язаною на повідці. Виріб не призначений для фіксації собаки в автомобілі."
       ]
     ]
   }

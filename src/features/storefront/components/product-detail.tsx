@@ -7,7 +7,7 @@ import { BrandText } from "./brand-text";
 import { ProductGallery } from "./product-gallery";
 import { BundleBuilder } from "./bundle-builder";
 import { ProductPurchase } from "./product-purchase";
-import { ProductSafety } from "./product-safety";
+import { ProductInformation } from "./product-information";
 import { ProductSizeOptions } from "./product-size-options";
 
 export function ProductDetail({ kind }: { kind: ProductKind }) {
@@ -48,7 +48,6 @@ export function ProductDetail({ kind }: { kind: ProductKind }) {
             </h3>
             <p className="product-price">{money(prices[kind][size])}</p>
           </div>
-          <p className="product-intro">{t(config.introKey)}</p>
           <p className="product-price-note">{t("vatShipping")}</p>
           <fieldset className="variant-group" ref={optionsRef} tabIndex={-1}>
             <legend>
@@ -92,47 +91,10 @@ export function ProductDetail({ kind }: { kind: ProductKind }) {
             variant={{ collection: "base", kind, colour, size }}
             buttonId={`add${kind[0].toUpperCase()}${kind.slice(1)}`}
           />
-          <ProductInformation kind={kind} />
+          <ProductInformation collection="base" kind={kind} />
         </div>
       </div>
       <BundleBuilder kind={kind} />
-    </div>
-  );
-}
-
-function ProductInformation({ kind }: { kind: ProductKind }) {
-  const { t } = useStorefront((state) => ({ t: state.t }));
-  const features = [
-    "baseWebbing",
-    "baseWaterproof",
-    "baseOdourFeature",
-    "baseVegan",
-    "baseHandmade",
-    "baseEasyCare",
-  ];
-  return (
-    <div className="product-information">
-      <details>
-        <summary>{t("baseDescriptionTitle")}</summary>
-        <p>{t("baseDescription")}</p>
-      </details>
-      <details>
-        <summary>{t("baseFeaturesTitle")}</summary>
-        <ul>
-          {features.map((key) => (
-            <li key={key}>{t(key)}</li>
-          ))}
-          <li>
-            {t(kind === "leash" ? "baseLeashAdjustable" : "baseAdjustable")}
-          </li>
-          {kind !== "leash" && <li>{t("fidlockFeature")}</li>}
-        </ul>
-      </details>
-      <details>
-        <summary>{t("baseCareTitle")}</summary>
-        <p>{t("baseCare")}</p>
-      </details>
-      <ProductSafety />
     </div>
   );
 }

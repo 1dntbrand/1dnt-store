@@ -17,6 +17,8 @@ export function ProductGallery({ kind }: { kind: ProductKind }) {
     <div className="product-gallery">
       <div className="product-photo">
         <Image
+          key={productPhoto(kind, colour, view)}
+          className="photo-swap"
           src={productPhoto(kind, colour, view)}
           alt={`${t(config.titleKey)} · ${t(colour)} · ${t(config.galleryLabels[view])}`}
           fill

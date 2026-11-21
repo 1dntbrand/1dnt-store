@@ -1,3 +1,5 @@
+import { shippingFor } from "./shipping";
+
 const baseColours = [
   "black",
   "khaki",
@@ -169,10 +171,16 @@ export function calculateCart(items: CartItem[]) {
     (sum, value) => sum + value,
     0,
   );
+  const total = subtotal - discount;
+  const shipping = shippingFor(total);
   return {
     subtotal,
     discount,
-    total: subtotal - discount,
+    /** Items after discounts, without delivery. */
+    total,
+    shipping,
+    /** Amount the customer pays: items after discounts plus delivery. */
+    grandTotal: total + shipping,
     discounts,
     trios: base.trios + elegant.trios,
     pairs: base.pairs + elegant.pairs,

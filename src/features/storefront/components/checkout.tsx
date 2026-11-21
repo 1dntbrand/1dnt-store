@@ -42,7 +42,7 @@ export function Checkout() {
       closeDialog: state.closeDialog,
       cartCount: state.cartCount,
       money: state.money,
-      total: state.pricing.total,
+      total: state.pricing.grandTotal,
     }),
   );
   const [values, setValues] = useState<Record<ContactField, string>>({
@@ -72,6 +72,10 @@ export function Checkout() {
     if (name === "phone") return phone?.country !== phoneCountry;
     return false;
   }
+  // TODO(12) Замени тестовый сценарий вызовом POST /api/checkout после 08 и 11.
+  // Вход — корзина, контакты с нормализованным phone.number, pickupPointId, язык и attemptId.
+  // Выход — переход в Stripe либо понятная ошибка с возможностью повтора.
+  // Проверь двойной клик, смену итоговой суммы и отмену с сохранением корзины.
   function submit(event: FormEvent) {
     event.preventDefault();
     setSubmitted(true);

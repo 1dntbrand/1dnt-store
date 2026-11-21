@@ -16,7 +16,6 @@ export function Hero() {
           <br />
           <em>{t("heroIdentity")}</em>
         </h1>
-        <p className="hero-summary">{t("heroSummary")}</p>
         <a className="btn" href="#collection">
           {t("viewCollection")}
         </a>

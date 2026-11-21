@@ -1,5 +1,7 @@
 "use client";
+import { brandLinks } from "../data/brand";
 import { useStorefront } from "../storefront-context";
+import { InstagramIcon } from "./instagram-icon";
 
 export function Header() {
   const { t, language, setLanguage, openDialog, cartCount } = useStorefront(
@@ -13,23 +15,36 @@ export function Header() {
   );
   return (
     <header className="site-header">
-      <button
-        className="icon-button menu-trigger"
-        type="button"
-        data-panel="menuPanel"
-        aria-label={t("menuOpen")}
-        onClick={() => openDialog("menuPanel")}
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          aria-hidden="true"
+      <div className="header-left">
+        <button
+          className="icon-button menu-trigger"
+          type="button"
+          data-panel="menuPanel"
+          aria-label={t("menuOpen")}
+          onClick={() => openDialog("menuPanel")}
         >
-          <path d="M4 7h16M4 12h16M4 17h16" />
-        </svg>
-      </button>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            aria-hidden="true"
+          >
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+        {brandLinks.instagram && (
+          <a
+            className="icon-button instagram-link"
+            href={brandLinks.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram — 1DNT"
+          >
+            <InstagramIcon />
+          </a>
+        )}
+      </div>
       <a className="brand" href="#" aria-label="ONE IDENTITY">
         <span className="mark">
           <span>1D</span>
@@ -37,11 +52,6 @@ export function Header() {
         </span>
         <span className="brand-name">ONE IDENTITY</span>
       </a>
-      <nav className="primary-nav" aria-label={t("menuTitle")}>
-        <a href="#collection">Base</a>
-        <a href="#elegant">Elegant</a>
-        <a href="#philosophy">{t("navAbout")}</a>
-      </nav>
       <div className="header-tools">
         <select
           className="language-select select-control"
@@ -72,7 +82,9 @@ export function Header() {
             <path d="M9 8V6a3 3 0 0 1 6 0v2" />
           </svg>
           <span className="cart-label">{t("bagAction")}</span>
-          <span className="cart-count">{cartCount}</span>
+          <span className="cart-count" key={cartCount}>
+            {cartCount}
+          </span>
         </button>
       </div>
     </header>

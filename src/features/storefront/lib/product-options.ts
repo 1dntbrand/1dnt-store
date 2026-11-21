@@ -20,7 +20,6 @@ export interface VariantOption {
 interface ProductConfiguration {
   category: string;
   titleKey: string;
-  introKey: string;
   colourField: FieldName;
   sizeField: FieldName;
   colours: readonly string[];
@@ -31,7 +30,6 @@ export const productOptions: Record<ProductKind, ProductConfiguration> = {
   collar: {
     category: "collars",
     titleKey: "productCollar",
-    introKey: "collarPracticalIntro",
     colourField: "collarColour",
     sizeField: "collarProductSize",
     colours: variantColours("base", "collar"),
@@ -45,7 +43,6 @@ export const productOptions: Record<ProductKind, ProductConfiguration> = {
   leash: {
     category: "leashes",
     titleKey: "productLeash",
-    introKey: "leashPracticalIntro",
     colourField: "leashColour",
     sizeField: "length",
     colours: variantColours("base", "leash"),
@@ -58,7 +55,6 @@ export const productOptions: Record<ProductKind, ProductConfiguration> = {
   harness: {
     category: "harnesses",
     titleKey: "productHarness",
-    introKey: "harnessPracticalIntro",
     colourField: "harnessColour",
     sizeField: "harnessSize",
     colours: variantColours("base", "harness"),

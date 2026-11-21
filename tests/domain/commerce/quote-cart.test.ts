@@ -1,6 +1,11 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { quoteCart } from "../../../src/domain/commerce/quote-cart";
+import {
+  FREE_SHIPPING_THRESHOLD,
+  SHIPPING_PRICE,
+  shippingFor,
+} from "../../../src/domain/commerce/shipping";
 
 const collar = {
   collection: "base",
@@ -127,4 +132,28 @@ test("applies the quantity limit after merging duplicate rows", () => {
     ]),
     { ok: false, code: "quantity_limit" },
   );
+});
+
+test("adds InPost delivery below the free delivery threshold", () => {
+  const result = quoteCart([leash]);
+
+  assert.ok(result.ok);
+  assert.equal(result.pricing.total, 13_000);
+  assert.equal(result.pricing.shipping, SHIPPING_PRICE);
+  assert.equal(result.pricing.grandTotal, 13_000 + SHIPPING_PRICE);
+});
+
+test("delivers free once discounted items reach the threshold", () => {
+  const result = quoteCart([collar, leash]);
+
+  assert.ok(result.ok);
+  assert.ok(result.pricing.total >= FREE_SHIPPING_THRESHOLD);
+  assert.equal(result.pricing.shipping, 0);
+  assert.equal(result.pricing.grandTotal, result.pricing.total);
+});
+
+test("compares the threshold with the total after set discounts", () => {
+  assert.equal(shippingFor(FREE_SHIPPING_THRESHOLD - 1), SHIPPING_PRICE);
+  assert.equal(shippingFor(FREE_SHIPPING_THRESHOLD), 0);
+  assert.equal(shippingFor(0), 0);
 });

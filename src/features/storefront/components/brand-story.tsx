@@ -14,14 +14,14 @@ export function BrandStory() {
         id="philosophy"
         aria-labelledby="philosophy-title"
       >
-        <div className="philosophy-heading">
+        <div className="philosophy-heading" data-reveal>
           <p className="eyebrow">{t("storyEyebrow")}</p>
           <h2 id="philosophy-title" className="philosophy-title">
             <span>{t("storyHeadingFirst")}</span>
             <em>{t("storyHeadingSecond")}</em>
           </h2>
         </div>
-        <figure className="philosophy-photo">
+        <figure className="philosophy-photo" data-reveal>
           <Image
             src="/assets/philosophy-together.webp"
             alt={t("storyPhotoAlt")}
@@ -31,18 +31,12 @@ export function BrandStory() {
             loading="lazy"
           />
         </figure>
-        <div className="philosophy-copy">
+        <div className="philosophy-copy" data-reveal>
           <p>{t("storyIntro")}</p>
           <p>{t("philosophyHandmade")}</p>
-          <details className="story-more">
-            <summary>
-              {t("readOurStory")}
-              <span className="disclosure-chevron" aria-hidden="true" />
-            </summary>
-            <p>{t("philosophyBond")}</p>
-            <p>{t("philosophyReflection")}</p>
-            <p>{t("philosophyFounded")}</p>
-          </details>
+          <p>{t("philosophyBond")}</p>
+          <p>{t("philosophyReflection")}</p>
+          <p className="philosophy-founded">{t("philosophyFounded")}</p>
         </div>
       </section>
       <FaqSection />

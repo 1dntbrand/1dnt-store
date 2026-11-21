@@ -53,6 +53,7 @@ type OrderSnapshot = {
   pricing: {
     subtotal: number;
     discount: number;
+    shipping: number;
     total: number;
   };
 };
@@ -91,7 +92,7 @@ export const buildOrderSnapshot = (
   return {
     orderId: input.orderId,
     items,
-    total: checkout.pricing.total,
+    total: checkout.pricing.grandTotal,
     language: checkout.language,
     createdAt: input.createdAt,
     contact: {
@@ -104,11 +105,12 @@ export const buildOrderSnapshot = (
     pricing: {
       subtotal: checkout.pricing.subtotal,
       discount: checkout.pricing.discount,
-      total: checkout.pricing.total,
+      shipping: checkout.pricing.shipping,
+      total: checkout.pricing.grandTotal,
     },
     attemptId: input.checkout.attemptId,
     currency: "PLN",
-    shippingAmount: 0,
+    shippingAmount: checkout.pricing.shipping,
     paymentStatus: "pending",
     fulfillmentStatus: "new",
   };

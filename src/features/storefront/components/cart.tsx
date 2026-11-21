@@ -3,8 +3,13 @@ import Image from "next/image";
 import { useStorefront } from "../storefront-context";
 import { itemPrice } from "@/domain/commerce/catalog";
 import { variantLimit } from "@/domain/commerce/availability";
+import {
+  FREE_SHIPPING_THRESHOLD,
+  freeShippingRemaining,
+} from "@/domain/commerce/shipping";
 import { variantPhoto } from "../lib/catalog";
 import { productTitleKey } from "../lib/product-options";
+import { suggestSetItem } from "../lib/set-suggestion";
 import { Dialog } from "./dialog";
 import { BrandText } from "./brand-text";
 
@@ -115,14 +120,61 @@ export function OrderTotals() {
         </div>
       )}
       <div>
-        <span>{t("deliveryTitle")}</span>
-        <span>{t("included")}</span>
+        <span>{t("deliveryInpost")}</span>
+        <span className={pricing.shipping === 0 ? "free-shipping" : undefined}>
+          {pricing.shipping === 0 ? t("freeShipping") : money(pricing.shipping)}
+        </span>
       </div>
       <div className="cart-subtotal">
         <span>{t("totalLabel")}</span>
-        <strong>{money(pricing.total)}</strong>
+        <strong>{money(pricing.grandTotal)}</strong>
       </div>
-      <p className="field-hint">{t("vatShipping")}</p>
+      <p className="field-hint">{t("vatIncluded")}</p>
+    </div>
+  );
+}
+
+/** Points to the one piece that unlocks the next set discount. */
+function SetSuggestionNote() {
+  const { t, cart, closeDialog } = useStorefront((state) => ({
+    t: state.t,
+    cart: state.cart,
+    closeDialog: state.closeDialog,
+  }));
+  const suggestion = suggestSetItem(cart);
+  if (!suggestion) return null;
+  return (
+    <p className="set-suggestion">
+      <span>{t(suggestion.messageKey)}</span>
+      <a href={suggestion.href} onClick={closeDialog}>
+        {t("setHintAction")} →
+      </a>
+    </p>
+  );
+}
+
+/** Shows how close the bag is to free delivery; set discounts count first. */
+export function FreeShippingProgress() {
+  const { t, money, total } = useStorefront((state) => ({
+    t: state.t,
+    money: state.money,
+    total: state.pricing.total,
+  }));
+  const remaining = freeShippingRemaining(total);
+  const progress = Math.min(1, total / FREE_SHIPPING_THRESHOLD);
+  return (
+    <div
+      className="free-shipping-progress"
+      data-complete={remaining === 0 || undefined}
+    >
+      <p role="status">
+        {remaining === 0
+          ? t("freeShippingReached")
+          : t("freeShippingRemaining", { amount: money(remaining) })}
+      </p>
+      <span className="free-shipping-track" aria-hidden="true">
+        <span style={{ transform: `scaleX(${progress})` }} />
+      </span>
     </div>
   );
 }
@@ -186,6 +238,8 @@ export function Cart() {
             <OrderItems editable />
           </div>
           <div className="cart-footer">
+            <SetSuggestionNote />
+            <FreeShippingProgress />
             <OrderTotals />
             {cartHasStockIssue && (
               <p className="cart-stock-message" role="status">

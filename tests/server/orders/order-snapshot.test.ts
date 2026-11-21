@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { parseCheckoutInput } from "../../../src/server/orders/checkout-input";
 import { buildOrderSnapshot } from "../../../src/server/orders/order-snapshot";
+import { SHIPPING_PRICE } from "../../../src/domain/commerce/shipping";
 
 const collar = {
   collection: "base",
@@ -178,4 +179,19 @@ test("copies contacts, pickup point, cart lines and price group objects", () => 
   assert.deepEqual(snapshot.items[0].priceGroups, [
     { qty: 1, unitAmount: 14_250 },
   ]);
+});
+
+test("adds delivery to the order total below the free delivery threshold", () => {
+  const snapshot = buildOrderSnapshot(orderInput([leash]));
+
+  assert.equal(snapshot.shippingAmount, SHIPPING_PRICE);
+  assert.equal(snapshot.pricing.shipping, SHIPPING_PRICE);
+  assert.equal(snapshot.total, 13_000 + SHIPPING_PRICE);
+  assert.equal(
+    snapshot.items.reduce(
+      (sum, item) => sum + item.lineTotal,
+      snapshot.shippingAmount,
+    ),
+    snapshot.total,
+  );
 });

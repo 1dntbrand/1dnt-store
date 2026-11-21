@@ -18,7 +18,7 @@ export function CollectionSwitch({ active }: { active: Collection }) {
         href="#elegant"
         aria-current={active === "elegant" ? "location" : undefined}
       >
-        Elegant
+        Elegant BioThane®
       </a>
     </nav>
   );

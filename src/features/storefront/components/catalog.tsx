@@ -24,7 +24,7 @@ export function Catalog() {
   return (
     <section className="section catalog-section" id="collection">
       <CollectionSwitch active="base" />
-      <div className="catalog-heading">
+      <div className="catalog-heading" data-reveal>
         <h2 id="catalogTitle" tabIndex={-1}>
           <BrandText>{t("collectionTitle")}</BrandText>
         </h2>
@@ -66,15 +66,17 @@ export function Catalog() {
         hidden={category !== "all"}
       >
         <div className="catalog-overview">
-          <a className="catalog-preview" href="#collection/collars">
-            <Image
-              src="/assets/collar-khaki.webp"
-              alt=""
-              loading="lazy"
-              width={1312}
-              height={1199}
-              sizes={categoryImageSizes}
-            />
+          <a data-reveal className="catalog-preview" href="#collection/collars">
+            <span className="catalog-preview-media">
+              <Image
+                src="/assets/collar-khaki.webp"
+                alt=""
+                loading="lazy"
+                width={1312}
+                height={1199}
+                sizes={categoryImageSizes}
+              />
+            </span>
             <div>
               <h3>{t("cat_collars")}</h3>
               <p className="catalog-start-price">
@@ -83,15 +85,17 @@ export function Catalog() {
               </p>
             </div>
           </a>
-          <a className="catalog-preview" href="#collection/leashes">
-            <Image
-              src="/assets/leash-black.webp"
-              alt=""
-              loading="lazy"
-              width={1086}
-              height={1448}
-              sizes={categoryImageSizes}
-            />
+          <a data-reveal className="catalog-preview" href="#collection/leashes">
+            <span className="catalog-preview-media">
+              <Image
+                src="/assets/leash-black.webp"
+                alt=""
+                loading="lazy"
+                width={1086}
+                height={1448}
+                sizes={categoryImageSizes}
+              />
+            </span>
             <div>
               <h3>{t("cat_leashes")}</h3>
               <p className="catalog-start-price">
@@ -100,15 +104,21 @@ export function Catalog() {
               </p>
             </div>
           </a>
-          <a className="catalog-preview" href="#collection/harnesses">
-            <Image
-              src="/assets/harness-khaki.webp"
-              alt=""
-              loading="lazy"
-              width={1312}
-              height={1199}
-              sizes={categoryImageSizes}
-            />
+          <a
+            data-reveal
+            className="catalog-preview"
+            href="#collection/harnesses"
+          >
+            <span className="catalog-preview-media">
+              <Image
+                src="/assets/harness-khaki.webp"
+                alt=""
+                loading="lazy"
+                width={1312}
+                height={1199}
+                sizes={categoryImageSizes}
+              />
+            </span>
             <div>
               <h3>{t("cat_harnesses")}</h3>
               <p className="catalog-start-price">

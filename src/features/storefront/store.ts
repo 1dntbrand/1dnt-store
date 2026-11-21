@@ -9,6 +9,10 @@ import {
   type ProductVariant,
 } from "@/domain/commerce/catalog";
 import { cartLineLimit, variantLimit } from "@/domain/commerce/availability";
+import {
+  FREE_SHIPPING_THRESHOLD,
+  SHIPPING_PRICE,
+} from "@/domain/commerce/shipping";
 import messages from "./data/messages.json";
 import services from "./data/services.json";
 import { languages, type Language } from "./lib/catalog";
@@ -27,6 +31,29 @@ import {
 } from "./lib/storage";
 
 const dictionary: Record<string, Partial<Record<Language, string>>> = messages;
+
+type Placeholders = Record<string, string>;
+
+/** Replace `{name}` placeholders; unknown names stay visible for review. */
+function fillPlaceholders(text: string, values: Placeholders) {
+  return text.replace(/\{(\w+)\}/g, (match, name: string) =>
+    Object.hasOwn(values, name) ? values[name] : match,
+  );
+}
+
+function fillServiceText<T>(value: T, values: Placeholders): T {
+  if (typeof value === "string") return fillPlaceholders(value, values) as T;
+  if (Array.isArray(value))
+    return value.map((item) => fillServiceText(item, values)) as T;
+  if (value && typeof value === "object")
+    return Object.fromEntries(
+      Object.entries(value).map(([key, item]) => [
+        key,
+        fillServiceText(item, values),
+      ]),
+    ) as T;
+  return value;
+}
 const serviceIds = [
   "contact",
   "delivery",
@@ -41,14 +68,30 @@ const languageHelpers = Object.fromEntries(
       { en: "en-IE", pl: "pl-PL", ru: "ru-RU", uk: "uk-UA" }[language],
       { style: "currency", currency: "PLN" },
     );
-    const t = (key: string) =>
-      dictionary[key]?.[language] ?? dictionary[key]?.en ?? key;
+    const money = (cents: number) => formatter.format(cents / 100);
+    const wholeMoney = new Intl.NumberFormat(
+      formatter.resolvedOptions().locale,
+      {
+        style: "currency",
+        currency: "PLN",
+        maximumFractionDigits: 0,
+      },
+    );
+    const shippingValues: Placeholders = {
+      shippingPrice: money(SHIPPING_PRICE),
+      freeShippingFrom: wholeMoney.format(FREE_SHIPPING_THRESHOLD / 100),
+    };
+    const t = (key: string, values?: Placeholders) =>
+      fillPlaceholders(
+        dictionary[key]?.[language] ?? dictionary[key]?.en ?? key,
+        values ? { ...shippingValues, ...values } : shippingValues,
+      );
     return [
       language,
       {
         t,
-        money: (cents: number) => formatter.format(cents / 100),
-        service: services[language],
+        money,
+        service: fillServiceText(services[language], shippingValues),
         choiceSummary: (colour: string, size: string) =>
           `${variantColourLabel(colour, t)} · ${size.includes(".") ? size.replace(".", language === "en" ? "." : ",") + " " + t("mUnit") : size}`,
       },
@@ -57,7 +100,7 @@ const languageHelpers = Object.fromEntries(
 ) as Record<
   Language,
   {
-    t: (key: string) => string;
+    t: (key: string, values?: Placeholders) => string;
     money: (cents: number) => string;
     service: typeof services.en;
     choiceSummary: (colour: string, size: string) => string;

@@ -19,9 +19,7 @@ type ElegantProductConfig = {
   category: string;
   categoryKey: string;
   titleKey: string;
-  descriptionKey: string;
   gallery: Record<ElegantColour, Record<ElegantView, string>>;
-  woodenHandle?: boolean;
 };
 
 export const elegantProducts = [
@@ -30,7 +28,6 @@ export const elegantProducts = [
     category: "collars",
     categoryKey: "cat_collars",
     titleKey: "elegantCollars",
-    descriptionKey: "elegantCollarDescription",
     gallery: {
       "dark-brown": {
         product: "elegant-collar-brown.webp",
@@ -47,8 +44,6 @@ export const elegantProducts = [
     category: "leashes",
     categoryKey: "cat_leashes",
     titleKey: "elegantLeash",
-    descriptionKey: "elegantDescription",
-    woodenHandle: true,
     gallery: {
       "dark-brown": {
         product: "elegant-leash-brown-product.webp",
@@ -65,7 +60,6 @@ export const elegantProducts = [
     category: "harnesses",
     categoryKey: "cat_harnesses",
     titleKey: "elegantHarnesses",
-    descriptionKey: "elegantHarnessDescription",
     gallery: {
       "dark-brown": {
         product: "elegant-harness-product.webp",

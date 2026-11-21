@@ -23,6 +23,9 @@ import { BundleOffer, type BundlePartSelection } from "./bundle-builder";
 import { ProductPurchase } from "./product-purchase";
 import { ProductSizeOptions } from "./product-size-options";
 import { CollectionSwitch } from "./collection-switch";
+import { BrandText } from "./brand-text";
+import { elegantLeashGuideId } from "./elegant-leash-guide";
+import { ProductInformation } from "./product-information";
 
 const imageSizes =
   "(max-width: 460px) calc(100vw - 40px), (max-width: 800px) 416px, (max-width: 1240px) 45vw, 560px";
@@ -83,8 +86,10 @@ export function Elegant() {
       aria-labelledby="elegantTitle"
     >
       <CollectionSwitch active="elegant" />
-      <div className="catalog-heading">
-        <h2 id="elegantTitle">Elegant</h2>
+      <div className="catalog-heading" data-reveal>
+        <h2 id="elegantTitle">
+          <BrandText>{t("elegantCollectionTitle")}</BrandText>
+        </h2>
       </div>
       <div
         className="elegant-tabs"
@@ -128,16 +133,16 @@ function ElegantProductPanel({
 }) {
   const { kind } = product;
   const config = elegantFields[kind];
-  const { t, money, openSizeGuide, colour, size, setField } = useStorefront(
-    (state) => ({
+  const { t, money, openSizeGuide, openDialog, colour, size, setField } =
+    useStorefront((state) => ({
       t: state.t,
       money: state.money,
       openSizeGuide: state.openSizeGuide,
+      openDialog: state.openDialog,
       colour: state.fields[config.colour] as ElegantColour,
       size: config.size ? state.fields[config.size] : "1.5",
       setField: state.setField,
-    }),
-  );
+    }));
   const infoRef = useRef<HTMLDivElement>(null);
   const optionsRef = useRef<HTMLFieldSetElement>(null);
   const [view, setView] = useState<ElegantView>("product");
@@ -169,6 +174,8 @@ function ElegantProductPanel({
         <div>
           <div className="elegant-main">
             <Image
+              key={photo}
+              className="photo-swap"
               src={`/assets/${photo}`}
               alt={`${title} · ${colourName} · ${t(view === "product" ? "galleryProduct" : "galleryWalk")}`}
               width={1122}
@@ -202,10 +209,11 @@ function ElegantProductPanel({
         </div>
         <div className="product-info" ref={infoRef}>
           <div className="product-heading">
-            <h3>{title}</h3>
+            <h3>
+              <BrandText>{title}</BrandText>
+            </h3>
             <p className="product-price">{money(itemPrice(variant))}</p>
           </div>
-          <p className="product-intro">{t(product.descriptionKey)}</p>
           <p className="product-price-note">{t("vatShipping")}</p>
           <fieldset className="variant-group" ref={optionsRef} tabIndex={-1}>
             <legend>
@@ -231,16 +239,19 @@ function ElegantProductPanel({
               ))}
             </div>
           </fieldset>
-          {kind === "leash" ? (
+          <ProductSizeOptions
+            kind={kind}
+            options={sizes}
+            selected={size}
+            onSelect={setSize}
+            onOpenGuide={() =>
+              kind === "leash"
+                ? openDialog(elegantLeashGuideId)
+                : openSizeGuide(kind, size, setSize)
+            }
+          />
+          {kind === "leash" && (
             <p className="elegant-note">{t("elegantLeashLength")}</p>
-          ) : (
-            <ProductSizeOptions
-              kind={kind}
-              options={sizes}
-              selected={size}
-              onSelect={setSize}
-              onOpenGuide={() => openSizeGuide(kind, size, setSize)}
-            />
           )}
           <ProductPurchase
             variant={variant}
@@ -248,18 +259,7 @@ function ElegantProductPanel({
             infoRef={infoRef}
             optionsRef={optionsRef}
           />
-          <dl className="elegant-specs">
-            {"woodenHandle" in product && (
-              <div className="elegant-spec">
-                <dt>{t("elegantHandle")}</dt>
-                <dd>{t("elegantWood")}</dd>
-              </div>
-            )}
-            <div className="elegant-spec">
-              <dt>{t("elegantHardware")}</dt>
-              <dd>Antique Brass</dd>
-            </div>
-          </dl>
+          <ProductInformation collection="elegant" kind={kind} />
         </div>
       </div>
       {kind !== "leash" && (

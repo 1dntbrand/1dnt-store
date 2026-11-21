@@ -2,6 +2,7 @@
 
 import { brandLinks } from "../data/brand";
 import { useStorefront } from "../storefront-context";
+import { InstagramIcon } from "./instagram-icon";
 
 export function Footer() {
   const { t, openService, service } = useStorefront((state) => ({
@@ -11,7 +12,7 @@ export function Footer() {
   }));
   return (
     <footer className="site-footer">
-      <div className="footer-top">
+      <div className="footer-top" data-reveal>
         <div className="footer-brand">
           <div className="footer-title">{t("footerTogether")}</div>
           {brandLinks.instagram && (
@@ -22,23 +23,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.35"
-                aria-hidden="true"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-                <circle cx="12" cy="12" r="4.2"></circle>
-                <circle
-                  cx="17.5"
-                  cy="6.5"
-                  r=".9"
-                  fill="currentColor"
-                  stroke="none"
-                ></circle>
-              </svg>
+              <InstagramIcon />
             </a>
           )}
         </div>

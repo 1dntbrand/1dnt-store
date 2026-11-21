@@ -126,10 +126,10 @@
     "uk": "Додати до кошика"
   },
   "vatShipping": {
-    "en": "Price includes delivery within Poland and 23% VAT.",
-    "pl": "Cena obejmuje dostawę na terenie Polski i 23% VAT.",
-    "ru": "Доставка по Польше и 23% НДС включены в стоимость.",
-    "uk": "Доставка в межах Польщі та 23% ПДВ включені у вартість."
+    "en": "Price includes 23% VAT. Delivery {shippingPrice}, free from {freeShippingFrom}.",
+    "pl": "Cena zawiera 23% VAT. Dostawa {shippingPrice}, darmowa od {freeShippingFrom}.",
+    "ru": "Цена включает 23% НДС. Доставка {shippingPrice}, бесплатно от {freeShippingFrom}.",
+    "uk": "Ціна включає 23% ПДВ. Доставка {shippingPrice}, безкоштовно від {freeShippingFrom}."
   },
   "totalLabel": {
     "en": "Total",
@@ -744,10 +744,10 @@
     "uk": "Скільки коштує доставка?"
   },
   "faqDeliveryCostA": {
-    "en": "Delivery is included in the product price.",
-    "pl": "Dostawa jest wliczona w cenę produktu.",
-    "ru": "Доставка уже включена в стоимость товара.",
-    "uk": "Доставка вже включена у вартість товару."
+    "en": "Delivery to an InPost pickup point in Poland costs {shippingPrice}. Orders from {freeShippingFrom} ship free. The delivery cost is shown in your bag before you pay.",
+    "pl": "Dostawa do punktu InPost na terenie Polski kosztuje {shippingPrice}. Zamówienia od {freeShippingFrom} wysyłamy za darmo. Koszt dostawy widzisz w koszyku przed płatnością.",
+    "ru": "Доставка в пункт InPost по Польше стоит {shippingPrice}. Заказы от {freeShippingFrom} доставляем бесплатно. Стоимость доставки видна в корзине до оплаты.",
+    "uk": "Доставка до пункту InPost у межах Польщі коштує {shippingPrice}. Замовлення від {freeShippingFrom} доставляємо безкоштовно. Вартість доставки видно в кошику до оплати."
   },
   "faqDeliveryTimeQ": {
     "en": "How long does delivery take?",
@@ -828,64 +828,28 @@
     "uk": "До запуску магазину ми опублікуємо адресу повернення та докладні інструкції в розділі «Повернення та претензії». Звернення за інструкцією не є умовою реалізації законного права на відмову від покупки."
   },
   "elegantLeash": {
-    "en": "Leash Elegant",
-    "pl": "Smycz Elegant",
-    "ru": "Поводок Elegant",
-    "uk": "Повідець Elegant"
+    "en": "Leash Elegant BioThane®",
+    "pl": "Smycz Elegant BioThane®",
+    "ru": "Поводок Elegant BioThane®",
+    "uk": "Повідець Elegant BioThane®"
   },
   "elegantCollars": {
-    "en": "Collar Elegant",
-    "pl": "Obroża Elegant",
-    "ru": "Ошейник Elegant",
-    "uk": "Нашийник Elegant"
+    "en": "Collar Elegant BioThane®",
+    "pl": "Obroża Elegant BioThane®",
+    "ru": "Ошейник Elegant BioThane®",
+    "uk": "Нашийник Elegant BioThane®"
   },
   "elegantHarnesses": {
-    "en": "Harness Elegant",
-    "pl": "Szelki Elegant",
-    "ru": "Шлейка Elegant",
-    "uk": "Шлея Elegant"
-  },
-  "elegantDescription": {
-    "en": "A simple strap with a wooden ring in place of a traditional loop handle.",
-    "pl": "Prosty pasek z drewnianym kołem zamiast tradycyjnej pętli.",
-    "ru": "Лаконичный поводок с деревянным кольцом вместо обычной петли.",
-    "uk": "Лаконічний повідець із дерев’яним кільцем замість звичайної петлі."
-  },
-  "elegantHandle": {
-    "en": "Handle",
-    "pl": "Rączka",
-    "ru": "Ручка",
-    "uk": "Ручка"
-  },
-  "elegantWood": {
-    "en": "Wooden ring",
-    "pl": "Drewniane koło",
-    "ru": "Деревянное кольцо",
-    "uk": "Дерев’яне кільце"
-  },
-  "elegantHardware": {
-    "en": "Hardware",
-    "pl": "Okucia",
-    "ru": "Фурнитура",
-    "uk": "Фурнітура"
+    "en": "Harness Elegant BioThane®",
+    "pl": "Szelki Elegant BioThane®",
+    "ru": "Шлейка Elegant BioThane®",
+    "uk": "Шлея Elegant BioThane®"
   },
   "menuCollections": {
     "en": "Collections",
     "pl": "Kolekcje",
     "ru": "Коллекции",
     "uk": "Колекції"
-  },
-  "elegantCollarDescription": {
-    "en": "A collar with a traditional prong buckle and a simple, logo-free design.",
-    "ru": "Ошейник с классической пряжкой и лаконичной формой без логотипа.",
-    "pl": "Obroża z klasyczną klamrą i prostą formą bez logo.",
-    "uk": "Нашийник із класичною пряжкою та лаконічною формою без логотипа."
-  },
-  "elegantHarnessDescription": {
-    "en": "A harness with adjustable straps and hardware in an antique brass finish.",
-    "pl": "Szelki z regulowanymi paskami i okuciami w odcieniu starego mosiądzu.",
-    "ru": "Шлейка с регулируемыми ремнями и фурнитурой в оттенке состаренной латуни.",
-    "uk": "Шлея з регульованими ременями та фурнітурою у відтінку зістареної латуні."
   },
   "setDiscounts": {
     "en": "Set discounts",
@@ -941,15 +905,11 @@
     "ru": "Собака в ошейнике Military Olive на прогулке",
     "uk": "Собака в нашийнику Military Olive на прогулянці"
   },
-  "navAbout": {
-    "en": "About",
-    "pl": "O marce"
-  },
   "viewCollection": {
-    "en": "Shop the collection",
-    "pl": "Zobacz produkty",
-    "ru": "Выбрать амуницию",
-    "uk": "Обрати амуніцію"
+    "en": "See the collection",
+    "pl": "Zobacz kolekcję",
+    "ru": "Смотреть коллекцию",
+    "uk": "Переглянути колекцію"
   },
   "storyEyebrow": {
     "en": "Philosophy",
@@ -1089,12 +1049,6 @@
     "ru": "Изменить заказ",
     "uk": "Змінити замовлення"
   },
-  "included": {
-    "en": "Included",
-    "pl": "W cenie",
-    "ru": "Включено",
-    "uk": "Включено"
-  },
   "contactDetails": {
     "en": "Contact details",
     "pl": "Dane kontaktowe",
@@ -1150,10 +1104,10 @@
     "uk": "Доставка"
   },
   "pickupDescription": {
-    "en": "Delivery within Poland is included in the order total.",
-    "pl": "Dostawa na terenie Polski jest wliczona w cenę zamówienia.",
-    "ru": "Доставка по Польше включена в стоимость заказа.",
-    "uk": "Доставка в межах Польщі включена у вартість замовлення."
+    "en": "Delivery within Poland to an InPost pickup point: {shippingPrice}, free from {freeShippingFrom}.",
+    "pl": "Dostawa na terenie Polski do punktu InPost: {shippingPrice}, darmowa od {freeShippingFrom}.",
+    "ru": "Доставка по Польше в пункт InPost: {shippingPrice}, бесплатно от {freeShippingFrom}.",
+    "uk": "Доставка в межах Польщі до пункту InPost: {shippingPrice}, безкоштовно від {freeShippingFrom}."
   },
   "choosePickupPoint": {
     "en": "Choose pickup point",
@@ -1197,12 +1151,6 @@
     "ru": "Введите действительный номер для выбранной страны.",
     "uk": "Введіть дійсний номер телефону для вибраної країни."
   },
-  "readOurStory": {
-    "en": "More about the brand",
-    "pl": "Więcej o marce",
-    "ru": "Больше о бренде",
-    "uk": "Більше про бренд"
-  },
   "faqTopic": {
     "en": "Question topic",
     "pl": "Temat pytania",
@@ -1221,29 +1169,11 @@
     "ru": "Максимум для одного варианта — 99 штук. Измените количество в корзине перед добавлением комплекта.",
     "uk": "Максимум для одного варіанта — 99 штук. Змініть кількість у кошику перед додаванням комплекту."
   },
-  "collarPracticalIntro": {
-    "en": "An adjustable, waterproof BioThane® collar with a FIDLOCK magnetic-mechanical fastening.",
-    "pl": "Regulowana, wodoodporna obroża z BioThane® z zapięciem magnetyczno-mechanicznym FIDLOCK.",
-    "ru": "Регулируемый ошейник из водостойкого BioThane® с магнитно-механической застёжкой FIDLOCK.",
-    "uk": "Регульований нашийник із водостійкого BioThane® з магнітно-механічною застібкою FIDLOCK."
-  },
-  "leashPracticalIntro": {
-    "en": "A waterproof BioThane® leash in two lengths. Choose the standard 1.5 m model or the multifunctional 2.5 m model.",
-    "pl": "Wodoodporna smycz z BioThane® w dwóch długościach. Wybierz klasyczny model 1,5 m lub wielofunkcyjny model 2,5 m.",
-    "ru": "Водостойкий поводок из BioThane® в двух длинах. Выберите обычный поводок 1,5 м или многофункциональную модель 2,5 м.",
-    "uk": "Водостійкий повідець із BioThane® у двох довжинах. Оберіть звичайний повідець 1,5 м або багатофункціональну модель 2,5 м."
-  },
-  "harnessPracticalIntro": {
-    "en": "An adjustable, waterproof BioThane® harness. Choose the size using both neck and chest measurements.",
-    "pl": "Regulowane, wodoodporne szelki z BioThane®. Dobierz rozmiar według obwodu szyi i klatki piersiowej.",
-    "ru": "Регулируемая шлейка из водостойкого BioThane®. Выбирайте размер по обхвату шеи и груди.",
-    "uk": "Регульована шлея з водостійкого BioThane®. Обирайте розмір за обхватом шиї та грудей."
-  },
   "elegantLeashLength": {
-    "en": "Total length 1.5 m, including the handle. Ring diameter 14 cm.",
-    "pl": "Długość całkowita 1,5 m razem z rączką. Średnica pierścienia 14 cm.",
-    "ru": "Длина с ручкой 1,5 м. Диаметр кольца 14 см.",
-    "uk": "Довжина з ручкою 1,5 м. Діаметр кільця 14 см."
+    "en": "Total length: 1.5 m, including the handle. Handle diameter: 14 cm.",
+    "pl": "Długość całkowita: 1,5 m, razem z rączką. Średnica rączki: 14 cm.",
+    "ru": "Общая длина: 1,5 м, включая ручку. Диаметр ручки: 14 см.",
+    "uk": "Загальна довжина: 1,5 м, включно з ручкою. Діаметр ручки: 14 см."
   },
   "outOfStock": {
     "en": "Out of stock",
@@ -1317,12 +1247,6 @@
     "ru": "Доступное количество",
     "uk": "Доступна кількість"
   },
-  "heroSummary": {
-    "en": "Handmade collars, leashes and harnesses",
-    "pl": "Ręcznie robione obroże, smycze i szelki",
-    "ru": "Ошейники, поводки и шлейки ручной работы",
-    "uk": "Нашийники, повідці та шлеї ручної роботи"
-  },
   "chooseVariant": {
     "en": "Choose options",
     "pl": "Wybierz wariant",
@@ -1330,10 +1254,10 @@
     "uk": "Обрати варіант"
   },
   "productReturnPolicy": {
-    "en": "Returns",
-    "pl": "Zwroty",
-    "ru": "Условия возврата",
-    "uk": "Умови повернення"
+    "en": "14 days to return",
+    "pl": "14 dni na zwrot",
+    "ru": "14 дней на возврат",
+    "uk": "14 днів на повернення"
   },
   "fitGuideLabel": {
     "en": "Find your size",
@@ -1382,5 +1306,125 @@
     "pl": "Dodano do koszyka",
     "ru": "Добавлено в корзину",
     "uk": "Додано до кошика"
+  },
+  "elegantCollectionTitle": {
+    "en": "Collection Elegant BioThane®",
+    "pl": "Kolekcja Elegant BioThane®",
+    "ru": "Коллекция Elegant BioThane®",
+    "uk": "Колекція Elegant BioThane®"
+  },
+  "elegantFullDescription": {
+    "en": "Elegant is a collection of collars, leashes and harnesses for those who value elegance in everyday style. Clean shapes, deep tones and distinctive hardware complement your look — on a city walk, over coffee with friends or on an evening out with your dog. Thoughtful details combine aesthetics with functionality, keeping things convenient for you and comfortable for your dog. We make each piece by hand, with attention to form, the combination of materials and detail.",
+    "pl": "Elegant to kolekcja obroży, smyczy i szelek dla osób, które cenią elegancję w codziennym stylu. Proste formy, głębokie odcienie i wyraziste okucia dopełniają Twój strój — podczas spaceru po mieście, kawy z przyjaciółmi czy wieczornego wyjścia z psem. Przemyślane detale łączą estetykę z funkcjonalnością, zapewniając wygodę Tobie i komfort Twojemu psu. Każdy produkt wykonujemy ręcznie, z dbałością o formę, połączenie materiałów i detale.",
+    "ru": "Elegant — коллекция ошейников, поводков и шлеек для тех, кто ценит элегантность в повседневном стиле. Лаконичные формы, глубокие оттенки и выразительная фурнитура дополняют ваш образ — на прогулке по городу, за кофе с друзьями или во время вечернего выхода вместе с собакой. Продуманные детали сочетают эстетику с функциональностью, сохраняя удобство для вас и комфорт для питомца. Каждое изделие мы создаём вручную, уделяя внимание форме, сочетанию материалов и деталям.",
+    "uk": "Elegant — колекція нашийників, повідців і шлей для тих, хто цінує елегантність у повсякденному стилі. Лаконічні форми, глибокі відтінки та виразна фурнітура доповнюють ваш образ — на прогулянці містом, за кавою з друзями чи під час вечірнього виходу із собакою. Продумані деталі поєднують естетику з функціональністю, зберігаючи зручність для вас і комфорт для улюбленця. Кожен виріб ми створюємо вручну, приділяючи увагу формі, поєднанню матеріалів і деталям."
+  },
+  "elegantHardwareColour": {
+    "en": "Colour: Antique Brass.",
+    "pl": "Kolor: Antique Brass.",
+    "ru": "Цвет: Antique Brass.",
+    "uk": "Колір: Antique Brass."
+  },
+  "hardwareMaterials": {
+    "en": "Material: steel and die-cast zinc alloy.",
+    "pl": "Materiał: stal i odlewany ciśnieniowo stop cynku.",
+    "ru": "Материал: сталь и литой цинковый сплав.",
+    "uk": "Матеріал: сталь і литий цинковий сплав."
+  },
+  "elegantHandleMaterial": {
+    "en": "Handle: Solid Wood.",
+    "pl": "Rączka: Solid Wood.",
+    "ru": "Ручка: Solid Wood.",
+    "uk": "Ручка: Solid Wood."
+  },
+  "elegantWoodCare": {
+    "en": "Wipe the wooden handle with a soft, slightly damp cloth and dry it immediately. Do not soak the handle or leave it in water.",
+    "pl": "Drewnianą rączkę przecieraj miękką, lekko wilgotną ściereczką i od razu wycieraj do sucha. Nie mocz rączki ani nie pozostawiaj jej w wodzie.",
+    "ru": "Деревянную ручку протирайте мягкой слегка влажной тканью и сразу вытирайте насухо. Не замачивайте ручку и не оставляйте её в воде.",
+    "uk": "Дерев’яну ручку протирайте м’якою злегка вологою тканиною та відразу витирайте насухо. Не замочуйте ручку й не залишайте її у воді."
+  },
+  "baseHardwareColour": {
+    "en": "Colour: matte black.",
+    "pl": "Kolor: matowa czerń.",
+    "ru": "Цвет: матовый чёрный.",
+    "uk": "Колір: матовий чорний."
+  },
+  "baseHardwareFastening": {
+    "en": "Fastening: FIDLOCK.",
+    "pl": "Zapięcie: FIDLOCK.",
+    "ru": "Застёжка: FIDLOCK.",
+    "uk": "Застібка: FIDLOCK."
+  },
+  "hardwareHowWorks": {
+    "en": "How does it work?",
+    "pl": "Jak to działa?",
+    "ru": "Как это работает?",
+    "uk": "Як це працює?"
+  },
+  "freeShipping": {
+    "en": "Free",
+    "pl": "Gratis",
+    "ru": "Бесплатно",
+    "uk": "Безкоштовно"
+  },
+  "freeShippingRemaining": {
+    "en": "Add {amount} more for free delivery",
+    "pl": "Do darmowej dostawy brakuje {amount}",
+    "ru": "До бесплатной доставки осталось {amount}",
+    "uk": "До безкоштовної доставки залишилося {amount}"
+  },
+  "freeShippingReached": {
+    "en": "Your delivery is free",
+    "pl": "Masz darmową dostawę",
+    "ru": "Доставка для вас бесплатная",
+    "uk": "Доставка для вас безкоштовна"
+  },
+  "deliveryInpost": {
+    "en": "InPost pickup point",
+    "pl": "Paczkomat InPost",
+    "ru": "Пункт InPost",
+    "uk": "Пункт InPost"
+  },
+  "vatIncluded": {
+    "en": "Prices include 23% VAT.",
+    "pl": "Ceny zawierają 23% VAT.",
+    "ru": "Цены включают 23% НДС.",
+    "uk": "Ціни включають 23% ПДВ."
+  },
+  "setHintLeash": {
+    "en": "Add a leash and save 5% on the pair.",
+    "pl": "Dodaj smycz — para będzie 5% taniej.",
+    "ru": "Добавьте поводок — пара станет на 5% дешевле.",
+    "uk": "Додайте повідець — пара стане на 5% дешевшою."
+  },
+  "setHintCollar": {
+    "en": "Add a collar and save 5% on the pair.",
+    "pl": "Dodaj obrożę — para będzie 5% taniej.",
+    "ru": "Добавьте ошейник — пара станет на 5% дешевле.",
+    "uk": "Додайте нашийник — пара стане на 5% дешевшою."
+  },
+  "setHintCollarOrHarness": {
+    "en": "Add a collar or harness and save 5% on the pair.",
+    "pl": "Dodaj obrożę lub szelki — para będzie 5% taniej.",
+    "ru": "Добавьте ошейник или шлейку — пара станет на 5% дешевле.",
+    "uk": "Додайте нашийник або шлею — пара стане на 5% дешевшою."
+  },
+  "setHintTrioHarness": {
+    "en": "Add a harness and get 10% off all three.",
+    "pl": "Dodaj szelki — cały komplet będzie 10% taniej.",
+    "ru": "Добавьте шлейку — скидка 10% на все три изделия.",
+    "uk": "Додайте шлею — знижка 10% на всі три вироби."
+  },
+  "setHintTrioCollar": {
+    "en": "Add a collar and get 10% off all three.",
+    "pl": "Dodaj obrożę — cały komplet będzie 10% taniej.",
+    "ru": "Добавьте ошейник — скидка 10% на все три изделия.",
+    "uk": "Додайте нашийник — знижка 10% на всі три вироби."
+  },
+  "setHintAction": {
+    "en": "Choose",
+    "pl": "Wybierz",
+    "ru": "Выбрать",
+    "uk": "Обрати"
   }
 }
