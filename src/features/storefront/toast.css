@@ -1,0 +1,118 @@
+/* Add-to-bag confirmation: top right on wide screens, above the thumb zone on phones. */
+.added-toast-region {
+  position: fixed;
+  z-index: 20;
+  top: calc(var(--header-height) + var(--space-3));
+  right: var(--page-gutter);
+  width: min(380px, calc(100vw - 2 * var(--page-gutter)));
+  pointer-events: none;
+}
+.added-toast {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--media-radius) + 2px);
+  background: var(--paper);
+  box-shadow: 0 18px 40px -24px rgb(37 38 34 / 0.55);
+  pointer-events: auto;
+}
+.added-toast-photo {
+  position: relative;
+  width: 56px;
+  height: 64px;
+  overflow: hidden;
+  border-radius: var(--control-radius);
+  background: var(--surface);
+}
+.added-toast-photo img {
+  object-fit: cover;
+}
+.added-toast-body {
+  min-width: 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.added-toast-title {
+  margin: 0;
+  font-weight: 600;
+  color: var(--olive);
+}
+.added-toast-item {
+  display: flex;
+  flex-direction: column;
+  margin: 2px 0 0;
+}
+.added-toast-item strong {
+  font-weight: 500;
+}
+.added-toast-item > span {
+  color: var(--muted);
+}
+.added-toast-shipping {
+  margin: var(--space-1) 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+.added-toast-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.added-toast-actions .btn {
+  flex: 1;
+  min-height: 44px;
+}
+.added-toast-close {
+  flex: none;
+}
+
+/* The button itself confirms the add for a moment. */
+.btn[data-added] {
+  border-color: var(--olive);
+  background-color: var(--olive);
+}
+
+@media (max-width: 800px) {
+  .added-toast-region {
+    top: auto;
+    right: var(--page-gutter);
+    bottom: max(var(--space-3), env(safe-area-inset-bottom));
+  }
+  body:has(.purchase-dock) .added-toast-region {
+    bottom: calc(76px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .added-toast {
+    animation: toast-in 420ms var(--ease-out) both;
+  }
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 800px) and (prefers-reduced-motion: no-preference) {
+  .added-toast {
+    animation-name: toast-up;
+  }
+}
+@keyframes toast-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { blurProps } from "../lib/image-placeholder";
 import { useStorefront } from "../storefront-context";
 import { FaqSection } from "./faq-section";
 
@@ -24,6 +25,7 @@ export function BrandStory() {
         <figure className="philosophy-photo" data-reveal>
           <Image
             src="/assets/philosophy-together.webp"
+            {...blurProps("/assets/philosophy-together.webp")}
             alt={t("storyPhotoAlt")}
             width={1152}
             height={2048}

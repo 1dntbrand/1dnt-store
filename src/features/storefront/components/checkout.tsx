@@ -10,6 +10,7 @@ import {
 } from "react";
 import { useStorefront } from "../storefront-context";
 import { Dialog } from "./dialog";
+import { CloseButton } from "./close-button";
 import { OrderItems, OrderTotals } from "./cart";
 import { CheckoutPhone } from "./checkout-phone";
 
@@ -97,22 +98,30 @@ export function Checkout() {
     >
       <div className="panel-top">
         <h2 id="checkoutTitle">{t("checkoutTitle")}</h2>
-        <button
-          type="button"
-          className="icon-button close-button"
-          aria-label={t("guideClose")}
-          onClick={closeDialog}
-        >
-          ×
-        </button>
+        <CloseButton label={t("guideClose")} onClick={closeDialog} />
       </div>
-      <button
-        className="text-button checkout-back"
-        type="button"
-        onClick={() => openDialog("cartPanel")}
-      >
-        ← {t("backToBag")}
-      </button>
+      <ol className="checkout-steps" aria-label={t("checkoutSteps")}>
+        <li data-state="done">
+          <button type="button" onClick={() => openDialog("cartPanel")}>
+            <span className="checkout-step-mark" aria-hidden="true">
+              ✓
+            </span>
+            {t("stepBag")}
+          </button>
+        </li>
+        <li data-state="current" aria-current="step">
+          <span className="checkout-step-mark" aria-hidden="true">
+            2
+          </span>
+          {t("stepDetails")}
+        </li>
+        <li data-state="next">
+          <span className="checkout-step-mark" aria-hidden="true">
+            3
+          </span>
+          {t("stepPayment")}
+        </li>
+      </ol>
       {cartCount === 0 ? (
         <div className="cart-empty">
           <p>{t("cartEmpty")}</p>
@@ -253,6 +262,22 @@ export function Checkout() {
                 <span>{t("continuePayment")}</span>
                 <span className="checkout-payment-total">{money(total)}</span>
               </button>
+              <p className="checkout-trust">
+                <span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    aria-hidden="true"
+                  >
+                    <rect x="5" y="10.5" width="14" height="10" rx="2" />
+                    <path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" />
+                  </svg>
+                  {t("securePayment")}
+                </span>
+                <span>{t("productReturnPolicy")}</span>
+              </p>
               <p className="field-hint">{t("checkoutPreviewNotice")}</p>
             </div>
           </form>

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRecentlyAdded } from "../lib/use-recently-added";
 import { useId } from "react";
 import { variantLimit } from "@/domain/commerce/availability";
 import {
@@ -101,6 +102,7 @@ export function BundleOffer({
   const id = useId();
   const selected = extra && includeExtra ? [...parts, extra] : parts;
   const variants = selected.map(({ variant }) => variant);
+  const justAdded = useRecentlyAdded(variants);
   const pricing = calculateCart(
     variants.map((variant) => ({
       ...variant,
@@ -168,9 +170,10 @@ export function BundleOffer({
           type="button"
           className="btn"
           disabled={unavailable}
+          data-added={justAdded || undefined}
           onClick={() => addItems(variants)}
         >
-          {t("addSetToCart")}
+          {justAdded ? `${t("addedToBag")} ✓` : t("addSetToCart")}
         </button>
       </div>
       <div role="status" className="stock-announcement">

@@ -11,7 +11,9 @@ import { variantPhoto } from "../lib/catalog";
 import { productTitleKey } from "../lib/product-options";
 import { suggestSetItem } from "../lib/set-suggestion";
 import { Dialog } from "./dialog";
+import { CloseButton } from "./close-button";
 import { BrandText } from "./brand-text";
+import { blurProps } from "../lib/image-placeholder";
 
 export function OrderItems({ editable = false }: { editable?: boolean }) {
   const { cart, pricing, t, money, choiceSummary, changeQuantity } =
@@ -178,6 +180,24 @@ export function FreeShippingProgress() {
     </div>
   );
 }
+const emptyBagPicks = [
+  {
+    href: "#collection/collars",
+    src: "/assets/collar-khaki.webp",
+    label: "cat_collars",
+  },
+  {
+    href: "#collection/leashes",
+    src: "/assets/leash-black.webp",
+    label: "cat_leashes",
+  },
+  {
+    href: "#collection/harnesses",
+    src: "/assets/harness-khaki.webp",
+    label: "cat_harnesses",
+  },
+];
+
 export function Cart() {
   const {
     t,
@@ -205,32 +225,43 @@ export function Cart() {
           {t("cartTitle")}{" "}
           <span className="cart-heading-count">({cartCount})</span>
         </h2>
-        <button
-          type="button"
-          className="icon-button close-button"
-          aria-label={t("guideClose")}
-          onClick={closeDialog}
-        >
-          ×
-        </button>
+        <CloseButton label={t("guideClose")} onClick={closeDialog} />
       </div>
       {cartCount === 0 ? (
         <div className="cart-empty">
           <h3>{t("cartEmpty")}</h3>
           <p>{t("cartIntro")}</p>
+          <p className="cart-empty-label">{t("emptyBagPick")}</p>
+          <div className="cart-empty-picks">
+            {emptyBagPicks.map(({ href, src, label }) => (
+              <a
+                key={href}
+                className="cart-empty-pick"
+                href={href}
+                onClick={closeDialog}
+              >
+                <span className="cart-empty-photo">
+                  <Image
+                    src={src}
+                    alt=""
+                    fill
+                    sizes="120px"
+                    {...blurProps(src)}
+                  />
+                </span>
+                <span>{t(label)}</span>
+              </a>
+            ))}
+          </div>
+          <p className="cart-empty-offer">{t("catalogSetOffer")}</p>
           <a className="btn" href="#collection" onClick={closeDialog}>
             {t("cartBrowse")}
           </a>
         </div>
       ) : (
         <>
-          {cartNotice === "cartAdded" && (
-            <p className="cart-added" role="status">
-              {t("cartAdded")}
-            </p>
-          )}
           <div className="cart-scroll">
-            {cartNotice && cartNotice !== "cartAdded" && (
+            {cartNotice && (
               <p className="integration-notice" role="status">
                 {t(cartNotice)}
               </p>

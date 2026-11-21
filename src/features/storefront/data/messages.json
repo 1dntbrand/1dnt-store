@@ -1302,7 +1302,7 @@
     "uk": "см"
   },
   "cartAdded": {
-    "en": "Added to your cart",
+    "en": "Added to your bag",
     "pl": "Dodano do koszyka",
     "ru": "Добавлено в корзину",
     "uk": "Додано до кошика"
@@ -1426,5 +1426,107 @@
     "pl": "Wybierz",
     "ru": "Выбрать",
     "uk": "Обрати"
+  },
+  "addedToBag": {
+    "en": "Added",
+    "pl": "Dodano",
+    "ru": "Добавлено",
+    "uk": "Додано"
+  },
+  "viewBag": {
+    "en": "View bag",
+    "pl": "Zobacz koszyk",
+    "ru": "Открыть корзину",
+    "uk": "Відкрити кошик"
+  },
+  "setAddedLine": {
+    "en": "Set · {count} items",
+    "pl": "Zestaw · {count} szt.",
+    "ru": "Комплект · {count} шт.",
+    "uk": "Комплект · {count} шт."
+  },
+  "galleryOpen": {
+    "en": "open full screen",
+    "pl": "otwórz na pełnym ekranie",
+    "ru": "открыть на весь экран",
+    "uk": "відкрити на весь екран"
+  },
+  "galleryPrev": {
+    "en": "Previous photo",
+    "pl": "Poprzednie zdjęcie",
+    "ru": "Предыдущее фото",
+    "uk": "Попереднє фото"
+  },
+  "galleryNext": {
+    "en": "Next photo",
+    "pl": "Następne zdjęcie",
+    "ru": "Следующее фото",
+    "uk": "Наступне фото"
+  },
+  "galleryZoomIn": {
+    "en": "zoom in",
+    "pl": "powiększ",
+    "ru": "увеличить",
+    "uk": "збільшити"
+  },
+  "galleryZoomOut": {
+    "en": "zoom out",
+    "pl": "pomniejsz",
+    "ru": "уменьшить",
+    "uk": "зменшити"
+  },
+  "stepBag": {
+    "en": "Bag",
+    "pl": "Koszyk",
+    "ru": "Корзина",
+    "uk": "Кошик"
+  },
+  "stepDetails": {
+    "en": "Details & delivery",
+    "pl": "Dane i dostawa",
+    "ru": "Данные и доставка",
+    "uk": "Дані та доставка"
+  },
+  "stepPayment": {
+    "en": "Payment",
+    "pl": "Płatność",
+    "ru": "Оплата",
+    "uk": "Оплата"
+  },
+  "checkoutSteps": {
+    "en": "Checkout steps",
+    "pl": "Etapy zamówienia",
+    "ru": "Шаги оформления",
+    "uk": "Кроки оформлення"
+  },
+  "securePayment": {
+    "en": "Secure payment via Stripe",
+    "pl": "Bezpieczna płatność przez Stripe",
+    "ru": "Безопасная оплата через Stripe",
+    "uk": "Безпечна оплата через Stripe"
+  },
+  "emptyBagPick": {
+    "en": "Start with",
+    "pl": "Zacznij od",
+    "ru": "Начните с",
+    "uk": "Почніть з"
+  },
+  "measureTip": {
+    "en": "Tip: leave room for two fingers under the tape so the fit stays comfortable.",
+    "pl": "Wskazówka: zostaw pod taśmą miejsce na dwa palce, aby było wygodnie.",
+    "ru": "Совет: оставьте под лентой место для двух пальцев — так будет комфортно.",
+    "uk": "Порада: залиште під стрічкою місце для двох пальців — так буде комфортно."
+  },
+  "leashActiveRing": {
+    "en": "Orange ring — the attachment point in use.",
+    "pl": "Pomarańczowy pierścień — używany punkt mocowania.",
+    "ru": "Оранжевое кольцо — используемая точка крепления.",
+    "uk": "Помаранчеве кільце — точка кріплення, що використовується."
+  },
+  "chooseThisSize": {
+    "en": "Choose {size}",
+    "pl": "Wybierz {size}",
+    "ru": "Выбрать {size}",
+    "uk": "Обрати {size}"
   }
 }

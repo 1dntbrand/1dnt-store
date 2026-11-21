@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import {
   elegantColourIds,
   itemPrice,
@@ -14,7 +13,6 @@ import {
   elegantViews,
   type ElegantColour,
   type ElegantProduct,
-  type ElegantView,
 } from "../data/elegant-products";
 import { useStorefront } from "../storefront-context";
 import { variantSizeOptions } from "../lib/product-options";
@@ -23,6 +21,8 @@ import { BundleOffer, type BundlePartSelection } from "./bundle-builder";
 import { ProductPurchase } from "./product-purchase";
 import { ProductSizeOptions } from "./product-size-options";
 import { CollectionSwitch } from "./collection-switch";
+import { MediaGallery } from "./media-gallery";
+import { useTabIndicator } from "../lib/use-tab-indicator";
 import { BrandText } from "./brand-text";
 import { elegantLeashGuideId } from "./elegant-leash-guide";
 import { ProductInformation } from "./product-information";
@@ -48,6 +48,8 @@ export function Elegant() {
     t: state.t,
     tab: state.categories.elegant,
   }));
+
+  const tabs = useTabIndicator<HTMLDivElement>('[aria-selected="true"]', tab);
 
   function selectTab(category: ElegantProduct["category"]) {
     if (category !== tab) navigateToCategory(category);
@@ -92,6 +94,7 @@ export function Elegant() {
         </h2>
       </div>
       <div
+        ref={tabs}
         className="elegant-tabs"
         role="tablist"
         aria-labelledby="elegantTitle"
@@ -145,9 +148,8 @@ function ElegantProductPanel({
     }));
   const infoRef = useRef<HTMLDivElement>(null);
   const optionsRef = useRef<HTMLFieldSetElement>(null);
-  const [view, setView] = useState<ElegantView>("product");
+  const [view, setView] = useState(0);
   const colourName = elegantColours[colour].label;
-  const photo = product.gallery[colour][view];
   const title = t(product.titleKey);
   const variant: ProductVariant = { collection: "elegant", kind, colour, size };
   const sizes = variantSizeOptions(variant);
@@ -155,7 +157,7 @@ function ElegantProductPanel({
   function setColour(value: string) {
     if (value === colour) return;
     setField(config.colour, value);
-    setView("product");
+    setView(0);
   }
 
   function setSize(value: string) {
@@ -171,42 +173,17 @@ function ElegantProductPanel({
       hidden={!active}
     >
       <div className="elegant-product">
-        <div>
-          <div className="elegant-main">
-            <Image
-              key={photo}
-              className="photo-swap"
-              src={`/assets/${photo}`}
-              alt={`${title} · ${colourName} · ${t(view === "product" ? "galleryProduct" : "galleryWalk")}`}
-              width={1122}
-              height={1402}
-              sizes={imageSizes}
-            />
-          </div>
-          <div
-            className="gallery-thumbs"
-            role="group"
-            aria-label={t("productPhotos")}
-          >
-            {elegantViews.map(({ id, label }) => (
-              <button
-                key={id}
-                className="gallery-thumb"
-                type="button"
-                aria-label={t(label)}
-                aria-pressed={view === id}
-                onClick={() => setView(id)}
-              >
-                <Image
-                  src={`/assets/${product.gallery[colour][id]}`}
-                  alt=""
-                  fill
-                  sizes="72px"
-                />
-              </button>
-            ))}
-          </div>
-        </div>
+        <MediaGallery
+          className="elegant-gallery"
+          photos={elegantViews.map(({ id, label }) => ({
+            src: `/assets/${product.gallery[colour][id]}`,
+            alt: `${title} · ${colourName} · ${t(label)}`,
+            label: t(label),
+          }))}
+          index={view}
+          onIndexChange={setView}
+          sizes={imageSizes}
+        />
         <div className="product-info" ref={infoRef}>
           <div className="product-heading">
             <h3>

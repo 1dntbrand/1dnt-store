@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { blurProps } from "../lib/image-placeholder";
 
 import { useStorefront } from "../storefront-context";
 
@@ -23,6 +24,7 @@ export function Hero() {
       <div className="hero-art">
         <Image
           src="/assets/tyubik-hero.jpg"
+          {...blurProps("/assets/tyubik-hero.jpg")}
           alt={t("heroPhotoAlt")}
           fetchPriority="high"
           width={1152}

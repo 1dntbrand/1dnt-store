@@ -1,0 +1,486 @@
+/*
+ * One modal system: centred sheets on wide screens, bottom sheets on phones,
+ * a fixed header with the same close control, and a padded scrolling body.
+ */
+dialog:focus,
+dialog:focus-visible {
+  outline: none;
+}
+.dialog-close {
+  flex: none;
+  margin-inline-end: calc(-1 * var(--space-2));
+  border-radius: 50%;
+  color: var(--ink);
+}
+.dialog-close svg {
+  width: 22px;
+  height: 22px;
+}
+@media (hover: hover) {
+  .dialog-close:hover {
+    background-color: var(--surface);
+  }
+}
+.panel-top {
+  min-height: 64px;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--panel-gutter);
+}
+.panel-top h2 {
+  margin: 0;
+  font-size: clamp(19px, 2.4vw, 24px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Centred sheets: size guides and customer care pages. */
+.modal-sheet {
+  --panel-gutter: clamp(20px, 3.5vw, 36px);
+  width: min(880px, calc(100% - 48px));
+  max-height: min(880px, calc(100dvh - 48px));
+  padding: 0;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 30px 80px -40px rgb(28 36 28 / 0.55);
+}
+.modal-sheet[open] {
+  display: flex;
+  flex-direction: column;
+}
+.modal-sheet > .panel-top {
+  position: static;
+  flex: none;
+  background: var(--paper);
+}
+.modal-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-5) var(--panel-gutter) var(--space-6);
+}
+.service-dialog {
+  width: min(720px, calc(100% - 48px));
+}
+.service-dialog .service-draft {
+  margin: 0 0 var(--space-2);
+  border-radius: var(--control-radius);
+}
+#serviceContent h3:first-child {
+  margin-top: var(--space-4);
+}
+
+/* Guide rhythm: one gap between sections, no stray margins inside. */
+.guide-body {
+  display: grid;
+  align-content: start;
+  gap: var(--space-6);
+}
+.guide-body > *,
+.guide-body .fit-finder,
+.guide-body .size-table-wrap {
+  margin: 0;
+}
+.guide-section {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+.guide-section > h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.guide-note {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+.guide-tip {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--control-radius);
+  background: var(--surface);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Measuring on a real photo. */
+.guide-measure {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--space-6);
+}
+.guide-measure > h3 {
+  grid-column: 1 / -1;
+}
+.measure-photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--media-radius);
+  background: var(--surface);
+}
+.measure-photo-canvas {
+  position: absolute;
+}
+.measure-photo-canvas img {
+  object-fit: cover;
+}
+.measure-photo-canvas svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.guide-measure-text {
+  display: grid;
+  gap: var(--space-4);
+  font-size: 14px;
+}
+.guide-measure-text p {
+  margin: 0;
+}
+.measure-legend {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+.measure-legend li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.measure-badge {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #e0702f;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .measure-tape {
+    animation: tape-march 2.4s linear infinite;
+  }
+}
+@keyframes tape-march {
+  to {
+    stroke-dashoffset: -56;
+  }
+}
+
+/* Size tables read as one bordered card. */
+.guide-body .size-table-wrap {
+  border: 1px solid var(--line);
+  border-radius: var(--media-radius);
+}
+.guide-body table {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.guide-body th,
+.guide-body td {
+  padding: 12px 14px;
+  white-space: nowrap;
+}
+.guide-body thead th {
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 12px;
+}
+.guide-body tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+/* Leash: size switch, illustrated configurations, choose button. */
+.leash-size-switch {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+.leash-size-switch button {
+  display: grid;
+  gap: 2px;
+  min-height: 56px;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--control-line);
+  border-radius: var(--control-radius);
+  background: var(--paper);
+  color: var(--ink);
+  text-align: start;
+  transition:
+    border-color var(--control-transition),
+    box-shadow var(--control-transition);
+}
+.leash-size-switch button[aria-pressed="true"] {
+  border-color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+.leash-size-switch strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+.leash-size-switch span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.leash-modes {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: var(--space-4);
+}
+.leash-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+  margin: 0;
+  padding: var(--space-4);
+  border-radius: var(--media-radius);
+  background: var(--surface);
+}
+.leash-card[data-tall] {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+.leash-card h4 {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+.leash-card-index {
+  color: var(--muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.leash-card-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.leash-card[data-tall] .leash-card-art {
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
+  justify-content: center;
+}
+.leash-card[data-tall] .leash-card-art img {
+  max-height: 340px;
+  object-fit: contain;
+}
+.leash-card-dimension {
+  margin: 0;
+  text-align: center;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.leash-card figcaption {
+  color: var(--muted);
+  font-size: 13px;
+}
+.leash-active-note {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.leash-active-ring {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #e0702f;
+  border-radius: 50%;
+  background: rgb(224 112 47 / 0.16);
+}
+.guide-actions {
+  position: sticky;
+  bottom: calc(-1 * var(--space-6));
+  margin-inline: calc(-1 * var(--panel-gutter));
+  padding: var(--space-3) var(--panel-gutter) var(--space-4);
+  background: linear-gradient(to bottom, transparent, var(--paper) 35%);
+}
+.guide-actions .btn {
+  width: 100%;
+}
+
+/* Checkout: where the shopper is, and why paying is safe. */
+.checkout-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  margin: 0;
+  padding: var(--space-3) var(--panel-gutter);
+  border-bottom: 1px solid var(--line);
+  list-style: none;
+  font-size: 13px;
+  color: var(--muted);
+}
+.checkout-steps li,
+.checkout-steps button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.checkout-steps button {
+  min-height: 32px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.checkout-steps li[data-state="current"] {
+  color: var(--ink);
+  font-weight: 600;
+}
+.checkout-step-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 600;
+}
+.checkout-steps li[data-state="done"] .checkout-step-mark {
+  border-color: var(--olive);
+  background: var(--olive);
+  color: var(--paper);
+}
+.checkout-steps li[data-state="current"] .checkout-step-mark {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+.checkout-trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2) var(--space-4);
+  margin: var(--space-3) 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+.checkout-trust span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.checkout-trust svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* Empty bag: show the way back into the collection. */
+.cart-empty {
+  justify-content: flex-start;
+  gap: 0;
+}
+.cart-empty p {
+  max-width: 34ch;
+}
+.cart-empty-label {
+  margin: var(--space-2) 0 var(--space-3) !important;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.cart-empty-picks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+  width: 100%;
+}
+.cart-empty-pick {
+  display: grid;
+  gap: var(--space-2);
+  font-size: 14px;
+}
+.cart-empty-photo {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--media-radius);
+  background: var(--surface);
+}
+.cart-empty-photo img {
+  object-fit: cover;
+  transition: transform 600ms var(--ease-out);
+}
+@media (hover: hover) {
+  .cart-empty-pick:hover .cart-empty-photo img {
+    transform: scale(1.04);
+  }
+}
+.cart-empty-offer {
+  margin: var(--space-5) 0 var(--space-4) !important;
+  color: var(--muted);
+  font-size: 13px;
+}
+.cart-empty .btn {
+  width: 100%;
+}
+
+@media (max-width: 720px) {
+  .guide-measure {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--space-4);
+  }
+  .leash-modes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .leash-card[data-tall] {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+/* Phones: guides and care pages rise from the bottom like native sheets. */
+@media (max-width: 640px) {
+  .modal-sheet {
+    width: 100%;
+    max-width: 100%;
+    max-height: 92dvh;
+    margin: auto 0 0;
+    border-radius: 16px 16px 0 0;
+  }
+  .modal-sheet .modal-body {
+    padding-bottom: max(var(--space-6), env(safe-area-inset-bottom));
+  }
+  .guide-actions {
+    bottom: calc(-1 * max(var(--space-6), env(safe-area-inset-bottom)));
+    padding-bottom: max(var(--space-4), env(safe-area-inset-bottom));
+  }
+  .guide-body th,
+  .guide-body td {
+    padding: 10px;
+  }
+}
+@media (max-width: 640px) and (prefers-reduced-motion: no-preference) {
+  .modal-sheet[open] {
+    animation: sheet-up 320ms var(--ease-out) both;
+  }
+}
+@keyframes sheet-up {
+  from {
+    transform: translateY(32px);
+    opacity: 0.6;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}

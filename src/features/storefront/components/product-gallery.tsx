@@ -1,9 +1,9 @@
 "use client";
-import Image from "next/image";
 import { useStorefront } from "../storefront-context";
 import type { ProductKind } from "@/domain/commerce/catalog";
 import { productPhoto } from "../lib/catalog";
 import { productOptions } from "../lib/product-options";
+import { MediaGallery } from "./media-gallery";
 
 export function ProductGallery({ kind }: { kind: ProductKind }) {
   const config = productOptions[kind];
@@ -13,41 +13,19 @@ export function ProductGallery({ kind }: { kind: ProductKind }) {
     setView: state.setView,
     t: state.t,
   }));
+  const title = t(config.titleKey);
+  const photos = config.galleryLabels.map((label, index) => ({
+    src: productPhoto(kind, colour, index),
+    alt: `${title} · ${t(colour)} · ${t(label)}`,
+    label: t(label),
+  }));
   return (
-    <div className="product-gallery">
-      <div className="product-photo">
-        <Image
-          key={productPhoto(kind, colour, view)}
-          className="photo-swap"
-          src={productPhoto(kind, colour, view)}
-          alt={`${t(config.titleKey)} · ${t(colour)} · ${t(config.galleryLabels[view])}`}
-          fill
-          sizes="(max-width: 800px) calc(100vw - 40px), 48vw"
-        />
-      </div>
-      <div
-        className="gallery-thumbs"
-        role="group"
-        aria-label={t("productPhotos")}
-      >
-        {config.galleryLabels.map((label, index) => (
-          <button
-            key={label}
-            type="button"
-            className="gallery-thumb"
-            aria-label={t(label)}
-            aria-pressed={view === index}
-            onClick={() => setView(kind, index)}
-          >
-            <Image
-              src={productPhoto(kind, colour, index)}
-              alt=""
-              fill
-              sizes="72px"
-            />
-          </button>
-        ))}
-      </div>
-    </div>
+    <MediaGallery
+      className="product-gallery"
+      photos={photos}
+      index={view}
+      onIndexChange={(index) => setView(kind, index)}
+      sizes="(max-width: 800px) calc(100vw - 40px), 48vw"
+    />
   );
 }

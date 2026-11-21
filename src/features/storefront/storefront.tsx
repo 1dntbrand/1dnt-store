@@ -12,11 +12,13 @@ import { Footer } from "./components/footer";
 import { Menu } from "./components/menu";
 import { Cart } from "./components/cart";
 import { Dialog } from "./components/dialog";
+import { CloseButton } from "./components/close-button";
 import { CollarGuide } from "./components/collar-guide";
 import { HarnessGuide } from "./components/harness-guide";
 import { LeashGuide } from "./components/leash-guide";
 import { ElegantLeashGuide } from "./components/elegant-leash-guide";
 import { Service } from "./components/service";
+import { AddedToast } from "./components/added-toast";
 import { useRevealOnScroll } from "./lib/use-reveal";
 
 const Checkout = dynamic(
@@ -40,14 +42,7 @@ function CheckoutLoading() {
         <h2 id="checkoutLoadingTitle" role="status">
           {t("checkoutLoading")}
         </h2>
-        <button
-          type="button"
-          className="btn icon-button close-button"
-          aria-label={t("guideClose")}
-          onClick={closeDialog}
-        >
-          ×
-        </button>
+        <CloseButton label={t("guideClose")} onClick={closeDialog} />
       </div>
     </Dialog>
   );
@@ -86,6 +81,7 @@ function StorefrontContent() {
       <LeashGuide />
       <ElegantLeashGuide />
       <Service />
+      <AddedToast />
     </>
   );
 }

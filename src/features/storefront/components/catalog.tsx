@@ -2,6 +2,7 @@
 import { BrandText } from "./brand-text";
 
 import Image from "next/image";
+import { blurProps } from "../lib/image-placeholder";
 
 import { useStorefront } from "../storefront-context";
 import {
@@ -11,6 +12,7 @@ import {
 } from "@/domain/commerce/catalog";
 import { ProductDetail } from "./product-detail";
 import { CollectionSwitch } from "./collection-switch";
+import { useTabIndicator } from "../lib/use-tab-indicator";
 
 const categoryImageSizes =
   "(max-width: 540px) 94vw, (max-width: 1480px) 31vw, 424px";
@@ -21,6 +23,10 @@ export function Catalog() {
     category: state.categories.base,
     money: state.money,
   }));
+  const filters = useTabIndicator<HTMLElement>(
+    '[aria-current="page"]',
+    category,
+  );
   return (
     <section className="section catalog-section" id="collection">
       <CollectionSwitch active="base" />
@@ -30,7 +36,11 @@ export function Catalog() {
         </h2>
         <p className="catalog-offer">{t("catalogSetOffer")}</p>
       </div>
-      <nav className="catalog-filters" aria-label={t("catalogCategories")}>
+      <nav
+        ref={filters}
+        className="catalog-filters"
+        aria-label={t("catalogCategories")}
+      >
         <a
           href="#collection/all"
           data-category="all"
@@ -70,6 +80,7 @@ export function Catalog() {
             <span className="catalog-preview-media">
               <Image
                 src="/assets/collar-khaki.webp"
+                {...blurProps("/assets/collar-khaki.webp")}
                 alt=""
                 loading="lazy"
                 width={1312}
@@ -89,6 +100,7 @@ export function Catalog() {
             <span className="catalog-preview-media">
               <Image
                 src="/assets/leash-black.webp"
+                {...blurProps("/assets/leash-black.webp")}
                 alt=""
                 loading="lazy"
                 width={1086}
@@ -112,6 +124,7 @@ export function Catalog() {
             <span className="catalog-preview-media">
               <Image
                 src="/assets/harness-khaki.webp"
+                {...blurProps("/assets/harness-khaki.webp")}
                 alt=""
                 loading="lazy"
                 width={1312}

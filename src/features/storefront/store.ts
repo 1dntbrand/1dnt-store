@@ -134,6 +134,13 @@ interface StorefrontActions {
   openService: (id: string) => void;
   addItems: (variants: readonly ProductVariant[]) => void;
   changeQuantity: (id: string, quantity: number) => void;
+  dismissAdded: () => void;
+}
+
+/** The latest successful add, shown as a short confirmation. */
+export interface AddedNotice {
+  stamp: number;
+  variants: readonly ProductVariant[];
 }
 export type StorefrontState = Snapshot &
   StorefrontActions &
@@ -142,6 +149,7 @@ export type StorefrontState = Snapshot &
     activeDialog: string | null;
     guideSize: string;
     cartNotice: string | null;
+    lastAdded: AddedNotice | null;
     serviceIndex: number;
     views: Record<ProductKind, number>;
   };
@@ -163,6 +171,7 @@ export function createStorefrontStore() {
       ...languageHelpers.en,
       ...cartState([]),
       cartNotice: null,
+      lastAdded: null,
       categories: { ...defaultCategories },
       bundleExtras: { ...defaultBundleExtras },
       activeDialog: null,
@@ -204,8 +213,9 @@ export function createStorefrontStore() {
       openDialog(id) {
         if (id === "checkoutPanel" && get().cartHasStockIssue) return;
         applySize = undefined;
-        if (id === "cartPanel") set({ activeDialog: id, cartNotice: null });
-        else set({ activeDialog: id });
+        if (id === "cartPanel")
+          set({ activeDialog: id, cartNotice: null, lastAdded: null });
+        else set({ activeDialog: id, lastAdded: null });
       },
       closeDialog() {
         applySize = undefined;
@@ -247,12 +257,16 @@ export function createStorefrontStore() {
           }
           next.set(id, { ...variant, id, qty });
         }
+        // Stay on the product: confirm with a toast instead of the bag panel.
         set({
           ...cartState([...next.values()]),
-          activeDialog: "cartPanel",
-          cartNotice: "cartAdded",
+          cartNotice: null,
+          lastAdded: { stamp: Date.now(), variants: [...variants] },
         });
         saveCartAndLanguage(get());
+      },
+      dismissAdded() {
+        set({ lastAdded: null });
       },
       changeQuantity(id, quantity) {
         if (!Number.isInteger(quantity)) return;

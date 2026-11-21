@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import "@/features/storefront/storefront.css";
 import "@/features/storefront/motion.css";
+import "@/features/storefront/toast.css";
+import "@/features/storefront/modal.css";
 
 const title = "ONE IDENTITY — Everyday, together.";
 const description =
@@ -19,14 +21,6 @@ export const metadata: Metadata = {
     description,
     locale: "pl_PL",
     alternateLocale: ["en_GB", "ru_RU", "uk_UA"],
-    images: [
-      {
-        url: "/assets/tyubik-hero.jpg",
-        width: 1152,
-        height: 2048,
-        alt: "ONE IDENTITY — handmade BioThane® collar",
-      },
-    ],
   },
 };
 

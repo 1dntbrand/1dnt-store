@@ -6,6 +6,7 @@ import { itemPrice, type ProductVariant } from "@/domain/commerce/catalog";
 import { productBundleId } from "../lib/product-options";
 import { useStorefront } from "../storefront-context";
 import { RestockForm } from "./restock-form";
+import { useRecentlyAdded } from "../lib/use-recently-added";
 
 const dockMedia = "(max-width: 800px) and (min-height: 480px)";
 
@@ -113,6 +114,7 @@ export function ProductPurchase({
   const unavailable = variantLimit(variant) === 0;
   const price = money(itemPrice(variant));
   const canBuyFromDock = dockAction === "buy" && !unavailable;
+  const justAdded = useRecentlyAdded([variant]);
 
   return (
     <>
@@ -129,10 +131,11 @@ export function ProductPurchase({
             id={buttonId}
             className="btn add-product"
             type="button"
+            data-added={justAdded || undefined}
             onClick={() => addItems([variant])}
           >
-            <span>{t("addCart")}</span>
-            <span>{price}</span>
+            <span>{t(justAdded ? "addedToBag" : "addCart")}</span>
+            <span>{justAdded ? "✓" : price}</span>
           </button>
         )}
       </div>
@@ -169,7 +172,9 @@ export function ProductPurchase({
               else jumpTo(optionsRef.current);
             }}
           >
-            {t(canBuyFromDock ? "addCart" : "chooseVariant")}
+            {justAdded
+              ? `${t("addedToBag")} ✓`
+              : t(canBuyFromDock ? "addCart" : "chooseVariant")}
           </button>
         </div>
       )}

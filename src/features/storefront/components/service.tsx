@@ -1,6 +1,7 @@
 "use client";
 import { useStorefront } from "../storefront-context";
 import { Dialog } from "./dialog";
+import { CloseButton } from "./close-button";
 import { ServiceContent } from "./service-content";
 
 export function Service() {
@@ -13,17 +14,17 @@ export function Service() {
   return (
     <Dialog
       id="serviceDialog"
-      className="service-dialog"
+      className="modal-sheet service-dialog"
       labelledBy="serviceTitle"
     >
-      <div className="service-dialog-top">
+      <div className="panel-top">
         <h2 id="serviceTitle">{service.labels[serviceIndex]}</h2>
-        <button type="button" id="serviceClose" onClick={closeDialog}>
-          {t("guideClose")}
-        </button>
+        <CloseButton label={t("guideClose")} onClick={closeDialog} />
       </div>
-      <p className="service-draft">{service.draft}</p>
-      <ServiceContent />
+      <div className="modal-body">
+        <p className="service-draft">{service.draft}</p>
+        <ServiceContent />
+      </div>
     </Dialog>
   );
 }
