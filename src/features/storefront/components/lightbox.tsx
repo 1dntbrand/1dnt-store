@@ -1,11 +1,17 @@
 "use client";
 
+import { ArrowIcon } from "./icons";
 import Image from "next/image";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { blurProps } from "../lib/image-placeholder";
 import { useStorefront } from "../storefront-context";
 import type { GalleryPhoto } from "./media-gallery";
 import { useSlideSync } from "./media-gallery";
+import {
+  dropOverlayEntry,
+  onOverlayBack,
+  pushOverlayEntry,
+} from "../lib/back-closes";
 
 const ZOOM = 2.2;
 
@@ -39,10 +45,14 @@ export function Lightbox({
     const previousOverflow = document.body.style.overflow;
     const previousFocus = document.activeElement;
     element.showModal();
+    pushOverlayEntry();
+    const stopBack = onOverlayBack(onClose);
     document.body.style.overflow = "hidden";
     // Jump straight to the photo that was tapped.
     track.current?.scrollTo({ left: index * track.current.clientWidth });
     return () => {
+      stopBack();
+      dropOverlayEntry();
       element.close();
       document.body.style.overflow = previousOverflow;
       setZoomed(null);
@@ -152,7 +162,7 @@ export function Lightbox({
             aria-label={t("galleryPrev")}
             onClick={() => go(-1)}
           >
-            <span aria-hidden="true">←</span>
+            <ArrowIcon direction="left" />
           </button>
           <button
             type="button"
@@ -160,7 +170,7 @@ export function Lightbox({
             aria-label={t("galleryNext")}
             onClick={() => go(1)}
           >
-            <span aria-hidden="true">→</span>
+            <ArrowIcon />
           </button>
         </>
       )}

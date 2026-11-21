@@ -165,14 +165,18 @@ dialog:focus-visible {
   font-size: 13px;
   font-weight: 700;
 }
+/* The tape wraps once around the neck or chest when the guide opens. */
 @media (prefers-reduced-motion: no-preference) {
-  .measure-tape {
-    animation: tape-march 2.4s linear infinite;
+  dialog[open] .measure-tape {
+    animation: tape-wrap 900ms var(--ease-out) 150ms both;
   }
 }
-@keyframes tape-march {
+@keyframes tape-wrap {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
   to {
-    stroke-dashoffset: -56;
+    clip-path: inset(0 0 0 0);
   }
 }
 
@@ -393,9 +397,7 @@ dialog:focus-visible {
 .cart-empty-label {
   margin: var(--space-2) 0 var(--space-3) !important;
   color: var(--muted);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 13px;
 }
 .cart-empty-picks {
   display: grid;

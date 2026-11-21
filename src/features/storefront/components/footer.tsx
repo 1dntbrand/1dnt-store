@@ -12,7 +12,7 @@ export function Footer() {
   }));
   return (
     <footer className="site-footer">
-      <div className="footer-top" data-reveal>
+      <div className="footer-top">
         <div className="footer-brand">
           <div className="footer-title">{t("footerTogether")}</div>
           {brandLinks.instagram && (

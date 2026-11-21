@@ -1,4 +1,5 @@
 "use client";
+import { ArrowIcon } from "./icons";
 import Image from "next/image";
 import { useStorefront } from "../storefront-context";
 import { itemPrice } from "@/domain/commerce/catalog";
@@ -149,7 +150,8 @@ function SetSuggestionNote() {
     <p className="set-suggestion">
       <span>{t(suggestion.messageKey)}</span>
       <a href={suggestion.href} onClick={closeDialog}>
-        {t("setHintAction")} →
+        {t("setHintAction")}
+        <ArrowIcon />
       </a>
     </p>
   );

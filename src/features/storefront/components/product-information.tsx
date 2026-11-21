@@ -1,5 +1,6 @@
 "use client";
 
+import { ExternalIcon } from "./icons";
 import type { Collection, ProductKind } from "@/domain/commerce/catalog";
 import { useStorefront } from "../storefront-context";
 import { ProductSafety } from "./product-safety";
@@ -62,7 +63,8 @@ export function ProductInformation({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t("hardwareHowWorks")} ↗
+                {t("hardwareHowWorks")}
+                <ExternalIcon />
               </a>
             </p>
           </>

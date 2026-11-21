@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowIcon } from "./icons";
 import Image from "next/image";
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { blurProps } from "../lib/image-placeholder";
@@ -132,7 +133,7 @@ export function MediaGallery({
               aria-label={t("galleryPrev")}
               onClick={() => go(-1)}
             >
-              <span aria-hidden="true">←</span>
+              <ArrowIcon direction="left" />
             </button>
             <button
               type="button"
@@ -140,7 +141,7 @@ export function MediaGallery({
               aria-label={t("galleryNext")}
               onClick={() => go(1)}
             >
-              <span aria-hidden="true">→</span>
+              <ArrowIcon />
             </button>
             <div className="media-dots" aria-hidden="true">
               {photos.map((photo, slide) => (
@@ -149,12 +150,6 @@ export function MediaGallery({
             </div>
           </>
         )}
-        <span className="media-zoom-hint" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <circle cx="10.5" cy="10.5" r="6.5" strokeWidth="1.5" />
-            <path d="m15.5 15.5 5 5M10.5 7.5v6M7.5 10.5h6" strokeWidth="1.5" />
-          </svg>
-        </span>
       </div>
       {multiple && (
         <div

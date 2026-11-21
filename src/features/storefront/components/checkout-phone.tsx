@@ -36,6 +36,7 @@ export function CheckoutPhone({
   invalid,
   onCountryChange,
   onChange,
+  onLeave,
 }: {
   id: string;
   country: CountryCode;
@@ -43,6 +44,8 @@ export function CheckoutPhone({
   invalid: boolean;
   onCountryChange: (country: CountryCode) => void;
   onChange: (value: string) => void;
+  /** Called when the field loses focus, after formatting. */
+  onLeave?: () => void;
 }) {
   const { t, language } = useStorefront((state) => ({
     t: state.t,
@@ -110,7 +113,10 @@ export function CheckoutPhone({
           aria-describedby={invalid ? `${id}-error` : undefined}
           onChange={(event) => onChange(event.target.value)}
           onPaste={pastePhone}
-          onBlur={formatPhone}
+          onBlur={() => {
+            formatPhone();
+            onLeave?.();
+          }}
         />
       </div>
       {invalid && (

@@ -113,7 +113,7 @@ export function LeashGuide() {
               tall
               src="/assets/guides/leash-hands-free.svg"
               title={title("leashHandsFreeTitle")}
-              dimension={`↻ 150 ${t("centimetreUnit")}`}
+              dimension={`150 ${t("centimetreUnit")}`}
               caption={t("leashHandsFreeCaption")}
             />
           </div>

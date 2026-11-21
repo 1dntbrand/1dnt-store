@@ -1,5 +1,6 @@
 "use client";
 
+import { CheckIcon } from "./icons";
 import {
   elegantColourIds,
   itemPrice,
@@ -88,7 +89,7 @@ export function Elegant() {
       aria-labelledby="elegantTitle"
     >
       <CollectionSwitch active="elegant" />
-      <div className="catalog-heading" data-reveal>
+      <div className="catalog-heading">
         <h2 id="elegantTitle">
           <BrandText>{t("elegantCollectionTitle")}</BrandText>
         </h2>
@@ -209,7 +210,7 @@ function ElegantProductPanel({
                   <span style={{ background: elegantColours[option].swatch }} />
                   {colour === option && (
                     <span className="swatch-check" aria-hidden="true">
-                      ✓
+                      <CheckIcon />
                     </span>
                   )}
                 </button>

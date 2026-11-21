@@ -11,8 +11,8 @@ export function FaqSection() {
   const topic = faqTopics.find((item) => item.id === active)!;
   return (
     <div className="faq" id="faq">
-      <h2 data-reveal>{t("faqEyebrow")}</h2>
-      <div data-reveal>
+      <h2>{t("faqEyebrow")}</h2>
+      <div>
         <div className="faq-topics" role="group" aria-label={t("faqTopic")}>
           {faqTopics.map((item) => (
             <button

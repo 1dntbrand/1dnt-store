@@ -1,5 +1,6 @@
 "use client";
 
+import { CheckIcon } from "./icons";
 import { useEffect, useRef, useState, type RefObject } from "react";
 import { variantLimit } from "@/domain/commerce/availability";
 import { itemPrice, type ProductVariant } from "@/domain/commerce/catalog";
@@ -82,7 +83,12 @@ function useDockAction(
 function jumpTo(element: HTMLElement | null) {
   if (!element) return;
   element.focus({ preventScroll: true });
-  element.scrollIntoView({ block: "start" });
+  // Glide to the set builder so the shopper sees where they went.
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  element.scrollIntoView({
+    block: "start",
+    behavior: reduce ? "auto" : "smooth",
+  });
 }
 
 export function ProductPurchase({
@@ -135,7 +141,7 @@ export function ProductPurchase({
             onClick={() => addItems([variant])}
           >
             <span>{t(justAdded ? "addedToBag" : "addCart")}</span>
-            <span>{justAdded ? "✓" : price}</span>
+            <span>{justAdded ? <CheckIcon /> : price}</span>
           </button>
         )}
       </div>
@@ -172,9 +178,14 @@ export function ProductPurchase({
               else jumpTo(optionsRef.current);
             }}
           >
-            {justAdded
-              ? `${t("addedToBag")} ✓`
-              : t(canBuyFromDock ? "addCart" : "chooseVariant")}
+            {justAdded ? (
+              <>
+                <CheckIcon />
+                {t("addedToBag")}
+              </>
+            ) : (
+              t(canBuyFromDock ? "addCart" : "chooseVariant")
+            )}
           </button>
         </div>
       )}

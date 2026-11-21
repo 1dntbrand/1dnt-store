@@ -615,33 +615,9 @@ html:lang(uk) .hero-copy h1 em {
   width: 16px;
   opacity: 1;
 }
-.media-zoom-hint {
-  position: absolute;
-  right: 12px;
-  top: 12px;
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--paper) 82%, transparent);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 200ms var(--ease-out);
-}
-.media-zoom-hint svg {
-  width: 18px;
-  height: 18px;
-}
-.media-stage:hover .media-zoom-hint {
-  opacity: 1;
-}
 @media (hover: none) {
   .media-arrow {
     display: none;
-  }
-  .media-zoom-hint {
-    opacity: 0.9;
   }
 }
 
@@ -850,9 +826,6 @@ html:lang(uk) .hero-copy h1 em {
 }
 .swatch .swatch-check {
   position: absolute;
-  color: white;
-  font-size: 15px;
-  text-shadow: 0 1px 3px #000b;
 }
 .size-options {
   display: grid;

@@ -11,6 +11,11 @@ import { useStore } from "zustand";
 import { useShallow } from "zustand/react/shallow";
 import { createStorefrontStore, type StorefrontState } from "./store";
 import { validCategory } from "./lib/storage";
+import {
+  dropOverlayEntry,
+  onOverlayBack,
+  pushOverlayEntry,
+} from "./lib/back-closes";
 
 const StorefrontContext = createContext<ReturnType<
   typeof createStorefrontStore
@@ -45,10 +50,17 @@ export function StorefrontProvider({ children }: { children: ReactNode }) {
     const unsubscribe = store.subscribe((state, previous) => {
       if (state.language !== previous.language)
         document.documentElement.lang = state.language;
+      // One history entry per open overlay, whichever dialog is showing.
+      if (state.activeDialog && !previous.activeDialog) pushOverlayEntry();
+      if (!state.activeDialog && previous.activeDialog) dropOverlayEntry();
+    });
+    const stopBack = onOverlayBack(() => {
+      if (store.getState().activeDialog) store.getState().closeDialog();
     });
     window.addEventListener("hashchange", syncHash);
     return () => {
       unsubscribe();
+      stopBack();
       window.cancelAnimationFrame(pendingScroll);
       window.removeEventListener("hashchange", syncHash);
     };

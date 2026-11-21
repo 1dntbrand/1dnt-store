@@ -1,4 +1,5 @@
 "use client";
+import { ArrowIcon, CheckIcon } from "./icons";
 import { parseContactPhone } from "@/domain/commerce/phone";
 import type { CountryCode } from "libphonenumber-js/max";
 import {
@@ -60,6 +61,14 @@ export function Checkout() {
   const [phoneCountry, setPhoneCountry] = useState<CountryCode>("PL");
   const [reviewOpen, setReviewOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  // Show a field's error once the shopper has left it, not while typing.
+  const [touched, setTouched] = useState<ReadonlySet<ContactField>>(
+    () => new Set(),
+  );
+  const leave = (name: ContactField) =>
+    setTouched((current) => new Set(current).add(name));
+  const showError = (name: ContactField) =>
+    (submitted || touched.has(name)) && invalid(name);
   const [pickupNotice, setPickupNotice] = useState(false);
   const form = useRef<HTMLFormElement>(null);
   const pickup = useRef<HTMLButtonElement>(null);
@@ -104,7 +113,7 @@ export function Checkout() {
         <li data-state="done">
           <button type="button" onClick={() => openDialog("cartPanel")}>
             <span className="checkout-step-mark" aria-hidden="true">
-              ✓
+              <CheckIcon />
             </span>
             {t("stepBag")}
           </button>
@@ -182,7 +191,8 @@ export function Checkout() {
                       id={`${id}-phone`}
                       country={phoneCountry}
                       value={values.phone}
-                      invalid={submitted && invalid("phone")}
+                      invalid={showError("phone")}
+                      onLeave={() => leave("phone")}
                       onCountryChange={setPhoneCountry}
                       onChange={(value) =>
                         setValues((current) => ({ ...current, phone: value }))
@@ -205,9 +215,10 @@ export function Checkout() {
                         maxLength={field.name === "email" ? 254 : 100}
                         required
                         value={values[field.name]}
-                        aria-invalid={submitted && invalid(field.name)}
+                        aria-invalid={showError(field.name)}
+                        onBlur={() => leave(field.name)}
                         aria-describedby={
-                          submitted && invalid(field.name)
+                          showError(field.name)
                             ? `${id}-${field.name}-error`
                             : undefined
                         }
@@ -218,7 +229,7 @@ export function Checkout() {
                           }))
                         }
                       />
-                      {submitted && invalid(field.name) && (
+                      {showError(field.name) && (
                         <span
                           id={`${id}-${field.name}-error`}
                           className="field-error"
@@ -249,7 +260,7 @@ export function Checkout() {
               >
                 <span className="inpost-name">InPost</span>
                 <span>{t("choosePickupPoint")}</span>
-                <span aria-hidden="true">→</span>
+                <ArrowIcon />
               </button>
               {pickupNotice && (
                 <p className="integration-notice" role="status">

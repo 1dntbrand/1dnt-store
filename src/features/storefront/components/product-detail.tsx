@@ -1,4 +1,5 @@
 "use client";
+import { CheckIcon } from "./icons";
 import { useRef } from "react";
 import { useStorefront } from "../storefront-context";
 import { prices, type ProductKind } from "@/domain/commerce/catalog";
@@ -66,7 +67,7 @@ export function ProductDetail({ kind }: { kind: ProductKind }) {
                   <span style={{ background: swatchColours[value] }} />
                   {colour === value && (
                     <span className="swatch-check" aria-hidden="true">
-                      ✓
+                      <CheckIcon />
                     </span>
                   )}
                 </button>

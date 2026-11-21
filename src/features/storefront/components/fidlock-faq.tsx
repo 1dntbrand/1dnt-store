@@ -1,4 +1,5 @@
 "use client";
+import { ExternalIcon } from "./icons";
 import { useState } from "react";
 import { useStorefront } from "../storefront-context";
 
@@ -27,7 +28,8 @@ export function FidlockFaq() {
             />
           ) : (
             <button className="btn" type="button" onClick={() => setPlay(true)}>
-              {t("fidlockVideo")} ↗
+              {t("fidlockVideo")}
+              <ExternalIcon />
             </button>
           )}
         </div>

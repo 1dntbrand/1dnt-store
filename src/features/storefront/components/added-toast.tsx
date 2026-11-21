@@ -1,5 +1,6 @@
 "use client";
 
+import { CheckIcon } from "./icons";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { freeShippingRemaining } from "@/domain/commerce/shipping";
@@ -69,7 +70,7 @@ export function AddedToast() {
         </span>
         <div className="added-toast-body">
           <p className="added-toast-title">
-            <span aria-hidden="true">✓ </span>
+            <CheckIcon />
             {t("cartAdded")}
           </p>
           <p className="added-toast-item">

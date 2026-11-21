@@ -15,14 +15,14 @@ export function BrandStory() {
         id="philosophy"
         aria-labelledby="philosophy-title"
       >
-        <div className="philosophy-heading" data-reveal>
+        <div className="philosophy-heading">
           <p className="eyebrow">{t("storyEyebrow")}</p>
           <h2 id="philosophy-title" className="philosophy-title">
             <span>{t("storyHeadingFirst")}</span>
             <em>{t("storyHeadingSecond")}</em>
           </h2>
         </div>
-        <figure className="philosophy-photo" data-reveal>
+        <figure className="philosophy-photo">
           <Image
             src="/assets/philosophy-together.webp"
             {...blurProps("/assets/philosophy-together.webp")}
@@ -33,7 +33,7 @@ export function BrandStory() {
             loading="lazy"
           />
         </figure>
-        <div className="philosophy-copy" data-reveal>
+        <div className="philosophy-copy">
           <p>{t("storyIntro")}</p>
           <p>{t("philosophyHandmade")}</p>
           <p>{t("philosophyBond")}</p>

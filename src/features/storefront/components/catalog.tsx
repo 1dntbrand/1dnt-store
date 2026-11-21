@@ -30,7 +30,7 @@ export function Catalog() {
   return (
     <section className="section catalog-section" id="collection">
       <CollectionSwitch active="base" />
-      <div className="catalog-heading" data-reveal>
+      <div className="catalog-heading">
         <h2 id="catalogTitle" tabIndex={-1}>
           <BrandText>{t("collectionTitle")}</BrandText>
         </h2>
@@ -76,7 +76,7 @@ export function Catalog() {
         hidden={category !== "all"}
       >
         <div className="catalog-overview">
-          <a data-reveal className="catalog-preview" href="#collection/collars">
+          <a className="catalog-preview" href="#collection/collars">
             <span className="catalog-preview-media">
               <Image
                 src="/assets/collar-khaki.webp"
@@ -96,7 +96,7 @@ export function Catalog() {
               </p>
             </div>
           </a>
-          <a data-reveal className="catalog-preview" href="#collection/leashes">
+          <a className="catalog-preview" href="#collection/leashes">
             <span className="catalog-preview-media">
               <Image
                 src="/assets/leash-black.webp"
@@ -116,11 +116,7 @@ export function Catalog() {
               </p>
             </div>
           </a>
-          <a
-            data-reveal
-            className="catalog-preview"
-            href="#collection/harnesses"
-          >
+          <a className="catalog-preview" href="#collection/harnesses">
             <span className="catalog-preview-media">
               <Image
                 src="/assets/harness-khaki.webp"

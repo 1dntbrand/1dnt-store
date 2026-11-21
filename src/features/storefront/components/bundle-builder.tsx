@@ -1,5 +1,6 @@
 "use client";
 
+import { CheckIcon } from "./icons";
 import Image from "next/image";
 import { useRecentlyAdded } from "../lib/use-recently-added";
 import { useId } from "react";
@@ -173,7 +174,14 @@ export function BundleOffer({
           data-added={justAdded || undefined}
           onClick={() => addItems(variants)}
         >
-          {justAdded ? `${t("addedToBag")} ✓` : t("addSetToCart")}
+          {justAdded ? (
+            <>
+              <CheckIcon />
+              {t("addedToBag")}
+            </>
+          ) : (
+            t("addSetToCart")
+          )}
         </button>
       </div>
       <div role="status" className="stock-announcement">
