@@ -4,6 +4,7 @@ import { useId, useState, type FormEvent } from "react";
 import { variantKey, type ProductVariant } from "@/domain/commerce/catalog";
 import { useStorefront } from "../storefront-context";
 import { SwapLabel } from "./swap-label";
+import { colourSoldOut } from "../lib/product-options";
 
 const restockEnabled = process.env.NEXT_PUBLIC_RESTOCK_ENABLED === "true";
 type Status = "idle" | "sending" | "saved" | "error";
@@ -48,7 +49,7 @@ function RestockRequest({ variant }: { variant: ProductVariant }) {
   if (!restockEnabled)
     return (
       <div className="restock-form restock-soon">
-        <p>{t("restockSoon")}</p>
+        <p>{t(colourSoldOut(variant) ? "restockSoon" : "restockSoonSize")}</p>
         <button
           className="text-button"
           type="button"

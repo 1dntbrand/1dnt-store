@@ -28,7 +28,7 @@ export function ProductSizeOptions({
     <fieldset className="variant-group">
       <legend className="sr-only">{label}</legend>
       <div className="variant-label-row">
-        <span>{label}</span>
+        <span aria-hidden="true">{label}</span>
         <button
           className="text-button size-help"
           type="button"

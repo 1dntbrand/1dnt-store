@@ -51,9 +51,6 @@ export function ColourSwatches({
     <fieldset className="variant-group">
       <legend>
         {t("colourLabel")} <span>{current?.label}</span>
-        {current?.soldOut && (
-          <span className="legend-sold-out">{t("outOfStock")}</span>
-        )}
       </legend>
       <div className="swatches">
         {options.map(({ value, label, fill, soldOut }) => (

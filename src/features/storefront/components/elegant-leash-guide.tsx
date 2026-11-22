@@ -20,14 +20,14 @@ export function ElegantLeashGuide() {
             src="/assets/guides/leash-elegant.svg"
             width={640}
             height={196}
-            alt={t("elegantLeashLength")}
+            alt=""
             decoding="async"
           />
         </div>
         <p className="leash-card-dimension">
           {`${metres(1.5, 2)} · Ø ${centimetres("14")}`}
         </p>
-        <figcaption>{t("elegantLeashLength")}</figcaption>
+        <figcaption>{t("elegantLeashGuideCaption")}</figcaption>
       </figure>
     </GuideDialog>
   );

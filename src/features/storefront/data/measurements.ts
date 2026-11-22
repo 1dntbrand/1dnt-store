@@ -10,7 +10,7 @@ export const harnessMeasurements = [
     chest: "43–56",
     lower: "15–20",
     upper: 10,
-    widthCm: 1.9,
+    widthMm: 19,
   },
   {
     size: "M",
@@ -18,7 +18,7 @@ export const harnessMeasurements = [
     chest: "54–69",
     lower: "20–25",
     upper: 13,
-    widthCm: 1.9,
+    widthMm: 19,
   },
   {
     size: "L",
@@ -26,6 +26,6 @@ export const harnessMeasurements = [
     chest: "65–83",
     lower: "23–33",
     upper: 16,
-    widthCm: 2.5,
+    widthMm: 25,
   },
 ];

@@ -30,7 +30,6 @@ export function ProductInformation({
       : [kind === "leash" ? "baseLeashAdjustable" : "baseAdjustable"]),
     ...(fidlock ? ["fidlockFeature"] : []),
     "baseVegan",
-    "baseHandmade",
     "baseEasyCare",
   ];
 

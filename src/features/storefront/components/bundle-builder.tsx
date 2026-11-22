@@ -28,7 +28,6 @@ import {
 import type { FieldName } from "../lib/storage";
 import { useStorefront } from "../storefront-context";
 import { BrandText } from "./brand-text";
-import { RestockForm } from "./restock-form";
 
 export type BundlePartSelection = {
   variant: ProductVariant;
@@ -243,6 +242,9 @@ function BundlePart({
               </span>
               <span className="bundle-part-choice">
                 {choiceSummary(colour, size)}
+                {variantLimit(variant) === 0 && (
+                  <span className="bundle-part-stock">{t("outOfStock")}</span>
+                )}
               </span>
             </span>
             <span className="disclosure-chevron" aria-hidden="true" />
@@ -280,15 +282,6 @@ function BundlePart({
           </select>
         </label>
       </Disclosure>
-      {variantLimit(variant) === 0 && (
-        <Disclosure
-          className="bundle-restock"
-          summaryClassName="stock-label"
-          summary={`${t("outOfStock")} · ${t("restockAction")}`}
-        >
-          <RestockForm variant={variant} />
-        </Disclosure>
-      )}
     </div>
   );
 }

@@ -854,11 +854,6 @@ html:lang(uk) .hero-copy h1 em {
 .swatch[data-sold-out] > span:first-child {
   opacity: 0.55;
 }
-.legend-sold-out {
-  margin-inline-start: var(--space-2);
-  color: var(--error);
-  font-weight: 500;
-}
 .size-options button[data-sold-out] > span {
   color: var(--muted);
   text-decoration: line-through;
@@ -870,8 +865,7 @@ html:lang(uk) .hero-copy h1 em {
 .sold-out-cta {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
+  justify-content: center;
   min-height: 52px;
   margin-top: var(--space-5);
   padding: var(--space-3) var(--space-5);
@@ -881,11 +875,6 @@ html:lang(uk) .hero-copy h1 em {
   color: var(--ink);
   font-size: 14px;
   font-weight: 500;
-}
-.sold-out-cta > span + span {
-  color: var(--muted);
-  font-weight: 400;
-  text-align: end;
 }
 .size-options {
   display: grid;
@@ -1044,7 +1033,7 @@ summary::-webkit-details-marker {
   background: var(--surface);
   color: var(--muted);
 }
-.stock-label,
+.bundle-part-stock,
 .cart-stock-message {
   color: var(--error);
   font-size: 13px;
@@ -1053,10 +1042,22 @@ summary::-webkit-details-marker {
 .product-purchase > .stock-announcement:not(:empty) {
   margin-top: var(--space-5);
 }
-.restock-soon p {
-  margin: 0 0 var(--space-1);
-  font-size: 14px;
+/* Under the sold-out slot: one quiet line on what to do, no second box. */
+.restock-form.restock-soon {
+  display: block;
+  margin-top: var(--space-3);
+  padding: 0;
+  border: 0;
+  background: none;
   color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.restock-soon p {
+  margin: 0;
+}
+.restock-soon .text-button {
+  color: var(--ink);
 }
 .restock-form {
   display: grid;
@@ -1232,6 +1233,10 @@ summary::-webkit-details-marker {
   color: var(--muted);
   font-size: 12px;
   line-height: 1.4;
+}
+.bundle-part-choice .bundle-part-stock {
+  display: block;
+  font-size: 12px;
 }
 .bundle-photo {
   position: relative;

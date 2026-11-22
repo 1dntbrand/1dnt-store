@@ -6,10 +6,9 @@ import { GuideDialog, GuideSection } from "./guide-dialog";
 import { MeasureLegend, MeasurePhoto } from "./measure-photo";
 
 export function HarnessGuide() {
-  const { t, guideSize, language } = useStorefront((state) => ({
+  const { t, guideSize } = useStorefront((state) => ({
     t: state.t,
     guideSize: state.guideSize,
-    language: state.language,
   }));
   return (
     <GuideDialog id="harnessSizeGuide" title={t("harnessGuideTitle")}>
@@ -51,7 +50,7 @@ export function HarnessGuide() {
                 <th scope="col">{t("chestCm")}</th>
                 <th scope="col">{t("harnessLowerCm")}</th>
                 <th scope="col">{t("harnessUpperCm")}</th>
-                <th scope="col">{t("widthCm")}</th>
+                <th scope="col">{t("collarWidthMm")}</th>
               </tr>
             </thead>
             <tbody>
@@ -66,7 +65,7 @@ export function HarnessGuide() {
                   <td>{item.chest}</td>
                   <td>{item.lower}</td>
                   <td>{item.upper}</td>
-                  <td>{item.widthCm.toLocaleString(language)}</td>
+                  <td>{item.widthMm}</td>
                 </tr>
               ))}
             </tbody>

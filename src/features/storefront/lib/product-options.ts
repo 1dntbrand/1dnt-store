@@ -105,15 +105,20 @@ export function productBundleId({
   return `bundle-${collection}-${kind}`;
 }
 
-/** Marks the sizes that are out of stock in the variant's colour. */
+/**
+ * Marks the sizes that are out of stock in the variant's colour. When the
+ * whole colour is gone the sizes stay unmarked: the colour is what to change,
+ * and repeating "out of stock" on every size would only add noise.
+ */
 export function withStock(
   options: readonly VariantOption[],
   variant: ProductVariant,
 ): VariantOption[] {
-  return options.map((option) => ({
+  const marked = options.map((option) => ({
     ...option,
     soldOut: variantLimit({ ...variant, size: option.value }) === 0,
   }));
+  return marked.every((option) => option.soldOut) ? [...options] : marked;
 }
 
 /** A colour is sold out when none of its sizes can be ordered. */

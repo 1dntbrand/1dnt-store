@@ -85,6 +85,7 @@ export function LeashGuide() {
           </button>
         ))}
       </div>
+      <p className="guide-note leash-width-note">{t("leashStrapWidth")}</p>
 
       {shown === "1.5" ? (
         <GuideSection title={t("shortGuideNote")}>
@@ -127,35 +128,6 @@ export function LeashGuide() {
           <p className="guide-note">{t("leashHandsFreeNote")}</p>
         </GuideSection>
       )}
-
-      <GuideSection title={t("sizeGuideLabel")}>
-        <div className="size-table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">{t("leashTotalLength")}</th>
-                <th scope="col">{t("collarWidthMm")}</th>
-                <th scope="col">{t("leashUse")}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sizes.map((size) => (
-                <tr
-                  key={size}
-                  data-guide-size={size}
-                  aria-current={shown === size}
-                >
-                  <th scope="row">{metres(size)}</th>
-                  <td>19</td>
-                  <td>
-                    {t(size === "1.5" ? "handHeldOnly" : "convertibleUse")}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </GuideSection>
 
       <div className="guide-actions">
         <button

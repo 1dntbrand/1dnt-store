@@ -239,12 +239,6 @@
     "ru": "Обхват груди (см)",
     "uk": "Обхват грудей (см)"
   },
-  "widthCm": {
-    "en": "Strap width (cm)",
-    "pl": "Szerokość paska (cm)",
-    "ru": "Ширина ленты (см)",
-    "uk": "Ширина стрічки (см)"
-  },
   "measureTitle": {
     "en": "How to measure",
     "pl": "Jak zmierzyć psa",
@@ -324,58 +318,64 @@
     "uk": "У руці / з вільними руками"
   },
   "leashFixedTitle": {
-    "en": "Full length — 2.50 m",
-    "pl": "Pełna długość — 2,50 m",
-    "ru": "Полная длина — 2,50 м",
-    "uk": "Повна довжина — 2,50 м"
+    "en": "Full length",
+    "pl": "Pełna długość",
+    "ru": "Полная длина",
+    "uk": "Повна довжина"
   },
   "leashLongTitle": {
-    "en": "Shortened — 2.00 m",
-    "pl": "Krótsza smycz — 2,00 m",
-    "ru": "Укороченный вариант — 2,00 м",
-    "uk": "Укорочений варіант — 2,00 м"
+    "en": "Shortened",
+    "pl": "Krótsza smycz",
+    "ru": "Укороченный вариант",
+    "uk": "Укорочений варіант"
   },
   "leashFixedCaption": {
-    "en": "Fasten the snap hook to the first attachment point for a small handle. Overall length, including the handle: 2.50 m.",
-    "pl": "Zapnij karabińczyk w pierwszym punkcie, tworząc małą rączkę. Długość całkowita wraz z rączką: 2,50 m.",
-    "ru": "Пристегните карабин к первому креплению, чтобы получилась небольшая ручка. Общая длина вместе с ручкой: 2,50 м.",
-    "uk": "Пристебніть карабін до першого кріплення, щоб утворилася невелика ручка. Загальна довжина разом із ручкою: 2,50 м."
+    "en": "Fasten the snap hook to the first attachment point for a small handle. The length includes the handle.",
+    "pl": "Zapnij karabińczyk w pierwszym punkcie, tworząc małą rączkę. Długość obejmuje rączkę.",
+    "ru": "Пристегните карабин к первому креплению, чтобы получилась небольшая ручка. Длина указана вместе с ручкой.",
+    "uk": "Пристебніть карабін до першого кріплення, щоб утворилася невелика ручка. Довжину вказано разом із ручкою."
   },
   "leashLongCaption": {
-    "en": "Move the snap hook to the second attachment point. Hold the larger loop as a handle for a 2.00 m leash.",
-    "pl": "Przepnij karabińczyk do drugiego punktu. Trzymaj większą pętlę jak rączkę — długość smyczy wynosi 2,00 m.",
-    "ru": "Перестегните карабин на второе крепление. Используйте увеличенную петлю как ручку — длина поводка составит 2,00 м.",
-    "uk": "Перестебніть карабін на друге кріплення. Використовуйте збільшену петлю як ручку — довжина повідця становитиме 2,00 м."
+    "en": "Move the snap hook to the second attachment point and hold the larger loop as a handle.",
+    "pl": "Przepnij karabińczyk do drugiego punktu i trzymaj większą pętlę jak rączkę.",
+    "ru": "Перестегните карабин на второе крепление и держите увеличенную петлю как ручку.",
+    "uk": "Перестебніть карабін на друге кріплення й тримайте збільшену петлю як ручку."
   },
   "leashHandsFreeTitle": {
-    "en": "Hands-free — 150 cm loop",
-    "pl": "Hands-free — pętla 150 cm",
-    "ru": "Свободные руки — петля 150 см",
-    "uk": "Вільні руки — петля 150 см"
+    "en": "Hands-free",
+    "pl": "Hands-free",
+    "ru": "Свободные руки",
+    "uk": "Вільні руки"
   },
   "leashHandsFreeCaption": {
-    "en": "Use the same second attachment point and wear the loop across your body. The loop circumference is 150 cm.",
-    "pl": "Użyj tego samego drugiego punktu i załóż pętlę przez ramię. Obwód pętli wynosi 150 cm.",
-    "ru": "Используйте то же второе крепление и наденьте петлю через плечо. Обхват петли — 150 см.",
-    "uk": "Використовуйте те саме друге кріплення та надягніть петлю через плече. Обхват петлі — 150 см."
+    "en": "Use the same second attachment point and wear the loop across your body.",
+    "pl": "Użyj tego samego drugiego punktu i załóż pętlę przez ramię.",
+    "ru": "Используйте то же второе крепление и наденьте петлю через плечо.",
+    "uk": "Використовуйте те саме друге кріплення та надягніть петлю через плече."
   },
   "leashHandsFreeNote": {
-    "en": "The three diagrams describe the 2.5 m model. 150 cm is the circumference of the body loop, not the distance from you to your dog. Diagrams are not to scale.",
-    "pl": "Trzy schematy dotyczą modelu 2,5 m. 150 cm to obwód pętli wokół ciała, a nie odległość od Ciebie do psa. Schematy nie są wykonane w skali.",
-    "ru": "Три схемы показывают модель 2,5 м. 150 см — это обхват петли вокруг тела, а не расстояние от вас до собаки. Схемы выполнены не в масштабе.",
-    "uk": "Три схеми показують модель 2,5 м. 150 см — це обхват петлі навколо тіла, а не відстань від вас до собаки. Схеми виконано не в масштабі."
+    "en": "150 cm is the circumference of the body loop, not the distance from you to your dog. Diagrams are not to scale.",
+    "pl": "150 cm to obwód pętli wokół ciała, a nie odległość od Ciebie do psa. Schematy nie są wykonane w skali.",
+    "ru": "150 см — это обхват петли вокруг тела, а не расстояние от вас до собаки. Схемы выполнены не в масштабе.",
+    "uk": "150 см — це обхват петлі навколо тіла, а не відстань від вас до собаки. Схеми виконано не в масштабі."
+  },
+  "leashStrapWidth": {
+    "en": "Strap width: 19 mm.",
+    "pl": "Szerokość paska: 19 mm.",
+    "ru": "Ширина ленты: 19 мм.",
+    "uk": "Ширина стрічки: 19 мм."
   },
   "leashModesHeading": {
-    "en": "2.5 m · Three ways to walk",
-    "pl": "2,5 m · Trzy sposoby na spacer",
-    "ru": "2,5 м · Три способа гулять",
-    "uk": "2,5 м · Три способи гуляти"
+    "en": "Three ways to walk",
+    "pl": "Trzy sposoby na spacer",
+    "ru": "Три способа гулять",
+    "uk": "Три способи гуляти"
   },
   "shortLeashGuideCaption": {
-    "en": "A standard leash with a small handle. Total length including the handle: 1.50 m.",
-    "pl": "Zwykła smycz z małą rączką. Długość całkowita wraz z rączką: 1,50 m.",
-    "ru": "Обычный поводок с небольшой ручкой. Общая длина вместе с ручкой: 1,50 м.",
-    "uk": "Звичайний повідець із невеликою ручкою. Загальна довжина разом із ручкою: 1,50 м."
+    "en": "The length includes the handle.",
+    "pl": "Długość obejmuje rączkę.",
+    "ru": "Длина указана вместе с ручкой.",
+    "uk": "Довжину вказано разом із ручкою."
   },
   "collarWidthMm": {
     "en": "Strap width (mm)",
@@ -424,12 +424,6 @@
     "pl": "Regulowane dopasowanie",
     "ru": "Регулируемая посадка",
     "uk": "Регульована посадка"
-  },
-  "baseHandmade": {
-    "en": "Handmade",
-    "pl": "Wykonane ręcznie",
-    "ru": "Ручная работа",
-    "uk": "Ручна робота"
   },
   "baseEasyCare": {
     "en": "Easy care",
@@ -522,10 +516,10 @@
     "uk": "Колір шлеї"
   },
   "shortGuideNote": {
-    "en": "1.5 m · Standard leash",
-    "pl": "1,5 m · Zwykła smycz",
-    "ru": "1,5 м · Обычный поводок",
-    "uk": "1,5 м · Звичайний повідець"
+    "en": "Standard leash",
+    "pl": "Zwykła smycz",
+    "ru": "Обычный поводок",
+    "uk": "Звичайний повідець"
   },
   "menuOpen": {
     "en": "Open menu",
@@ -1133,6 +1127,12 @@
     "ru": "Общая длина: 1,5 м, включая ручку. Диаметр ручки: 14 см.",
     "uk": "Загальна довжина: 1,5 м, включно з ручкою. Діаметр ручки: 14 см."
   },
+  "elegantLeashGuideCaption": {
+    "en": "The length includes the handle. Ø — diameter of the wooden handle.",
+    "pl": "Długość obejmuje rączkę. Ø — średnica drewnianej rączki.",
+    "ru": "Длина указана вместе с ручкой. Ø — диаметр деревянной ручки.",
+    "uk": "Довжину вказано разом із ручкою. Ø — діаметр дерев’яної ручки."
+  },
   "outOfStock": {
     "en": "Out of stock",
     "pl": "Niedostępny",
@@ -1476,10 +1476,16 @@
     "uk": "Обрати {size}"
   },
   "restockSoon": {
-    "en": "This colour is sold out for now. Choose another colour, or write to us and we will tell you when it is back.",
-    "pl": "Ten kolor jest chwilowo niedostępny. Wybierz inny kolor albo napisz do nas — damy znać, gdy wróci.",
-    "ru": "Этот цвет временно закончился. Выберите другой цвет или напишите нам — сообщим, когда он появится.",
-    "uk": "Цей колір тимчасово закінчився. Оберіть інший колір або напишіть нам — повідомимо, коли він з’явиться."
+    "en": "Choose another colour, or write to us and we’ll let you know when it’s back.",
+    "pl": "Wybierz inny kolor albo napisz do nas — damy znać, gdy wróci.",
+    "ru": "Выберите другой цвет или напишите нам — сообщим, когда он появится.",
+    "uk": "Оберіть інший колір або напишіть нам — повідомимо, коли він з’явиться."
+  },
+  "restockSoonSize": {
+    "en": "Choose another size, or write to us and we’ll let you know when it’s back.",
+    "pl": "Wybierz inny rozmiar albo napisz do nas — damy znać, gdy wróci.",
+    "ru": "Выберите другой размер или напишите нам — сообщим, когда он появится.",
+    "uk": "Оберіть інший розмір або напишіть нам — повідомимо, коли він з’явиться."
   },
   "restockAsk": {
     "en": "Write to us",
