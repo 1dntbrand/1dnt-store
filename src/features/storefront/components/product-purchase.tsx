@@ -11,69 +11,64 @@ import { useRecentlyAdded } from "../lib/use-recently-added";
 
 const dockMedia = "(max-width: 800px) and (min-height: 480px)";
 
-// The dock repeats the main button once it has scrolled above the screen.
-// Before that the options and the button are already in view.
-type DockAction = "buy";
+/**
+ * The dock repeats the main button while the shopper reads this product's
+ * details below it: it shows once the button has passed under the header and
+ * leaves when the details give way to the set builder or the next section.
+ * A 24px band between the show and hide points keeps small scroll movements
+ * from toggling it.
+ */
+const HYSTERESIS = 24;
 
-function useDockAction(
+function useDockVisible(
   active: boolean,
   infoRef: RefObject<HTMLDivElement | null>,
   actionRef: RefObject<HTMLDivElement | null>,
-  bundleId: string | null,
 ) {
-  const [dockAction, setDockAction] = useState<DockAction | null>(null);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (!active || !("IntersectionObserver" in window)) return;
-    const info = infoRef.current;
-    const action = actionRef.current;
-    if (!info || !action) return;
-
-    const bundle = bundleId ? document.getElementById(bundleId) : null;
+    if (!active) return;
     const media = window.matchMedia(dockMedia);
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        const bounds = entry.rootBounds;
-        if (!media.matches || !bounds) return;
-        const infoRect = info.getBoundingClientRect();
-        const bundleRect = bundle?.getBoundingClientRect();
-        const bundleVisible =
-          bundleRect &&
-          bundleRect.top < bounds.bottom &&
-          bundleRect.bottom > bounds.top;
-        if (
-          bundleVisible ||
-          infoRect.bottom <= bounds.top ||
-          infoRect.top >= bounds.bottom
-        ) {
-          setDockAction(null);
-          return;
-        }
-        const actionRect = action.getBoundingClientRect();
-        setDockAction(actionRect.bottom <= bounds.top ? "buy" : null);
-      },
-      { rootMargin: "-68px 0px -84px" },
-    );
-
-    const updateObservation = () => {
-      observer.disconnect();
-      if (media.matches) {
-        observer.observe(info);
-        observer.observe(action);
-        if (bundle) observer.observe(bundle);
-      } else {
-        setDockAction(null);
-      }
+    let shown = false;
+    let frame = 0;
+    const show = (next: boolean) => {
+      if (next === shown) return;
+      shown = next;
+      setVisible(next);
     };
-    updateObservation();
-    media.addEventListener("change", updateObservation);
+    const update = () => {
+      frame = 0;
+      const info = infoRef.current;
+      const action = actionRef.current;
+      if (!media.matches || !info || !action) return show(false);
+      const headerBottom =
+        document.querySelector(".site-header")?.getBoundingClientRect()
+          .bottom ?? 0;
+      const band = shown ? HYSTERESIS : -HYSTERESIS;
+      const buttonPassed =
+        action.getBoundingClientRect().bottom < headerBottom + band;
+      const stillReading =
+        info.getBoundingClientRect().bottom > window.innerHeight * 0.5 - band;
+      show(buttonPassed && stillReading);
+    };
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    media.addEventListener("change", schedule);
     return () => {
-      media.removeEventListener("change", updateObservation);
-      observer.disconnect();
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      media.removeEventListener("change", schedule);
+      show(false);
     };
-  }, [active, infoRef, actionRef, bundleId]);
+  }, [active, infoRef, actionRef]);
 
-  return active ? dockAction : null;
+  return active && visible;
 }
 
 function jumpTo(element: HTMLElement | null) {
@@ -110,7 +105,7 @@ export function ProductPurchase({
   const actionRef = useRef<HTMLDivElement>(null);
   const hasBundle = variant.collection === "base" || variant.kind !== "leash";
   const bundleId = hasBundle ? productBundleId(variant) : null;
-  const dockAction = useDockAction(active, infoRef, actionRef, bundleId);
+  const dockVisible = useDockVisible(active, infoRef, actionRef);
   const unavailable = variantLimit(variant) === 0;
   const price = money(itemPrice(variant));
   const justAdded = useRecentlyAdded([variant]);
@@ -157,8 +152,13 @@ export function ProductPurchase({
           {t("productReturnPolicy")}
         </button>
       </div>
-      {dockAction && !unavailable && (
-        <div className="purchase-dock">
+      {active && !unavailable && (
+        <div
+          className="purchase-dock"
+          data-visible={dockVisible || undefined}
+          aria-hidden={!dockVisible}
+          inert={!dockVisible}
+        >
           <div className="purchase-dock-summary">
             <strong>{price}</strong>
             <span>{choiceSummary(variant.colour, variant.size)}</span>

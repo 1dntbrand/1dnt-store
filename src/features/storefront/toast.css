@@ -81,8 +81,8 @@
     right: var(--page-gutter);
     bottom: max(var(--space-3), env(safe-area-inset-bottom));
   }
-  body:has(.purchase-dock) .added-toast-region {
-    bottom: calc(76px + env(safe-area-inset-bottom));
+  body:has(.purchase-dock[data-visible]) .added-toast-region {
+    bottom: calc(68px + env(safe-area-inset-bottom));
   }
 }
 
