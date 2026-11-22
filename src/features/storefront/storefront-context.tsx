@@ -13,6 +13,7 @@ import { createStorefrontStore, type StorefrontState } from "./store";
 import { validCategory } from "./lib/storage";
 import {
   dropOverlayEntry,
+  forgetStaleOverlayEntry,
   onOverlayBack,
   pushOverlayEntry,
 } from "./lib/back-closes";
@@ -25,6 +26,8 @@ export function StorefrontProvider({ children }: { children: ReactNode }) {
   const [store] = useState(createStorefrontStore);
   useEffect(() => {
     store.getState().restore();
+    // An overlay entry restored with the page after a reload has no overlay.
+    forgetStaleOverlayEntry();
     let pendingScroll = 0;
     function syncHash() {
       window.cancelAnimationFrame(pendingScroll);

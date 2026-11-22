@@ -12,10 +12,11 @@ import {
 import { useStorefront } from "../storefront-context";
 import { Dialog } from "./dialog";
 import { CloseButton } from "./close-button";
+import { phoneLayoutQuery } from "../lib/motion";
 import { OrderItems, OrderTotals } from "./cart";
 import { CheckoutPhone } from "./checkout-phone";
 
-const compactQuery = "(max-width: 800px)";
+const compactQuery = phoneLayoutQuery;
 function subscribeToLayout(listener: () => void) {
   const query = window.matchMedia(compactQuery);
   query.addEventListener("change", listener);

@@ -3,7 +3,8 @@
 import { CheckIcon } from "./icons";
 import Image from "next/image";
 import { useRecentlyAdded } from "../lib/use-recently-added";
-import { useId } from "react";
+import { useId, useRef } from "react";
+import { usePublishSetOffer } from "./sticky-buy";
 import { variantLimit } from "@/domain/commerce/availability";
 import {
   calculateCart,
@@ -117,9 +118,20 @@ export function BundleOffer({
       ? PAIR_DISCOUNT
       : 0;
   const unavailable = variants.some((variant) => variantLimit(variant) === 0);
+  const section = useRef<HTMLElement>(null);
+  const button = useRef<HTMLButtonElement>(null);
+  usePublishSetOffer({
+    variants,
+    total: pricing.total,
+    rate,
+    available: !unavailable,
+    section,
+    button,
+  });
 
   return (
     <section
+      ref={section}
       className="bundle-builder"
       id={productBundleId(parts[0].variant)}
       aria-labelledby={id}
@@ -168,6 +180,7 @@ export function BundleOffer({
           )}
         </div>
         <button
+          ref={button}
           type="button"
           className="btn"
           disabled={unavailable}

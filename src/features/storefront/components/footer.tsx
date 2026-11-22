@@ -1,6 +1,7 @@
 "use client";
 
 import { brandLinks } from "../data/brand";
+import { serviceIds } from "../store";
 import { useStorefront } from "../storefront-context";
 import { InstagramIcon } from "./instagram-icon";
 
@@ -39,51 +40,14 @@ export function Footer() {
           </a>
         </div>
       </div>
-      <nav className="service-footer" aria-label="Customer care">
+      <nav className="service-footer" aria-label={service.heading}>
         <p className="service-heading">{service.heading}</p>
         <div className="service-links">
-          <button
-            type="button"
-            data-service="contact"
-            onClick={() => openService("contact")}
-          >
-            {service.labels[0]}
-          </button>
-          <button
-            type="button"
-            data-service="delivery"
-            onClick={() => openService("delivery")}
-          >
-            {service.labels[1]}
-          </button>
-          <button
-            type="button"
-            data-service="returns"
-            onClick={() => openService("returns")}
-          >
-            {service.labels[2]}
-          </button>
-          <button
-            type="button"
-            data-service="terms"
-            onClick={() => openService("terms")}
-          >
-            {service.labels[3]}
-          </button>
-          <button
-            type="button"
-            data-service="privacy"
-            onClick={() => openService("privacy")}
-          >
-            {service.labels[4]}
-          </button>
-          <button
-            type="button"
-            data-service="cookies"
-            onClick={() => openService("cookies")}
-          >
-            {service.labels[5]}
-          </button>
+          {serviceIds.map((id, index) => (
+            <button key={id} type="button" onClick={() => openService(id)}>
+              {service.labels[index]}
+            </button>
+          ))}
         </div>
       </nav>
       <div className="footer-bottom">

@@ -6,6 +6,7 @@ import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { blurProps } from "../lib/image-placeholder";
 import { useStorefront } from "../storefront-context";
 import { Lightbox } from "./lightbox";
+import { scrollBehavior } from "../lib/motion";
 
 export interface GalleryPhoto {
   src: string;
@@ -13,18 +14,14 @@ export interface GalleryPhoto {
   label: string;
 }
 
-function prefersReducedMotion() {
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
-
 /** Scroll a snap track to a slide without fighting the user's own swipe. */
-export function scrollToSlide(track: HTMLElement | null, index: number) {
+function scrollToSlide(track: HTMLElement | null, index: number) {
   if (!track) return;
   const left = index * track.clientWidth;
   if (Math.abs(track.scrollLeft - left) < 2) return;
   track.scrollTo({
     left,
-    behavior: prefersReducedMotion() ? "auto" : "smooth",
+    behavior: scrollBehavior(),
   });
 }
 
@@ -46,7 +43,10 @@ export function useSlideSync(
     const onScroll = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
-        const width = element.clientWidth || 1;
+        // A hidden track (closed viewer, inactive tab) has no width; its
+        // scroll position says nothing about the photo being shown.
+        const width = element.clientWidth;
+        if (!width) return;
         const next = Math.round(element.scrollLeft / width);
         if (next !== latest.current.index) latest.current.onIndexChange(next);
       });
@@ -94,10 +94,20 @@ export function MediaGallery({
 
   function onKeyDown(event: KeyboardEvent<HTMLDivElement>) {
     if (!multiple) return;
-    if (event.key === "ArrowRight") go(1);
-    else if (event.key === "ArrowLeft") go(-1);
-    else return;
+    const step =
+      event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
+    if (!step) return;
     event.preventDefault();
+    const next = (active + step + photos.length) % photos.length;
+    onIndexChange(next);
+    // Keep focus on the photo being shown, not on the one that just hid.
+    if (
+      event.target instanceof HTMLElement &&
+      track.current?.contains(event.target)
+    )
+      track.current
+        .querySelectorAll<HTMLElement>(".media-slide")
+        [next]?.focus({ preventScroll: true });
   }
 
   return (

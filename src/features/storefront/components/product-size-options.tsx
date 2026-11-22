@@ -17,7 +17,10 @@ export function ProductSizeOptions({
   onSelect: (value: string) => void;
   onOpenGuide: () => void;
 }) {
-  const t = useStorefront((state) => state.t);
+  const { t, centimetres } = useStorefront((state) => ({
+    t: state.t,
+    centimetres: state.centimetres,
+  }));
   const isLeash = kind === "leash";
   const label = t(isLeash ? "lengthLabel" : "sizeOnly");
 
@@ -48,9 +51,7 @@ export function ProductSizeOptions({
             onClick={() => onSelect(value)}
           >
             <span>{label}</span>
-            {detail && (
-              <small>{detail.replace(/ cm$/, ` ${t("centimetreUnit")}`)}</small>
-            )}
+            {detail && <small>{centimetres(detail.replace(/ cm$/, ""))}</small>}
           </button>
         ))}
       </div>

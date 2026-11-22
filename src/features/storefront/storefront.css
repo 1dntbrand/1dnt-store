@@ -160,8 +160,7 @@ button:disabled {
   background-color: var(--olive);
   border-color: var(--olive);
 }
-.text-button,
-.size-guide-button {
+.text-button {
   min-height: 44px;
   border: 0;
   padding: 8px 0;
@@ -1076,22 +1075,29 @@ summary::-webkit-details-marker {
   border: 1px solid var(--line);
   border-radius: var(--media-radius);
 }
+/* Title and discount share the first line; the hint gets the full width. */
 .bundle-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  gap: var(--space-4);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: var(--space-4);
   margin-bottom: var(--space-5);
+}
+.bundle-heading > div {
+  display: contents;
 }
 .bundle-heading h4 {
   font-size: 24px;
   letter-spacing: -0.025em;
 }
 .bundle-heading p {
+  grid-column: 1 / -1;
   margin-top: 8px;
   font-size: 13px;
 }
 .bundle-discount {
+  grid-row: 1;
+  grid-column: 2;
   font-size: 26px;
   color: var(--olive);
   white-space: nowrap;
@@ -2225,14 +2231,7 @@ dialog::backdrop {
   }
   .bundle-parts {
     grid-template-columns: 1fr !important;
-  }
-  .bundle-part {
-    padding-bottom: var(--space-4);
-    border-bottom: 1px solid var(--line);
-  }
-  .bundle-part:last-child {
-    border-bottom: 0;
-    padding-bottom: 0;
+    gap: var(--space-2);
   }
   .bundle-fields {
     grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
@@ -2305,6 +2304,10 @@ dialog::backdrop {
   }
 }
 @media (max-width: 540px) {
+  .footer-bottom {
+    flex-direction: column;
+    gap: var(--space-1);
+  }
   .site-header {
     gap: var(--space-1);
   }
@@ -2446,9 +2449,7 @@ dialog::backdrop {
     position: fixed;
     z-index: 9;
     inset: auto 0 0;
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
+    display: block;
     padding: 8px var(--page-gutter) max(8px, env(safe-area-inset-bottom));
     border-top: 1px solid var(--line);
     background-color: var(--paper);
@@ -2468,6 +2469,11 @@ dialog::backdrop {
   }
   body:has(dialog[open]) .purchase-dock {
     visibility: hidden;
+  }
+  .purchase-dock-content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
   }
   .purchase-dock-summary {
     flex: 1;

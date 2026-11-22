@@ -324,16 +324,16 @@
     "uk": "У руці / з вільними руками"
   },
   "leashFixedTitle": {
-    "en": "01 · Full length — 2.50 m",
-    "pl": "01 · Pełna długość — 2,50 m",
-    "ru": "01 · Полная длина — 2,50 м",
-    "uk": "01 · Повна довжина — 2,50 м"
+    "en": "Full length — 2.50 m",
+    "pl": "Pełna długość — 2,50 m",
+    "ru": "Полная длина — 2,50 м",
+    "uk": "Повна довжина — 2,50 м"
   },
   "leashLongTitle": {
-    "en": "02 · Shortened — 2.00 m",
-    "pl": "02 · Krótsza smycz — 2,00 m",
-    "ru": "02 · Укороченный вариант — 2,00 м",
-    "uk": "02 · Укорочений варіант — 2,00 м"
+    "en": "Shortened — 2.00 m",
+    "pl": "Krótsza smycz — 2,00 m",
+    "ru": "Укороченный вариант — 2,00 м",
+    "uk": "Укорочений варіант — 2,00 м"
   },
   "leashFixedCaption": {
     "en": "Fasten the snap hook to the first attachment point for a small handle. Overall length, including the handle: 2.50 m.",
@@ -348,10 +348,10 @@
     "uk": "Перестебніть карабін на друге кріплення. Використовуйте збільшену петлю як ручку — довжина повідця становитиме 2,00 м."
   },
   "leashHandsFreeTitle": {
-    "en": "03 · Hands-free — 150 cm loop",
-    "pl": "03 · Hands-free — pętla 150 cm",
-    "ru": "03 · Свободные руки — петля 150 см",
-    "uk": "03 · Вільні руки — петля 150 см"
+    "en": "Hands-free — 150 cm loop",
+    "pl": "Hands-free — pętla 150 cm",
+    "ru": "Свободные руки — петля 150 см",
+    "uk": "Вільні руки — петля 150 см"
   },
   "leashHandsFreeCaption": {
     "en": "Use the same second attachment point and wear the loop across your body. The loop circumference is 150 cm.",
@@ -364,24 +364,6 @@
     "pl": "Trzy schematy dotyczą modelu 2,5 m. 150 cm to obwód pętli wokół ciała, a nie odległość od Ciebie do psa. Schematy nie są wykonane w skali.",
     "ru": "Три схемы показывают модель 2,5 м. 150 см — это обхват петли вокруг тела, а не расстояние от вас до собаки. Схемы выполнены не в масштабе.",
     "uk": "Три схеми показують модель 2,5 м. 150 см — це обхват петлі навколо тіла, а не відстань від вас до собаки. Схеми виконано не в масштабі."
-  },
-  "fixedLeashGraphic": {
-    "en": "Standard leash with a fixed hand loop and one snap hook.",
-    "pl": "Zwykła smycz ze stałą rączką i jednym karabińczykiem.",
-    "ru": "Обычный поводок с фиксированной ручкой и одним карабином.",
-    "uk": "Звичайний повідець із фіксованою ручкою та одним карабіном."
-  },
-  "longLeashGraphic": {
-    "en": "Convertible leash with the end snap hook fastened to a ring to form a hand loop.",
-    "pl": "Smycz przepinana z końcowym karabińczykiem zapiętym do pierścienia, tworzącym rączkę.",
-    "ru": "Перестёжной поводок: карабин пристёгнут к кольцу, образуя ручку.",
-    "uk": "Перестібний повідець: карабін пристебнуто до кільця, утворюючи ручку."
-  },
-  "handsFreeGraphic": {
-    "en": "Person wearing a leash across the body, with the snap hook attached to the ring at the hip and the remaining leash leading to the dog.",
-    "pl": "Osoba ze smyczą przez ramię, karabińczykiem zapiętym do pierścienia na biodrze i pozostałą częścią smyczy prowadzącą do psa.",
-    "ru": "Человек с поводком через плечо: карабин закреплён на кольце у бедра, свободная часть поводка ведёт к собаке.",
-    "uk": "Людина з повідцем через плече: карабін закріплено на кільці біля стегна, вільна частина повідця веде до собаки."
   },
   "leashModesHeading": {
     "en": "2.5 m · Three ways to walk",
@@ -539,12 +521,6 @@
     "ru": "Цвет шлейки",
     "uk": "Колір шлеї"
   },
-  "longGuideNote": {
-    "en": "2.5 m · Multifunctional leash",
-    "pl": "2,5 m · Smycz wielofunkcyjna",
-    "ru": "2,5 м · Многофункциональный поводок",
-    "uk": "2,5 м · Багатофункціональний повідець"
-  },
   "shortGuideNote": {
     "en": "1.5 m · Standard leash",
     "pl": "1,5 m · Zwykła smycz",
@@ -568,12 +544,6 @@
     "pl": "m",
     "ru": "м",
     "uk": "м"
-  },
-  "shortDiagramTitle": {
-    "en": "1.5 m standard leash with a small handle",
-    "pl": "Zwykła smycz 1,5 m z małą rączką",
-    "ru": "Обычный поводок 1,5 м с небольшой ручкой",
-    "uk": "Звичайний повідець 1,5 м із невеликою ручкою"
   },
   "khaki-orange": {
     "en": "Military Olive / Burnt Orange",
@@ -1031,12 +1001,6 @@
     "ru": "Оформление заказа",
     "uk": "Оформлення замовлення"
   },
-  "backToBag": {
-    "en": "Back to bag",
-    "pl": "Wróć do koszyka",
-    "ru": "Назад в корзину",
-    "uk": "Назад до кошика"
-  },
   "orderSummary": {
     "en": "Your order",
     "pl": "Twoje zamówienie",
@@ -1157,12 +1121,6 @@
     "ru": "Тема вопроса",
     "uk": "Тема запитання"
   },
-  "showOrderItems": {
-    "en": "View items",
-    "pl": "Zobacz produkty",
-    "ru": "Посмотреть товары",
-    "uk": "Переглянути товари"
-  },
   "quantityLimit": {
     "en": "The maximum quantity for one variant is 99. Adjust your bag before adding this set.",
     "pl": "Maksymalna liczba sztuk jednego wariantu to 99. Zmień koszyk przed dodaniem zestawu.",
@@ -1198,12 +1156,6 @@
     "pl": "Użyjemy tego adresu tylko do powiadomienia o dostępności tego wariantu.",
     "ru": "Эта почта нужна только для уведомления о поступлении выбранного варианта.",
     "uk": "Ця пошта потрібна лише для сповіщення про надходження вибраного варіанта."
-  },
-  "restockUnavailable": {
-    "en": "Email notifications will be available soon.",
-    "pl": "Powiadomienia e-mail będą dostępne wkrótce.",
-    "ru": "Уведомления по почте появятся позже.",
-    "uk": "Сповіщення поштою з’являться пізніше."
   },
   "restockSending": {
     "en": "Saving…",
@@ -1246,12 +1198,6 @@
     "pl": "Dostępna liczba",
     "ru": "Доступное количество",
     "uk": "Доступна кількість"
-  },
-  "chooseVariant": {
-    "en": "Choose options",
-    "pl": "Wybierz wariant",
-    "ru": "Выбрать вариант",
-    "uk": "Обрати варіант"
   },
   "productReturnPolicy": {
     "en": "14 days to return",
@@ -1540,5 +1486,17 @@
     "pl": "Napisz do nas",
     "ru": "Написать нам",
     "uk": "Написати нам"
+  },
+  "setDockLine": {
+    "en": "Set · {count} items · −{rate}%",
+    "pl": "Zestaw · {count} szt. · −{rate}%",
+    "ru": "Комплект · {count} шт. · −{rate}%",
+    "uk": "Комплект · {count} шт. · −{rate}%"
+  },
+  "addSetShort": {
+    "en": "Add set",
+    "pl": "Dodaj zestaw",
+    "ru": "Добавить комплект",
+    "uk": "Додати комплект"
   }
 }

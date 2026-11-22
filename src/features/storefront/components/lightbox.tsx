@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { blurProps } from "../lib/image-placeholder";
 import { useStorefront } from "../storefront-context";
+import { CloseButton } from "./close-button";
 import type { GalleryPhoto } from "./media-gallery";
 import { useSlideSync } from "./media-gallery";
 import {
@@ -99,30 +100,30 @@ export function Lightbox({
       }}
       onKeyDown={(event) => {
         if (!multiple) return;
-        if (event.key === "ArrowRight") go(1);
-        else if (event.key === "ArrowLeft") go(-1);
+        const step =
+          event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
+        if (!step) return;
+        event.preventDefault();
+        const next = (index + step + photos.length) % photos.length;
+        go(step);
+        if (
+          event.target instanceof HTMLElement &&
+          track.current?.contains(event.target)
+        )
+          track.current
+            .querySelectorAll<HTMLElement>(".lightbox-frame")
+            [next]?.focus({ preventScroll: true });
       }}
     >
       <div className="lightbox-top">
         <span className="lightbox-count" aria-live="polite">
           {index + 1} / {photos.length}
         </span>
-        <button
-          type="button"
-          className="icon-button lightbox-close"
-          aria-label={t("guideClose")}
+        <CloseButton
+          className="lightbox-close"
+          label={t("guideClose")}
           onClick={onClose}
-        >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            aria-hidden="true"
-          >
-            <path d="m6 6 12 12M6 18 18 6" />
-          </svg>
-        </button>
+        />
       </div>
       <div className="lightbox-track" ref={track}>
         {/* Slides exist only while open: nothing loads for a closed viewer. */}

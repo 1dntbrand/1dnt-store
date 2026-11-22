@@ -23,7 +23,7 @@ function RestockRequest({ variant }: { variant: ProductVariant }) {
 
   async function subscribe(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!restockEnabled || sending || status === "saved") return;
+    if (sending || status === "saved") return;
     const email = String(
       new FormData(event.currentTarget).get("email") ?? "",
     ).trim();
@@ -65,7 +65,7 @@ function RestockRequest({ variant }: { variant: ProductVariant }) {
       onSubmit={subscribe}
       aria-busy={sending}
     >
-      {restockEnabled && <p className="restock-intro">{t("restockIntro")}</p>}
+      <p className="restock-intro">{t("restockIntro")}</p>
       <label htmlFor={`${id}-email`}>{t("email")}</label>
       <div className="restock-controls">
         <input
@@ -75,19 +75,19 @@ function RestockRequest({ variant }: { variant: ProductVariant }) {
           autoComplete="email"
           maxLength={254}
           required
-          disabled={!restockEnabled || sending || status === "saved"}
+          disabled={sending || status === "saved"}
           aria-describedby={`${id}-note`}
         />
         <button
           className="btn"
           type="submit"
-          disabled={!restockEnabled || sending || status === "saved"}
+          disabled={sending || status === "saved"}
         >
           {t(sending ? "restockSending" : "restockAction")}
         </button>
       </div>
       <p className="field-hint" id={`${id}-note`}>
-        {t(restockEnabled ? "restockEmailUse" : "restockUnavailable")}
+        {t("restockEmailUse")}
       </p>
       <p className="restock-status" role="status">
         {status === "saved" ? t("restockSaved") : null}

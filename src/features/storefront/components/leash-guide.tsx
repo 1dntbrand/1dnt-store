@@ -41,12 +41,15 @@ function LeashFigure({
 }
 
 export function LeashGuide() {
-  const { t, guideSize, language, applyGuideSize } = useStorefront((state) => ({
-    t: state.t,
-    guideSize: state.guideSize,
-    language: state.language,
-    applyGuideSize: state.applyGuideSize,
-  }));
+  const { t, metres, centimetres, guideSize, applyGuideSize } = useStorefront(
+    (state) => ({
+      t: state.t,
+      metres: state.metres,
+      centimetres: state.centimetres,
+      guideSize: state.guideSize,
+      applyGuideSize: state.applyGuideSize,
+    }),
+  );
   const opened = (sizes as readonly string[]).includes(guideSize)
     ? (guideSize as LeashSize)
     : "1.5";
@@ -56,12 +59,6 @@ export function LeashGuide() {
   });
   // Reopening the guide from another selection starts on that selection.
   const shown = shownFor.from === guideSize ? shownFor.size : opened;
-  const decimal = language === "en" ? "." : ",";
-  const metres = (value: number) =>
-    `${value.toFixed(2).replace(".", decimal)} ${t("mUnit")}`;
-  const sizeLabel = (size: LeashSize) =>
-    `${size.replace(".", decimal)} ${t("mUnit")}`;
-  const title = (key: string) => t(key).replace(/^\d+\s·\s/, "");
 
   return (
     <GuideDialog id="leashSizeGuide" title={t("leashGuideTitle")}>
@@ -77,7 +74,7 @@ export function LeashGuide() {
             aria-pressed={shown === size}
             onClick={() => setShownFor({ from: guideSize, size })}
           >
-            <strong>{sizeLabel(size)}</strong>
+            <strong>{metres(size)}</strong>
             <span>{t(size === "1.5" ? "handHeldOnly" : "convertibleUse")}</span>
           </button>
         ))}
@@ -87,7 +84,7 @@ export function LeashGuide() {
         <GuideSection title={t("shortGuideNote")}>
           <LeashFigure
             src="/assets/guides/leash-standard.svg"
-            dimension={metres(1.5)}
+            dimension={metres(1.5, 2)}
             caption={t("shortLeashGuideCaption")}
           />
         </GuideSection>
@@ -97,23 +94,23 @@ export function LeashGuide() {
             <LeashFigure
               index="01"
               src="/assets/guides/leash-full.svg"
-              title={title("leashFixedTitle")}
-              dimension={metres(2.5)}
+              title={t("leashFixedTitle")}
+              dimension={metres(2.5, 2)}
               caption={t("leashFixedCaption")}
             />
             <LeashFigure
               index="02"
               src="/assets/guides/leash-shortened.svg"
-              title={title("leashLongTitle")}
-              dimension={metres(2)}
+              title={t("leashLongTitle")}
+              dimension={metres(2, 2)}
               caption={t("leashLongCaption")}
             />
             <LeashFigure
               index="03"
               tall
               src="/assets/guides/leash-hands-free.svg"
-              title={title("leashHandsFreeTitle")}
-              dimension={`150 ${t("centimetreUnit")}`}
+              title={t("leashHandsFreeTitle")}
+              dimension={centimetres("150")}
               caption={t("leashHandsFreeCaption")}
             />
           </div>
@@ -142,7 +139,7 @@ export function LeashGuide() {
                   data-guide-size={size}
                   aria-current={shown === size}
                 >
-                  <th scope="row">{sizeLabel(size)}</th>
+                  <th scope="row">{metres(size)}</th>
                   <td>19</td>
                   <td>
                     {t(size === "1.5" ? "handHeldOnly" : "convertibleUse")}
@@ -160,7 +157,7 @@ export function LeashGuide() {
           className="btn"
           onClick={() => applyGuideSize(shown)}
         >
-          {t("chooseThisSize", { size: sizeLabel(shown) })}
+          {t("chooseThisSize", { size: metres(shown) })}
         </button>
       </div>
     </GuideDialog>

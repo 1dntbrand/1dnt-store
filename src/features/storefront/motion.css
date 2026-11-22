@@ -52,6 +52,10 @@
   .photo-swap {
     animation: swap-in 260ms var(--ease-out) both;
   }
+  /* The sticky bar switches between the product and the set in place. */
+  .purchase-dock-content {
+    animation: swap-in 200ms var(--ease-out) both;
+  }
 
   /* Press feedback. */
   .btn,

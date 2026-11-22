@@ -30,8 +30,11 @@ export function useTabIndicator<T extends HTMLElement>(
       container.dataset.indicator = "ready";
     };
     place();
+    // Tabs change width when their labels change language; the full-width
+    // container does not, so watch every tab as well.
     const observer = new ResizeObserver(place);
     observer.observe(container);
+    for (const tab of container.children) observer.observe(tab);
     return () => observer.disconnect();
   }, [activeSelector, activeKey]);
 

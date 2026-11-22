@@ -1,5 +1,6 @@
 "use client";
 import { brandLinks } from "../data/brand";
+import { languages } from "../lib/catalog";
 import { useStorefront } from "../storefront-context";
 import { InstagramIcon } from "./instagram-icon";
 
@@ -59,10 +60,11 @@ export function Header() {
           value={language}
           onChange={(event) => setLanguage(event.target.value)}
         >
-          <option value="pl">PL</option>
-          <option value="en">EN</option>
-          <option value="ru">RU</option>
-          <option value="uk">UK</option>
+          {languages.map((code) => (
+            <option key={code} value={code}>
+              {code.toUpperCase()}
+            </option>
+          ))}
         </select>
         <button
           className="cart-button"

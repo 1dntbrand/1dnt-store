@@ -6,11 +6,11 @@ export const elegantLeashGuideId = "elegantLeashSizeGuide";
 
 /** Fixed 1.5 m leash with a 14 cm wooden ring handle. */
 export function ElegantLeashGuide() {
-  const { t, language } = useStorefront((state) => ({
+  const { t, metres, centimetres } = useStorefront((state) => ({
     t: state.t,
-    language: state.language,
+    metres: state.metres,
+    centimetres: state.centimetres,
   }));
-  const decimal = language === "en" ? "." : ",";
   return (
     <GuideDialog id={elegantLeashGuideId} title={t("leashGuideTitle")}>
       <figure className="leash-card">
@@ -24,7 +24,7 @@ export function ElegantLeashGuide() {
           />
         </div>
         <p className="leash-card-dimension">
-          {`1${decimal}50 ${t("mUnit")} · Ø 14 ${t("centimetreUnit")}`}
+          {`${metres(1.5, 2)} · Ø ${centimetres("14")}`}
         </p>
         <figcaption>{t("elegantLeashLength")}</figcaption>
       </figure>

@@ -13,25 +13,35 @@ import {
 import { ProductDetail } from "./product-detail";
 import { CollectionSwitch } from "./collection-switch";
 import { useTabIndicator } from "../lib/use-tab-indicator";
+import { isPlainClick, showCategory } from "../lib/category-nav";
+import type { Category } from "../lib/storage";
 
 const categoryImageSizes =
   "(max-width: 540px) 94vw, (max-width: 1480px) 31vw, 424px";
 
+const baseCategories = [
+  ["all", "allCategories"],
+  ["collars", "cat_collars"],
+  ["leashes", "cat_leashes"],
+  ["harnesses", "cat_harnesses"],
+] as const satisfies readonly (readonly [Category, string])[];
+
 export function Catalog() {
-  const { t, category, money } = useStorefront((state) => ({
+  const { t, current, money, setCategory } = useStorefront((state) => ({
     t: state.t,
-    category: state.categories.base,
+    current: state.categories.base,
     money: state.money,
+    setCategory: state.setCategory,
   }));
   const filters = useTabIndicator<HTMLElement>(
     '[aria-current="page"]',
-    category,
+    current,
   );
   return (
     <section className="section catalog-section" id="collection">
       <CollectionSwitch active="base" />
       <div className="catalog-heading">
-        <h2 id="catalogTitle" tabIndex={-1}>
+        <h2>
           <BrandText>{t("collectionTitle")}</BrandText>
         </h2>
         <p className="catalog-offer">{t("catalogSetOffer")}</p>
@@ -41,40 +51,22 @@ export function Catalog() {
         className="catalog-filters"
         aria-label={t("catalogCategories")}
       >
-        <a
-          href="#collection/all"
-          data-category="all"
-          aria-current={category === "all" ? "page" : undefined}
-        >
-          {t("allCategories")}
-        </a>
-        <a
-          href="#collection/collars"
-          data-category="collars"
-          aria-current={category === "collars" ? "page" : undefined}
-        >
-          {t("cat_collars")}
-        </a>
-        <a
-          href="#collection/leashes"
-          data-category="leashes"
-          aria-current={category === "leashes" ? "page" : undefined}
-        >
-          {t("cat_leashes")}
-        </a>
-        <a
-          href="#collection/harnesses"
-          data-category="harnesses"
-          aria-current={category === "harnesses" ? "page" : undefined}
-        >
-          {t("cat_harnesses")}
-        </a>
+        {baseCategories.map(([category, label]) => (
+          <a
+            key={category}
+            href={`#collection/${category}`}
+            aria-current={current === category ? "page" : undefined}
+            onClick={(event) => {
+              if (!isPlainClick(event)) return;
+              event.preventDefault();
+              showCategory(setCategory, "base", category);
+            }}
+          >
+            {t(label)}
+          </a>
+        ))}
       </nav>
-      <div
-        id="catalog-all"
-        className="catalog-pane"
-        hidden={category !== "all"}
-      >
+      <div id="catalog-all" className="catalog-pane" hidden={current !== "all"}>
         <div className="catalog-overview">
           <a className="catalog-preview" href="#collection/collars">
             <span className="catalog-preview-media">

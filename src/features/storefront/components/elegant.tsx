@@ -1,6 +1,5 @@
 "use client";
 
-import { CheckIcon } from "./icons";
 import {
   elegantColourIds,
   itemPrice,
@@ -24,9 +23,12 @@ import { ProductSizeOptions } from "./product-size-options";
 import { CollectionSwitch } from "./collection-switch";
 import { MediaGallery } from "./media-gallery";
 import { useTabIndicator } from "../lib/use-tab-indicator";
+import { showCategory } from "../lib/category-nav";
+import { ColourSwatches, ProductHeading } from "./product-options";
 import { BrandText } from "./brand-text";
 import { elegantLeashGuideId } from "./elegant-leash-guide";
 import { ProductInformation } from "./product-information";
+import { StickyBuyScope } from "./sticky-buy";
 
 const imageSizes =
   "(max-width: 460px) calc(100vw - 40px), (max-width: 800px) 416px, (max-width: 1240px) 45vw, 560px";
@@ -40,20 +42,17 @@ const elegantFields = {
   { colour: FieldName; size: FieldName | null }
 >;
 
-function navigateToCategory(category: ElegantProduct["category"]) {
-  window.location.hash = `elegant/${category}`;
-}
-
 export function Elegant() {
-  const { t, tab } = useStorefront((state) => ({
+  const { t, tab, setCategory } = useStorefront((state) => ({
     t: state.t,
     tab: state.categories.elegant,
+    setCategory: state.setCategory,
   }));
 
   const tabs = useTabIndicator<HTMLDivElement>('[aria-selected="true"]', tab);
 
   function selectTab(category: ElegantProduct["category"]) {
-    if (category !== tab) navigateToCategory(category);
+    if (category !== tab) showCategory(setCategory, "elegant", category);
   }
 
   function navigateTab(event: KeyboardEvent<HTMLButtonElement>, index: number) {
@@ -165,89 +164,70 @@ function ElegantProductPanel({
   }
 
   return (
-    <div
-      id={`elegant-${product.category}`}
-      role="tabpanel"
-      aria-labelledby={`elegant-tab-${product.category}`}
-      tabIndex={0}
-      hidden={!active}
-    >
-      <div className="elegant-product">
-        <MediaGallery
-          className="elegant-gallery"
-          photos={elegantViews.map(({ id, label }) => ({
-            src: `/assets/${product.gallery[colour][id]}`,
-            alt: `${title} · ${colourName} · ${t(label)}`,
-            label: t(label),
-          }))}
-          index={view}
-          onIndexChange={setView}
-          sizes={imageSizes}
-        />
-        <div className="product-info" ref={infoRef}>
-          <div className="product-heading">
-            <h3>
-              <BrandText>{title}</BrandText>
-            </h3>
-            <p className="product-price">{money(itemPrice(variant))}</p>
+    <StickyBuyScope>
+      <div
+        id={`elegant-${product.category}`}
+        role="tabpanel"
+        aria-labelledby={`elegant-tab-${product.category}`}
+        tabIndex={0}
+        hidden={!active}
+      >
+        <div className="elegant-product">
+          <MediaGallery
+            className="elegant-gallery"
+            photos={elegantViews.map(({ id, label }) => ({
+              src: `/assets/${product.gallery[colour][id]}`,
+              alt: `${title} · ${colourName} · ${t(label)}`,
+              label: t(label),
+            }))}
+            index={view}
+            onIndexChange={setView}
+            sizes={imageSizes}
+          />
+          <div className="product-info" ref={infoRef}>
+            <ProductHeading title={title} price={money(itemPrice(variant))} />
+            <ColourSwatches
+              options={elegantColourIds.map((value) => ({
+                value,
+                label: elegantColours[value].label,
+                fill: elegantColours[value].swatch,
+              }))}
+              selected={colour}
+              onSelect={setColour}
+            />
+            <ProductSizeOptions
+              kind={kind}
+              options={sizes}
+              selected={size}
+              onSelect={setSize}
+              onOpenGuide={() =>
+                kind === "leash"
+                  ? openDialog(elegantLeashGuideId)
+                  : openSizeGuide(kind, size, setSize)
+              }
+            />
+            {kind === "leash" && (
+              <p className="elegant-note">{t("elegantLeashLength")}</p>
+            )}
+            <ProductPurchase
+              variant={variant}
+              active={active}
+              infoRef={infoRef}
+            />
+            <ProductInformation collection="elegant" kind={kind} />
           </div>
-          <p className="product-price-note">{t("vatShipping")}</p>
-          <fieldset className="variant-group">
-            <legend>
-              {t("colourLabel")} <span>{colourName}</span>
-            </legend>
-            <div className="swatches">
-              {elegantColourIds.map((option) => (
-                <button
-                  key={option}
-                  className="swatch"
-                  type="button"
-                  aria-label={elegantColours[option].label}
-                  aria-pressed={colour === option}
-                  onClick={() => setColour(option)}
-                >
-                  <span style={{ background: elegantColours[option].swatch }} />
-                  {colour === option && (
-                    <span className="swatch-check" aria-hidden="true">
-                      <CheckIcon />
-                    </span>
-                  )}
-                </button>
-              ))}
-            </div>
-          </fieldset>
-          <ProductSizeOptions
-            kind={kind}
-            options={sizes}
-            selected={size}
-            onSelect={setSize}
-            onOpenGuide={() =>
-              kind === "leash"
-                ? openDialog(elegantLeashGuideId)
-                : openSizeGuide(kind, size, setSize)
-            }
-          />
-          {kind === "leash" && (
-            <p className="elegant-note">{t("elegantLeashLength")}</p>
-          )}
-          <ProductPurchase
-            variant={variant}
-            active={active}
-            infoRef={infoRef}
-          />
-          <ProductInformation collection="elegant" kind={kind} />
         </div>
+        {kind !== "leash" && (
+          <ElegantBundle
+            primary={{
+              variant,
+              chooseColour: setColour,
+              chooseSize: setSize,
+            }}
+          />
+        )}
       </div>
-      {kind !== "leash" && (
-        <ElegantBundle
-          primary={{
-            variant,
-            chooseColour: setColour,
-            chooseSize: setSize,
-          }}
-        />
-      )}
-    </div>
+    </StickyBuyScope>
   );
 }
 

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, type MouseEvent, type ReactNode } from "react";
 import { useStorefront } from "../storefront-context";
 
 export function Dialog({
@@ -14,6 +14,9 @@ export function Dialog({
   children: ReactNode;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  // Only a press that both starts and ends on the backdrop closes the
+  // dialog; selecting text inside and releasing outside must not.
+  const pressedBackdrop = useRef(false);
   const { activeDialog, closeDialog } = useStorefront((state) => ({
     activeDialog: state.activeDialog,
     closeDialog: state.closeDialog,
@@ -46,19 +49,28 @@ export function Dialog({
         event.preventDefault();
         closeDialog();
       }}
+      onPointerDown={(event) => {
+        pressedBackdrop.current = isBackdrop(event);
+      }}
       onClick={(event) => {
-        if (event.target !== event.currentTarget) return;
-        const rect = event.currentTarget.getBoundingClientRect();
-        if (
-          event.clientX < rect.left ||
-          event.clientX > rect.right ||
-          event.clientY < rect.top ||
-          event.clientY > rect.bottom
-        )
-          closeDialog();
+        const fromBackdrop = pressedBackdrop.current;
+        pressedBackdrop.current = false;
+        if (fromBackdrop && isBackdrop(event)) closeDialog();
       }}
     >
       {children}
     </dialog>
+  );
+}
+
+/** A pointer event on the ::backdrop targets the dialog, outside its box. */
+function isBackdrop(event: MouseEvent<HTMLDialogElement>) {
+  if (event.target !== event.currentTarget) return false;
+  const rect = event.currentTarget.getBoundingClientRect();
+  return (
+    event.clientX < rect.left ||
+    event.clientX > rect.right ||
+    event.clientY < rect.top ||
+    event.clientY > rect.bottom
   );
 }

@@ -2,6 +2,7 @@
 import { ExternalIcon } from "./icons";
 import { useState } from "react";
 import { useStorefront } from "../storefront-context";
+import { fidlockVideo } from "../data/brand";
 
 export function FidlockFaq() {
   const { t } = useStorefront((state) => ({ t: state.t }));
@@ -21,7 +22,7 @@ export function FidlockFaq() {
         <div className="hardware-video">
           {play ? (
             <iframe
-              src="https://www.youtube-nocookie.com/embed/7zd1MJYeSAs?autoplay=1"
+              src={fidlockVideo.embed}
               title={t("fidlockVideo")}
               allow="autoplay; encrypted-media; picture-in-picture"
               allowFullScreen
@@ -35,7 +36,7 @@ export function FidlockFaq() {
         </div>
         <a
           className="video-source"
-          href="https://www.youtube.com/watch?v=7zd1MJYeSAs"
+          href={fidlockVideo.watch}
           target="_blank"
           rel="noopener noreferrer"
         >

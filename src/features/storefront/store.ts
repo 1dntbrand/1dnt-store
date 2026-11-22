@@ -54,14 +54,15 @@ function fillServiceText<T>(value: T, values: Placeholders): T {
     ) as T;
   return value;
 }
-const serviceIds = [
+export const serviceIds = [
   "contact",
   "delivery",
   "returns",
   "terms",
   "privacy",
   "cookies",
-];
+] as const;
+export type ServiceId = (typeof serviceIds)[number];
 const languageHelpers = Object.fromEntries(
   languages.map((language) => {
     const formatter = new Intl.NumberFormat(
@@ -69,6 +70,9 @@ const languageHelpers = Object.fromEntries(
       { style: "currency", currency: "PLN" },
     );
     const money = (cents: number) => formatter.format(cents / 100);
+    const decimal = language === "en" ? "." : ",";
+    const metres = (value: string | number, digits?: number) =>
+      `${(typeof value === "number" ? value.toFixed(digits ?? 1) : value).replace(".", decimal)} ${t("mUnit")}`;
     const wholeMoney = new Intl.NumberFormat(
       formatter.resolvedOptions().locale,
       {
@@ -92,8 +96,10 @@ const languageHelpers = Object.fromEntries(
         t,
         money,
         service: fillServiceText(services[language], shippingValues),
+        metres,
+        centimetres: (value: string) => `${value} ${t("centimetreUnit")}`,
         choiceSummary: (colour: string, size: string) =>
-          `${variantColourLabel(colour, t)} · ${size.includes(".") ? size.replace(".", language === "en" ? "." : ",") + " " + t("mUnit") : size}`,
+          `${variantColourLabel(colour, t)} · ${size.includes(".") ? metres(size) : size}`,
       },
     ];
   }),
@@ -103,6 +109,9 @@ const languageHelpers = Object.fromEntries(
     t: (key: string, values?: Placeholders) => string;
     money: (cents: number) => string;
     service: typeof services.en;
+    /** "1.5" → "1.5 m" / "1,5 м"; numbers keep the digits asked for. */
+    metres: (value: string | number, digits?: number) => string;
+    centimetres: (value: string) => string;
     choiceSummary: (colour: string, size: string) => string;
   }
 >;
@@ -131,7 +140,7 @@ interface StorefrontActions {
     onSelect?: (size: string) => void,
   ) => void;
   applyGuideSize: (size: string) => void;
-  openService: (id: string) => void;
+  openService: (id: ServiceId) => void;
   addItems: (variants: readonly ProductVariant[]) => void;
   changeQuantity: (id: string, quantity: number) => void;
   dismissAdded: () => void;
@@ -157,6 +166,13 @@ export type StorefrontState = Snapshot &
 export function createStorefrontStore() {
   return createStore<StorefrontState>()((set, get) => {
     let applySize: ((size: string) => void) | undefined;
+    /** Every way of opening a dialog: one place clears the add toast. */
+    function showDialog(
+      activeDialog: string,
+      extra: Partial<StorefrontState> = {},
+    ) {
+      set({ ...extra, activeDialog, lastAdded: null });
+    }
     function updateField(name: FieldName, value: string) {
       if (get().fields[name] === value || !validField(name, value))
         return false;
@@ -213,9 +229,7 @@ export function createStorefrontStore() {
       openDialog(id) {
         if (id === "checkoutPanel" && get().cartHasStockIssue) return;
         applySize = undefined;
-        if (id === "cartPanel")
-          set({ activeDialog: id, cartNotice: null, lastAdded: null });
-        else set({ activeDialog: id, lastAdded: null });
+        showDialog(id, id === "cartPanel" ? { cartNotice: null } : {});
       },
       closeDialog() {
         applySize = undefined;
@@ -223,10 +237,7 @@ export function createStorefrontStore() {
       },
       openSizeGuide(kind, size, onSelect) {
         applySize = onSelect;
-        set({
-          guideSize: size,
-          activeDialog: `${kind}SizeGuide`,
-        });
+        showDialog(`${kind}SizeGuide`, { guideSize: size });
       },
       applyGuideSize(size) {
         applySize?.(size);
@@ -234,10 +245,7 @@ export function createStorefrontStore() {
       },
       openService(id) {
         applySize = undefined;
-        set({
-          serviceIndex: serviceIds.indexOf(id),
-          activeDialog: "serviceDialog",
-        });
+        showDialog("serviceDialog", { serviceIndex: serviceIds.indexOf(id) });
       },
       addItems(variants) {
         if (!variants.length) return;
@@ -248,8 +256,7 @@ export function createStorefrontStore() {
           const qty = (next.get(id)?.qty ?? 0) + 1;
           const limit = variantLimit(variant);
           if (qty > limit) {
-            set({
-              activeDialog: "cartPanel",
+            showDialog("cartPanel", {
               cartNotice:
                 limit === cartLineLimit ? "quantityLimit" : "cartStockLimit",
             });

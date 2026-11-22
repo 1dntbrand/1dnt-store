@@ -1,6 +1,7 @@
 "use client";
 import { useStorefront } from "../storefront-context";
 import { Dialog } from "./dialog";
+import { BrandText } from "./brand-text";
 import { CloseButton } from "./close-button";
 
 export function Menu() {
@@ -20,7 +21,7 @@ export function Menu() {
         </h2>
         <CloseButton label={t("guideClose")} onClick={closeDialog} />
       </div>
-      <nav className="drawer-nav" aria-label="Explore">
+      <nav className="drawer-nav" aria-label={t("menuTitle")}>
         <details className="menu-collections">
           <summary>
             <span>{t("menuCollections")}</span>
@@ -28,12 +29,10 @@ export function Menu() {
           </summary>
           <div className="menu-collection-links">
             <a onClick={closeDialog} href="#collection">
-              {"Base BioThane"}
-              <sup>{"®"}</sup>
+              <BrandText>Base BioThane®</BrandText>
             </a>
             <a onClick={closeDialog} href="#elegant">
-              {"Elegant BioThane"}
-              <sup>{"®"}</sup>
+              <BrandText>Elegant BioThane®</BrandText>
             </a>
           </div>
         </details>

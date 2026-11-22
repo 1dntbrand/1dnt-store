@@ -4,8 +4,7 @@ import { ExternalIcon } from "./icons";
 import type { Collection, ProductKind } from "@/domain/commerce/catalog";
 import { useStorefront } from "../storefront-context";
 import { ProductSafety } from "./product-safety";
-
-const fidlockVideoUrl = "https://www.youtube.com/watch?v=7zd1MJYeSAs";
+import { fidlockVideo } from "../data/brand";
 
 /** Description, features, hardware, care and safety, shared by both collections. */
 export function ProductInformation({
@@ -59,7 +58,7 @@ export function ProductInformation({
             <p>
               <a
                 className="text-link"
-                href={fidlockVideoUrl}
+                href={fidlockVideo.watch}
                 target="_blank"
                 rel="noopener noreferrer"
               >
