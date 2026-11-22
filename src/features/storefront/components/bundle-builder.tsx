@@ -226,7 +226,10 @@ function BundlePart({
   const title = t(productTitleKey(variant));
 
   return (
-    <div className="bundle-part">
+    <div
+      className="bundle-part"
+      data-sold-out={variantLimit(variant) === 0 || undefined}
+    >
       <Disclosure
         className="bundle-part-options"
         summaryClassName="bundle-part-heading"
@@ -243,7 +246,7 @@ function BundlePart({
               <span className="bundle-part-choice">
                 {choiceSummary(colour, size)}
                 {variantLimit(variant) === 0 && (
-                  <span className="bundle-part-stock">{t("outOfStock")}</span>
+                  <span className="stock-pill">{t("outOfStock")}</span>
                 )}
               </span>
             </span>

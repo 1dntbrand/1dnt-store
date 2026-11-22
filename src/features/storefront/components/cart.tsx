@@ -76,6 +76,7 @@ export function OrderItems({ editable = false }: { editable?: boolean }) {
             key={item.id}
             className={editable ? "cart-item cart-item-editable" : "cart-item"}
             data-cart-item
+            data-sold-out={limit === 0 || undefined}
           >
             <div className="cart-photo">
               <Image src={variantPhoto(item)} alt="" fill sizes="80px" />
@@ -87,9 +88,11 @@ export function OrderItems({ editable = false }: { editable?: boolean }) {
               <p>{choiceSummary(item.colour, item.size)}</p>
               {item.qty > limit && (
                 <p className="cart-stock-message">
-                  {limit === 0
-                    ? t("outOfStock")
-                    : `${t("cartAvailableQuantity")} ${limit}`}
+                  <span className="stock-pill">
+                    {limit === 0
+                      ? t("outOfStock")
+                      : `${t("cartAvailableQuantity")} ${limit}`}
+                  </span>
                 </p>
               )}
               {!editable && (

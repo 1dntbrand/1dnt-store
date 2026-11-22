@@ -11,6 +11,9 @@
   --brand-elegant: #efebe4;
   --brand-faq: #dce2cb;
   --error: #9c392b;
+  /* Out-of-stock surfaces: the error hue, softened onto paper. */
+  --error-tint: #f2e7e2;
+  --error-line: #d8b4ad;
   --control-line: #adb09f;
   --control-radius: 4px;
   --control-transition: 150ms ease-out;
@@ -844,15 +847,30 @@ html:lang(uk) .hero-copy h1 em {
   border-radius: 50%;
   background: linear-gradient(
     135deg,
-    transparent calc(50% - 1px),
-    var(--paper) calc(50% - 1px),
-    var(--paper) calc(50% + 1px),
-    transparent calc(50% + 1px)
+    transparent calc(50% - 2.75px),
+    var(--paper) calc(50% - 2.75px),
+    var(--paper) calc(50% - 1.25px),
+    var(--error) calc(50% - 1.25px),
+    var(--error) calc(50% + 1.25px),
+    var(--paper) calc(50% + 1.25px),
+    var(--paper) calc(50% + 2.75px),
+    transparent calc(50% + 2.75px)
   );
   pointer-events: none;
 }
+.swatch[data-sold-out] {
+  border-style: dashed;
+  border-color: var(--error-line);
+}
 .swatch[data-sold-out] > span:first-child {
-  opacity: 0.55;
+  opacity: 0.45;
+}
+/* Selected keeps the same ink ring as every other choice. */
+.swatch[data-sold-out][aria-pressed="true"] {
+  border-style: solid;
+}
+.variant-group legend span[data-sold-out] {
+  color: var(--error);
 }
 .size-options button[data-sold-out] > span {
   color: var(--muted);
@@ -866,15 +884,39 @@ html:lang(uk) .hero-copy h1 em {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: var(--space-2);
   min-height: 52px;
   margin-top: var(--space-5);
   padding: var(--space-3) var(--space-5);
-  border: 1px dashed var(--control-line);
+  border: 1px solid var(--error-line);
   border-radius: var(--control-radius);
-  background: var(--surface);
-  color: var(--ink);
+  background: var(--error-tint);
+  color: var(--error);
   font-size: 14px;
   font-weight: 500;
+}
+.sold-out-cta .icon {
+  width: 18px;
+  height: 18px;
+}
+/* A short tag for an unavailable line in the set or the bag. */
+.stock-pill {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--error-tint);
+  color: var(--error);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+:is(.bundle-part, .cart-item)[data-sold-out] :is(.bundle-photo, .cart-photo) {
+  opacity: 0.55;
+}
+.bundle-part[data-sold-out] .bundle-part-heading {
+  border-color: var(--error-line);
 }
 .size-options {
   display: grid;
@@ -1033,7 +1075,6 @@ summary::-webkit-details-marker {
   background: var(--surface);
   color: var(--muted);
 }
-.bundle-part-stock,
 .cart-stock-message {
   color: var(--error);
   font-size: 13px;
@@ -1234,9 +1275,9 @@ summary::-webkit-details-marker {
   font-size: 12px;
   line-height: 1.4;
 }
-.bundle-part-choice .bundle-part-stock {
-  display: block;
-  font-size: 12px;
+.bundle-part-choice .stock-pill {
+  display: flex;
+  margin-top: var(--space-1);
 }
 .bundle-photo {
   position: relative;

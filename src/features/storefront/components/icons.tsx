@@ -37,6 +37,20 @@ export function ArrowIcon({
   );
 }
 
+/** A crossed circle: this option cannot be ordered right now. */
+export function UnavailableIcon({
+  className = "icon",
+}: {
+  className?: string;
+}) {
+  return (
+    <svg {...base} className={className}>
+      <circle cx="12" cy="12" r="8" />
+      <path d="M6.5 17.5 17.5 6.5" />
+    </svg>
+  );
+}
+
 export function PlayIcon({ className = "icon" }: { className?: string }) {
   return (
     <svg {...base} className={className}>

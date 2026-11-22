@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckIcon } from "./icons";
+import { CheckIcon, UnavailableIcon } from "./icons";
 import { useRef, type RefObject } from "react";
 import { variantLimit } from "@/domain/commerce/availability";
 import { itemPrice, type ProductVariant } from "@/domain/commerce/catalog";
@@ -49,6 +49,7 @@ export function ProductPurchase({
                 The chosen colour and size are right above, so it names
                 neither. */}
             <div className="sold-out-cta" role="status">
+              <UnavailableIcon />
               {t("outOfStock")}
             </div>
             <RestockForm variant={variant} />
