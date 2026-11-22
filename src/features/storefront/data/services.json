@@ -98,7 +98,11 @@
       [
         [
           "Browser storage",
-          "This preview uses local browser storage to remember your language, cart and product selections. This storage is distinct from cookies."
+          "Your cart and product selections are kept in local browser storage on your device. They are not sent to us until you place an order."
+        ],
+        [
+          "Language cookie",
+          "One first-party cookie, “lang”, remembers the language you chose (or your browser’s language on your first visit) so the page opens in it straight away. It is kept for one year, is not shared with anyone and is not used for analytics or advertising. Because it only provides a setting you asked for, it does not need consent."
         ],
         [
           "Analytics and advertising",
@@ -106,7 +110,7 @@
         ],
         [
           "Your controls",
-          "Use your browser’s site-data settings to clear saved selections and cart contents. This also resets your saved language. Hosting or sign-in cookies are managed by the hosting service and are outside this store interface’s controls."
+          "Use your browser’s site-data settings to clear saved selections and cart contents. This also resets your saved language. Hosting or sign-in cookies are managed by the hosting service and are outside this store interface’s controls. Deleting the “lang” cookie returns the page to your browser’s language."
         ]
       ]
     ],
@@ -229,7 +233,11 @@
       [
         [
           "Хранение в браузере",
-          "Этот пример использует локальное хранилище браузера для языка, корзины и выбранных вариантов товаров. Такое хранилище отличается от cookies."
+          "Корзина и выбранные варианты товаров хранятся в локальном хранилище браузера на вашем устройстве. Они не передаются нам, пока вы не оформите заказ."
+        ],
+        [
+          "Cookie языка",
+          "Одна собственная cookie «lang» запоминает выбранный язык (при первом визите — язык браузера), чтобы страница сразу открывалась на нём. Она хранится год, никому не передаётся и не используется для аналитики или рекламы. Она только сохраняет настройку, которую вы выбрали, поэтому согласия не требует."
         ],
         [
           "Аналитика и реклама",
@@ -237,7 +245,7 @@
         ],
         [
           "Управление данными",
-          "Удалить сохранённый выбор и корзину можно в настройках данных сайта вашего браузера. Выбранный язык тоже сбросится. Cookies хостинга и входа управляются сервисом размещения, а не интерфейсом магазина."
+          "Удалить сохранённый выбор и корзину можно в настройках данных сайта вашего браузера. Выбранный язык тоже сбросится. Cookies хостинга и входа управляются сервисом размещения, а не интерфейсом магазина. Если удалить cookie «lang», страница снова откроется на языке браузера."
         ]
       ]
     ],
@@ -343,7 +351,11 @@
       [
         [
           "Pamięć przeglądarki",
-          "Podgląd używa lokalnej pamięci do zapisywania języka, koszyka i wybranych wariantów. Nie jest to to samo co cookies."
+          "Koszyk i wybrane warianty produktów są przechowywane w pamięci lokalnej przeglądarki na Twoim urządzeniu. Nie trafiają do nas, dopóki nie złożysz zamówienia."
+        ],
+        [
+          "Plik cookie języka",
+          "Jeden własny plik cookie „lang” zapamiętuje wybrany język (przy pierwszej wizycie — język przeglądarki), aby strona od razu otwierała się w tym języku. Przechowujemy go przez rok, nie udostępniamy go nikomu i nie używamy do analityki ani reklamy. Służy wyłącznie do zapamiętania ustawienia, o które prosisz, dlatego nie wymaga zgody."
         ],
         [
           "Analityka i reklama",
@@ -351,7 +363,7 @@
         ],
         [
           "Ustawienia",
-          "Zapisane wybory i koszyk można usunąć w ustawieniach danych witryny w przeglądarce. Zresetuje to też język. Cookies hostingu i logowania są zarządzane przez usługę hostingową, poza interfejsem sklepu."
+          "Zapisane wybory i koszyk można usunąć w ustawieniach danych witryny w przeglądarce. Zresetuje to też język. Cookies hostingu i logowania są zarządzane przez usługę hostingową, poza interfejsem sklepu. Usunięcie pliku cookie „lang” przywraca język przeglądarki."
         ]
       ]
     ],
@@ -456,8 +468,12 @@
       ],
       [
         [
-          "Зберігання в браузері",
-          "Приклад використовує локальне сховище для мови, кошика й обраних варіантів. Це відрізняється від cookies."
+          "Сховище браузера",
+          "Кошик і обрані варіанти товарів зберігаються в локальному сховищі браузера на вашому пристрої. Вони не передаються нам, доки ви не оформите замовлення."
+        ],
+        [
+          "Cookie мови",
+          "Одна власна cookie «lang» запам’ятовує обрану мову (під час першого візиту — мову браузера), щоб сторінка одразу відкривалася нею. Вона зберігається рік, нікому не передається й не використовується для аналітики чи реклами. Вона лише зберігає налаштування, яке ви обрали, тому згоди не потребує."
         ],
         [
           "Аналітика й реклама",
@@ -465,7 +481,7 @@
         ],
         [
           "Керування",
-          "Видалити вибір і кошик можна в налаштуваннях даних сайту вашого браузера. Мова також скинеться. Cookies хостингу та входу керуються сервісом розміщення, поза інтерфейсом магазину."
+          "Видалити вибір і кошик можна в налаштуваннях даних сайту вашого браузера. Мова також скинеться. Cookies хостингу та входу керуються сервісом розміщення, поза інтерфейсом магазину. Якщо видалити cookie «lang», сторінка знову відкриється мовою браузера."
         ]
       ]
     ],

@@ -16,6 +16,7 @@ import {
 import messages from "./data/messages.json";
 import services from "./data/services.json";
 import { languages, type Language } from "./lib/catalog";
+import { readLanguageCookie, rememberLanguage } from "./lib/language";
 import { variantColourLabel } from "./lib/product-options";
 import {
   defaultBundleExtras,
@@ -163,7 +164,7 @@ export type StorefrontState = Snapshot &
     views: Record<ProductKind, number>;
   };
 
-export function createStorefrontStore() {
+export function createStorefrontStore(initialLanguage: Language = "en") {
   return createStore<StorefrontState>()((set, get) => {
     let applySize: ((size: string) => void) | undefined;
     /** Every way of opening a dialog: one place clears the add toast. */
@@ -182,9 +183,9 @@ export function createStorefrontStore() {
       return true;
     }
     return {
-      language: "en",
+      language: initialLanguage,
       fields: { ...defaultFields },
-      ...languageHelpers.en,
+      ...languageHelpers[initialLanguage],
       ...cartState([]),
       cartNotice: null,
       lastAdded: null,
@@ -195,17 +196,24 @@ export function createStorefrontStore() {
       serviceIndex: 0,
       views: { collar: 0, leash: 0, harness: 0 },
       restore() {
-        const snapshot = readSnapshot();
+        const snapshot = readSnapshot(get().language);
+        // With a cookie the server already rendered the shopper's language;
+        // storage only decides for visits from before the cookie existed.
+        const language = (readLanguageCookie() ??
+          snapshot.language) as Language;
         set({
           ...snapshot,
-          ...languageHelpers[snapshot.language as Language],
+          language,
+          ...languageHelpers[language],
           ...cartState(snapshot.cart),
         });
+        rememberLanguage(language);
       },
       setLanguage(language) {
         if (!languages.includes(language as Language)) return;
         set({ language, ...languageHelpers[language as Language] });
         saveCartAndLanguage(get());
+        rememberLanguage(language as Language);
       },
       setField: updateField,
       setView(kind, view) {

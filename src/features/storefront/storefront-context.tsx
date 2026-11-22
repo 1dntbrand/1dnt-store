@@ -11,6 +11,7 @@ import { useStore } from "zustand";
 import { useShallow } from "zustand/react/shallow";
 import { createStorefrontStore, type StorefrontState } from "./store";
 import { validCategory } from "./lib/storage";
+import type { Language } from "./lib/catalog";
 import {
   dropOverlayEntry,
   forgetStaleOverlayEntry,
@@ -22,8 +23,14 @@ const StorefrontContext = createContext<ReturnType<
   typeof createStorefrontStore
 > | null>(null);
 
-export function StorefrontProvider({ children }: { children: ReactNode }) {
-  const [store] = useState(createStorefrontStore);
+export function StorefrontProvider({
+  initialLanguage,
+  children,
+}: {
+  initialLanguage: Language;
+  children: ReactNode;
+}) {
+  const [store] = useState(() => createStorefrontStore(initialLanguage));
   useEffect(() => {
     store.getState().restore();
     // An overlay entry restored with the page after a reload has no overlay.

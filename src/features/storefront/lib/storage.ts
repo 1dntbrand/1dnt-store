@@ -180,7 +180,7 @@ function migrateCart(values: unknown): CartItem[] {
   return [...lines.values()];
 }
 
-export function readSnapshot(): Snapshot {
+export function readSnapshot(fallbackLanguage = "en"): Snapshot {
   const saved = read(STORAGE_KEY);
   const savedSelection = read(SELECTION_KEY, "sessionStorage");
   const selection = savedSelection ?? saved;
@@ -232,7 +232,7 @@ export function readSnapshot(): Snapshot {
   } catch {
     /* Storage can be unavailable in private browsing. */
   }
-  if (!languages.includes(language)) language = "en";
+  if (!languages.includes(language)) language = fallbackLanguage;
   const snapshot: Snapshot = {
     language,
     fields,

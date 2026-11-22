@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { StorefrontProvider, useStorefront } from "./storefront-context";
+import type { Language } from "./lib/catalog";
 import { Header } from "./components/header";
 import { Hero } from "./components/hero";
 import { Elegant } from "./components/elegant";
@@ -83,9 +84,9 @@ function StorefrontContent() {
     </>
   );
 }
-export function Storefront() {
+export function Storefront({ language }: { language: Language }) {
   return (
-    <StorefrontProvider>
+    <StorefrontProvider initialLanguage={language}>
       <StorefrontContent />
     </StorefrontProvider>
   );

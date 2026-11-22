@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import { requestLanguage } from "@/features/storefront/lib/request-language";
 import "./globals.css";
 import "@/features/storefront/storefront.css";
 import "@/features/storefront/motion.css";
@@ -28,9 +29,16 @@ export const viewport: Viewport = {
   themeColor: "#f6f5f1",
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+// The document language follows the shopper's language, read per request.
+export const instant = false;
+
+export default async function RootLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   return (
-    <html lang="en">
+    <html lang={await requestLanguage()}>
       <body>{children}</body>
     </html>
   );
