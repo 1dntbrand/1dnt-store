@@ -157,6 +157,11 @@
   }
 }
 
+/* Something on its way out (a sheet, a bag line, a toast) takes no taps. */
+[data-leaving] {
+  pointer-events: none;
+}
+
 /* Status pieces. */
 .state-in,
 .figure {

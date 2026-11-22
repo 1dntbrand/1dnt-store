@@ -58,9 +58,10 @@ export function Lightbox({
       stopBack();
       dropOverlayEntry();
       document.body.style.overflow = previousOverflow;
-      setZoomed(null);
-      // Fade out over the photo, then close for real.
+      // Fade out over the photo as it is (zoom included), then close and
+      // reset, so nothing snaps during the fade.
       const finish = () => {
+        setZoomed(null);
         element.close();
         element.getAnimations().forEach((animation) => animation.cancel());
         returnFocus(previousFocus, element);

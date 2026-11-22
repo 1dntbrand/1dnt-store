@@ -1005,12 +1005,9 @@ html:lang(uk) .hero-copy h1 em {
 .bundle-parts {
   overflow-anchor: none;
 }
-details[data-state="closing"] > summary::after {
-  content: "+";
-}
-details[data-state="closing"] > summary .disclosure-chevron {
-  transform: translateY(-2px) rotate(45deg);
-}
+/* Every "open" look below applies only while the item is not folding
+   away: the moment it starts to close, its icon and frame already show
+   the closed state, each in its own style (+/− or chevron). */
 .product-information details {
   border-top: 1px solid var(--line);
 }
@@ -1040,8 +1037,8 @@ summary::-webkit-details-marker {
   font-size: 18px;
   line-height: 1;
 }
-.product-information details[open] > summary::after,
-.faq-question[open] > summary::after {
+.product-information details[open]:not([data-state="closing"]) > summary::after,
+.faq-question[open]:not([data-state="closing"]) > summary::after {
   content: "−";
 }
 .product-information p,
@@ -1149,18 +1146,6 @@ summary::-webkit-details-marker {
 .restock-error {
   color: var(--error);
 }
-.bundle-restock {
-  margin-top: var(--space-3);
-}
-.bundle-restock > summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-  min-height: 44px;
-  padding-block: var(--space-2);
-}
-.bundle-restock > summary::after,
 .disclosure-chevron {
   content: "";
   display: block;
@@ -1173,8 +1158,9 @@ summary::-webkit-details-marker {
   transform: translateY(-2px) rotate(45deg);
   transition: transform var(--control-transition);
 }
-.bundle-restock[open] > summary::after,
-.bundle-part-options[open] > summary .disclosure-chevron,
+.bundle-part-options[open]:not([data-state="closing"])
+  > summary
+  .disclosure-chevron,
 .mobile-order-toggle[aria-expanded="true"] .disclosure-chevron {
   transform: translateY(2px) rotate(225deg);
 }
@@ -1254,7 +1240,7 @@ summary::-webkit-details-marker {
     border-color var(--control-transition),
     background-color var(--control-transition);
 }
-.bundle-part-options[open] > .bundle-part-heading {
+.bundle-part-options[open]:not([data-state="closing"]) > .bundle-part-heading {
   background-color: var(--surface);
   border-color: var(--control-line);
 }
@@ -1698,7 +1684,9 @@ dialog::backdrop {
   height: 9px;
   margin-inline-end: 6px;
 }
-.menu-collections[open] > summary .disclosure-chevron {
+.menu-collections[open]:not([data-state="closing"])
+  > summary
+  .disclosure-chevron {
   transform: translateY(2px) rotate(225deg);
 }
 .menu-collection-links {

@@ -29,10 +29,15 @@ export function playDialogExit(dialog: HTMLDialogElement): Animation | null {
   } catch {
     /* Older browsers cannot animate ::backdrop; the panel still fades. */
   }
-  return dialog.animate(
+  const running = dialog.animate(
     [{ opacity: 0, transform: exitTransform(dialog) }],
     options as KeyframeAnimationOptions,
   );
+  // A fading sheet takes no more taps; reopening cancels the fade and the
+  // mark goes with it.
+  dialog.dataset.leaving = "";
+  running.finished.finally(() => delete dialog.dataset.leaving).catch(() => {});
+  return running;
 }
 
 /** Folds an element away (height and opacity), then runs `done`. */
