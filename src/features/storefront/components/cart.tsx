@@ -14,7 +14,37 @@ import { suggestSetItem } from "../lib/set-suggestion";
 import { Dialog } from "./dialog";
 import { CloseButton } from "./close-button";
 import { BrandText } from "./brand-text";
+import { foldAway } from "../lib/exit-motion";
+import { useRef, type MouseEvent, type ReactNode } from "react";
+import { useFadeOnChange, useTickOnChange } from "../lib/fade-on-change";
 import { blurProps } from "../lib/image-placeholder";
+
+/** A number in the bag that ticks when the shopper changes it. */
+function Figure({
+  value,
+  as: Tag = "span",
+  label,
+  className,
+  children,
+}: {
+  value: unknown;
+  as?: "span" | "strong" | "output";
+  label?: string;
+  className?: string;
+  children: ReactNode;
+}) {
+  const ref = useRef<HTMLElement>(null);
+  useTickOnChange(ref, value);
+  return (
+    <Tag
+      ref={ref as never}
+      className={className ? `figure ${className}` : "figure"}
+      aria-label={label}
+    >
+      {children}
+    </Tag>
+  );
+}
 
 export function OrderItems({ editable = false }: { editable?: boolean }) {
   const { cart, pricing, t, money, choiceSummary, changeQuantity } =
@@ -26,6 +56,16 @@ export function OrderItems({ editable = false }: { editable?: boolean }) {
       choiceSummary: state.choiceSummary,
       changeQuantity: state.changeQuantity,
     }));
+  // The line folds away before it leaves the list, so the change is seen.
+  const removeLine = (event: MouseEvent<HTMLElement>, id: string) => {
+    const line = event.currentTarget.closest("li");
+    foldAway(line, () => {
+      // The pressed button leaves with its line; focus stays in the bag.
+      if (line?.contains(document.activeElement))
+        line.closest("dialog")?.focus({ preventScroll: true });
+      changeQuantity(id, 0);
+    });
+  };
   return (
     <ul className="cart-list">
       {cart.map((item) => {
@@ -75,11 +115,17 @@ export function OrderItems({ editable = false }: { editable?: boolean }) {
                   <button
                     type="button"
                     aria-label={`${t("decrease")} · ${title}`}
-                    onClick={() => changeQuantity(item.id, item.qty - 1)}
+                    onClick={(event) =>
+                      item.qty > 1
+                        ? changeQuantity(item.id, item.qty - 1)
+                        : removeLine(event, item.id)
+                    }
                   >
                     −
                   </button>
-                  <output aria-label={t("quantity")}>{item.qty}</output>
+                  <Figure as="output" label={t("quantity")} value={item.qty}>
+                    {item.qty}
+                  </Figure>
                   <button
                     type="button"
                     aria-label={`${t("increase")} · ${title}`}
@@ -92,7 +138,7 @@ export function OrderItems({ editable = false }: { editable?: boolean }) {
                 <button
                   type="button"
                   className="text-button cart-remove"
-                  onClick={() => changeQuantity(item.id, 0)}
+                  onClick={(event) => removeLine(event, item.id)}
                 >
                   {t("remove")}
                 </button>
@@ -110,27 +156,34 @@ export function OrderTotals() {
     money: state.money,
     pricing: state.pricing,
   }));
+  const discountRow = useRef<HTMLDivElement>(null);
+  useFadeOnChange(discountRow, pricing.discount > 0);
   return (
     <div className="order-totals" aria-live="polite" aria-atomic="true">
       <div>
         <span>{t("cartSubtotal")}</span>
-        <span>{money(pricing.subtotal)}</span>
+        <Figure value={pricing.subtotal}>{money(pricing.subtotal)}</Figure>
       </div>
       {pricing.discount > 0 && (
-        <div className="order-discount">
+        <div className="order-discount" ref={discountRow}>
           <span>{t("setDiscounts")}</span>
-          <span>−{money(pricing.discount)}</span>
+          <Figure value={pricing.discount}>−{money(pricing.discount)}</Figure>
         </div>
       )}
       <div>
         <span>{t("deliveryInpost")}</span>
-        <span className={pricing.shipping === 0 ? "free-shipping" : undefined}>
+        <Figure
+          value={pricing.shipping}
+          className={pricing.shipping === 0 ? "free-shipping" : undefined}
+        >
           {pricing.shipping === 0 ? t("freeShipping") : money(pricing.shipping)}
-        </span>
+        </Figure>
       </div>
       <div className="cart-subtotal">
         <span>{t("totalLabel")}</span>
-        <strong>{money(pricing.grandTotal)}</strong>
+        <Figure as="strong" value={pricing.grandTotal}>
+          {money(pricing.grandTotal)}
+        </Figure>
       </div>
       <p className="field-hint">{t("vatIncluded")}</p>
     </div>
@@ -216,6 +269,8 @@ export function Cart() {
     cartNotice: state.cartNotice,
     cartHasStockIssue: state.cartHasStockIssue,
   }));
+  const empty = useRef<HTMLDivElement>(null);
+  useFadeOnChange(empty, cartCount === 0);
   return (
     <Dialog
       id="cartPanel"
@@ -230,7 +285,7 @@ export function Cart() {
         <CloseButton label={t("guideClose")} onClick={closeDialog} />
       </div>
       {cartCount === 0 ? (
-        <div className="cart-empty">
+        <div className="cart-empty" ref={empty}>
           <h3>{t("cartEmpty")}</h3>
           <p>{t("cartIntro")}</p>
           <p className="cart-empty-label">{t("emptyBagPick")}</p>
@@ -264,7 +319,7 @@ export function Cart() {
         <>
           <div className="cart-scroll">
             {cartNotice && (
-              <p className="integration-notice" role="status">
+              <p className="integration-notice state-in" role="status">
                 {t(cartNotice)}
               </p>
             )}
@@ -275,7 +330,7 @@ export function Cart() {
             <FreeShippingProgress />
             <OrderTotals />
             {cartHasStockIssue && (
-              <p className="cart-stock-message" role="status">
+              <p className="cart-stock-message state-in" role="status">
                 {t("cartStockIssue")}
               </p>
             )}

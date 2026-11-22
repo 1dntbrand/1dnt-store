@@ -3,6 +3,7 @@
 import { useId, useState, type FormEvent } from "react";
 import { variantKey, type ProductVariant } from "@/domain/commerce/catalog";
 import { useStorefront } from "../storefront-context";
+import { SwapLabel } from "./swap-label";
 
 const restockEnabled = process.env.NEXT_PUBLIC_RESTOCK_ENABLED === "true";
 type Status = "idle" | "sending" | "saved" | "error";
@@ -83,17 +84,28 @@ function RestockRequest({ variant }: { variant: ProductVariant }) {
           type="submit"
           disabled={sending || status === "saved"}
         >
-          {t(sending ? "restockSending" : "restockAction")}
+          <SwapLabel
+            options={[
+              t("restockAction"),
+              <>
+                <span className="spinner" aria-hidden="true" />
+                {t("restockSending")}
+              </>,
+            ]}
+            shown={sending ? 1 : 0}
+          />
         </button>
       </div>
       <p className="field-hint" id={`${id}-note`}>
         {t("restockEmailUse")}
       </p>
       <p className="restock-status" role="status">
-        {status === "saved" ? t("restockSaved") : null}
+        {status === "saved" && (
+          <span className="state-in">{t("restockSaved")}</span>
+        )}
       </p>
       {status === "error" && (
-        <p className="restock-error" role="alert">
+        <p className="restock-error state-in" role="alert">
           {t("restockError")}
         </p>
       )}

@@ -44,6 +44,12 @@ function CheckoutLoading() {
         </h2>
         <CloseButton label={t("guideClose")} onClick={closeDialog} />
       </div>
+      <div className="checkout-skeleton" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+        <span />
+      </div>
     </Dialog>
   );
 }

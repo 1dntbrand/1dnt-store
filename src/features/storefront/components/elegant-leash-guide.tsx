@@ -18,8 +18,9 @@ export function ElegantLeashGuide() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/assets/guides/leash-elegant.svg"
+            width={640}
+            height={196}
             alt={t("elegantLeashLength")}
-            loading="lazy"
             decoding="async"
           />
         </div>

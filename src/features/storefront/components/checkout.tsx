@@ -230,18 +230,23 @@ export function Checkout() {
                           }))
                         }
                       />
-                      {showError(field.name) && (
-                        <span
-                          id={`${id}-${field.name}-error`}
-                          className="field-error"
-                        >
-                          {t(
-                            field.name === "email"
-                              ? "validEmail"
-                              : "requiredField",
-                          )}
-                        </span>
-                      )}
+                      {/* The line is always there, so an error never pushes
+                          the rest of the form down. */}
+                      <span
+                        id={`${id}-${field.name}-error`}
+                        className="field-error"
+                        aria-live="polite"
+                      >
+                        {showError(field.name) && (
+                          <span className="state-in">
+                            {t(
+                              field.name === "email"
+                                ? "validEmail"
+                                : "requiredField",
+                            )}
+                          </span>
+                        )}
+                      </span>
                     </label>
                   ),
                 )}
@@ -264,7 +269,7 @@ export function Checkout() {
                 <ArrowIcon />
               </button>
               {pickupNotice && (
-                <p className="integration-notice" role="status">
+                <p className="integration-notice state-in" role="status">
                   {t("pickupPreviewNotice")}
                 </p>
               )}

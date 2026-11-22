@@ -27,7 +27,14 @@ export function useTabIndicator<T extends HTMLElement>(
         "--indicator-width",
         `${active.offsetWidth}px`,
       );
-      container.dataset.indicator = "ready";
+      // The first placement is instant; only later moves glide.
+      if (!container.dataset.indicator) {
+        container.dataset.indicator = "placed";
+        window.requestAnimationFrame(() => {
+          if (container.dataset.indicator === "placed")
+            container.dataset.indicator = "ready";
+        });
+      }
     };
     place();
     // Tabs change width when their labels change language; the full-width

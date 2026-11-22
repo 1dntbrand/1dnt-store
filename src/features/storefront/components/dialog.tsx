@@ -2,6 +2,7 @@
 import { useEffect, useRef, type MouseEvent, type ReactNode } from "react";
 import { useStorefront } from "../storefront-context";
 import { captureReturnFocus, returnFocus } from "../lib/focus-return";
+import { playDialogExit } from "../lib/exit-motion";
 
 export function Dialog({
   id,
@@ -23,20 +24,37 @@ export function Dialog({
     closeDialog: state.closeDialog,
   }));
   const isOpen = activeDialog === id;
+  const exit = useRef<Animation | null>(null);
   useEffect(() => {
     const dialog = ref.current;
     if (!dialog || !isOpen) return;
     const previousOverflow = document.body.style.overflow;
     const previousFocus = captureReturnFocus();
-    dialog.showModal();
+    // Reopened while it was still fading out: keep it, drop the exit.
+    exit.current?.cancel();
+    exit.current = null;
+    dialog.getAnimations().forEach((animation) => animation.cancel());
+    if (!dialog.open) dialog.showModal();
     // Start on the dialog itself: no focus ring on the close button for
     // pointer users, and Tab still reaches every control in order.
     dialog.focus({ preventScroll: true });
     document.body.style.overflow = "hidden";
     return () => {
-      dialog.close();
       document.body.style.overflow = previousOverflow;
-      returnFocus(previousFocus, dialog);
+      const finish = () => {
+        if (exit.current !== running) return;
+        exit.current = null;
+        dialog.close();
+        dialog.getAnimations().forEach((animation) => animation.cancel());
+        // Another dialog may have opened meanwhile; it keeps the focus.
+        if (!document.querySelector("dialog[open]"))
+          returnFocus(previousFocus, dialog);
+      };
+      // A short exit the way it came in, then the real close.
+      const running = playDialogExit(dialog);
+      exit.current = running;
+      if (running) running.finished.then(finish, () => {});
+      else finish();
     };
   }, [isOpen]);
   return (

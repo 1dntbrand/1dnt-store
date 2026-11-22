@@ -87,6 +87,10 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  /* Rises with the sticky bar instead of jumping over it. */
+  .added-toast-region {
+    transition: bottom 260ms var(--ease-out);
+  }
   .added-toast {
     animation: toast-in 420ms var(--ease-out) both;
   }

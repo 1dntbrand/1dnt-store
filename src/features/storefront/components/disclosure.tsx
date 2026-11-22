@@ -12,13 +12,14 @@ import {
 } from "react";
 import { prefersReducedMotion } from "../lib/motion";
 
-const OPEN_MS = 300;
-const CLOSE_MS = 220;
+const DURATION_MS = 280;
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
+/** Room kept between the sticky site header and a tapped accordion header. */
+const HEADER_GAP = 12;
 
 interface GroupItem {
   isOpen: () => boolean;
-  closeNow: () => void;
+  collapse: () => void;
 }
 
 const GroupContext = createContext<Map<string, GroupItem> | null>(null);
@@ -32,11 +33,49 @@ export function DisclosureGroup({ children }: { children: ReactNode }) {
 }
 
 /**
+ * Keeps a tapped header from sliding under the sticky site header while the
+ * item above it folds away. The page only moves if it has to, and only by
+ * the distance that would otherwise hide the header.
+ */
+function keepBelowSiteHeader(header: HTMLElement, duration: number) {
+  const end = performance.now() + duration + 60;
+  const root = document.documentElement;
+  const step = () => {
+    const siteHeader =
+      document.querySelector(".site-header")?.getBoundingClientRect().bottom ??
+      0;
+    const overlap =
+      siteHeader + HEADER_GAP - header.getBoundingClientRect().top;
+    if (overlap > 0.5) {
+      // Instant, whatever the page's smooth-scroll setting says.
+      const behaviour = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      window.scrollBy(0, -overlap);
+      root.style.scrollBehavior = behaviour;
+    }
+    if (performance.now() < end) window.requestAnimationFrame(step);
+  };
+  window.requestAnimationFrame(step);
+}
+
+/** Whether the group item `key` sits above `header` in the page. */
+function isAbove(key: string, header: HTMLElement) {
+  const other = document.querySelector(
+    `[data-disclosure="${CSS.escape(key)}"]`,
+  );
+  return (
+    !!other &&
+    !!(other.compareDocumentPosition(header) & Node.DOCUMENT_POSITION_FOLLOWING)
+  );
+}
+
+/**
  * A native <details> that opens and closes smoothly in every browser
  * (Safari cannot animate to height: auto in CSS).
  *
- * Opening one item in a group closes the open one at once and keeps the
- * tapped header exactly where it was on screen, so the page never jumps.
+ * In a group, opening an item folds the open one at the same time, so the
+ * page reflows in one smooth movement instead of jumping. A second tap
+ * mid-way reverses from the current height.
  */
 export function Disclosure({
   summary,
@@ -65,38 +104,40 @@ export function Disclosure({
     toggled.current = onToggle;
   });
 
-  useEffect(() => {
-    if (!group) return;
-    group.set(id, {
-      isOpen: () => !!details.current?.open,
-      closeNow: () => {
-        const element = details.current;
-        if (!element?.open) return;
-        animation.current?.cancel();
-        animation.current = null;
-        if (content.current) content.current.style.overflow = "";
-        element.open = false;
-        delete element.dataset.state;
-        toggled.current?.(false);
-      },
-    });
-    return () => {
-      group.delete(id);
-    };
-  }, [group, id]);
-
-  function stop() {
+  /** Animate the content to open or closed from wherever it is now. */
+  function animateTo(state: "open" | "closed") {
+    const element = details.current;
+    const body = content.current;
+    if (!element || !body) return;
+    const from = element.open ? body.getBoundingClientRect().height : 0;
     animation.current?.cancel();
     animation.current = null;
-    if (content.current) content.current.style.overflow = "";
-  }
 
-  function run(keyframes: Keyframe[], duration: number, done?: () => void) {
-    const body = content.current;
-    if (!body) return done?.();
-    stop();
+    const settle = () => {
+      body.style.overflow = "";
+      if (state === "closed") element.open = false;
+      delete element.dataset.state;
+      toggled.current?.(state === "open");
+    };
+
+    if (state === "open") {
+      delete element.dataset.state;
+      element.open = true;
+    } else {
+      // The +/− flips at once; the panel folds away underneath.
+      element.dataset.state = "closing";
+    }
+    if (prefersReducedMotion()) return settle();
+
+    const to = state === "open" ? body.scrollHeight : 0;
     body.style.overflow = "hidden";
-    const running = body.animate(keyframes, { duration, easing: EASE });
+    const running = body.animate(
+      [
+        { height: `${from}px`, opacity: state === "open" ? 0.25 : 1 },
+        { height: `${to}px`, opacity: state === "open" ? 1 : 0 },
+      ],
+      { duration: DURATION_MS, easing: EASE },
+    );
     animation.current = running;
     // The promise settles even when the page is not rendering (background
     // tab); a cancelled run rejects and simply does nothing.
@@ -104,86 +145,67 @@ export function Disclosure({
       .then(() => {
         if (animation.current !== running) return;
         animation.current = null;
-        body.style.overflow = "";
-        done?.();
+        settle();
       })
       .catch(() => {});
   }
 
-  /** Close the group's open item without moving the tapped header. */
-  function closeOthers(header: HTMLElement) {
+  // The group calls the latest animateTo through a ref.
+  const animateRef = useRef(animateTo);
+  useEffect(() => {
+    animateRef.current = animateTo;
+  });
+  useEffect(() => {
     if (!group) return;
-    const before = header.getBoundingClientRect().top;
-    let closed = false;
-    for (const [key, item] of group)
-      if (key !== id && item.isOpen()) {
-        item.closeNow();
-        closed = true;
-      }
-    if (!closed) return;
-    const shift = header.getBoundingClientRect().top - before;
-    if (Math.abs(shift) > 0.5)
-      window.scrollBy({ top: shift, behavior: "instant" });
-  }
-
-  function open(header: HTMLElement) {
-    const element = details.current;
-    const body = content.current;
-    if (!element || !body) return;
-    closeOthers(header);
-    delete element.dataset.state;
-    element.open = true;
-    toggled.current?.(true);
-    if (prefersReducedMotion()) return;
-    run(
-      [
-        { height: "0px", opacity: 0 },
-        { height: `${body.scrollHeight}px`, opacity: 1 },
-      ],
-      OPEN_MS,
-    );
-  }
-
-  function close() {
-    const element = details.current;
-    const body = content.current;
-    if (!element || !body) return;
-    const finish = () => {
-      element.open = false;
-      delete element.dataset.state;
-      toggled.current?.(false);
+    group.set(id, {
+      isOpen: () =>
+        !!details.current?.open && details.current.dataset.state !== "closing",
+      collapse: () => animateRef.current("closed"),
+    });
+    return () => {
+      group.delete(id);
     };
-    if (prefersReducedMotion()) return finish();
-    // The +/− flips at once; the panel folds away underneath.
-    element.dataset.state = "closing";
-    run(
-      [
-        { height: `${body.offsetHeight}px`, opacity: 1 },
-        { height: "0px", opacity: 0 },
-      ],
-      CLOSE_MS,
-      finish,
-    );
-  }
+  }, [group, id]);
 
   function onSummaryClick(event: MouseEvent<HTMLElement>) {
     event.preventDefault();
     const element = details.current;
     if (!element) return;
-    if (element.open && element.dataset.state !== "closing") close();
-    else open(event.currentTarget);
+    if (element.open && element.dataset.state !== "closing") {
+      animateTo("closed");
+      return;
+    }
+    const header = event.currentTarget;
+    let foldsAbove = false;
+    if (group)
+      for (const [key, item] of group) {
+        if (key === id || !item.isOpen()) continue;
+        item.collapse();
+        foldsAbove ||= isAbove(key, header);
+      }
+    animateTo("open");
+    if (foldsAbove && !prefersReducedMotion())
+      keepBelowSiteHeader(header, DURATION_MS);
   }
 
   return (
-    <details ref={details} className={className} open={defaultOpen}>
+    <details
+      ref={details}
+      className={className}
+      open={defaultOpen}
+      data-disclosure={id}
+    >
       <summary className={summaryClassName} onClick={onSummaryClick}>
         {summary}
       </summary>
-      <div
-        ref={content}
-        className={`disclosure-content ${contentClassName ?? ""}`}
-      >
-        {children}
+      {/* The animated wrapper has no padding or layout of its own, so it can
+          fold to exactly zero; the styled content sits inside it. */}
+      <div ref={content} className="disclosure-content">
+        {contentClassName ? (
+          <div className={contentClassName}>{children}</div>
+        ) : (
+          children
+        )}
       </div>
     </details>
   );

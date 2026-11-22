@@ -15,14 +15,15 @@ export interface GalleryPhoto {
 }
 
 /** Scroll a snap track to a slide without fighting the user's own swipe. */
-function scrollToSlide(track: HTMLElement | null, index: number) {
+function scrollToSlide(
+  track: HTMLElement | null,
+  index: number,
+  instant = false,
+) {
   if (!track) return;
   const left = index * track.clientWidth;
   if (Math.abs(track.scrollLeft - left) < 2) return;
-  track.scrollTo({
-    left,
-    behavior: scrollBehavior(),
-  });
+  track.scrollTo({ left, behavior: instant ? "instant" : scrollBehavior() });
 }
 
 /** Keep the active index in step with a horizontally scrolled snap track. */
@@ -30,8 +31,11 @@ export function useSlideSync(
   track: React.RefObject<HTMLElement | null>,
   index: number,
   onIndexChange: (index: number) => void,
+  /** Changes when the photo set itself changes (a new colour). */
+  resetKey?: string,
 ) {
   const latest = useRef({ index, onIndexChange });
+  const shownSet = useRef(resetKey);
   useEffect(() => {
     latest.current = { index, onIndexChange };
   });
@@ -59,8 +63,11 @@ export function useSlideSync(
   }, [track]);
 
   useEffect(() => {
-    scrollToSlide(track.current, index);
-  }, [track, index]);
+    // A new colour starts on its first photo at once; arrows and thumbs glide.
+    const newSet = shownSet.current !== resetKey;
+    shownSet.current = resetKey;
+    scrollToSlide(track.current, index, newSet);
+  }, [track, index, resetKey]);
 }
 
 /**
@@ -85,7 +92,7 @@ export function MediaGallery({
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const active = Math.min(index, photos.length - 1);
   const multiple = photos.length > 1;
-  useSlideSync(track, active, onIndexChange);
+  useSlideSync(track, active, onIndexChange, photos[0]?.src);
 
   function go(step: number) {
     const next = (active + step + photos.length) % photos.length;
@@ -116,7 +123,7 @@ export function MediaGallery({
         <div className="media-track" ref={track}>
           {photos.map((photo, slide) => (
             <button
-              key={`${slide}-${photo.src}`}
+              key={slide}
               type="button"
               className="media-slide"
               aria-label={`${photo.alt} · ${t("galleryOpen")}`}
@@ -125,7 +132,6 @@ export function MediaGallery({
               onClick={() => setLightboxOpen(true)}
             >
               <Image
-                className="photo-swap"
                 src={photo.src}
                 alt=""
                 fill

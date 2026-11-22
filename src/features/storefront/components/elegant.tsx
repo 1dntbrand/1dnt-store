@@ -28,6 +28,7 @@ import { CollectionSwitch } from "./collection-switch";
 import { MediaGallery } from "./media-gallery";
 import { useTabIndicator } from "../lib/use-tab-indicator";
 import { showCategory } from "../lib/category-nav";
+import { useFadeOnChange } from "../lib/fade-on-change";
 import { ColourSwatches, ProductHeading } from "./product-options";
 import { BrandText } from "./brand-text";
 import { elegantLeashGuideId } from "./elegant-leash-guide";
@@ -151,6 +152,8 @@ function ElegantProductPanel({
       setField: state.setField,
     }));
   const infoRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  useFadeOnChange(panelRef, active, active);
   const [view, setView] = useState(0);
   const colourName = elegantColours[colour].label;
   const title = t(product.titleKey);
@@ -170,6 +173,7 @@ function ElegantProductPanel({
   return (
     <StickyBuyScope>
       <div
+        ref={panelRef}
         id={`elegant-${product.category}`}
         role="tabpanel"
         aria-labelledby={`elegant-tab-${product.category}`}

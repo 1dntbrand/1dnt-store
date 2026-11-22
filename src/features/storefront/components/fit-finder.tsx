@@ -27,31 +27,44 @@ export function FitFinder({ kind }: { kind: "collar" | "harness" }) {
   const chestInput = useRef<HTMLInputElement>(null);
   const [neck, setNeck] = useState("");
   const [chest, setChest] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const neckCm = readMeasurement(neck);
-  const chestCm = readMeasurement(chest);
-  const neckInvalid = submitted && neckCm === null;
-  const chestInvalid = submitted && kind === "harness" && chestCm === null;
+  // The result belongs to the last check: typing a new value keeps it on
+  // screen until the shopper checks again, so nothing collapses mid-typing.
+  const [checked, setChecked] = useState<{
+    neck: number | null;
+    chest: number | null;
+    count: number;
+  } | null>(null);
+  const neckInvalid = checked !== null && checked.neck === null;
+  const chestInvalid =
+    checked !== null && kind === "harness" && checked.chest === null;
   const valid = !neckInvalid && !chestInvalid;
+  const checkedNeck = checked?.neck ?? null;
+  const checkedChest = checked?.chest ?? null;
 
   const matches =
-    !submitted || neckCm === null
+    !checked || checkedNeck === null
       ? []
       : kind === "collar"
         ? collarMeasurements.filter((item) =>
-            includesMeasurement(item.neck, neckCm),
+            includesMeasurement(item.neck, checkedNeck),
           )
-        : chestCm === null
+        : checkedChest === null
           ? []
           : harnessMeasurements.filter(
               (item) =>
-                includesMeasurement(item.neck, neckCm) &&
-                includesMeasurement(item.chest, chestCm),
+                includesMeasurement(item.neck, checkedNeck) &&
+                includesMeasurement(item.chest, checkedChest),
             );
 
   function checkFit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
+    const neckCm = readMeasurement(neck);
+    const chestCm = readMeasurement(chest);
+    setChecked({
+      neck: neckCm,
+      chest: chestCm,
+      count: (checked?.count ?? 0) + 1,
+    });
     if (neckCm === null) neckInput.current?.focus();
     else if (kind === "harness" && chestCm === null)
       chestInput.current?.focus();
@@ -72,10 +85,7 @@ export function FitFinder({ kind }: { kind: "collar" | "harness" }) {
             value={neck}
             aria-invalid={neckInvalid}
             aria-describedby={neckInvalid ? `${id}-error` : undefined}
-            onChange={(event) => {
-              setNeck(event.target.value);
-              setSubmitted(false);
-            }}
+            onChange={(event) => setNeck(event.target.value)}
           />
         </label>
         {kind === "harness" && (
@@ -91,10 +101,7 @@ export function FitFinder({ kind }: { kind: "collar" | "harness" }) {
               value={chest}
               aria-invalid={chestInvalid}
               aria-describedby={chestInvalid ? `${id}-error` : undefined}
-              onChange={(event) => {
-                setChest(event.target.value);
-                setSubmitted(false);
-              }}
+              onChange={(event) => setChest(event.target.value)}
             />
           </label>
         )}
@@ -105,42 +112,43 @@ export function FitFinder({ kind }: { kind: "collar" | "harness" }) {
       <button className="btn" type="submit">
         {t("fitCheck")}
       </button>
-      <p className="fit-status" role="status">
-        {submitted && valid
-          ? t(matches.length ? "fitMatches" : "fitNoMatch")
-          : null}
-      </p>
-      {submitted &&
-        valid &&
-        (matches.length ? (
-          <div className="fit-results">
-            {matches.map((item) => (
-              <button
-                key={item.size}
-                type="button"
-                className="fit-result"
-                onClick={() => applyGuideSize(item.size)}
-              >
-                <strong>
-                  {t("sizeOnly")} {item.size}
-                </strong>
-                <span>
-                  {item.neck}
-                  {"chest" in item ? ` / ${item.chest}` : ""}{" "}
-                  {t("centimetreUnit")}
-                </span>
-              </button>
-            ))}
-          </div>
-        ) : (
-          <button
-            className="text-button"
-            type="button"
-            onClick={() => openService("contact")}
-          >
-            {t("fitAskHelp")}
-          </button>
-        ))}
+      {checked && valid && (
+        // Keyed by the check, so each new answer fades in once.
+        <div className="fit-outcome" key={checked.count}>
+          <p className="fit-status" role="status">
+            {t(matches.length ? "fitMatches" : "fitNoMatch")}
+          </p>
+          {matches.length ? (
+            <div className="fit-results">
+              {matches.map((item) => (
+                <button
+                  key={item.size}
+                  type="button"
+                  className="fit-result"
+                  onClick={() => applyGuideSize(item.size)}
+                >
+                  <strong>
+                    {t("sizeOnly")} {item.size}
+                  </strong>
+                  <span>
+                    {item.neck}
+                    {"chest" in item ? ` / ${item.chest}` : ""}{" "}
+                    {t("centimetreUnit")}
+                  </span>
+                </button>
+              ))}
+            </div>
+          ) : (
+            <button
+              className="text-button"
+              type="button"
+              onClick={() => openService("contact")}
+            >
+              {t("fitAskHelp")}
+            </button>
+          )}
+        </div>
+      )}
     </form>
   );
 }

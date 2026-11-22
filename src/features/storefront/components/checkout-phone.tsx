@@ -119,11 +119,9 @@ export function CheckoutPhone({
           }}
         />
       </div>
-      {invalid && (
-        <span id={`${id}-error`} className="field-error">
-          {t("validPhone")}
-        </span>
-      )}
+      <span id={`${id}-error`} className="field-error" aria-live="polite">
+        {invalid && <span className="state-in">{t("validPhone")}</span>}
+      </span>
     </div>
   );
 }

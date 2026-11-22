@@ -1,5 +1,5 @@
 "use client";
-import { ExternalIcon } from "./icons";
+import { PlayIcon } from "./icons";
 import { useState } from "react";
 import { useStorefront } from "../storefront-context";
 import { fidlockVideo } from "../data/brand";
@@ -27,9 +27,15 @@ export function FidlockFaq() {
             allowFullScreen
           />
         ) : (
-          <button className="btn" type="button" onClick={() => setPlay(true)}>
-            {t("fidlockVideo")}
-            <ExternalIcon />
+          <button
+            className="hardware-video-play"
+            type="button"
+            onClick={() => setPlay(true)}
+          >
+            <span className="btn">
+              <PlayIcon />
+              {t("fidlockVideo")}
+            </span>
           </button>
         )}
       </div>

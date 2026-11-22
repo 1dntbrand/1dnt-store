@@ -1,5 +1,6 @@
 "use client";
 import { useRef } from "react";
+import { useFadeOnChange } from "../lib/fade-on-change";
 import { useStorefront } from "../storefront-context";
 import {
   itemPrice,
@@ -22,6 +23,7 @@ import { ProductSizeOptions } from "./product-size-options";
 
 export function ProductDetail({ kind }: { kind: ProductKind }) {
   const infoRef = useRef<HTMLDivElement>(null);
+  const paneRef = useRef<HTMLDivElement>(null);
   const config = productOptions[kind];
   const {
     t,
@@ -43,9 +45,11 @@ export function ProductDetail({ kind }: { kind: ProductKind }) {
     money: state.money,
   }));
   const variant: ProductVariant = { collection: "base", kind, colour, size };
+  useFadeOnChange(paneRef, active, active);
   return (
     <StickyBuyScope>
       <div
+        ref={paneRef}
         className="catalog-pane product-detail"
         id={`catalog-${config.category}`}
         hidden={!active}

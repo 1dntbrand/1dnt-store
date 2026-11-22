@@ -5,15 +5,15 @@ import { useStorefront } from "../storefront-context";
 import { InstagramIcon } from "./instagram-icon";
 
 export function Header() {
-  const { t, language, setLanguage, openDialog, cartCount } = useStorefront(
-    (state) => ({
+  const { t, language, setLanguage, openDialog, cartCount, lastAdded } =
+    useStorefront((state) => ({
       t: state.t,
       language: state.language,
       setLanguage: state.setLanguage,
       openDialog: state.openDialog,
       cartCount: state.cartCount,
-    }),
-  );
+      lastAdded: state.lastAdded,
+    }));
   return (
     <header className="site-header">
       <div className="header-left">
@@ -84,7 +84,11 @@ export function Header() {
             <path d="M9 8V6a3 3 0 0 1 6 0v2" />
           </svg>
           <span className="cart-label">{t("bagAction")}</span>
-          <span className="cart-count" key={cartCount}>
+          <span
+            className="cart-count"
+            key={lastAdded?.stamp ?? "idle"}
+            data-bump={lastAdded ? true : undefined}
+          >
             {cartCount}
           </span>
         </button>

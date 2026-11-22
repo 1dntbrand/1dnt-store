@@ -1,5 +1,7 @@
 "use client";
 import { BrandText } from "./brand-text";
+import { useRef } from "react";
+import { useFadeOnChange } from "../lib/fade-on-change";
 
 import Image from "next/image";
 import { blurProps } from "../lib/image-placeholder";
@@ -33,6 +35,8 @@ export function Catalog() {
     money: state.money,
     setCategory: state.setCategory,
   }));
+  const overviewRef = useRef<HTMLDivElement>(null);
+  useFadeOnChange(overviewRef, current, current === "all");
   const filters = useTabIndicator<HTMLElement>(
     '[aria-current="page"]',
     current,
@@ -66,7 +70,12 @@ export function Catalog() {
           </a>
         ))}
       </nav>
-      <div id="catalog-all" className="catalog-pane" hidden={current !== "all"}>
+      <div
+        ref={overviewRef}
+        id="catalog-all"
+        className="catalog-pane"
+        hidden={current !== "all"}
+      >
         <div className="catalog-overview">
           <a
             className="catalog-preview"

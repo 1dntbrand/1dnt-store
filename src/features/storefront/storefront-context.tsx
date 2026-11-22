@@ -4,6 +4,7 @@ import {
   createContext,
   useContext,
   useEffect,
+  useLayoutEffect,
   useState,
   type ReactNode,
 } from "react";
@@ -11,6 +12,8 @@ import { useStore } from "zustand";
 import { useShallow } from "zustand/react/shallow";
 import { createStorefrontStore, type StorefrontState } from "./store";
 import { validCategory } from "./lib/storage";
+import { markPageReady } from "./lib/fade-on-change";
+import { scrollBehavior } from "./lib/motion";
 import type { Language } from "./lib/catalog";
 import {
   dropOverlayEntry,
@@ -31,8 +34,13 @@ export function StorefrontProvider({
   children: ReactNode;
 }) {
   const [store] = useState(() => createStorefrontStore(initialLanguage));
-  useEffect(() => {
+  // Saved choices (category, colours, bag) apply before the first paint, so
+  // the page never shows defaults first and then rearranges itself.
+  useLayoutEffect(() => {
     store.getState().restore();
+    markPageReady();
+  }, [store]);
+  useEffect(() => {
     // An overlay entry restored with the page after a reload has no overlay.
     forgetStaleOverlayEntry();
     let pendingScroll = 0;
@@ -42,7 +50,7 @@ export function StorefrontProvider({
       PerformanceNavigationTiming | undefined;
     let scrollToSection = !navigation || navigation.type === "navigate";
     let lastTraversal = -Infinity;
-    function syncHash() {
+    function syncHash(arriving = false) {
       window.cancelAnimationFrame(pendingScroll);
       const [section, requested] = window.location.hash.slice(1).split("/");
       const state = store.getState();
@@ -59,9 +67,11 @@ export function StorefrontProvider({
         const traversed = performance.now() - lastTraversal < 500;
         if (scrollToSection && !traversed)
           pendingScroll = window.requestAnimationFrame(() =>
-            document
-              .getElementById(section)
-              ?.scrollIntoView({ block: "start" }),
+            document.getElementById(section)?.scrollIntoView({
+              block: "start",
+              // Arriving on a shared link lands there; a click glides.
+              behavior: arriving ? "instant" : scrollBehavior(),
+            }),
           );
       }
       // Links clicked later are explicit navigation and scroll; Back and
@@ -72,7 +82,8 @@ export function StorefrontProvider({
       lastTraversal = performance.now();
     };
     window.addEventListener("popstate", onTraverse);
-    syncHash();
+    syncHash(true);
+    const onHashChange = () => syncHash();
     document.documentElement.lang = store.getState().language;
     const unsubscribe = store.subscribe((state, previous) => {
       if (state.language !== previous.language)
@@ -84,12 +95,12 @@ export function StorefrontProvider({
     const stopBack = onOverlayBack(() => {
       if (store.getState().activeDialog) store.getState().closeDialog();
     });
-    window.addEventListener("hashchange", syncHash);
+    window.addEventListener("hashchange", onHashChange);
     return () => {
       unsubscribe();
       stopBack();
       window.cancelAnimationFrame(pendingScroll);
-      window.removeEventListener("hashchange", syncHash);
+      window.removeEventListener("hashchange", onHashChange);
       window.removeEventListener("popstate", onTraverse);
     };
   }, [store]);

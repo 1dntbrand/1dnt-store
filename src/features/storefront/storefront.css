@@ -432,8 +432,9 @@ html:lang(uk) .hero-copy h1 em {
     color: var(--ink);
   }
 }
-.catalog-filters[data-indicator],
-.elegant-tabs[data-indicator] {
+/* Positioned from the start, so the first measurement is already right. */
+.catalog-filters,
+.elegant-tabs {
   position: relative;
 }
 .catalog-filters[data-indicator]::after,
@@ -446,10 +447,13 @@ html:lang(uk) .hero-copy h1 em {
   height: 2px;
   background: var(--ink);
   transform: translateX(var(--indicator-left));
+  pointer-events: none;
+}
+.catalog-filters[data-indicator="ready"]::after,
+.elegant-tabs[data-indicator="ready"]::after {
   transition:
     transform 380ms var(--ease-out),
     width 380ms var(--ease-out);
-  pointer-events: none;
 }
 .catalog-filters[data-indicator] a[aria-current="page"],
 .elegant-tabs[data-indicator] button[aria-selected="true"] {
@@ -957,7 +961,14 @@ html:lang(uk) .hero-copy h1 em {
 .product-information {
   margin-top: var(--space-5);
 }
-/* Accordions keep the tapped header in place themselves (disclosure.tsx). */
+/* Accordion content is its own formatting context, so margins inside never
+   collapse through it: the height measured is the height shown, and the
+   animation ends without a final nudge. */
+.disclosure-content {
+  display: flow-root;
+}
+/* Accordions manage their own movement (disclosure.tsx); the browser must
+   not shift the page on its own when a panel above folds. */
 .product-information,
 .faq-questions,
 .bundle-parts {
@@ -1422,6 +1433,16 @@ summary::-webkit-details-marker {
   color: var(--paper);
   border-color: var(--ink);
 }
+.faq-stack {
+  display: grid;
+}
+.faq-stack > .faq-questions {
+  grid-area: 1 / 1;
+  align-self: start;
+}
+.faq-stack > .faq-questions:not([data-active]) {
+  visibility: hidden;
+}
 .faq-question {
   border-top: 1px solid var(--line);
 }
@@ -1443,17 +1464,38 @@ summary::-webkit-details-marker {
 .fidlock-faq h3 {
   font-size: 16px;
 }
+/* The frame is reserved before the video loads, so playing it never moves
+   the text below. */
 .hardware-video {
   margin-block: 20px 12px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--control-radius);
+  background: var(--surface);
 }
 .hardware-video iframe {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  height: auto;
+  height: 100%;
   border: 0;
 }
+.hardware-video-play {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.hardware-video-play:focus-visible {
+  outline-offset: -4px;
+}
 .video-source {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-size: 13px;
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -1616,9 +1658,14 @@ dialog::backdrop {
 .menu-collection-links {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding: 20px 0 24px;
+  padding: 10px 0 14px;
   font-size: 16px;
+}
+/* Same rhythm as before, but each link is a full 44px row to tap. */
+.menu-collection-links a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
 }
 .panel-signature {
   padding: var(--space-5) var(--panel-gutter);
@@ -1675,8 +1722,10 @@ dialog::backdrop {
 .fit-form-fields input[aria-invalid="true"] {
   border-color: var(--error);
 }
-.fit-finder > :is(.fit-status, .field-error):empty {
-  margin-top: calc(-1 * var(--space-2));
+.fit-outcome {
+  display: grid;
+  gap: var(--space-2);
+  width: 100%;
 }
 .fit-status {
   font-size: 13px;
@@ -2032,7 +2081,8 @@ dialog::backdrop {
 
 .checkout-phone-control {
   display: grid;
-  grid-template-columns: max-content minmax(0, 1fr);
+  /* Fixed chip width: "+1" and "+380" leave the number field in place. */
+  grid-template-columns: 7.5em minmax(0, 1fr);
   gap: var(--space-2);
 }
 
@@ -2083,8 +2133,11 @@ dialog::backdrop {
 }
 
 .field-error {
+  display: block;
+  min-height: 1.5em;
   color: var(--error);
   font-size: 12px;
+  line-height: 1.5;
 }
 .delivery-section {
   margin-top: var(--space-5);
@@ -2593,6 +2646,49 @@ dialog::backdrop {
   }
   .catalog-preview:hover .catalog-preview-media > img {
     transform: scale(1.035);
+  }
+}
+/* Touch screens have no hover: the same cue shows while the finger is down,
+   so every tap visibly lands. */
+@media (hover: none) {
+  :is(
+    .collection-switch a,
+    .bundle-part-heading,
+    .fit-result,
+    .faq-topics button,
+    .size-options button,
+    .catalog-preview
+  ):active {
+    border-color: var(--olive);
+  }
+  .btn:active:not(:disabled) {
+    background-color: var(--olive);
+    border-color: var(--olive);
+  }
+  :is(
+      .icon-button,
+      .quantity-control button,
+      .pickup-button,
+      .hardware-video-play
+    ):active:not(:disabled) {
+    background-color: var(--surface);
+  }
+  :is(
+    .text-link,
+    .text-button,
+    .set-suggestion a,
+    .video-source,
+    .catalog-filters a,
+    .elegant-tabs button,
+    .drawer-nav a,
+    .menu-collections > summary,
+    .site-footer a,
+    details > summary
+  ):active {
+    opacity: 0.6;
+  }
+  .gallery-thumb[aria-pressed="false"]:active {
+    opacity: 0.84;
   }
 }
 @media (forced-colors: active) {

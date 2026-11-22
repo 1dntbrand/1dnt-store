@@ -32,7 +32,13 @@ function LeashFigure({
       <div className="leash-card-art">
         {/* Static vector illustration; next/image adds nothing for SVG. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt="" loading="lazy" decoding="async" />
+        <img
+          src={src}
+          alt=""
+          width={tall ? 880 : 640}
+          height={tall ? 1000 : 170}
+          decoding="async"
+        />
       </div>
       <p className="leash-card-dimension">{dimension}</p>
       <figcaption>{caption}</figcaption>

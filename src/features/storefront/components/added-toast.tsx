@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { freeShippingRemaining } from "@/domain/commerce/shipping";
 import { variantPhoto } from "../lib/catalog";
 import { productTitleKey } from "../lib/product-options";
@@ -10,6 +10,7 @@ import { useStorefront } from "../storefront-context";
 import { BrandText } from "./brand-text";
 import { CloseButton } from "./close-button";
 import { CheckIcon } from "./icons";
+import { fadeAway } from "../lib/exit-motion";
 
 const VISIBLE_MS = 6000;
 
@@ -44,12 +45,17 @@ function ToastCard({ notice }: { notice: AddedNotice }) {
     }));
   const [paused, setPaused] = useState(false);
   const card = useRef<HTMLDivElement>(null);
+  // Leaving fades the card out first, so it never just vanishes.
+  const leave = useCallback(
+    () => fadeAway(card.current, dismissAdded),
+    [dismissAdded],
+  );
 
   useEffect(() => {
     if (paused) return;
-    const timer = window.setTimeout(dismissAdded, VISIBLE_MS);
+    const timer = window.setTimeout(leave, VISIBLE_MS);
     return () => window.clearTimeout(timer);
-  }, [paused, dismissAdded]);
+  }, [paused, leave]);
 
   const [first] = notice.variants;
   const remaining = freeShippingRemaining(total);
@@ -98,7 +104,7 @@ function ToastCard({ notice }: { notice: AddedNotice }) {
         >
           {t("viewBag")}
         </button>
-        <CloseButton label={t("guideClose")} onClick={dismissAdded} />
+        <CloseButton label={t("guideClose")} onClick={leave} />
       </div>
     </div>
   );

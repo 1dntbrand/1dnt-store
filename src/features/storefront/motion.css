@@ -4,7 +4,10 @@
  * - controls answer a press; the bag count reacts to an add;
  * - accordions and sheets move from where they open;
  * - the sticky header gains a hairline once content passes under it.
- * Nothing loops and nothing animates on its own. Reduced motion turns all of it off.
+ * - results (errors, confirmations, notices) arrive with a short fade, and
+ *   figures in the bag tick when they change;
+ * - something that leaves (a bag line, a toast, a sheet) goes the way it came.
+ * Only a pending request shows a spinner. Reduced motion turns all of it off.
  */
 .icon {
   flex: none;
@@ -22,6 +25,19 @@
   width: 18px;
   height: 18px;
   stroke-width: 2.2;
+}
+.swap-label {
+  display: inline-grid;
+}
+.swap-label > span {
+  grid-area: 1 / 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+}
+.swap-label > span:not([data-shown]) {
+  visibility: hidden;
 }
 .media-arrow .icon {
   width: 20px;
@@ -43,18 +59,31 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  /* A new panel or photo replaces the old one in place. */
-  .catalog-pane:not([hidden]),
-  [role="tabpanel"]:not([hidden]),
-  .faq-questions {
-    animation: swap-in 220ms var(--ease-out) both;
-  }
-  .photo-swap {
-    animation: swap-in 260ms var(--ease-out) both;
-  }
+  /* Panel switches fade in from JS (lib/fade-on-change.ts), only when the
+     shopper switches; nothing replays on page load. */
   /* The sticky bar switches between the product and the set in place. */
   .purchase-dock-content {
     animation: swap-in 200ms var(--ease-out) both;
+  }
+
+  /* A message the shopper caused (an error, a confirmation) arrives softly. */
+  .state-in {
+    animation: state-in 220ms var(--ease-out) both;
+  }
+  .spinner {
+    animation: spin 800ms linear infinite;
+  }
+  .checkout-skeleton > span {
+    animation: skeleton 1.4s ease-in-out infinite;
+  }
+  .checkout-skeleton > span:nth-child(2) {
+    animation-delay: 120ms;
+  }
+  .checkout-skeleton > span:nth-child(3) {
+    animation-delay: 240ms;
+  }
+  .checkout-skeleton > span:nth-child(4) {
+    animation-delay: 360ms;
   }
 
   /* Press feedback. */
@@ -79,7 +108,7 @@
   }
 
   /* The bag count confirms that something was added. */
-  .cart-count {
+  .cart-count[data-bump] {
     animation: count-bump 360ms var(--ease-out);
   }
 
@@ -101,6 +130,22 @@
     opacity: 1;
   }
 }
+@keyframes state-in {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes skeleton {
+  50% {
+    opacity: 0.45;
+  }
+}
 @keyframes count-bump {
   45% {
     transform: scale(1.25);
@@ -110,6 +155,37 @@
   to {
     box-shadow: 0 6px 20px -16px rgb(37 38 34 / 0.5);
   }
+}
+
+/* Status pieces. */
+.state-in,
+.figure {
+  display: inline-block;
+}
+p.state-in {
+  display: block;
+}
+.spinner {
+  width: 1em;
+  height: 1em;
+  border: 1.5px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+}
+.checkout-skeleton {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--panel-gutter) var(--space-6);
+}
+.checkout-skeleton > span {
+  display: block;
+  height: 52px;
+  border-radius: var(--control-radius);
+  background: var(--surface);
+}
+.checkout-skeleton > span:first-child {
+  width: 40%;
+  height: 20px;
 }
 
 /* Touch targets: at least 44px to hit, without changing how things look. */

@@ -17,6 +17,7 @@ import {
 import { useRecentlyAdded } from "../lib/use-recently-added";
 import { useStorefront } from "../storefront-context";
 import { CheckIcon } from "./icons";
+import { SwapLabel } from "./swap-label";
 
 /** The set builder of the current product, as the sticky bar needs it. */
 export interface SetOffer {
@@ -202,14 +203,17 @@ export function StickyBuy({
           data-added={justAdded || undefined}
           onClick={() => addItems(variants)}
         >
-          {justAdded ? (
-            <>
-              <CheckIcon />
-              {t("addedToBag")}
-            </>
-          ) : (
-            t(setMode ? "addSetShort" : "addCart")
-          )}
+          <SwapLabel
+            shown={justAdded ? 2 : setMode ? 1 : 0}
+            options={[
+              t("addCart"),
+              t("addSetShort"),
+              <>
+                <CheckIcon />
+                {t("addedToBag")}
+              </>,
+            ]}
+          />
         </button>
       </div>
     </div>

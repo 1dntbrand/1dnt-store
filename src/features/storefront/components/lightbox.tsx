@@ -6,6 +6,7 @@ import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { blurProps } from "../lib/image-placeholder";
 import { useStorefront } from "../storefront-context";
 import { CloseButton } from "./close-button";
+import { playDialogExit } from "../lib/exit-motion";
 import { captureReturnFocus, returnFocus } from "../lib/focus-return";
 import type { GalleryPhoto } from "./media-gallery";
 import { useSlideSync } from "./media-gallery";
@@ -46,7 +47,8 @@ export function Lightbox({
     if (!element || !open) return;
     const previousOverflow = document.body.style.overflow;
     const previousFocus = captureReturnFocus();
-    element.showModal();
+    element.getAnimations().forEach((animation) => animation.cancel());
+    if (!element.open) element.showModal();
     pushOverlayEntry();
     const stopBack = onOverlayBack(onClose);
     document.body.style.overflow = "hidden";
@@ -55,10 +57,17 @@ export function Lightbox({
     return () => {
       stopBack();
       dropOverlayEntry();
-      element.close();
       document.body.style.overflow = previousOverflow;
       setZoomed(null);
-      returnFocus(previousFocus, element);
+      // Fade out over the photo, then close for real.
+      const finish = () => {
+        element.close();
+        element.getAnimations().forEach((animation) => animation.cancel());
+        returnFocus(previousFocus, element);
+      };
+      const running = playDialogExit(element);
+      if (running) running.finished.then(finish, () => {});
+      else finish();
     };
     // Opening position only; later changes come from swiping.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -127,36 +136,34 @@ export function Lightbox({
         />
       </div>
       <div className="lightbox-track" ref={track}>
-        {/* Slides exist only while open: nothing loads for a closed viewer. */}
-        {open &&
-          photos.map((photo, slide) => (
-            <div
-              key={`${slide}-${photo.src}`}
-              className="lightbox-slide"
-              aria-hidden={slide !== index}
+        {photos.map((photo, slide) => (
+          <div
+            key={slide}
+            className="lightbox-slide"
+            aria-hidden={slide !== index}
+          >
+            <button
+              type="button"
+              className="lightbox-frame"
+              style={
+                zoomed === slide
+                  ? { width: `${ZOOM * 100}%`, height: `${ZOOM * 100}%` }
+                  : undefined
+              }
+              aria-label={`${photo.alt} · ${t(zoomed === slide ? "galleryZoomOut" : "galleryZoomIn")}`}
+              tabIndex={slide === index ? 0 : -1}
+              onClick={(event) => toggleZoom(event, slide)}
             >
-              <button
-                type="button"
-                className="lightbox-frame"
-                style={
-                  zoomed === slide
-                    ? { width: `${ZOOM * 100}%`, height: `${ZOOM * 100}%` }
-                    : undefined
-                }
-                aria-label={`${photo.alt} · ${t(zoomed === slide ? "galleryZoomOut" : "galleryZoomIn")}`}
-                tabIndex={slide === index ? 0 : -1}
-                onClick={(event) => toggleZoom(event, slide)}
-              >
-                <Image
-                  src={photo.src}
-                  alt=""
-                  fill
-                  sizes={zoomed === slide ? "220vw" : "100vw"}
-                  {...blurProps(photo.src)}
-                />
-              </button>
-            </div>
-          ))}
+              <Image
+                src={photo.src}
+                alt=""
+                fill
+                sizes={zoomed === slide ? "220vw" : "100vw"}
+                {...blurProps(photo.src)}
+              />
+            </button>
+          </div>
+        ))}
       </div>
       {multiple && (
         <>

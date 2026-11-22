@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRecentlyAdded } from "../lib/use-recently-added";
 import { useId, useRef } from "react";
 import { usePublishSetOffer } from "./sticky-buy";
+import { SwapLabel } from "./swap-label";
 import { Disclosure, DisclosureGroup } from "./disclosure";
 import { variantLimit } from "@/domain/commerce/availability";
 import {
@@ -190,14 +191,16 @@ export function BundleOffer({
           data-added={justAdded || undefined}
           onClick={() => addItems(variants)}
         >
-          {justAdded ? (
-            <>
-              <CheckIcon />
-              {t("addedToBag")}
-            </>
-          ) : (
-            t("addSetToCart")
-          )}
+          <SwapLabel
+            shown={justAdded ? 1 : 0}
+            options={[
+              t("addSetToCart"),
+              <>
+                <CheckIcon />
+                {t("addedToBag")}
+              </>,
+            ]}
+          />
         </button>
       </div>
       <div role="status" className="stock-announcement">

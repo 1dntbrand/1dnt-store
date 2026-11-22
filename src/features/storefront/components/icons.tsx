@@ -37,6 +37,14 @@ export function ArrowIcon({
   );
 }
 
+export function PlayIcon({ className = "icon" }: { className?: string }) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M9 6.5v11l8.5-5.5z" fill="currentColor" />
+    </svg>
+  );
+}
+
 export function ExternalIcon({ className = "icon" }: { className?: string }) {
   return (
     <svg {...base} className={className}>
