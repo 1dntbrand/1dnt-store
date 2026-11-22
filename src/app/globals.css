@@ -17,3 +17,19 @@ button:disabled {
 [hidden] {
   display: none !important;
 }
+/* Mobile Safari: keep text size on rotation, no grey tap flash
+   (controls have their own press state), no double-tap zoom on controls. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+a,
+button,
+summary,
+label,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}

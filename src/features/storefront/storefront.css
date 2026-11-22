@@ -427,9 +427,11 @@ html:lang(uk) .hero-copy h1 em {
   color: var(--ink);
   border-bottom-color: var(--ink);
 }
-.catalog-filters a:hover,
-.elegant-tabs button:hover {
-  color: var(--ink);
+@media (hover: hover) {
+  .catalog-filters a:hover,
+  .elegant-tabs button:hover {
+    color: var(--ink);
+  }
 }
 .catalog-filters[data-indicator],
 .elegant-tabs[data-indicator] {
@@ -582,9 +584,13 @@ html:lang(uk) .hero-copy h1 em {
 .media-arrow-next {
   right: 12px;
 }
-.media-stage:hover .media-arrow,
 .media-arrow:focus-visible {
   opacity: 1;
+}
+@media (hover: hover) {
+  .media-stage:hover .media-arrow {
+    opacity: 1;
+  }
 }
 .media-arrow:active {
   transform: scale(0.94);
@@ -971,6 +977,11 @@ summary::-webkit-details-marker {
 }
 .product-purchase > .stock-announcement:not(:empty) {
   margin-top: var(--space-5);
+}
+.restock-soon p {
+  margin: 0 0 var(--space-1);
+  font-size: 14px;
+  color: var(--muted);
 }
 .restock-form {
   display: grid;
@@ -1428,10 +1439,12 @@ summary::-webkit-details-marker {
 .site-footer :is(a, button):focus-visible {
   outline-color: var(--paper);
 }
-.footer-links a:hover,
-.service-links button:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+@media (hover: hover) {
+  .footer-links a:hover,
+  .service-links button:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
 }
 .service-footer {
   display: grid;
@@ -1518,8 +1531,16 @@ dialog::backdrop {
   font-size: 21px;
   border-bottom: 1px solid var(--line);
 }
-.menu-collections > summary .menu-toggle {
-  display: none;
+.menu-collections > summary {
+  align-items: center;
+}
+.menu-collections > summary .disclosure-chevron {
+  width: 9px;
+  height: 9px;
+  margin-inline-end: 6px;
+}
+.menu-collections[open] > summary .disclosure-chevron {
+  transform: translateY(2px) rotate(225deg);
 }
 .menu-collection-links {
   display: flex;
@@ -1959,8 +1980,10 @@ dialog::backdrop {
   font-variant-numeric: tabular-nums;
 }
 
-.checkout-phone-country:hover {
-  border-color: var(--ink);
+@media (hover: hover) {
+  .checkout-phone-country:hover {
+    border-color: var(--ink);
+  }
 }
 
 .checkout-phone-country:focus-within {
@@ -2022,9 +2045,19 @@ dialog::backdrop {
     border-color var(--control-transition),
     background-color var(--control-transition);
 }
-.pickup-button:is(:hover, :focus-visible) {
+.pickup-button:focus-visible {
   border-color: var(--inpost-ink);
   background-color: color-mix(in srgb, var(--inpost-yellow) 18%, var(--paper));
+}
+@media (hover: hover) {
+  .pickup-button:hover {
+    border-color: var(--inpost-ink);
+    background-color: color-mix(
+      in srgb,
+      var(--inpost-yellow) 18%,
+      var(--paper)
+    );
+  }
 }
 .inpost-name {
   display: inline-flex;

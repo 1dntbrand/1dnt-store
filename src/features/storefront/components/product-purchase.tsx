@@ -11,7 +11,9 @@ import { useRecentlyAdded } from "../lib/use-recently-added";
 
 const dockMedia = "(max-width: 800px) and (min-height: 480px)";
 
-type DockAction = "choose" | "buy";
+// The dock repeats the main button once it has scrolled above the screen.
+// Before that the options and the button are already in view.
+type DockAction = "buy";
 
 function useDockAction(
   active: boolean,
@@ -48,13 +50,7 @@ function useDockAction(
           return;
         }
         const actionRect = action.getBoundingClientRect();
-        setDockAction(
-          actionRect.top >= bounds.bottom
-            ? "choose"
-            : actionRect.bottom <= bounds.top
-              ? "buy"
-              : null,
-        );
+        setDockAction(actionRect.bottom <= bounds.top ? "buy" : null);
       },
       { rootMargin: "-68px 0px -84px" },
     );
@@ -96,13 +92,11 @@ export function ProductPurchase({
   buttonId,
   active,
   infoRef,
-  optionsRef,
 }: {
   variant: ProductVariant;
   buttonId?: string;
   active: boolean;
   infoRef: RefObject<HTMLDivElement | null>;
-  optionsRef: RefObject<HTMLFieldSetElement | null>;
 }) {
   const { t, money, choiceSummary, addItems, openService } = useStorefront(
     (state) => ({
@@ -119,7 +113,6 @@ export function ProductPurchase({
   const dockAction = useDockAction(active, infoRef, actionRef, bundleId);
   const unavailable = variantLimit(variant) === 0;
   const price = money(itemPrice(variant));
-  const canBuyFromDock = dockAction === "buy" && !unavailable;
   const justAdded = useRecentlyAdded([variant]);
 
   return (
@@ -164,19 +157,17 @@ export function ProductPurchase({
           {t("productReturnPolicy")}
         </button>
       </div>
-      {dockAction && (
+      {dockAction && !unavailable && (
         <div className="purchase-dock">
           <div className="purchase-dock-summary">
-            <strong>{unavailable ? t("outOfStock") : price}</strong>
+            <strong>{price}</strong>
             <span>{choiceSummary(variant.colour, variant.size)}</span>
           </div>
           <button
             className="btn"
             type="button"
-            onClick={() => {
-              if (canBuyFromDock) addItems([variant]);
-              else jumpTo(optionsRef.current);
-            }}
+            data-added={justAdded || undefined}
+            onClick={() => addItems([variant])}
           >
             {justAdded ? (
               <>
@@ -184,7 +175,7 @@ export function ProductPurchase({
                 {t("addedToBag")}
               </>
             ) : (
-              t(canBuyFromDock ? "addCart" : "chooseVariant")
+              t("addCart")
             )}
           </button>
         </div>

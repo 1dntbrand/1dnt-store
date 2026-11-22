@@ -148,7 +148,6 @@ function ElegantProductPanel({
       setField: state.setField,
     }));
   const infoRef = useRef<HTMLDivElement>(null);
-  const optionsRef = useRef<HTMLFieldSetElement>(null);
   const [view, setView] = useState(0);
   const colourName = elegantColours[colour].label;
   const title = t(product.titleKey);
@@ -193,7 +192,7 @@ function ElegantProductPanel({
             <p className="product-price">{money(itemPrice(variant))}</p>
           </div>
           <p className="product-price-note">{t("vatShipping")}</p>
-          <fieldset className="variant-group" ref={optionsRef} tabIndex={-1}>
+          <fieldset className="variant-group">
             <legend>
               {t("colourLabel")} <span>{colourName}</span>
             </legend>
@@ -235,7 +234,6 @@ function ElegantProductPanel({
             variant={variant}
             active={active}
             infoRef={infoRef}
-            optionsRef={optionsRef}
           />
           <ProductInformation collection="elegant" kind={kind} />
         </div>

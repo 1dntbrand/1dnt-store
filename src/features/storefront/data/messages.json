@@ -1528,5 +1528,17 @@
     "pl": "Wybierz {size}",
     "ru": "Выбрать {size}",
     "uk": "Обрати {size}"
+  },
+  "restockSoon": {
+    "en": "This colour is sold out for now. Choose another colour, or write to us and we will tell you when it is back.",
+    "pl": "Ten kolor jest chwilowo niedostępny. Wybierz inny kolor albo napisz do nas — damy znać, gdy wróci.",
+    "ru": "Этот цвет временно закончился. Выберите другой цвет или напишите нам — сообщим, когда он появится.",
+    "uk": "Цей колір тимчасово закінчився. Оберіть інший колір або напишіть нам — повідомимо, коли він з’явиться."
+  },
+  "restockAsk": {
+    "en": "Write to us",
+    "pl": "Napisz do nas",
+    "ru": "Написать нам",
+    "uk": "Написати нам"
   }
 }

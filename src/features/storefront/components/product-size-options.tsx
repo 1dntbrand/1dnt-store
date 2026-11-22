@@ -48,7 +48,9 @@ export function ProductSizeOptions({
             onClick={() => onSelect(value)}
           >
             <span>{label}</span>
-            {detail && <small>{detail}</small>}
+            {detail && (
+              <small>{detail.replace(/ cm$/, ` ${t("centimetreUnit")}`)}</small>
+            )}
           </button>
         ))}
       </div>

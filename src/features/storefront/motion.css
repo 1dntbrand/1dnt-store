@@ -124,3 +124,26 @@
     box-shadow: 0 6px 20px -16px rgb(37 38 34 / 0.5);
   }
 }
+
+/* Touch targets: at least 44px to hit, without changing how things look. */
+.brand {
+  min-height: 44px;
+}
+.catalog-filters a,
+.elegant-tabs button {
+  position: relative;
+}
+.catalog-filters a::before,
+.elegant-tabs button::before {
+  content: "";
+  position: absolute;
+  inset: 0 -10px;
+}
+.bundle-extra {
+  min-height: 44px;
+}
+.bundle-extra input {
+  flex-basis: 22px;
+  width: 22px;
+  height: 22px;
+}

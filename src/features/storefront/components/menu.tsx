@@ -24,9 +24,7 @@ export function Menu() {
         <details className="menu-collections">
           <summary>
             <span>{t("menuCollections")}</span>
-            <span className="menu-toggle" aria-hidden="true">
-              {"+"}
-            </span>
+            <span className="disclosure-chevron" aria-hidden="true" />
           </summary>
           <div className="menu-collection-links">
             <a onClick={closeDialog} href="#collection">

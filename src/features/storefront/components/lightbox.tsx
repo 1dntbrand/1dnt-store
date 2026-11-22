@@ -125,34 +125,36 @@ export function Lightbox({
         </button>
       </div>
       <div className="lightbox-track" ref={track}>
-        {photos.map((photo, slide) => (
-          <div
-            key={`${slide}-${photo.src}`}
-            className="lightbox-slide"
-            aria-hidden={slide !== index}
-          >
-            <button
-              type="button"
-              className="lightbox-frame"
-              style={
-                zoomed === slide
-                  ? { width: `${ZOOM * 100}%`, height: `${ZOOM * 100}%` }
-                  : undefined
-              }
-              aria-label={`${photo.alt} · ${t(zoomed === slide ? "galleryZoomOut" : "galleryZoomIn")}`}
-              tabIndex={slide === index ? 0 : -1}
-              onClick={(event) => toggleZoom(event, slide)}
+        {/* Slides exist only while open: nothing loads for a closed viewer. */}
+        {open &&
+          photos.map((photo, slide) => (
+            <div
+              key={`${slide}-${photo.src}`}
+              className="lightbox-slide"
+              aria-hidden={slide !== index}
             >
-              <Image
-                src={photo.src}
-                alt=""
-                fill
-                sizes={zoomed === slide ? "220vw" : "100vw"}
-                {...blurProps(photo.src)}
-              />
-            </button>
-          </div>
-        ))}
+              <button
+                type="button"
+                className="lightbox-frame"
+                style={
+                  zoomed === slide
+                    ? { width: `${ZOOM * 100}%`, height: `${ZOOM * 100}%` }
+                    : undefined
+                }
+                aria-label={`${photo.alt} · ${t(zoomed === slide ? "galleryZoomOut" : "galleryZoomIn")}`}
+                tabIndex={slide === index ? 0 : -1}
+                onClick={(event) => toggleZoom(event, slide)}
+              >
+                <Image
+                  src={photo.src}
+                  alt=""
+                  fill
+                  sizes={zoomed === slide ? "220vw" : "100vw"}
+                  {...blurProps(photo.src)}
+                />
+              </button>
+            </div>
+          ))}
       </div>
       {multiple && (
         <>

@@ -486,3 +486,16 @@ dialog:focus-visible {
     opacity: 1;
   }
 }
+
+/* Landscape phones: a sticky action would cover most of a short sheet. */
+@media (max-height: 520px) {
+  .guide-actions {
+    position: static;
+    margin-inline: 0;
+    padding: 0;
+    background: none;
+  }
+  .modal-sheet {
+    max-height: calc(100dvh - 16px);
+  }
+}

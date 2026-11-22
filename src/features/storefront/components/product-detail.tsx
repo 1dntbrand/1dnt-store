@@ -13,7 +13,6 @@ import { ProductSizeOptions } from "./product-size-options";
 
 export function ProductDetail({ kind }: { kind: ProductKind }) {
   const infoRef = useRef<HTMLDivElement>(null);
-  const optionsRef = useRef<HTMLFieldSetElement>(null);
   const config = productOptions[kind];
   const {
     t,
@@ -50,7 +49,7 @@ export function ProductDetail({ kind }: { kind: ProductKind }) {
             <p className="product-price">{money(prices[kind][size])}</p>
           </div>
           <p className="product-price-note">{t("vatShipping")}</p>
-          <fieldset className="variant-group" ref={optionsRef} tabIndex={-1}>
+          <fieldset className="variant-group">
             <legend>
               {t("colourLabel")} <span>{t(colour)}</span>
             </legend>
@@ -88,7 +87,6 @@ export function ProductDetail({ kind }: { kind: ProductKind }) {
           <ProductPurchase
             active={active}
             infoRef={infoRef}
-            optionsRef={optionsRef}
             variant={{ collection: "base", kind, colour, size }}
             buttonId={`add${kind[0].toUpperCase()}${kind.slice(1)}`}
           />

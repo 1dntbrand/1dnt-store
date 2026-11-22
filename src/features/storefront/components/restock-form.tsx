@@ -12,9 +12,10 @@ export function RestockForm({ variant }: { variant: ProductVariant }) {
 }
 
 function RestockRequest({ variant }: { variant: ProductVariant }) {
-  const { t, language } = useStorefront((state) => ({
+  const { t, language, openService } = useStorefront((state) => ({
     t: state.t,
     language: state.language,
+    openService: state.openService,
   }));
   const id = useId();
   const [status, setStatus] = useState<Status>("idle");
@@ -42,6 +43,20 @@ function RestockRequest({ variant }: { variant: ProductVariant }) {
       setStatus("error");
     }
   }
+
+  if (!restockEnabled)
+    return (
+      <div className="restock-form restock-soon">
+        <p>{t("restockSoon")}</p>
+        <button
+          className="text-button"
+          type="button"
+          onClick={() => openService("contact")}
+        >
+          {t("restockAsk")}
+        </button>
+      </div>
+    );
 
   return (
     <form
