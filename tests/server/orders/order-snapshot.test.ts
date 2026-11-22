@@ -67,10 +67,10 @@ test("builds a deterministic snapshot with fixed prices, titles and initial stat
   assert.equal(snapshot.contact.firstName, "Anna");
   assert.deepEqual(snapshot.pickupPoint, input.pickupPoint);
   assert.equal(snapshot.currency, "PLN");
-  assert.equal(snapshot.shippingAmount, 0);
+  assert.equal(snapshot.shippingAmount, SHIPPING_PRICE);
   assert.equal(snapshot.paymentStatus, "pending");
   assert.equal(snapshot.fulfillmentStatus, "new");
-  assert.equal(snapshot.total, 26_600);
+  assert.equal(snapshot.total, 26_600 + SHIPPING_PRICE);
   assert.equal("successUrl" in snapshot, false);
   assert.deepEqual(
     snapshot.items.map(({ title, unitPrice, discount, lineTotal }) => ({
@@ -108,7 +108,7 @@ test("records only the discounted accessory and both leash price groups", () => 
     { qty: 1, unitAmount: 13_000 },
   ]);
   assert.equal(leashLine.lineTotal, 25_350);
-  assert.equal(snapshot.total, 39_600);
+  assert.equal(snapshot.total, 39_600 + SHIPPING_PRICE);
 });
 
 test("reconciles quantities and totals when trio, pair and full prices coexist", () => {

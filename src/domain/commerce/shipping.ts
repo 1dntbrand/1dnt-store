@@ -5,11 +5,8 @@
  */
 export const SHIPPING_PRICE = 1699;
 
-/**
- * Orders whose discounted item total reaches this amount ship free.
- * Keep it close to the cheapest leash + collar set, so every set qualifies.
- */
-export const FREE_SHIPPING_THRESHOLD = 25000;
+/** Orders whose discounted item total reaches this amount ship free. */
+export const FREE_SHIPPING_THRESHOLD = 50000;
 
 export function shippingFor(itemsTotal: number) {
   if (itemsTotal <= 0) return 0;

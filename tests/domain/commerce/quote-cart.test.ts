@@ -143,8 +143,19 @@ test("adds InPost delivery below the free delivery threshold", () => {
   assert.equal(result.pricing.grandTotal, 13_000 + SHIPPING_PRICE);
 });
 
-test("delivers free once discounted items reach the threshold", () => {
+test("charges delivery for a discounted pair below the threshold", () => {
   const result = quoteCart([collar, leash]);
+
+  assert.ok(result.ok);
+  assert.equal(result.pricing.total, 26_600);
+  assert.equal(result.pricing.shipping, SHIPPING_PRICE);
+  assert.equal(result.pricing.grandTotal, 26_600 + SHIPPING_PRICE);
+});
+
+test("delivers free once discounted items reach the threshold", () => {
+  const result = quoteCart([
+    { collection: "base", kind: "harness", colour: "black", size: "L", qty: 2 },
+  ]);
 
   assert.ok(result.ok);
   assert.ok(result.pricing.total >= FREE_SHIPPING_THRESHOLD);
