@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRecentlyAdded } from "../lib/use-recently-added";
 import { useId, useRef } from "react";
 import { usePublishSetOffer } from "./sticky-buy";
+import { Disclosure, DisclosureGroup } from "./disclosure";
 import { variantLimit } from "@/domain/commerce/availability";
 import {
   calculateCart,
@@ -162,9 +163,11 @@ export function BundleOffer({
           gridTemplateColumns: `repeat(${selected.length}, minmax(0, 1fr))`,
         }}
       >
-        {selected.map((part) => (
-          <BundlePart key={part.variant.kind} {...part} />
-        ))}
+        <DisclosureGroup>
+          {selected.map((part) => (
+            <BundlePart key={part.variant.kind} {...part} />
+          ))}
+        </DisclosureGroup>
       </div>
       <div className="bundle-bottom">
         <div>
@@ -222,61 +225,66 @@ function BundlePart({
 
   return (
     <div className="bundle-part">
-      <details className="bundle-part-options">
-        <summary className="bundle-part-heading">
-          <span className="bundle-photo">
-            <Image src={variantPhoto(variant)} alt="" fill sizes="48px" />
-          </span>
-          <span className="bundle-part-summary">
-            <span className="bundle-part-title">
-              <BrandText>{title}</BrandText>
+      <Disclosure
+        className="bundle-part-options"
+        summaryClassName="bundle-part-heading"
+        contentClassName="bundle-fields"
+        summary={
+          <>
+            <span className="bundle-photo">
+              <Image src={variantPhoto(variant)} alt="" fill sizes="48px" />
             </span>
-            <span className="bundle-part-choice">
-              {choiceSummary(colour, size)}
+            <span className="bundle-part-summary">
+              <span className="bundle-part-title">
+                <BrandText>{title}</BrandText>
+              </span>
+              <span className="bundle-part-choice">
+                {choiceSummary(colour, size)}
+              </span>
             </span>
-          </span>
-          <span className="disclosure-chevron" aria-hidden="true" />
-        </summary>
-        <div className="bundle-fields">
-          <label>
-            {t("colourLabel")}
-            <select
-              className="select-control"
-              value={colour}
-              onChange={(event) => chooseColour(event.target.value)}
-            >
-              {variantColours(collection, kind).map((value) => (
-                <option key={value} value={value}>
-                  {variantColourLabel(value, t)}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            {t(kind === "leash" ? "lengthLabel" : "sizeOnly")}
-            <select
-              className="select-control"
-              value={size}
-              disabled={!chooseSize}
-              onChange={(event) => chooseSize?.(event.target.value)}
-            >
-              {variantSizeOptions(variant).map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                  {option.detail ? ` · ${option.detail}` : ""}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-      </details>
+            <span className="disclosure-chevron" aria-hidden="true" />
+          </>
+        }
+      >
+        <label>
+          {t("colourLabel")}
+          <select
+            className="select-control"
+            value={colour}
+            onChange={(event) => chooseColour(event.target.value)}
+          >
+            {variantColours(collection, kind).map((value) => (
+              <option key={value} value={value}>
+                {variantColourLabel(value, t)}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          {t(kind === "leash" ? "lengthLabel" : "sizeOnly")}
+          <select
+            className="select-control"
+            value={size}
+            disabled={!chooseSize}
+            onChange={(event) => chooseSize?.(event.target.value)}
+          >
+            {variantSizeOptions(variant).map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+                {option.detail ? ` · ${option.detail}` : ""}
+              </option>
+            ))}
+          </select>
+        </label>
+      </Disclosure>
       {variantLimit(variant) === 0 && (
-        <details className="bundle-restock">
-          <summary className="stock-label">
-            {t("outOfStock")} · {t("restockAction")}
-          </summary>
+        <Disclosure
+          className="bundle-restock"
+          summaryClassName="stock-label"
+          summary={`${t("outOfStock")} · ${t("restockAction")}`}
+        >
           <RestockForm variant={variant} />
-        </details>
+        </Disclosure>
       )}
     </div>
   );

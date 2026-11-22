@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { Disclosure, DisclosureGroup } from "./disclosure";
 import { faqTopics } from "../data/faq";
 import { useStorefront } from "../storefront-context";
 import { BrandText } from "./brand-text";
@@ -26,18 +27,23 @@ export function FaqSection() {
           ))}
         </div>
         <div className="faq-questions" key={active}>
-          {active === "hardware" ? (
-            <FidlockFaq />
-          ) : (
-            topic.questions.map((question) => (
-              <details className="faq-question" key={question.question}>
-                <summary>{t(question.question)}</summary>
-                {question.answers.map((answer) => (
-                  <p key={answer}>{t(answer)}</p>
-                ))}
-              </details>
-            ))
-          )}
+          <DisclosureGroup>
+            {active === "hardware" ? (
+              <FidlockFaq />
+            ) : (
+              topic.questions.map((question) => (
+                <Disclosure
+                  className="faq-question"
+                  key={question.question}
+                  summary={t(question.question)}
+                >
+                  {question.answers.map((answer) => (
+                    <p key={answer}>{t(answer)}</p>
+                  ))}
+                </Disclosure>
+              ))
+            )}
+          </DisclosureGroup>
         </div>
       </div>
     </div>

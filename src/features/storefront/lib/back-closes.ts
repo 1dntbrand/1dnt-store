@@ -24,6 +24,9 @@ function withoutMarker(state: unknown) {
 export function pushOverlayEntry() {
   if (ownEntry && window.history.state?.[marker] === ownEntry) return;
   ownEntry = entryId();
+  // Leaving the overlay entry returns to this one; the browser must not
+  // restore an older scroll position there, the page stays where it is.
+  window.history.scrollRestoration = "manual";
   window.history.pushState({ ...window.history.state, [marker]: ownEntry }, "");
 }
 
@@ -33,6 +36,7 @@ export function dropOverlayEntry() {
   // Let a link click finish first: its navigation creates a newer entry.
   window.setTimeout(() => {
     if (id && window.history.state?.[marker] === id) window.history.back();
+    else window.history.scrollRestoration = "auto";
   }, 0);
 }
 
@@ -51,6 +55,7 @@ export function onOverlayBack(close: () => void) {
     ownEntry = null;
     close();
     forgetStaleOverlayEntry();
+    window.history.scrollRestoration = "auto";
   };
   window.addEventListener("popstate", listener);
   return () => window.removeEventListener("popstate", listener);

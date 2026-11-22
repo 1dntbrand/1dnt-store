@@ -68,7 +68,16 @@ export function Catalog() {
       </nav>
       <div id="catalog-all" className="catalog-pane" hidden={current !== "all"}>
         <div className="catalog-overview">
-          <a className="catalog-preview" href="#collection/collars">
+          <a
+            className="catalog-preview"
+            href="#collection/collars"
+            onClick={(event) => {
+              if (!isPlainClick(event)) return;
+              event.preventDefault();
+              // The product opens where the overview was; nothing scrolls.
+              showCategory(setCategory, "base", "collars");
+            }}
+          >
             <span className="catalog-preview-media">
               <Image
                 src="/assets/collar-khaki.webp"
@@ -88,7 +97,16 @@ export function Catalog() {
               </p>
             </div>
           </a>
-          <a className="catalog-preview" href="#collection/leashes">
+          <a
+            className="catalog-preview"
+            href="#collection/leashes"
+            onClick={(event) => {
+              if (!isPlainClick(event)) return;
+              event.preventDefault();
+              // The product opens where the overview was; nothing scrolls.
+              showCategory(setCategory, "base", "leashes");
+            }}
+          >
             <span className="catalog-preview-media">
               <Image
                 src="/assets/leash-black.webp"
@@ -108,7 +126,16 @@ export function Catalog() {
               </p>
             </div>
           </a>
-          <a className="catalog-preview" href="#collection/harnesses">
+          <a
+            className="catalog-preview"
+            href="#collection/harnesses"
+            onClick={(event) => {
+              if (!isPlainClick(event)) return;
+              event.preventDefault();
+              // The product opens where the overview was; nothing scrolls.
+              showCategory(setCategory, "base", "harnesses");
+            }}
+          >
             <span className="catalog-preview-media">
               <Image
                 src="/assets/harness-khaki.webp"

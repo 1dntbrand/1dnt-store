@@ -6,6 +6,7 @@ import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { blurProps } from "../lib/image-placeholder";
 import { useStorefront } from "../storefront-context";
 import { CloseButton } from "./close-button";
+import { captureReturnFocus, returnFocus } from "../lib/focus-return";
 import type { GalleryPhoto } from "./media-gallery";
 import { useSlideSync } from "./media-gallery";
 import {
@@ -44,7 +45,7 @@ export function Lightbox({
     const element = dialog.current;
     if (!element || !open) return;
     const previousOverflow = document.body.style.overflow;
-    const previousFocus = document.activeElement;
+    const previousFocus = captureReturnFocus();
     element.showModal();
     pushOverlayEntry();
     const stopBack = onOverlayBack(onClose);
@@ -57,7 +58,7 @@ export function Lightbox({
       element.close();
       document.body.style.overflow = previousOverflow;
       setZoomed(null);
-      if (previousFocus instanceof HTMLElement) previousFocus.focus();
+      returnFocus(previousFocus, element);
     };
     // Opening position only; later changes come from swiping.
     // eslint-disable-next-line react-hooks/exhaustive-deps

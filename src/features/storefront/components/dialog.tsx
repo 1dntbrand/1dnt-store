@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, type MouseEvent, type ReactNode } from "react";
 import { useStorefront } from "../storefront-context";
+import { captureReturnFocus, returnFocus } from "../lib/focus-return";
 
 export function Dialog({
   id,
@@ -26,7 +27,7 @@ export function Dialog({
     const dialog = ref.current;
     if (!dialog || !isOpen) return;
     const previousOverflow = document.body.style.overflow;
-    const previousFocus = document.activeElement;
+    const previousFocus = captureReturnFocus();
     dialog.showModal();
     // Start on the dialog itself: no focus ring on the close button for
     // pointer users, and Tab still reaches every control in order.
@@ -35,7 +36,7 @@ export function Dialog({
     return () => {
       dialog.close();
       document.body.style.overflow = previousOverflow;
-      if (previousFocus instanceof HTMLElement) previousFocus.focus();
+      returnFocus(previousFocus, dialog);
     };
   }, [isOpen]);
   return (

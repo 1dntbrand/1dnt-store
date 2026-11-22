@@ -6,7 +6,12 @@ import {
   type ProductKind,
   type ProductVariant,
 } from "@/domain/commerce/catalog";
-import { productOptions, swatchColours } from "../lib/product-options";
+import {
+  colourSoldOut,
+  productOptions,
+  swatchColours,
+  withStock,
+} from "../lib/product-options";
 import { ColourSwatches, ProductHeading } from "./product-options";
 import { ProductGallery } from "./product-gallery";
 import { BundleBuilder } from "./bundle-builder";
@@ -57,6 +62,7 @@ export function ProductDetail({ kind }: { kind: ProductKind }) {
                 value,
                 label: t(value),
                 fill: swatchColours[value],
+                soldOut: colourSoldOut({ ...variant, colour: value }),
               }))}
               selected={colour}
               onSelect={(value) =>
@@ -65,7 +71,7 @@ export function ProductDetail({ kind }: { kind: ProductKind }) {
             />
             <ProductSizeOptions
               kind={kind}
-              options={config.sizes}
+              options={withStock(config.sizes, variant)}
               selected={size}
               onSelect={(value) => setField(config.sizeField, value)}
               onOpenGuide={() =>

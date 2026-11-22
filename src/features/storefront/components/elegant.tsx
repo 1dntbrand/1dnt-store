@@ -15,7 +15,11 @@ import {
   type ElegantProduct,
 } from "../data/elegant-products";
 import { useStorefront } from "../storefront-context";
-import { variantSizeOptions } from "../lib/product-options";
+import {
+  colourSoldOut,
+  variantSizeOptions,
+  withStock,
+} from "../lib/product-options";
 import type { FieldName } from "../lib/storage";
 import { BundleOffer, type BundlePartSelection } from "./bundle-builder";
 import { ProductPurchase } from "./product-purchase";
@@ -169,7 +173,6 @@ function ElegantProductPanel({
         id={`elegant-${product.category}`}
         role="tabpanel"
         aria-labelledby={`elegant-tab-${product.category}`}
-        tabIndex={0}
         hidden={!active}
       >
         <div className="elegant-product">
@@ -191,13 +194,14 @@ function ElegantProductPanel({
                 value,
                 label: elegantColours[value].label,
                 fill: elegantColours[value].swatch,
+                soldOut: colourSoldOut({ ...variant, colour: value }),
               }))}
               selected={colour}
               onSelect={setColour}
             />
             <ProductSizeOptions
               kind={kind}
-              options={sizes}
+              options={withStock(sizes, variant)}
               selected={size}
               onSelect={setSize}
               onOpenGuide={() =>

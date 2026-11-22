@@ -83,23 +83,6 @@
     animation: count-bump 360ms var(--ease-out);
   }
 
-  /* Accordions open from their header instead of jumping. */
-  @supports (interpolate-size: allow-keywords) {
-    :root {
-      interpolate-size: allow-keywords;
-    }
-    details::details-content {
-      height: 0;
-      overflow: clip;
-      transition:
-        height 280ms var(--ease-out),
-        content-visibility 280ms allow-discrete;
-    }
-    details[open]::details-content {
-      height: auto;
-    }
-  }
-
   /* Sticky header: a hairline shadow only once something scrolls beneath it. */
   @supports (animation-timeline: scroll()) {
     .site-header {

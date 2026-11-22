@@ -5,6 +5,7 @@ import {
 } from "../data/elegant-products";
 import { collarMeasurements, harnessMeasurements } from "../data/measurements";
 import type { FieldName } from "./storage";
+import { variantLimit } from "@/domain/commerce/availability";
 import {
   variantColours,
   variantPrices,
@@ -16,6 +17,8 @@ export interface VariantOption {
   value: string;
   label: string;
   detail?: string;
+  /** Out of stock in the chosen colour. */
+  soldOut?: boolean;
 }
 interface ProductConfiguration {
   category: string;
@@ -100,4 +103,22 @@ export function productBundleId({
   kind,
 }: Pick<ProductVariant, "collection" | "kind">) {
   return `bundle-${collection}-${kind}`;
+}
+
+/** Marks the sizes that are out of stock in the variant's colour. */
+export function withStock(
+  options: readonly VariantOption[],
+  variant: ProductVariant,
+): VariantOption[] {
+  return options.map((option) => ({
+    ...option,
+    soldOut: variantLimit({ ...variant, size: option.value }) === 0,
+  }));
+}
+
+/** A colour is sold out when none of its sizes can be ordered. */
+export function colourSoldOut(variant: ProductVariant) {
+  return variantSizeOptions(variant).every(
+    ({ value }) => variantLimit({ ...variant, size: value }) === 0,
+  );
 }

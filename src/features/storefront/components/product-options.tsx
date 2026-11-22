@@ -31,6 +31,8 @@ export interface SwatchOption {
   label: string;
   /** Any CSS background: a colour or a two-tone gradient. */
   fill: string;
+  /** Every size of this colour is out of stock. */
+  soldOut?: boolean;
 }
 
 /** Colour choice as round swatches with the selected name beside the label. */
@@ -49,14 +51,18 @@ export function ColourSwatches({
     <fieldset className="variant-group">
       <legend>
         {t("colourLabel")} <span>{current?.label}</span>
+        {current?.soldOut && (
+          <span className="legend-sold-out">{t("outOfStock")}</span>
+        )}
       </legend>
       <div className="swatches">
-        {options.map(({ value, label, fill }) => (
+        {options.map(({ value, label, fill, soldOut }) => (
           <button
             key={value}
             className="swatch"
             type="button"
-            aria-label={label}
+            data-sold-out={soldOut || undefined}
+            aria-label={soldOut ? `${label} · ${t("outOfStock")}` : label}
             aria-pressed={selected === value}
             onClick={() => onSelect(value)}
           >

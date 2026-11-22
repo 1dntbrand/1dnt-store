@@ -27,12 +27,15 @@ export function ProductPurchase({
   active: boolean;
   infoRef: RefObject<HTMLDivElement | null>;
 }) {
-  const { t, money, addItems, openService } = useStorefront((state) => ({
-    t: state.t,
-    money: state.money,
-    addItems: state.addItems,
-    openService: state.openService,
-  }));
+  const { t, money, addItems, openService, choiceSummary } = useStorefront(
+    (state) => ({
+      t: state.t,
+      money: state.money,
+      addItems: state.addItems,
+      openService: state.openService,
+      choiceSummary: state.choiceSummary,
+    }),
+  );
   const actionRef = useRef<HTMLDivElement>(null);
   const hasBundle = variant.collection === "base" || variant.kind !== "leash";
   const bundleId = hasBundle ? productBundleId(variant) : null;
@@ -43,13 +46,15 @@ export function ProductPurchase({
   return (
     <>
       <div className="product-purchase" ref={actionRef}>
-        <div className="stock-announcement" role="status">
-          {unavailable && (
-            <span className="stock-label">{t("outOfStock")}</span>
-          )}
-        </div>
         {unavailable ? (
-          <RestockForm variant={variant} />
+          <>
+            {/* Same place and size as Add to Cart: the state is unmistakable. */}
+            <div className="sold-out-cta" role="status">
+              <span>{t("outOfStock")}</span>
+              <span>{choiceSummary(variant.colour, variant.size)}</span>
+            </div>
+            <RestockForm variant={variant} />
+          </>
         ) : (
           <button
             className="btn add-product"

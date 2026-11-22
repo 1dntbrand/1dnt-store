@@ -36,6 +36,12 @@ export function StorefrontProvider({
     // An overlay entry restored with the page after a reload has no overlay.
     forgetStaleOverlayEntry();
     let pendingScroll = 0;
+    // A reload or Back/Forward restores the shopper's own scroll position;
+    // only a fresh visit to a shared #collection/... link should move.
+    const navigation = performance.getEntriesByType("navigation")[0] as
+      PerformanceNavigationTiming | undefined;
+    let scrollToSection = !navigation || navigation.type === "navigate";
+    let lastTraversal = -Infinity;
     function syncHash() {
       window.cancelAnimationFrame(pendingScroll);
       const [section, requested] = window.location.hash.slice(1).split("/");
@@ -50,11 +56,22 @@ export function StorefrontProvider({
       if (collection) {
         if (validCategory(collection, requested))
           state.setCategory(collection, requested);
-        pendingScroll = window.requestAnimationFrame(() =>
-          document.getElementById(section)?.scrollIntoView({ block: "start" }),
-        );
+        const traversed = performance.now() - lastTraversal < 500;
+        if (scrollToSection && !traversed)
+          pendingScroll = window.requestAnimationFrame(() =>
+            document
+              .getElementById(section)
+              ?.scrollIntoView({ block: "start" }),
+          );
       }
+      // Links clicked later are explicit navigation and scroll; Back and
+      // Forward (a popstate just before) keep the position the browser restores.
+      scrollToSection = true;
     }
+    const onTraverse = () => {
+      lastTraversal = performance.now();
+    };
+    window.addEventListener("popstate", onTraverse);
     syncHash();
     document.documentElement.lang = store.getState().language;
     const unsubscribe = store.subscribe((state, previous) => {
@@ -73,6 +90,7 @@ export function StorefrontProvider({
       stopBack();
       window.cancelAnimationFrame(pendingScroll);
       window.removeEventListener("hashchange", syncHash);
+      window.removeEventListener("popstate", onTraverse);
     };
   }, [store]);
   return (

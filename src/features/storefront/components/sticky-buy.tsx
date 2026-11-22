@@ -64,15 +64,15 @@ type Mode = "product" | "set";
 const dockMedia = "(max-width: 800px) and (min-height: 480px)";
 /** Height of the bar, so a button hidden behind it counts as off screen. */
 const DOCK_HEIGHT = 64;
-/** Distance between the show and hide points, so small scrolls never toggle. */
-const BAND = 24;
 
 /**
- * Decides what the bar offers while the shopper is inside a product block:
- * - "product" once the main Add to Cart has passed under the header and the
- *   shopper is still reading this product's details;
- * - "set" inside the set builder while its own button is not on screen;
- * - nothing when the relevant button is visible or the block has ended.
+ * One rule: while the shopper is inside a product block and cannot see the
+ * block's buy button, the bar offers that button.
+ * - In the product details the button is the main Add to Cart.
+ * - In the set builder it is the set's own button.
+ * The middle of the screen decides which part the shopper is in. A button
+ * hidden behind the bar still counts as hidden, and it has to be fully clear
+ * of the bar before the bar leaves, so the two never flicker.
  */
 function useStickyMode(
   active: boolean,
@@ -98,33 +98,30 @@ function useStickyMode(
       const button = buttonRef.current;
       if (!media.matches || !region || !button) return null;
       const viewport = window.innerHeight;
-      const focus = viewport * 0.5;
+      const middle = viewport * 0.5;
       const header =
         document.querySelector(".site-header")?.getBoundingClientRect()
           .bottom ?? 0;
+      const onScreen = (rect: DOMRect, forMode: Mode) =>
+        current === forMode
+          ? rect.top >= header && rect.bottom <= viewport - DOCK_HEIGHT - 4
+          : rect.bottom > header && rect.top < viewport;
+
       const set = offer?.available ? offer.section.current : null;
       const setRect = set?.getBoundingClientRect();
-
-      if (setRect && setRect.top < focus && setRect.bottom > header + 120) {
+      if (setRect && setRect.top < middle && setRect.bottom > middle) {
         const setButton = offer?.button.current?.getBoundingClientRect();
-        const lift = current === "set" ? BAND : 0;
-        const buttonOnScreen =
-          !!setButton &&
-          setButton.top < viewport - DOCK_HEIGHT - lift &&
-          setButton.bottom > header;
-        return buttonOnScreen ? null : "set";
+        return setButton && onScreen(setButton, "set") ? null : "set";
       }
 
-      if (!productAvailable) return null;
-      const band = current === "product" ? BAND : -BAND;
-      const passed = button.getBoundingClientRect().bottom < header + band;
-      // Leaving the set for the details is a hand-over, not a new show:
-      // no band there, so the bar never blinks between the two.
-      const detailsBand = current === null ? -BAND : BAND;
-      const detailsEnd = setRect
-        ? setRect.top
-        : region.getBoundingClientRect().bottom;
-      return passed && detailsEnd > focus - detailsBand ? "product" : null;
+      const block =
+        region.closest(".product-layout, .elegant-product") ?? region;
+      const top = block.getBoundingClientRect().top;
+      const end = setRect ? setRect.top : region.getBoundingClientRect().bottom;
+      if (!productAvailable || top > middle || end < middle) return null;
+      return onScreen(button.getBoundingClientRect(), "product")
+        ? null
+        : "product";
     };
     const update = () => {
       frame = 0;

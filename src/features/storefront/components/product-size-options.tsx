@@ -43,15 +43,21 @@ export function ProductSizeOptions({
           gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))`,
         }}
       >
-        {options.map(({ value, label, detail }) => (
+        {options.map(({ value, label, detail, soldOut }) => (
           <button
             key={value}
             type="button"
             aria-pressed={selected === value}
+            data-sold-out={soldOut || undefined}
+            aria-label={soldOut ? `${label} · ${t("outOfStock")}` : undefined}
             onClick={() => onSelect(value)}
           >
             <span>{label}</span>
-            {detail && <small>{centimetres(detail.replace(/ cm$/, ""))}</small>}
+            <small>
+              {soldOut
+                ? t("outOfStock")
+                : detail && centimetres(detail.replace(/ cm$/, ""))}
+            </small>
           </button>
         ))}
       </div>

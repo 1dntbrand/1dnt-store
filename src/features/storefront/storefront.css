@@ -832,6 +832,57 @@ html:lang(uk) .hero-copy h1 em {
 .swatch .swatch-check {
   position: absolute;
 }
+/* Sold out: a hairline through the colour, like a struck-out label. */
+.swatch[data-sold-out]::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    transparent calc(50% - 1px),
+    var(--paper) calc(50% - 1px),
+    var(--paper) calc(50% + 1px),
+    transparent calc(50% + 1px)
+  );
+  pointer-events: none;
+}
+.swatch[data-sold-out] > span:first-child {
+  opacity: 0.55;
+}
+.legend-sold-out {
+  margin-inline-start: var(--space-2);
+  color: var(--error);
+  font-weight: 500;
+}
+.size-options button[data-sold-out] > span {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+.size-options button[data-sold-out] small {
+  color: var(--error);
+}
+/* The CTA slot keeps its size and says plainly that this variant is gone. */
+.sold-out-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 52px;
+  margin-top: var(--space-5);
+  padding: var(--space-3) var(--space-5);
+  border: 1px dashed var(--control-line);
+  border-radius: var(--control-radius);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+}
+.sold-out-cta > span + span {
+  color: var(--muted);
+  font-weight: 400;
+  text-align: end;
+}
 .size-options {
   display: grid;
   gap: var(--space-2);
@@ -896,13 +947,27 @@ html:lang(uk) .hero-copy h1 em {
 .purchase-dock {
   display: none;
 }
-.variant-group:focus-visible,
-.bundle-builder:focus-visible {
-  outline: 2px solid var(--olive);
-  outline-offset: 4px;
+/* Sections that only receive focus so screen readers follow a jump:
+   the scroll already shows where the shopper is, no ring around them. */
+.variant-group:focus,
+.bundle-builder:focus,
+[role="tabpanel"]:focus {
+  outline: none;
 }
 .product-information {
   margin-top: var(--space-5);
+}
+/* Accordions keep the tapped header in place themselves (disclosure.tsx). */
+.product-information,
+.faq-questions,
+.bundle-parts {
+  overflow-anchor: none;
+}
+details[data-state="closing"] > summary::after {
+  content: "+";
+}
+details[data-state="closing"] > summary .disclosure-chevron {
+  transform: translateY(-2px) rotate(45deg);
 }
 .product-information details {
   border-top: 1px solid var(--line);
