@@ -34,10 +34,14 @@ export function Menu() {
           }
         >
           <a onClick={closeDialog} href="#collection">
-            <BrandText>Base BioThane®</BrandText>
+            <span>
+              <BrandText>Base BioThane®</BrandText>
+            </span>
           </a>
           <a onClick={closeDialog} href="#elegant">
-            <BrandText>Elegant BioThane®</BrandText>
+            <span>
+              <BrandText>Elegant BioThane®</BrandText>
+            </span>
           </a>
         </Disclosure>
         <a onClick={closeDialog} href="#philosophy">
