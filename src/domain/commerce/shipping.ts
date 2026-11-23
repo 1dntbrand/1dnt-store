@@ -5,15 +5,7 @@
  */
 export const SHIPPING_PRICE = 1699;
 
-/** Orders whose discounted item total reaches this amount ship free. */
-export const FREE_SHIPPING_THRESHOLD = 50000;
-
+/** Every order pays the same delivery price; an empty bag pays nothing. */
 export function shippingFor(itemsTotal: number) {
-  if (itemsTotal <= 0) return 0;
-  return itemsTotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_PRICE;
-}
-
-/** Amount still needed for free delivery, or 0 once it applies. */
-export function freeShippingRemaining(itemsTotal: number) {
-  return Math.max(0, FREE_SHIPPING_THRESHOLD - itemsTotal);
+  return itemsTotal > 0 ? SHIPPING_PRICE : 0;
 }

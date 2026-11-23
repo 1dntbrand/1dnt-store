@@ -126,10 +126,10 @@
     "uk": "Додати до кошика"
   },
   "vatShipping": {
-    "en": "Price includes 23% VAT. Delivery {shippingPrice}, free from {freeShippingFrom}.",
-    "pl": "Cena zawiera 23% VAT. Dostawa {shippingPrice}, darmowa od {freeShippingFrom}.",
-    "ru": "Цена включает 23% НДС. Доставка {shippingPrice}, бесплатно от {freeShippingFrom}.",
-    "uk": "Ціна включає 23% ПДВ. Доставка {shippingPrice}, безкоштовно від {freeShippingFrom}."
+    "en": "Price includes 23% VAT. Delivery {shippingPrice}.",
+    "pl": "Cena zawiera 23% VAT. Dostawa {shippingPrice}.",
+    "ru": "Цена включает 23% НДС. Доставка {shippingPrice}.",
+    "uk": "Ціна включає 23% ПДВ. Доставка {shippingPrice}."
   },
   "totalLabel": {
     "en": "Total",
@@ -708,10 +708,10 @@
     "uk": "Скільки коштує доставка?"
   },
   "faqDeliveryCostA": {
-    "en": "Delivery to an InPost pickup point in Poland costs {shippingPrice}. Orders from {freeShippingFrom} ship free. The delivery cost is shown in your bag before you pay.",
-    "pl": "Dostawa do punktu InPost na terenie Polski kosztuje {shippingPrice}. Zamówienia od {freeShippingFrom} wysyłamy za darmo. Koszt dostawy widzisz w koszyku przed płatnością.",
-    "ru": "Доставка в пункт InPost по Польше стоит {shippingPrice}. Заказы от {freeShippingFrom} доставляем бесплатно. Стоимость доставки видна в корзине до оплаты.",
-    "uk": "Доставка до пункту InPost у межах Польщі коштує {shippingPrice}. Замовлення від {freeShippingFrom} доставляємо безкоштовно. Вартість доставки видно в кошику до оплати."
+    "en": "Delivery to an InPost pickup point in Poland costs {shippingPrice}. The delivery cost is shown in your bag before you pay.",
+    "pl": "Dostawa do punktu InPost na terenie Polski kosztuje {shippingPrice}. Koszt dostawy widzisz w koszyku przed płatnością.",
+    "ru": "Доставка в пункт InPost по Польше стоит {shippingPrice}. Стоимость доставки видна в корзине до оплаты.",
+    "uk": "Доставка до пункту InPost у межах Польщі коштує {shippingPrice}. Вартість доставки видно в кошику до оплати."
   },
   "faqDeliveryTimeQ": {
     "en": "How long does delivery take?",
@@ -1062,10 +1062,10 @@
     "uk": "Доставка"
   },
   "pickupDescription": {
-    "en": "Delivery within Poland to an InPost pickup point: {shippingPrice}, free from {freeShippingFrom}.",
-    "pl": "Dostawa na terenie Polski do punktu InPost: {shippingPrice}, darmowa od {freeShippingFrom}.",
-    "ru": "Доставка по Польше в пункт InPost: {shippingPrice}, бесплатно от {freeShippingFrom}.",
-    "uk": "Доставка в межах Польщі до пункту InPost: {shippingPrice}, безкоштовно від {freeShippingFrom}."
+    "en": "Delivery within Poland to an InPost pickup point: {shippingPrice}.",
+    "pl": "Dostawa na terenie Polski do punktu InPost: {shippingPrice}.",
+    "ru": "Доставка по Польше в пункт InPost: {shippingPrice}.",
+    "uk": "Доставка в межах Польщі до пункту InPost: {shippingPrice}."
   },
   "choosePickupPoint": {
     "en": "Choose pickup point",
@@ -1306,24 +1306,6 @@
     "pl": "Jak to działa?",
     "ru": "Как это работает?",
     "uk": "Як це працює?"
-  },
-  "freeShipping": {
-    "en": "Free",
-    "pl": "Gratis",
-    "ru": "Бесплатно",
-    "uk": "Безкоштовно"
-  },
-  "freeShippingRemaining": {
-    "en": "Add {amount} more for free delivery",
-    "pl": "Do darmowej dostawy brakuje {amount}",
-    "ru": "До бесплатной доставки осталось {amount}",
-    "uk": "До безкоштовної доставки залишилося {amount}"
-  },
-  "freeShippingReached": {
-    "en": "Your delivery is free",
-    "pl": "Masz darmową dostawę",
-    "ru": "Доставка для вас бесплатная",
-    "uk": "Доставка для вас безкоштовна"
   },
   "deliveryInpost": {
     "en": "InPost pickup point",

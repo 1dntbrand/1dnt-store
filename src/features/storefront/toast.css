@@ -50,11 +50,6 @@
 .added-toast-item > span {
   color: var(--muted);
 }
-.added-toast-shipping {
-  margin: var(--space-1) 0 0;
-  color: var(--muted);
-  font-size: 12px;
-}
 .added-toast-actions {
   grid-column: 1 / -1;
   display: flex;

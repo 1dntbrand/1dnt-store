@@ -53,7 +53,9 @@ dialog:focus-visible {
   background: var(--paper);
 }
 .modal-body {
-  flex: 1;
+  /* auto, not 0%: Safari otherwise shrinks the body of an auto-height
+     sheet to almost nothing. */
+  flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;

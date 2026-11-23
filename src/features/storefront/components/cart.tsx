@@ -4,10 +4,6 @@ import Image from "next/image";
 import { useStorefront } from "../storefront-context";
 import { itemPrice } from "@/domain/commerce/catalog";
 import { variantLimit } from "@/domain/commerce/availability";
-import {
-  FREE_SHIPPING_THRESHOLD,
-  freeShippingRemaining,
-} from "@/domain/commerce/shipping";
 import { variantPhoto } from "../lib/catalog";
 import { productTitleKey } from "../lib/product-options";
 import { suggestSetItem } from "../lib/set-suggestion";
@@ -175,12 +171,7 @@ export function OrderTotals() {
       )}
       <div>
         <span>{t("deliveryInpost")}</span>
-        <Figure
-          value={pricing.shipping}
-          className={pricing.shipping === 0 ? "free-shipping" : undefined}
-        >
-          {pricing.shipping === 0 ? t("freeShipping") : money(pricing.shipping)}
-        </Figure>
+        <Figure value={pricing.shipping}>{money(pricing.shipping)}</Figure>
       </div>
       <div className="cart-subtotal">
         <span>{t("totalLabel")}</span>
@@ -213,31 +204,6 @@ function SetSuggestionNote() {
   );
 }
 
-/** Shows how close the bag is to free delivery; set discounts count first. */
-export function FreeShippingProgress() {
-  const { t, money, total } = useStorefront((state) => ({
-    t: state.t,
-    money: state.money,
-    total: state.pricing.total,
-  }));
-  const remaining = freeShippingRemaining(total);
-  const progress = Math.min(1, total / FREE_SHIPPING_THRESHOLD);
-  return (
-    <div
-      className="free-shipping-progress"
-      data-complete={remaining === 0 || undefined}
-    >
-      <p role="status">
-        {remaining === 0
-          ? t("freeShippingReached")
-          : t("freeShippingRemaining", { amount: money(remaining) })}
-      </p>
-      <span className="free-shipping-track" aria-hidden="true">
-        <span style={{ transform: `scaleX(${progress})` }} />
-      </span>
-    </div>
-  );
-}
 const emptyBagPicks = [
   {
     href: "#collection/collars",
@@ -330,7 +296,6 @@ export function Cart() {
           </div>
           <div className="cart-footer">
             <SetSuggestionNote />
-            <FreeShippingProgress />
             <OrderTotals />
             {cartHasStockIssue && (
               <p className="cart-stock-message state-in" role="status">

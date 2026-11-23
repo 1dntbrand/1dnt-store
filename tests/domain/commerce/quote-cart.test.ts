@@ -2,7 +2,6 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { quoteCart } from "../../../src/domain/commerce/quote-cart";
 import {
-  FREE_SHIPPING_THRESHOLD,
   SHIPPING_PRICE,
   shippingFor,
 } from "../../../src/domain/commerce/shipping";
@@ -152,19 +151,20 @@ test("charges delivery for a discounted pair below the threshold", () => {
   assert.equal(result.pricing.grandTotal, 26_600 + SHIPPING_PRICE);
 });
 
-test("delivers free once discounted items reach the threshold", () => {
+test("charges the same delivery however large the order is", () => {
   const result = quoteCart([
     { collection: "base", kind: "harness", colour: "black", size: "L", qty: 2 },
   ]);
 
   assert.ok(result.ok);
-  assert.ok(result.pricing.total >= FREE_SHIPPING_THRESHOLD);
-  assert.equal(result.pricing.shipping, 0);
-  assert.equal(result.pricing.grandTotal, result.pricing.total);
+  assert.equal(result.pricing.shipping, SHIPPING_PRICE);
+  assert.equal(
+    result.pricing.grandTotal,
+    result.pricing.total + SHIPPING_PRICE,
+  );
 });
 
-test("compares the threshold with the total after set discounts", () => {
-  assert.equal(shippingFor(FREE_SHIPPING_THRESHOLD - 1), SHIPPING_PRICE);
-  assert.equal(shippingFor(FREE_SHIPPING_THRESHOLD), 0);
+test("charges no delivery for an empty bag", () => {
   assert.equal(shippingFor(0), 0);
+  assert.equal(shippingFor(1), SHIPPING_PRICE);
 });

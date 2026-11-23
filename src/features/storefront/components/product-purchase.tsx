@@ -27,11 +27,10 @@ export function ProductPurchase({
   active: boolean;
   infoRef: RefObject<HTMLDivElement | null>;
 }) {
-  const { t, money, addItems, openService } = useStorefront((state) => ({
+  const { t, money, addItems } = useStorefront((state) => ({
     t: state.t,
     money: state.money,
     addItems: state.addItems,
-    openService: state.openService,
   }));
   const actionRef = useRef<HTMLDivElement>(null);
   const hasBundle = variant.collection === "base" || variant.kind !== "leash";
@@ -67,8 +66,8 @@ export function ProductPurchase({
         )}
       </div>
       {!unavailable && <p className="product-dispatch">{t("madeToOrder")}</p>}
-      <div className="product-quick-links">
-        {bundleId && (
+      {bundleId && (
+        <div className="product-quick-links">
           <button
             className="text-button"
             type="button"
@@ -76,15 +75,8 @@ export function ProductPurchase({
           >
             {t("buildYourSet")}
           </button>
-        )}
-        <button
-          className="text-button"
-          type="button"
-          onClick={() => openService("returns")}
-        >
-          {t("productReturnPolicy")}
-        </button>
-      </div>
+        </div>
+      )}
       <StickyBuy
         active={active}
         variant={variant}

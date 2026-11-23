@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { freeShippingRemaining } from "@/domain/commerce/shipping";
 import { variantPhoto } from "../lib/catalog";
 import { productTitleKey } from "../lib/product-options";
 import type { AddedNotice } from "../store";
@@ -34,15 +33,14 @@ export function AddedToast() {
  * carries over to the next add.
  */
 function ToastCard({ notice }: { notice: AddedNotice }) {
-  const { t, money, choiceSummary, total, dismissAdded, openDialog } =
-    useStorefront((state) => ({
+  const { t, choiceSummary, dismissAdded, openDialog } = useStorefront(
+    (state) => ({
       t: state.t,
-      money: state.money,
       choiceSummary: state.choiceSummary,
-      total: state.pricing.total,
       dismissAdded: state.dismissAdded,
       openDialog: state.openDialog,
-    }));
+    }),
+  );
   const [paused, setPaused] = useState(false);
   const card = useRef<HTMLDivElement>(null);
   // Leaving fades the card out first, so it never just vanishes.
@@ -58,7 +56,6 @@ function ToastCard({ notice }: { notice: AddedNotice }) {
   }, [paused, leave]);
 
   const [first] = notice.variants;
-  const remaining = freeShippingRemaining(total);
   const summary =
     notice.variants.length === 1
       ? choiceSummary(first.colour, first.size)
@@ -89,11 +86,6 @@ function ToastCard({ notice }: { notice: AddedNotice }) {
             <BrandText>{t(productTitleKey(first))}</BrandText>
           </strong>
           <span>{summary}</span>
-        </p>
-        <p className="added-toast-shipping">
-          {remaining === 0
-            ? t("freeShippingReached")
-            : t("freeShippingRemaining", { amount: money(remaining) })}
         </p>
       </div>
       <div className="added-toast-actions">

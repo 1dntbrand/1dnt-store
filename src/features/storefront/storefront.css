@@ -1971,9 +1971,6 @@ dialog::backdrop {
 .order-totals .order-discount {
   color: var(--olive);
 }
-.order-totals .free-shipping {
-  color: var(--olive);
-}
 .set-suggestion {
   display: flex;
   align-items: baseline;
@@ -1990,30 +1987,6 @@ dialog::backdrop {
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 4px;
-}
-.free-shipping-progress {
-  margin-bottom: var(--space-3);
-  font-size: 13px;
-}
-.free-shipping-progress p {
-  margin: 0 0 var(--space-2);
-}
-.free-shipping-track {
-  display: block;
-  height: 3px;
-  overflow: hidden;
-  border-radius: 3px;
-  background: var(--line);
-}
-.free-shipping-track > span {
-  display: block;
-  height: 100%;
-  background: var(--olive);
-  transform-origin: left center;
-  transition: transform 480ms var(--ease-out);
-}
-.free-shipping-progress[data-complete] p {
-  color: var(--olive);
 }
 .order-totals .cart-subtotal {
   border-top: 1px solid var(--line);

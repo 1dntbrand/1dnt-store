@@ -9,10 +9,7 @@ import {
   type ProductVariant,
 } from "@/domain/commerce/catalog";
 import { cartLineLimit, variantLimit } from "@/domain/commerce/availability";
-import {
-  FREE_SHIPPING_THRESHOLD,
-  SHIPPING_PRICE,
-} from "@/domain/commerce/shipping";
+import { SHIPPING_PRICE } from "@/domain/commerce/shipping";
 import messages from "./data/messages.json";
 import services from "./data/services.json";
 import { languages, type Language } from "./lib/catalog";
@@ -59,6 +56,7 @@ export const serviceIds = [
   "contact",
   "delivery",
   "returns",
+  "safety",
   "terms",
   "privacy",
   "cookies",
@@ -74,17 +72,8 @@ const languageHelpers = Object.fromEntries(
     const decimal = language === "en" ? "." : ",";
     const metres = (value: string | number, digits?: number) =>
       `${(typeof value === "number" ? value.toFixed(digits ?? 1) : value).replace(".", decimal)} ${t("mUnit")}`;
-    const wholeMoney = new Intl.NumberFormat(
-      formatter.resolvedOptions().locale,
-      {
-        style: "currency",
-        currency: "PLN",
-        maximumFractionDigits: 0,
-      },
-    );
     const shippingValues: Placeholders = {
       shippingPrice: money(SHIPPING_PRICE),
-      freeShippingFrom: wholeMoney.format(FREE_SHIPPING_THRESHOLD / 100),
     };
     const t = (key: string, values?: Placeholders) =>
       fillPlaceholders(

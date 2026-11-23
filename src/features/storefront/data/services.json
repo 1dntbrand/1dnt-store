@@ -7,6 +7,7 @@
       "Contact & seller details",
       "Shipping & payment",
       "Returns & complaints",
+      "Product safety",
       "Store terms",
       "Privacy",
       "Cookies & storage"
@@ -30,7 +31,7 @@
       [
         [
           "Delivery",
-          "We ship within Poland to InPost pickup points. Delivery costs {shippingPrice}; orders from {freeShippingFrom} ship free. The delivery cost is shown in your bag and at checkout before payment."
+          "We ship within Poland to InPost pickup points. Delivery costs {shippingPrice}. The delivery cost is shown in your bag and at checkout before payment."
         ],
         [
           "Payment",
@@ -57,6 +58,24 @@
         [
           "Submitting a complaint",
           "To be confirmed: contact channel and address. Provide the order reference, description of the problem and requested remedy; photographs may help explain the issue."
+        ]
+      ],
+      [
+        [
+          "Manufacturer",
+          "To be confirmed: manufacturer’s legal name, postal address and electronic contact."
+        ],
+        [
+          "Product identification",
+          "Collection, product type, colour and size are shown on this page and in your order confirmation."
+        ],
+        [
+          "Use and inspection",
+          "Use the accessory for its intended walking purpose. Check the webbing, fastenings, buckles and snap hooks before use. Stop using an item if damaged or if a closure does not work correctly."
+        ],
+        [
+          "Warnings",
+          "Do not leave your dog unattended in a collar or harness or tied on a leash. Not intended as a car safety restraint."
         ]
       ],
       [
@@ -132,7 +151,8 @@
         "Warnings",
         "Do not leave your dog unattended in a collar or harness or tied on a leash. Not intended as a car safety restraint."
       ]
-    ]
+    ],
+    "safetyMore": "All safety information"
   },
   "ru": {
     "heading": "Для покупателей",
@@ -142,6 +162,7 @@
       "Контакты и продавец",
       "Доставка и оплата",
       "Возвраты и претензии",
+      "Безопасность изделий",
       "Условия магазина",
       "Конфиденциальность",
       "Cookies и хранение данных"
@@ -165,7 +186,7 @@
       [
         [
           "Доставка",
-          "Доставляем по Польше в пункты InPost. Доставка стоит {shippingPrice}, заказы от {freeShippingFrom} доставляем бесплатно. Стоимость доставки видна в корзине и при оформлении до оплаты."
+          "Доставляем по Польше в пункты InPost. Доставка стоит {shippingPrice}. Стоимость доставки видна в корзине и при оформлении до оплаты."
         ],
         [
           "Оплата",
@@ -192,6 +213,24 @@
         [
           "Как подать претензию",
           "Контакты и адрес будут уточнены. Укажите номер заказа, описание проблемы и желаемое решение; фотографии помогут пояснить ситуацию."
+        ]
+      ],
+      [
+        [
+          "Производитель",
+          "Будет уточнено: юридическое название производителя, почтовый адрес и электронный контакт."
+        ],
+        [
+          "Идентификация изделия",
+          "Коллекция, тип изделия, цвет и размер указаны на этой странице и в подтверждении заказа."
+        ],
+        [
+          "Использование и проверка",
+          "Используйте аксессуар по назначению для прогулок. Перед использованием проверяйте ленту, крепления, застёжки и карабины. Не используйте повреждённое изделие или изделие с неисправной застёжкой."
+        ],
+        [
+          "Предупреждения",
+          "Не оставляйте собаку без присмотра в ошейнике или шлейке и привязанной на поводке. Изделие не предназначено для фиксации собаки в автомобиле."
         ]
       ],
       [
@@ -267,7 +306,8 @@
         "Предупреждения",
         "Не оставляйте собаку без присмотра в ошейнике или шлейке и привязанной на поводке. Изделие не предназначено для фиксации собаки в автомобиле."
       ]
-    ]
+    ],
+    "safetyMore": "Вся информация о безопасности"
   },
   "pl": {
     "heading": "Obsługa klienta",
@@ -277,6 +317,7 @@
       "Kontakt i dane sprzedawcy",
       "Dostawa i płatności",
       "Zwroty i reklamacje",
+      "Bezpieczeństwo produktów",
       "Regulamin sklepu",
       "Prywatność",
       "Cookies i zapis danych"
@@ -299,7 +340,7 @@
       [
         [
           "Dostawa",
-          "Wysyłamy na terenie Polski do punktów InPost. Dostawa kosztuje {shippingPrice}, a zamówienia od {freeShippingFrom} wysyłamy za darmo. Koszt dostawy widzisz w koszyku i przy składaniu zamówienia przed płatnością."
+          "Wysyłamy na terenie Polski do punktów InPost. Dostawa kosztuje {shippingPrice}. Koszt dostawy widzisz w koszyku i przy składaniu zamówienia przed płatnością."
         ],
         [
           "Płatności",
@@ -318,6 +359,24 @@
         [
           "Reklamacje",
           "Niezgodność towaru z umową to inna kwestia niż zwrot po zmianie decyzji. Gwarancja dobrowolna nie zastępuje praw ustawowych. Kontakt: do uzupełnienia. Podaj numer zamówienia, opis problemu i żądanie; zdjęcia mogą pomóc."
+        ]
+      ],
+      [
+        [
+          "Producent",
+          "Do uzupełnienia: pełna nazwa producenta, adres pocztowy i elektroniczny."
+        ],
+        [
+          "Identyfikacja produktu",
+          "Kolekcja, rodzaj produktu, kolor i rozmiar są podane na tej stronie i w potwierdzeniu zamówienia."
+        ],
+        [
+          "Użytkowanie",
+          "Akcesoria służą do spacerów zgodnie z przeznaczeniem. Przed użyciem sprawdź taśmę, mocowania, klamry i karabińczyki. Nie używaj uszkodzonego produktu ani niesprawnego zapięcia."
+        ],
+        [
+          "Ostrzeżenia",
+          "Nie zostawiaj psa bez nadzoru w obroży, szelkach ani przywiązanego na smyczy. Produkt nie służy do zabezpieczania psa w samochodzie."
         ]
       ],
       [
@@ -385,7 +444,8 @@
         "Ostrzeżenia",
         "Nie zostawiaj psa bez nadzoru w obroży, szelkach ani przywiązanego na smyczy. Produkt nie służy do zabezpieczania psa w samochodzie."
       ]
-    ]
+    ],
+    "safetyMore": "Wszystkie informacje o bezpieczeństwie"
   },
   "uk": {
     "heading": "Для покупців",
@@ -395,6 +455,7 @@
       "Контакти та продавець",
       "Доставка й оплата",
       "Повернення та претензії",
+      "Безпека виробів",
       "Умови магазину",
       "Конфіденційність",
       "Cookies і зберігання даних"
@@ -417,7 +478,7 @@
       [
         [
           "Доставка",
-          "Доставляємо в межах Польщі до пунктів InPost. Доставка коштує {shippingPrice}, замовлення від {freeShippingFrom} доставляємо безкоштовно. Вартість доставки видно в кошику й під час оформлення до оплати."
+          "Доставляємо в межах Польщі до пунктів InPost. Доставка коштує {shippingPrice}. Вартість доставки видно в кошику й під час оформлення до оплати."
         ],
         [
           "Оплата",
@@ -436,6 +497,24 @@
         [
           "Претензії",
           "Претензія щодо невідповідності товару договору відрізняється від повернення через зміну рішення. Добровільна гарантія не замінює законні права. Контакти будуть уточнені. Вкажіть номер замовлення, проблему та бажане рішення; фото можуть допомогти."
+        ]
+      ],
+      [
+        [
+          "Виробник",
+          "Буде уточнено: юридична назва виробника, поштова адреса й електронний контакт."
+        ],
+        [
+          "Ідентифікація виробу",
+          "Колекція, тип виробу, колір і розмір вказані на цій сторінці та в підтвердженні замовлення."
+        ],
+        [
+          "Використання",
+          "Використовуйте аксесуар за призначенням для прогулянок. Перед використанням перевіряйте стрічку, кріплення, застібки й карабіни. Не використовуйте пошкоджений виріб або несправну застібку."
+        ],
+        [
+          "Попередження",
+          "Не залишайте собаку без нагляду в нашийнику чи шлеї та прив’язаною на повідці. Виріб не призначений для фіксації собаки в автомобілі."
         ]
       ],
       [
@@ -503,6 +582,7 @@
         "Попередження",
         "Не залишайте собаку без нагляду в нашийнику чи шлеї та прив’язаною на повідці. Виріб не призначений для фіксації собаки в автомобілі."
       ]
-    ]
+    ],
+    "safetyMore": "Уся інформація про безпеку"
   }
 }
