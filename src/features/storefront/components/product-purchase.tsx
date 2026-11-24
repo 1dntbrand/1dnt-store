@@ -33,8 +33,9 @@ export function ProductPurchase({
     addItems: state.addItems,
   }));
   const actionRef = useRef<HTMLDivElement>(null);
-  const hasBundle = variant.collection === "base" || variant.kind !== "leash";
-  const bundleId = hasBundle ? productBundleId(variant) : null;
+  // Every product has a set: a leash pairs with a collar, the others with a
+  // leash.
+  const bundleId = productBundleId(variant);
   const unavailable = variantLimit(variant) === 0;
   const price = money(itemPrice(variant));
   const justAdded = useRecentlyAdded([variant]);
@@ -66,17 +67,15 @@ export function ProductPurchase({
         )}
       </div>
       {!unavailable && <p className="product-dispatch">{t("madeToOrder")}</p>}
-      {bundleId && (
-        <div className="product-quick-links">
-          <button
-            className="text-button"
-            type="button"
-            onClick={() => jumpTo(document.getElementById(bundleId))}
-          >
-            {t("buildYourSet")}
-          </button>
-        </div>
-      )}
+      <div className="product-quick-links">
+        <button
+          className="text-button"
+          type="button"
+          onClick={() => jumpTo(document.getElementById(bundleId))}
+        >
+          {t("buildYourSet")}
+        </button>
+      </div>
       <StickyBuy
         active={active}
         variant={variant}

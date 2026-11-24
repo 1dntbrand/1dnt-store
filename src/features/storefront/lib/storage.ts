@@ -33,6 +33,8 @@ export const defaultFields = {
   elegantHarnessSetLeashColour: "dark-brown",
   elegantTripleCollarColour: "dark-brown",
   elegantTripleCollarSize: "S",
+  elegantLeashSetCollarColour: "dark-brown",
+  elegantLeashSetCollarSize: "S",
 };
 export type FieldName = keyof typeof defaultFields;
 export type Fields = typeof defaultFields;
@@ -99,6 +101,8 @@ const allowed: Record<FieldName, readonly string[]> = {
   elegantHarnessSetLeashColour: elegantColours,
   elegantTripleCollarColour: elegantColours,
   elegantTripleCollarSize: elegantCollarSizes,
+  elegantLeashSetCollarColour: elegantColours,
+  elegantLeashSetCollarSize: elegantCollarSizes,
 };
 
 export function validField(name: FieldName, value: string) {

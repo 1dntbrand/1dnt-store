@@ -225,21 +225,50 @@ function ElegantProductPanel({
             <ProductInformation collection="elegant" kind={kind} />
           </div>
         </div>
-        {kind !== "leash" && (
-          <ElegantBundle
-            primary={{
-              variant,
-              chooseColour: setColour,
-              chooseSize: setSize,
-            }}
-          />
-        )}
+        <ElegantBundle
+          primary={{
+            variant,
+            chooseColour: setColour,
+            chooseSize: setSize,
+          }}
+        />
       </div>
     </StickyBuyScope>
   );
 }
 
 function ElegantBundle({ primary }: { primary: BundlePartSelection }) {
+  const { leashSetCollarColour, leashSetCollarSize, setLeashSetField } =
+    useStorefront((state) => ({
+      leashSetCollarColour: state.fields.elegantLeashSetCollarColour,
+      leashSetCollarSize: state.fields.elegantLeashSetCollarSize,
+      setLeashSetField: state.setField,
+    }));
+  // The leash pairs with a collar, the same set Base offers for its leash.
+  if (primary.variant.kind === "leash")
+    return (
+      <BundleOffer
+        parts={[
+          primary,
+          {
+            variant: {
+              collection: "elegant",
+              kind: "collar",
+              colour: leashSetCollarColour,
+              size: leashSetCollarSize,
+            },
+            chooseColour: (value) =>
+              setLeashSetField("elegantLeashSetCollarColour", value),
+            chooseSize: (value) =>
+              setLeashSetField("elegantLeashSetCollarSize", value),
+          },
+        ]}
+      />
+    );
+  return <ElegantAccessorySet primary={primary} />;
+}
+
+function ElegantAccessorySet({ primary }: { primary: BundlePartSelection }) {
   const leashColourField =
     primary.variant.kind === "collar"
       ? "elegantCollarSetLeashColour"
