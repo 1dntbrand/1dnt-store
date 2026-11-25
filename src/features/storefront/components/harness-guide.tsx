@@ -3,7 +3,7 @@ import { harnessMeasurements } from "../data/measurements";
 import { useStorefront } from "../storefront-context";
 import { FitFinder } from "./fit-finder";
 import { GuideDialog, GuideSection } from "./guide-dialog";
-import { MeasureLegend, MeasurePhoto } from "./measure-photo";
+import { MeasureDrawing, MeasureLegend } from "./measure-drawing";
 
 export function HarnessGuide() {
   const { t, guideSize } = useStorefront((state) => ({
@@ -14,19 +14,10 @@ export function HarnessGuide() {
     <GuideDialog id="harnessSizeGuide" title={t("harnessGuideTitle")}>
       <FitFinder kind="harness" />
       <GuideSection title={t("measureTitle")} className="guide-measure">
-        <MeasurePhoto
-          src="/assets/harness-khaki-walk.webp"
-          width={1312}
-          height={1199}
-          crop={{ x: 40, y: 300, w: 820, h: 850 }}
-          loops={[
-            { cx: 382, cy: 616, rx: 128, ry: 34, rotate: 132 },
-            { cx: 546, cy: 678, rx: 124, ry: 30, rotate: 94 },
-          ]}
-          badges={[
-            { label: "A", x: 170, y: 880, from: [300, 712] },
-            { label: "B", x: 790, y: 780, from: [548, 800] },
-          ]}
+        <MeasureDrawing
+          src="/assets/guides/measure-harness.webp"
+          width={941}
+          height={791}
           alt={t("measureHarnessGraphic")}
         />
         <div className="guide-measure-text">

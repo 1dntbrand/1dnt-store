@@ -3,7 +3,7 @@ import { collarMeasurements } from "../data/measurements";
 import { useStorefront } from "../storefront-context";
 import { FitFinder } from "./fit-finder";
 import { GuideDialog, GuideSection } from "./guide-dialog";
-import { MeasureLegend, MeasurePhoto } from "./measure-photo";
+import { MeasureDrawing, MeasureLegend } from "./measure-drawing";
 
 export function CollarGuide() {
   const { t, guideSize } = useStorefront((state) => ({
@@ -14,13 +14,10 @@ export function CollarGuide() {
     <GuideDialog id="collarSizeGuide" title={t("collarGuideTitle")}>
       <FitFinder kind="collar" />
       <GuideSection title={t("measureTitle")} className="guide-measure">
-        <MeasurePhoto
-          src="/assets/tyubik-hero.jpg"
-          width={1152}
-          height={2048}
-          crop={{ x: 120, y: 470, w: 912, h: 900 }}
-          loops={[{ cx: 465, cy: 930, rx: 168, ry: 52, rotate: 17 }]}
-          badges={[{ label: "A", x: 860, y: 1070, from: [628, 980] }]}
+        <MeasureDrawing
+          src="/assets/guides/measure-collar.webp"
+          width={929}
+          height={1117}
           alt={t("measureCollarGraphic")}
         />
         <div className="guide-measure-text">
