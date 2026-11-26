@@ -88,9 +88,9 @@ export function LeashGuide() {
       {shown === "1.5" ? (
         <GuideSection title={t("shortGuideNote")}>
           <LeashFigure
-            src="/assets/guides/leash-standard.svg"
-            width={640}
-            height={170}
+            src="/assets/guides/leash-short-line.webp"
+            width={1964}
+            height={300}
             dimension={metres(1.5, 2)}
             caption={t("shortLeashGuideCaption")}
           />
