@@ -17,9 +17,9 @@ export function ElegantLeashGuide() {
         <div className="leash-card-art">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/assets/guides/leash-elegant.svg"
-            width={640}
-            height={196}
+            src="/assets/guides/leash-elegant-line.webp"
+            width={1648}
+            height={343}
             alt=""
             decoding="async"
           />
