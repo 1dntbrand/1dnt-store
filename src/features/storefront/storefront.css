@@ -2242,13 +2242,52 @@ dialog::backdrop {
   font-weight: 500;
   font-size: clamp(20px, 5.5vw, 24px);
 }
-.cart-footer .btn {
-  width: 100%;
-  margin-top: var(--space-4);
+/* Under the pieces: the next-set hint, the breakdown and the way back. */
+.cart-summary {
+  margin-top: var(--space-3);
+  padding: var(--space-4) 0 var(--space-3);
+  border-top: 1px solid var(--line);
 }
 .continue-shopping {
   display: block;
-  margin: var(--space-1) auto 0;
+  margin: var(--space-2) auto 0;
+}
+/* Pinned: only what to pay and the button to do it, on one row. */
+.cart-total-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-4);
+}
+.cart-total {
+  display: grid;
+  margin: 0;
+  line-height: 1.2;
+}
+.cart-total span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.cart-total strong {
+  font-size: 20px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+/* The label never breaks: where the row is too narrow for both, the
+   button takes its own full-width row under the total. */
+.cart-total-bar .btn {
+  flex: 1 0 auto;
+  min-width: max-content;
+  padding-inline: var(--space-4);
+  white-space: nowrap;
+}
+@media (min-width: 641px) {
+  .cart-total-bar .btn {
+    flex-grow: 0;
+    min-width: 220px;
+  }
 }
 .cart-empty {
   display: flex;

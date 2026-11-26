@@ -308,7 +308,8 @@ function SetGroup({ group, editable }: { group: BagSet; editable: boolean }) {
     </li>
   );
 }
-export function OrderTotals() {
+/** The order's amounts; the bag pins its total separately, so it can leave it out. */
+export function OrderTotals({ withTotal = true }: { withTotal?: boolean }) {
   const { t, money, pricing } = useStorefront((state) => ({
     t: state.t,
     money: state.money,
@@ -332,14 +333,33 @@ export function OrderTotals() {
         <span>{t("deliveryInpost")}</span>
         <Figure value={pricing.shipping}>{money(pricing.shipping)}</Figure>
       </div>
-      <div className="cart-subtotal">
-        <span>{t("totalLabel")}</span>
-        <Figure as="strong" value={pricing.grandTotal}>
-          {money(pricing.grandTotal)}
-        </Figure>
-      </div>
+      {withTotal && (
+        <div className="cart-subtotal">
+          <span>{t("totalLabel")}</span>
+          <Figure as="strong" value={pricing.grandTotal}>
+            {money(pricing.grandTotal)}
+          </Figure>
+        </div>
+      )}
       <p className="field-hint">{t("vatIncluded")}</p>
     </div>
+  );
+}
+
+/** The amount to pay, pinned beside the checkout button. */
+function CartTotal() {
+  const { t, money, pricing } = useStorefront((state) => ({
+    t: state.t,
+    money: state.money,
+    pricing: state.pricing,
+  }));
+  return (
+    <p className="cart-total" aria-live="polite" aria-atomic="true">
+      <span>{t("totalLabel")}</span>
+      <Figure as="strong" value={pricing.grandTotal}>
+        {money(pricing.grandTotal)}
+      </Figure>
+    </p>
   );
 }
 
@@ -451,30 +471,37 @@ export function Cart() {
               </p>
             )}
             <OrderItems editable />
+            {/* The breakdown scrolls with the bag; only the total and the
+                way forward stay pinned, so the pieces keep the room. */}
+            <div className="cart-summary">
+              <SetSuggestionNote />
+              <OrderTotals withTotal={false} />
+              <button
+                type="button"
+                className="text-button continue-shopping"
+                onClick={closeDialog}
+              >
+                {t("continueShopping")}
+              </button>
+            </div>
           </div>
           <div className="cart-footer">
-            <SetSuggestionNote />
-            <OrderTotals />
             {cartHasStockIssue && (
               <p className="cart-stock-message state-in" role="status">
                 {t("cartStockIssue")}
               </p>
             )}
-            <button
-              type="button"
-              className="btn"
-              disabled={cartHasStockIssue}
-              onClick={() => openDialog("checkoutPanel")}
-            >
-              {t("checkoutAction")}
-            </button>
-            <button
-              type="button"
-              className="text-button continue-shopping"
-              onClick={closeDialog}
-            >
-              {t("continueShopping")}
-            </button>
+            <div className="cart-total-bar">
+              <CartTotal />
+              <button
+                type="button"
+                className="btn"
+                disabled={cartHasStockIssue}
+                onClick={() => openDialog("checkoutPanel")}
+              >
+                {t("checkoutAction")}
+              </button>
+            </div>
           </div>
         </>
       )}
