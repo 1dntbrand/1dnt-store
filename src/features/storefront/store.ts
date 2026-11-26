@@ -11,10 +11,11 @@ import {
 import { cartLineLimit, variantLimit } from "@/domain/commerce/availability";
 import { SHIPPING_PRICE } from "@/domain/commerce/shipping";
 import messages from "./data/messages.json";
-import services from "./data/services.json";
+import serviceData from "./data/services.json";
 import { languages, type Language } from "./lib/catalog";
 import { readLanguageCookie, rememberLanguage } from "./lib/language";
 import { variantColourLabel } from "./lib/product-options";
+import type { ServiceText } from "./lib/service-text";
 import {
   defaultBundleExtras,
   defaultCategories,
@@ -30,6 +31,7 @@ import {
 
 const dictionary: Record<string, Partial<Record<Language, string>>> = messages;
 
+const services = serviceData as Record<Language, ServiceText>;
 type Placeholders = Record<string, string>;
 
 /** Replace `{name}` placeholders; unknown names stay visible for review. */
@@ -98,7 +100,7 @@ const languageHelpers = Object.fromEntries(
   {
     t: (key: string, values?: Placeholders) => string;
     money: (cents: number) => string;
-    service: typeof services.en;
+    service: ServiceText;
     /** "1.5" → "1.5 m" / "1,5 м"; numbers keep the digits asked for. */
     metres: (value: string | number, digits?: number) => string;
     centimetres: (value: string) => string;

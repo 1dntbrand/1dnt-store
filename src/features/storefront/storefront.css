@@ -1058,8 +1058,10 @@ summary::-webkit-details-marker {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
-.product-safety h4 {
+.product-safety .service-section {
   margin-top: 16px;
+}
+.product-safety h4 {
   font-size: 14px;
   font-weight: 500;
 }
@@ -1828,13 +1830,65 @@ dialog::backdrop {
   font-size: 13px;
   margin-block: 24px;
 }
-#serviceContent h3 {
-  font-size: 17px;
-  margin-block: 24px 12px;
-}
-#serviceContent p {
+/* Customer-care copy: one section per topic, details as label/value rows. */
+.service-section {
+  display: grid;
+  gap: 10px;
   font-size: 14px;
-  margin-top: 18px;
+  line-height: 1.55;
+}
+.service-section > * {
+  margin: 0;
+}
+.service-section h3 {
+  font-size: 17px;
+}
+#serviceContent .service-section + .service-section {
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line);
+}
+.service-rows {
+  display: grid;
+  gap: 8px;
+}
+.service-rows > div {
+  display: grid;
+  grid-template-columns: minmax(0, 7.5em) minmax(0, 1fr);
+  gap: 16px;
+}
+.service-rows dt {
+  color: var(--muted);
+}
+.service-rows dd {
+  margin: 0;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.service-list {
+  padding-left: 20px;
+}
+.service-list li + li {
+  margin-top: 6px;
+}
+.service-steps {
+  list-style: decimal;
+}
+.service-address {
+  font-style: normal;
+  white-space: pre-line;
+  background: var(--surface);
+  padding: 12px 16px;
+  border-radius: var(--control-radius);
+}
+.service-section .text-link {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.service-pending {
+  color: var(--muted);
+  font-style: italic;
 }
 
 /* Cart contents and shared order summary. */

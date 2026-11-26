@@ -1,6 +1,8 @@
 "use client";
 import { useStorefront } from "../storefront-context";
+import { serviceIds } from "../store";
 import { Disclosure } from "./disclosure";
+import { ServiceSections } from "./service-sections";
 
 /**
  * What the product page itself has to carry (GPSR, art. 19): who makes it
@@ -13,15 +15,15 @@ export function ProductSafety() {
     openService: state.openService,
   }));
   // Same order in every language: manufacturer, identification, use, warnings.
-  const [manufacturer, , , warnings] = service.safety;
+  const [manufacturer, , , warnings] =
+    service.pages[serviceIds.indexOf("safety")];
   return (
     <Disclosure className="product-safety" summary={service.safetyTitle}>
-      {[manufacturer, warnings].map(([title, text]) => (
-        <section key={title}>
-          <h4>{title}</h4>
-          <p>{text}</p>
-        </section>
-      ))}
+      <ServiceSections
+        sections={[manufacturer, warnings]}
+        pending={service.pending}
+        heading="h4"
+      />
       <button
         className="text-button"
         type="button"

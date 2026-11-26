@@ -68,7 +68,7 @@ dialog:focus-visible {
   margin: 0 0 var(--space-2);
   border-radius: var(--control-radius);
 }
-#serviceContent h3:first-child {
+#serviceContent {
   margin-top: var(--space-4);
 }
 

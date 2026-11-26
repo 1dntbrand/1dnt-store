@@ -2,7 +2,8 @@
   "en": {
     "heading": "Customer care",
     "close": "Close",
-    "draft": "Pre-launch information. This preview does not accept orders or payments. Details marked “To be confirmed” will be completed before sales open.",
+    "draft": "Pre-launch information: orders and payments are not accepted yet. Anything marked “To be confirmed” will be added before sales open.",
+    "pending": "To be confirmed",
     "labels": [
       "Contact & seller details",
       "Shipping & payment",
@@ -14,153 +15,302 @@
     ],
     "pages": [
       [
-        [
-          "ONE IDENTITY",
-          "Handmade accessories for your everyday life together."
-        ],
-        [
-          "Seller details",
-          "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa (registered address). NIP: 5213641211. ONE IDENTITY (1DNT) is run under this foundation."
-        ],
-        [
-          "Contact",
-          "Email: to be confirmed. We answer by email; there is no phone line."
-        ],
-        [
-          "Returns and complaints address",
-          "ul. Nowa 17d/13, 05-500 Stara Iwiczna"
-        ]
+        {
+          "title": "ONE IDENTITY",
+          "blocks": ["Handmade accessories for your everyday life together."]
+        },
+        {
+          "title": "Seller",
+          "blocks": [
+            {
+              "rows": [
+                ["Name", "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”"],
+                [
+                  "Registered address",
+                  "ul. Żurawia 6/12 lok. 766\n00-503 Warszawa"
+                ],
+                ["NIP", "5213641211"]
+              ]
+            },
+            "ONE IDENTITY (1DNT) is run under this foundation."
+          ]
+        },
+        {
+          "title": "Contact",
+          "blocks": [
+            {
+              "rows": [
+                ["Email", "1dntbrand@gmail.com"],
+                ["Phone", "No phone line, we answer by email"]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Returns and complaints address",
+          "blocks": [
+            {
+              "address": "1DNT\nul. Nowa 17d/13\n05-500 Stara Iwiczna"
+            }
+          ]
+        }
       ],
       [
-        [
-          "Delivery",
-          "We ship within Poland to InPost pickup points. Delivery costs {shippingPrice}. The delivery cost is shown in your bag and at checkout before payment."
-        ],
-        [
-          "Payment",
-          "Card payments and BLIK, plus other popular methods in Poland such as Przelewy24. The methods available for your order are shown at checkout. No payment details are collected in this preview."
-        ],
-        [
-          "Before ordering",
-          "The final total, taxes and delivery charges will be displayed before an order with an obligation to pay can be placed."
-        ]
+        {
+          "title": "Delivery",
+          "blocks": [
+            {
+              "rows": [
+                ["Where", "InPost pickup points in Poland"],
+                ["Cost", "{shippingPrice} per order"],
+                ["Dispatch", null]
+              ]
+            },
+            "The delivery cost is shown in your bag before you pay."
+          ]
+        },
+        {
+          "title": "Payment",
+          "blocks": [
+            {
+              "list": [
+                "Payment cards",
+                "BLIK",
+                "Przelewy24 and other popular methods in Poland"
+              ]
+            },
+            "The methods available for your order are shown at checkout."
+          ]
+        },
+        {
+          "title": "Before you order",
+          "blocks": [
+            "You will see the final total, including VAT and delivery, before placing an order with an obligation to pay."
+          ]
+        }
       ],
       [
-        [
-          "Withdrawal from a purchase",
-          "For standard consumer purchases online, the usual withdrawal period is 14 days from receipt. Handmade production alone does not exclude this right. Any lawful exception for a genuinely personalised product must be explained before purchase."
-        ],
-        [
-          "How to return",
-          "Send the item to our returns address: ul. Nowa 17d/13, 05-500 Stara Iwiczna. To be confirmed: notification email, return shipping costs and refund procedure. A model withdrawal form will be available before sales open."
-        ],
-        [
-          "Complaints",
-          "A complaint concerning a product that does not conform to the contract is separate from a change-of-mind return. Statutory consumer rights are not replaced by an optional commercial guarantee."
-        ],
-        [
-          "Submitting a complaint",
-          "Write to us by email (address to be confirmed) or send the item to ul. Nowa 17d/13, 05-500 Stara Iwiczna. Provide the order reference, description of the problem and requested remedy; photographs may help explain the issue."
-        ]
+        {
+          "title": "Withdrawal from a purchase",
+          "blocks": [
+            {
+              "list": [
+                "You have 14 days from receiving the parcel to withdraw, without giving a reason.",
+                "Handmade items can be returned too.",
+                "If an item made to your personal specification cannot be returned, we will say so before you buy."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "How to return",
+          "blocks": [
+            {
+              "steps": [
+                "Email us at 1dntbrand@gmail.com that you are withdrawing from the purchase.",
+                "Send the item to the returns address below."
+              ]
+            },
+            {
+              "address": "1DNT\nul. Nowa 17d/13\n05-500 Stara Iwiczna"
+            },
+            {
+              "rows": [
+                ["Return shipping", null],
+                ["Refund", null]
+              ]
+            },
+            "A model withdrawal form will be added before sales open."
+          ]
+        },
+        {
+          "title": "Complaints",
+          "blocks": [
+            "If an item is faulty or does not match its description, this is a complaint, separate from a change-of-mind return. Your statutory rights apply; an optional guarantee does not replace them."
+          ]
+        },
+        {
+          "title": "Submitting a complaint",
+          "blocks": [
+            "Email us at 1dntbrand@gmail.com or send the item to the returns address. Please include:",
+            {
+              "list": [
+                "your order number",
+                "what is wrong",
+                "what you would like us to do",
+                "photos, if they help"
+              ]
+            }
+          ]
+        }
       ],
       [
-        [
-          "Manufacturer",
-          "1DNT, run by Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa. Email: to be confirmed."
-        ],
-        [
-          "Product identification",
-          "Collection, product type, colour and size are shown on this page and in your order confirmation."
-        ],
-        [
-          "Use and inspection",
-          "Use the accessory for its intended walking purpose. Check the webbing, fastenings, buckles and snap hooks before use. Stop using an item if damaged or if a closure does not work correctly."
-        ],
-        [
-          "Warnings",
-          "Do not leave your dog unattended in a collar or harness or tied on a leash. Not intended as a car safety restraint."
-        ]
+        {
+          "title": "Manufacturer",
+          "blocks": [
+            {
+              "rows": [
+                ["Brand", "1DNT"],
+                ["Run by", "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”"],
+                ["Address", "ul. Żurawia 6/12 lok. 766\n00-503 Warszawa"],
+                ["Email", "1dntbrand@gmail.com"]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Product identification",
+          "blocks": [
+            "Collection, product type, colour and size are shown on the product page and in your order confirmation."
+          ]
+        },
+        {
+          "title": "Use and inspection",
+          "blocks": [
+            {
+              "list": [
+                "Use the accessory for walking your dog.",
+                "Check the webbing, buckles and snap hooks before each walk.",
+                "Stop using it if it is damaged or a closure does not work properly."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Warnings",
+          "blocks": [
+            {
+              "list": [
+                "Do not leave your dog unattended in a collar or harness, or tied up on a leash.",
+                "Not a car safety restraint."
+              ]
+            }
+          ]
+        }
       ],
       [
-        [
-          "Scope of this preview",
-          "The catalogue, cart and set calculations demonstrate the future store. They do not currently allow a sales contract, checkout or payment."
-        ],
-        [
-          "Before sales open",
-          "The final terms will identify the seller and describe ordering, contract conclusion, payment, production, delivery, withdrawal, complaints and applicable out-of-court dispute resolution information."
-        ],
-        [
-          "Accounts and services",
-          "Customer accounts and newsletters are not active. Their service terms will be provided if these features are introduced."
-        ],
-        [
-          "Pricing and sets",
-          "Leash + collar or harness: 5% off. All three: 10% off. Any colours and sizes."
-        ]
+        {
+          "title": "Sets and discounts",
+          "blocks": [
+            {
+              "list": [
+                "Leash + collar or harness: 5% off",
+                "Leash + collar + harness: 10% off",
+                "Any colours and sizes can be combined."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Final terms",
+          "blocks": [
+            "Before sales open, the store terms will cover:",
+            {
+              "list": [
+                "seller details",
+                "ordering and how the contract is concluded",
+                "payment, production and delivery",
+                "withdrawal and complaints",
+                "out-of-court dispute resolution"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Accounts and newsletter",
+          "blocks": [
+            "Customer accounts and the newsletter are not active. Their terms will be added if they are introduced."
+          ]
+        }
       ],
       [
-        [
-          "Controller",
-          "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa, NIP: 5213641211. Contact email: to be confirmed. This is a draft information page, not the final privacy notice."
-        ],
-        [
-          "Current preview",
-          "The store interface has no active checkout, registration, newsletter subscription or contact submission form. Cart contents, language and product choices are saved locally in your browser. Hosting and access services may process technical connection data."
-        ],
-        [
-          "Before sales open",
-          "This notice will specify actual processing purposes and legal bases, recipients and service providers, retention periods, any transfers outside the EEA, data subject rights and how to contact the controller or lodge a complaint with UODO."
-        ],
-        [
-          "Future integrations",
-          "Payment, delivery, analytics and marketing providers will be named after they are selected. The notice will be updated before those functions are activated."
-        ]
+        {
+          "title": "Data controller",
+          "blocks": [
+            {
+              "rows": [
+                ["Name", "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”"],
+                ["Address", "ul. Żurawia 6/12 lok. 766\n00-503 Warszawa"],
+                ["NIP", "5213641211"],
+                ["Email", "1dntbrand@gmail.com"]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "What the site stores now",
+          "blocks": [
+            "There is no checkout, registration, newsletter or contact form yet. Your bag, language and product choices are saved only in your browser. The hosting provider may process technical connection data to serve the site."
+          ]
+        },
+        {
+          "title": "Before sales open",
+          "blocks": [
+            "This notice will describe:",
+            {
+              "list": [
+                "the purposes and legal bases of processing",
+                "recipients, including payment, delivery and any analytics providers",
+                "how long data is kept",
+                "any transfers outside the EEA",
+                "your rights and how to complain to UODO, the Polish data protection authority"
+              ]
+            }
+          ]
+        }
       ],
       [
-        [
-          "Browser storage",
-          "Your cart and product selections are kept in local browser storage on your device. They are not sent to us until you place an order."
-        ],
-        [
-          "Language cookie",
-          "One first-party cookie, “lang”, remembers the language you chose (or your browser’s language on your first visit) so the page opens in it straight away. It is kept for one year, is not shared with anyone and is not used for analytics or advertising. Because it only provides a setting you asked for, it does not need consent."
-        ],
-        [
-          "Analytics and advertising",
-          "No analytics or advertising trackers are included in the store code. If optional tracking is introduced, consent controls and information about providers and purposes must be added before activation."
-        ],
-        [
-          "Your controls",
-          "Use your browser’s site-data settings to clear saved selections and cart contents. This also resets your saved language. Hosting or sign-in cookies are managed by the hosting service and are outside this store interface’s controls. Deleting the “lang” cookie returns the page to your browser’s language."
-        ]
+        {
+          "title": "Browser storage",
+          "blocks": [
+            "Your bag and product choices are kept in your browser’s local storage. They reach us only when you place an order."
+          ]
+        },
+        {
+          "title": "Language cookie",
+          "blocks": [
+            {
+              "rows": [
+                ["Name", "lang"],
+                [
+                  "Purpose",
+                  "Remembers the language you chose, or your browser’s language on your first visit"
+                ],
+                ["Kept for", "1 year"],
+                ["Shared", "No, and not used for analytics or advertising"]
+              ]
+            },
+            "It only provides a setting you asked for, so it does not need consent."
+          ]
+        },
+        {
+          "title": "Analytics and advertising",
+          "blocks": [
+            "The store uses no analytics or advertising trackers. If that changes, we will ask for your consent first and name the providers and purposes."
+          ]
+        },
+        {
+          "title": "Your controls",
+          "blocks": [
+            {
+              "list": [
+                "Clearing this site’s data in your browser removes your saved bag, choices and language.",
+                "Deleting the “lang” cookie returns the page to your browser’s language.",
+                "Hosting and sign-in cookies are managed by the hosting service, not by the store."
+              ]
+            }
+          ]
+        }
       ]
     ],
     "safetyTitle": "Safety information",
-    "safety": [
-      [
-        "Manufacturer",
-        "1DNT, run by Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa. Email: to be confirmed."
-      ],
-      [
-        "Product identification",
-        "Collection, product type, colour and size are shown on this page and in your order confirmation."
-      ],
-      [
-        "Use and inspection",
-        "Use the accessory for its intended walking purpose. Check the webbing, fastenings, buckles and snap hooks before use. Stop using an item if damaged or if a closure does not work correctly."
-      ],
-      [
-        "Warnings",
-        "Do not leave your dog unattended in a collar or harness or tied on a leash. Not intended as a car safety restraint."
-      ]
-    ],
     "safetyMore": "All safety information"
   },
   "ru": {
     "heading": "Для покупателей",
     "close": "Закрыть",
-    "draft": "Информация перед запуском. Здесь пока нельзя оформить или оплатить заказ. Поля «Будет уточнено» заполним до начала продаж.",
+    "draft": "Информация перед запуском: заказы и оплата пока не принимаются. Всё, что отмечено «Будет уточнено», добавим до начала продаж.",
+    "pending": "Будет уточнено",
     "labels": [
       "Контакты и продавец",
       "Доставка и оплата",
@@ -172,153 +322,313 @@
     ],
     "pages": [
       [
-        [
-          "ONE IDENTITY",
-          "Аксессуары ручной работы для вашей повседневной жизни вместе."
-        ],
-        [
-          "Данные продавца",
-          "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa (юридический адрес). NIP: 5213641211. ONE IDENTITY (1DNT) работает под этим фондом."
-        ],
-        [
-          "Связь с нами",
-          "Почта: будет уточнена. Отвечаем по электронной почте, телефонной линии нет."
-        ],
-        [
-          "Адрес для возвратов и претензий",
-          "ul. Nowa 17d/13, 05-500 Stara Iwiczna"
-        ]
+        {
+          "title": "ONE IDENTITY",
+          "blocks": [
+            "Аксессуары ручной работы для вашей повседневной жизни вместе."
+          ]
+        },
+        {
+          "title": "Продавец",
+          "blocks": [
+            {
+              "rows": [
+                [
+                  "Название",
+                  "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”"
+                ],
+                [
+                  "Юридический адрес",
+                  "ul. Żurawia 6/12 lok. 766\n00-503 Warszawa"
+                ],
+                ["NIP", "5213641211"]
+              ]
+            },
+            "ONE IDENTITY (1DNT) работает в рамках этого фонда."
+          ]
+        },
+        {
+          "title": "Связь с нами",
+          "blocks": [
+            {
+              "rows": [
+                ["Почта", "1dntbrand@gmail.com"],
+                ["Телефон", "Нет, отвечаем по почте"]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Адрес для возвратов и претензий",
+          "blocks": [
+            {
+              "address": "1DNT\nul. Nowa 17d/13\n05-500 Stara Iwiczna"
+            }
+          ]
+        }
       ],
       [
-        [
-          "Доставка",
-          "Доставляем по Польше в пункты InPost. Доставка стоит {shippingPrice}. Стоимость доставки видна в корзине и при оформлении до оплаты."
-        ],
-        [
-          "Оплата",
-          "Банковские карты и BLIK, а также другие популярные в Польше способы, например Przelewy24. Доступные для заказа способы показываются при оформлении. В этом примере платёжные данные не собираются."
-        ],
-        [
-          "Перед оформлением",
-          "Итоговая сумма, налоги и стоимость доставки будут показаны до оформления заказа с обязательством оплаты."
-        ]
+        {
+          "title": "Доставка",
+          "blocks": [
+            {
+              "rows": [
+                ["Куда", "Пункты InPost по Польше"],
+                ["Стоимость", "{shippingPrice} за заказ"],
+                ["Отправка", null]
+              ]
+            },
+            "Стоимость доставки видна в корзине до оплаты."
+          ]
+        },
+        {
+          "title": "Оплата",
+          "blocks": [
+            {
+              "list": [
+                "Банковские карты",
+                "BLIK",
+                "Przelewy24 и другие популярные в Польше способы"
+              ]
+            },
+            "Доступные для заказа способы показываются при оформлении."
+          ]
+        },
+        {
+          "title": "Перед заказом",
+          "blocks": [
+            "Итоговую сумму с НДС и доставкой вы увидите до оформления заказа с обязанностью оплаты."
+          ]
+        }
       ],
       [
-        [
-          "Отказ от покупки",
-          "Для стандартных потребительских покупок онлайн обычный срок отказа — 14 дней с получения товара. Ручная работа сама по себе не отменяет это право. Законное исключение для действительно индивидуального изделия должно быть объяснено до покупки."
-        ],
-        [
-          "Как оформить возврат",
-          "Отправьте изделие на адрес для возвратов: ul. Nowa 17d/13, 05-500 Stara Iwiczna. Будет уточнено: почта для уведомления, расходы на пересылку и порядок возврата денег. До начала продаж добавим образец заявления об отказе от договора."
-        ],
-        [
-          "Претензии к качеству",
-          "Претензия о несоответствии товара договору отличается от возврата, когда покупатель передумал. Законные права покупателя не заменяются добровольной гарантией."
-        ],
-        [
-          "Как подать претензию",
-          "Напишите нам на почту (адрес будет уточнён) или отправьте изделие на ul. Nowa 17d/13, 05-500 Stara Iwiczna. Укажите номер заказа, описание проблемы и желаемое решение; фотографии помогут пояснить ситуацию."
-        ]
+        {
+          "title": "Отказ от покупки",
+          "blocks": [
+            {
+              "list": [
+                "У вас есть 14 дней с момента получения посылки, чтобы отказаться от покупки без объяснения причин.",
+                "Изделия ручной работы тоже можно вернуть.",
+                "Если изделие сделано по вашим индивидуальным параметрам и не подлежит возврату, мы скажем об этом до покупки."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Как оформить возврат",
+          "blocks": [
+            {
+              "steps": [
+                "Напишите на 1dntbrand@gmail.com, что отказываетесь от покупки.",
+                "Отправьте изделие на адрес для возвратов ниже."
+              ]
+            },
+            {
+              "address": "1DNT\nul. Nowa 17d/13\n05-500 Stara Iwiczna"
+            },
+            {
+              "rows": [
+                ["Обратная пересылка", null],
+                ["Возврат денег", null]
+              ]
+            },
+            "До начала продаж добавим образец заявления об отказе от договора."
+          ]
+        },
+        {
+          "title": "Претензии к качеству",
+          "blocks": [
+            "Если изделие с дефектом или не соответствует описанию, это претензия, а не возврат по желанию. Ваши права по закону сохраняются; добровольная гарантия их не заменяет."
+          ]
+        },
+        {
+          "title": "Как подать претензию",
+          "blocks": [
+            "Напишите на 1dntbrand@gmail.com или отправьте изделие на адрес для возвратов. Укажите:",
+            {
+              "list": [
+                "номер заказа",
+                "в чём проблема",
+                "какое решение вы хотите",
+                "фото, если они помогут"
+              ]
+            }
+          ]
+        }
       ],
       [
-        [
-          "Производитель",
-          "1DNT под управлением Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa. Почта: будет уточнена."
-        ],
-        [
-          "Идентификация изделия",
-          "Коллекция, тип изделия, цвет и размер указаны на этой странице и в подтверждении заказа."
-        ],
-        [
-          "Использование и проверка",
-          "Используйте аксессуар по назначению для прогулок. Перед использованием проверяйте ленту, крепления, застёжки и карабины. Не используйте повреждённое изделие или изделие с неисправной застёжкой."
-        ],
-        [
-          "Предупреждения",
-          "Не оставляйте собаку без присмотра в ошейнике или шлейке и привязанной на поводке. Изделие не предназначено для фиксации собаки в автомобиле."
-        ]
+        {
+          "title": "Производитель",
+          "blocks": [
+            {
+              "rows": [
+                ["Бренд", "1DNT"],
+                [
+                  "Под управлением",
+                  "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”"
+                ],
+                ["Адрес", "ul. Żurawia 6/12 lok. 766\n00-503 Warszawa"],
+                ["Почта", "1dntbrand@gmail.com"]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Идентификация изделия",
+          "blocks": [
+            "Коллекция, тип изделия, цвет и размер указаны на странице товара и в подтверждении заказа."
+          ]
+        },
+        {
+          "title": "Использование и проверка",
+          "blocks": [
+            {
+              "list": [
+                "Используйте аксессуар для прогулок с собакой.",
+                "Перед каждой прогулкой проверяйте стропу, пряжки и карабины.",
+                "Не используйте изделие, если оно повреждено или застёжка работает неправильно."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Предупреждения",
+          "blocks": [
+            {
+              "list": [
+                "Не оставляйте собаку без присмотра в ошейнике или шлейке и привязанной на поводке.",
+                "Не предназначено для фиксации собаки в автомобиле."
+              ]
+            }
+          ]
+        }
       ],
       [
-        [
-          "Статус сайта",
-          "Каталог, корзина и расчёт комплектов демонстрируют будущий магазин. Заключение договора продажи, оформление и оплата сейчас недоступны."
-        ],
-        [
-          "До начала продаж",
-          "Окончательные условия будут содержать данные продавца, порядок заказа и заключения договора, оплату, изготовление, доставку, отказ от покупки, претензии и применимую информацию о внесудебном разрешении споров."
-        ],
-        [
-          "Аккаунт и дополнительные сервисы",
-          "Личный кабинет и подписка на рассылку не работают. Если мы их запустим, добавим условия использования."
-        ],
-        [
-          "Цены и комплекты",
-          "Поводок + ошейник или шлейка — скидка 5%. Все три — 10%. Любые цвета и размеры."
-        ]
+        {
+          "title": "Комплекты и скидки",
+          "blocks": [
+            {
+              "list": [
+                "Поводок + ошейник или шлейка: −5%",
+                "Поводок + ошейник + шлейка: −10%",
+                "Цвета и размеры можно сочетать любые."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Окончательные условия",
+          "blocks": [
+            "До начала продаж в условиях магазина будут:",
+            {
+              "list": [
+                "данные продавца",
+                "оформление заказа и заключение договора",
+                "оплата, изготовление и доставка",
+                "отказ от покупки и претензии",
+                "внесудебное урегулирование споров"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Аккаунты и рассылка",
+          "blocks": [
+            "Аккаунтов и рассылки пока нет. Если они появятся, добавим их условия."
+          ]
+        }
       ],
       [
-        [
-          "Ответственный за данные",
-          "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa, NIP: 5213641211. Почта для связи: будет уточнена. Это проект информационной страницы, а не окончательная политика."
-        ],
-        [
-          "Текущий пример сайта",
-          "На сайте нет действующего оформления заказа, регистрации, подписки на рассылку или отправки контактной формы. Корзина, язык и варианты товаров сохраняются локально в вашем браузере. Хостинг и система доступа могут обрабатывать технические данные соединения."
-        ],
-        [
-          "До начала продаж",
-          "Укажем реальные цели и правовые основания обработки, получателей данных и сервисы, сроки хранения, возможные передачи за пределы ЕЭЗ, права пользователей, контакты ответственного и порядок обращения в UODO."
-        ],
-        [
-          "Будущие подключения",
-          "Платёжные, логистические, аналитические и рекламные сервисы укажем после выбора. Обновим сведения до включения этих функций."
-        ]
+        {
+          "title": "Ответственный за данные",
+          "blocks": [
+            {
+              "rows": [
+                [
+                  "Название",
+                  "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”"
+                ],
+                ["Адрес", "ul. Żurawia 6/12 lok. 766\n00-503 Warszawa"],
+                ["NIP", "5213641211"],
+                ["Почта", "1dntbrand@gmail.com"]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Что сайт хранит сейчас",
+          "blocks": [
+            "Оформления заказа, регистрации, рассылки и формы связи пока нет. Корзина, язык и выбор изделий сохраняются только в вашем браузере. Хостинг может обрабатывать технические данные подключения, чтобы показывать сайт."
+          ]
+        },
+        {
+          "title": "До начала продаж",
+          "blocks": [
+            "Здесь будет указано:",
+            {
+              "list": [
+                "цели и правовые основания обработки",
+                "получатели, в том числе платёжные, логистические и аналитические сервисы",
+                "сроки хранения данных",
+                "передача данных за пределы ЕЭЗ, если она есть",
+                "ваши права и как подать жалобу в UODO, польский орган по защите данных"
+              ]
+            }
+          ]
+        }
       ],
       [
-        [
-          "Хранение в браузере",
-          "Корзина и выбранные варианты товаров хранятся в локальном хранилище браузера на вашем устройстве. Они не передаются нам, пока вы не оформите заказ."
-        ],
-        [
-          "Cookie языка",
-          "Одна собственная cookie «lang» запоминает выбранный язык (при первом визите — язык браузера), чтобы страница сразу открывалась на нём. Она хранится год, никому не передаётся и не используется для аналитики или рекламы. Она только сохраняет настройку, которую вы выбрали, поэтому согласия не требует."
-        ],
-        [
-          "Аналитика и реклама",
-          "В код магазина не включены аналитические или рекламные трекеры. Если добавим необязательное отслеживание, до его включения появятся настройки согласия и сведения о целях и провайдерах."
-        ],
-        [
-          "Управление данными",
-          "Удалить сохранённый выбор и корзину можно в настройках данных сайта вашего браузера. Выбранный язык тоже сбросится. Cookies хостинга и входа управляются сервисом размещения, а не интерфейсом магазина. Если удалить cookie «lang», страница снова откроется на языке браузера."
-        ]
+        {
+          "title": "Хранение в браузере",
+          "blocks": [
+            "Корзина и выбор изделий хранятся в локальном хранилище вашего браузера. Мы получаем их, только когда вы оформляете заказ."
+          ]
+        },
+        {
+          "title": "Cookie языка",
+          "blocks": [
+            {
+              "rows": [
+                ["Название", "lang"],
+                [
+                  "Зачем",
+                  "Запоминает выбранный язык или язык браузера при первом визите"
+                ],
+                ["Срок", "1 год"],
+                ["Передаётся", "Нет, не используется для аналитики и рекламы"]
+              ]
+            },
+            "Он только сохраняет настройку, которую вы выбрали, поэтому согласие не требуется."
+          ]
+        },
+        {
+          "title": "Аналитика и реклама",
+          "blocks": [
+            "Аналитики и рекламных трекеров на сайте нет. Если они появятся, сначала спросим согласие и назовём сервисы и цели."
+          ]
+        },
+        {
+          "title": "Ваши настройки",
+          "blocks": [
+            {
+              "list": [
+                "Очистка данных сайта в браузере удаляет сохранённую корзину, выбор и язык.",
+                "Если удалить cookie «lang», сайт откроется на языке браузера.",
+                "Cookies хостинга и входа управляются хостингом, а не магазином."
+              ]
+            }
+          ]
+        }
       ]
     ],
     "safetyTitle": "Информация о безопасности",
-    "safety": [
-      [
-        "Производитель",
-        "1DNT под управлением Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa. Почта: будет уточнена."
-      ],
-      [
-        "Идентификация изделия",
-        "Коллекция, тип изделия, цвет и размер указаны на этой странице и в подтверждении заказа."
-      ],
-      [
-        "Использование и проверка",
-        "Используйте аксессуар по назначению для прогулок. Перед использованием проверяйте ленту, крепления, застёжки и карабины. Не используйте повреждённое изделие или изделие с неисправной застёжкой."
-      ],
-      [
-        "Предупреждения",
-        "Не оставляйте собаку без присмотра в ошейнике или шлейке и привязанной на поводке. Изделие не предназначено для фиксации собаки в автомобиле."
-      ]
-    ],
     "safetyMore": "Вся информация о безопасности"
   },
   "pl": {
     "heading": "Obsługa klienta",
     "close": "Zamknij",
-    "draft": "Informacje przed premierą. Podgląd nie umożliwia zamówień ani płatności. Pola „Do uzupełnienia” zostaną uzupełnione przed rozpoczęciem sprzedaży.",
+    "draft": "Informacje przed premierą: zamówienia i płatności nie są jeszcze przyjmowane. Wszystko oznaczone „Do uzupełnienia” dodamy przed rozpoczęciem sprzedaży.",
+    "pending": "Do uzupełnienia",
     "labels": [
       "Kontakt i dane sprzedawcy",
       "Dostawa i płatności",
@@ -330,133 +640,307 @@
     ],
     "pages": [
       [
-        [
-          "ONE IDENTITY",
-          "Ręcznie tworzone akcesoria do Waszej wspólnej codzienności."
-        ],
-        [
-          "Dane sprzedawcy",
-          "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa (adres rejestrowy). NIP: 5213641211. ONE IDENTITY (1DNT) działa w ramach tej fundacji."
-        ],
-        [
-          "Kontakt",
-          "E-mail: do uzupełnienia. Odpowiadamy mailowo, nie prowadzimy infolinii. Adres do zwrotów i reklamacji: ul. Nowa 17d/13, 05-500 Stara Iwiczna."
-        ]
+        {
+          "title": "ONE IDENTITY",
+          "blocks": [
+            "Ręcznie tworzone akcesoria do Waszej wspólnej codzienności."
+          ]
+        },
+        {
+          "title": "Sprzedawca",
+          "blocks": [
+            {
+              "rows": [
+                ["Nazwa", "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”"],
+                [
+                  "Adres rejestrowy",
+                  "ul. Żurawia 6/12 lok. 766\n00-503 Warszawa"
+                ],
+                ["NIP", "5213641211"]
+              ]
+            },
+            "ONE IDENTITY (1DNT) działa w ramach tej fundacji."
+          ]
+        },
+        {
+          "title": "Kontakt",
+          "blocks": [
+            {
+              "rows": [
+                ["E-mail", "1dntbrand@gmail.com"],
+                ["Telefon", "Brak, odpowiadamy mailowo"]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Adres do zwrotów i reklamacji",
+          "blocks": [
+            {
+              "address": "1DNT\nul. Nowa 17d/13\n05-500 Stara Iwiczna"
+            }
+          ]
+        }
       ],
       [
-        [
-          "Dostawa",
-          "Wysyłamy na terenie Polski do punktów InPost. Dostawa kosztuje {shippingPrice}. Koszt dostawy widzisz w koszyku i przy składaniu zamówienia przed płatnością."
-        ],
-        [
-          "Płatności",
-          "Karty płatnicze i BLIK oraz inne popularne w Polsce metody, np. Przelewy24. Metody dostępne dla zamówienia są pokazywane przy składaniu zamówienia. Podgląd nie zbiera danych płatniczych. Przed złożeniem płatnego zamówienia zostanie pokazana łączna cena z podatkami i dostawą."
-        ]
+        {
+          "title": "Dostawa",
+          "blocks": [
+            {
+              "rows": [
+                ["Gdzie", "Punkty InPost na terenie Polski"],
+                ["Koszt", "{shippingPrice} za zamówienie"],
+                ["Wysyłka", null]
+              ]
+            },
+            "Koszt dostawy widzisz w koszyku przed płatnością."
+          ]
+        },
+        {
+          "title": "Płatności",
+          "blocks": [
+            {
+              "list": [
+                "Karty płatnicze",
+                "BLIK",
+                "Przelewy24 i inne popularne w Polsce metody"
+              ]
+            },
+            "Metody dostępne dla zamówienia są widoczne przy jego składaniu."
+          ]
+        },
+        {
+          "title": "Przed zamówieniem",
+          "blocks": [
+            "Łączną cenę z VAT i dostawą zobaczysz przed złożeniem zamówienia z obowiązkiem zapłaty."
+          ]
+        }
       ],
       [
-        [
-          "Odstąpienie od umowy",
-          "Przy standardowych zakupach konsumenckich online termin odstąpienia wynosi zwykle 14 dni od odbioru. Ręczne wykonanie samo w sobie nie wyłącza tego prawa. Ewentualne ustawowe wyłączenie dla produktu rzeczywiście spersonalizowanego musi być wyjaśnione przed zakupem."
-        ],
-        [
-          "Zwroty",
-          "Odeślij produkt na adres do zwrotów: ul. Nowa 17d/13, 05-500 Stara Iwiczna. Do uzupełnienia: e-mail do zgłoszeń, koszty przesyłki oraz procedura zwrotu pieniędzy. Wzór formularza odstąpienia zostanie dodany przed sprzedażą."
-        ],
-        [
-          "Reklamacje",
-          "Niezgodność towaru z umową to inna kwestia niż zwrot po zmianie decyzji. Gwarancja dobrowolna nie zastępuje praw ustawowych. Napisz do nas (e-mail do uzupełnienia) lub odeślij produkt na ul. Nowa 17d/13, 05-500 Stara Iwiczna. Podaj numer zamówienia, opis problemu i żądanie; zdjęcia mogą pomóc."
-        ]
+        {
+          "title": "Odstąpienie od umowy",
+          "blocks": [
+            {
+              "list": [
+                "Masz 14 dni od otrzymania przesyłki, aby odstąpić od umowy bez podania przyczyny.",
+                "Produkty ręcznie robione również można zwrócić.",
+                "Jeśli produkt wykonany według Twojej specyfikacji nie podlega zwrotowi, poinformujemy o tym przed zakupem."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Jak zwrócić",
+          "blocks": [
+            {
+              "steps": [
+                "Napisz na 1dntbrand@gmail.com, że odstępujesz od umowy.",
+                "Odeślij produkt na adres do zwrotów poniżej."
+              ]
+            },
+            {
+              "address": "1DNT\nul. Nowa 17d/13\n05-500 Stara Iwiczna"
+            },
+            {
+              "rows": [
+                ["Koszt odesłania", null],
+                ["Zwrot pieniędzy", null]
+              ]
+            },
+            "Wzór formularza odstąpienia dodamy przed rozpoczęciem sprzedaży."
+          ]
+        },
+        {
+          "title": "Reklamacje",
+          "blocks": [
+            "Wada produktu lub niezgodność z opisem to reklamacja, a nie zwrot po zmianie decyzji. Masz pełne prawa ustawowe; gwarancja dobrowolna ich nie zastępuje."
+          ]
+        },
+        {
+          "title": "Jak złożyć reklamację",
+          "blocks": [
+            "Napisz na 1dntbrand@gmail.com lub odeślij produkt na adres do zwrotów. Podaj:",
+            {
+              "list": [
+                "numer zamówienia",
+                "na czym polega problem",
+                "jakiego rozwiązania oczekujesz",
+                "zdjęcia, jeśli pomogą"
+              ]
+            }
+          ]
+        }
       ],
       [
-        [
-          "Producent",
-          "1DNT, prowadzone przez Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa. E-mail: do uzupełnienia."
-        ],
-        [
-          "Identyfikacja produktu",
-          "Kolekcja, rodzaj produktu, kolor i rozmiar są podane na tej stronie i w potwierdzeniu zamówienia."
-        ],
-        [
-          "Użytkowanie",
-          "Akcesoria służą do spacerów zgodnie z przeznaczeniem. Przed użyciem sprawdź taśmę, mocowania, klamry i karabińczyki. Nie używaj uszkodzonego produktu ani niesprawnego zapięcia."
-        ],
-        [
-          "Ostrzeżenia",
-          "Nie zostawiaj psa bez nadzoru w obroży, szelkach ani przywiązanego na smyczy. Produkt nie służy do zabezpieczania psa w samochodzie."
-        ]
+        {
+          "title": "Producent",
+          "blocks": [
+            {
+              "rows": [
+                ["Marka", "1DNT"],
+                [
+                  "Prowadzona przez",
+                  "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”"
+                ],
+                ["Adres", "ul. Żurawia 6/12 lok. 766\n00-503 Warszawa"],
+                ["E-mail", "1dntbrand@gmail.com"]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Identyfikacja produktu",
+          "blocks": [
+            "Kolekcja, rodzaj produktu, kolor i rozmiar są podane na stronie produktu i w potwierdzeniu zamówienia."
+          ]
+        },
+        {
+          "title": "Użytkowanie i kontrola",
+          "blocks": [
+            {
+              "list": [
+                "Używaj akcesoriów do spacerów z psem.",
+                "Przed każdym spacerem sprawdź taśmę, sprzączki i karabińczyki.",
+                "Nie używaj produktu, jeśli jest uszkodzony lub zapięcie nie działa prawidłowo."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Ostrzeżenia",
+          "blocks": [
+            {
+              "list": [
+                "Nie zostawiaj psa bez nadzoru w obroży, szelkach ani przywiązanego na smyczy.",
+                "Nie służy do zabezpieczania psa w samochodzie."
+              ]
+            }
+          ]
+        }
       ],
       [
-        [
-          "Status podglądu",
-          "Katalog, koszyk i kalkulacja zestawów pokazują przyszły sklep. Zawarcie umowy sprzedaży, zamówienia i płatności nie są obecnie możliwe."
-        ],
-        [
-          "Przed sprzedażą",
-          "Regulamin zostanie uzupełniony o dane sprzedawcy, zamówienia i zawarcie umowy, płatności, produkcję, dostawę, odstąpienie, reklamacje i właściwe informacje o pozasądowym rozwiązywaniu sporów."
-        ],
-        [
-          "Konta i zestawy",
-          "Smycz + obroża lub szelki: 5% rabatu. Wszystkie trzy: 10%. Dowolne kolory i rozmiary."
-        ]
+        {
+          "title": "Zestawy i rabaty",
+          "blocks": [
+            {
+              "list": [
+                "Smycz + obroża lub szelki: −5%",
+                "Smycz + obroża + szelki: −10%",
+                "Kolory i rozmiary można dowolnie łączyć."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Ostateczny regulamin",
+          "blocks": [
+            "Przed rozpoczęciem sprzedaży regulamin obejmie:",
+            {
+              "list": [
+                "dane sprzedawcy",
+                "składanie zamówień i zawarcie umowy",
+                "płatność, wykonanie i dostawę",
+                "odstąpienie od umowy i reklamacje",
+                "pozasądowe rozwiązywanie sporów"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Konta i newsletter",
+          "blocks": [
+            "Konta klientów i newsletter nie są aktywne. Jeśli się pojawią, dodamy ich regulamin."
+          ]
+        }
       ],
       [
-        [
-          "Administrator danych",
-          "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa, NIP: 5213641211. E-mail kontaktowy: do uzupełnienia. To projekt informacji, nie ostateczna polityka prywatności."
-        ],
-        [
-          "Obecny podgląd",
-          "Brak aktywnego składania zamówień, rejestracji, newslettera i formularza kontaktowego. Koszyk, język i warianty są zapisywane lokalnie w przeglądarce. Hosting i usługi dostępu mogą przetwarzać techniczne dane połączenia."
-        ],
-        [
-          "Przed uruchomieniem",
-          "Zostaną podane rzeczywiste cele i podstawy prawne, odbiorcy i dostawcy usług, okresy przechowywania, transfery poza EOG, prawa osób, kontakt i prawo skargi do UODO. Dostawcy płatności, dostaw, analityki i marketingu zostaną wskazani po wyborze, przed aktywacją."
-        ]
+        {
+          "title": "Administrator danych",
+          "blocks": [
+            {
+              "rows": [
+                ["Nazwa", "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”"],
+                ["Adres", "ul. Żurawia 6/12 lok. 766\n00-503 Warszawa"],
+                ["NIP", "5213641211"],
+                ["E-mail", "1dntbrand@gmail.com"]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Co strona zapisuje teraz",
+          "blocks": [
+            "Nie ma jeszcze składania zamówień, rejestracji, newslettera ani formularza kontaktowego. Koszyk, język i wybrane produkty są zapisane tylko w Twojej przeglądarce. Hosting może przetwarzać techniczne dane połączenia, aby wyświetlić stronę."
+          ]
+        },
+        {
+          "title": "Przed rozpoczęciem sprzedaży",
+          "blocks": [
+            "Ta informacja opisze:",
+            {
+              "list": [
+                "cele i podstawy prawne przetwarzania",
+                "odbiorców, w tym dostawców płatności, dostawy i ewentualnej analityki",
+                "okres przechowywania danych",
+                "ewentualne przekazywanie danych poza EOG",
+                "Twoje prawa i możliwość złożenia skargi do UODO"
+              ]
+            }
+          ]
+        }
       ],
       [
-        [
-          "Pamięć przeglądarki",
-          "Koszyk i wybrane warianty produktów są przechowywane w pamięci lokalnej przeglądarki na Twoim urządzeniu. Nie trafiają do nas, dopóki nie złożysz zamówienia."
-        ],
-        [
-          "Plik cookie języka",
-          "Jeden własny plik cookie „lang” zapamiętuje wybrany język (przy pierwszej wizycie — język przeglądarki), aby strona od razu otwierała się w tym języku. Przechowujemy go przez rok, nie udostępniamy go nikomu i nie używamy do analityki ani reklamy. Służy wyłącznie do zapamiętania ustawienia, o które prosisz, dlatego nie wymaga zgody."
-        ],
-        [
-          "Analityka i reklama",
-          "Kod sklepu nie zawiera trackerów analitycznych ani reklamowych. Przed dodaniem opcjonalnego śledzenia zostaną wdrożone zgody oraz informacje o celach i dostawcach."
-        ],
-        [
-          "Ustawienia",
-          "Zapisane wybory i koszyk można usunąć w ustawieniach danych witryny w przeglądarce. Zresetuje to też język. Cookies hostingu i logowania są zarządzane przez usługę hostingową, poza interfejsem sklepu. Usunięcie pliku cookie „lang” przywraca język przeglądarki."
-        ]
+        {
+          "title": "Pamięć przeglądarki",
+          "blocks": [
+            "Koszyk i wybrane produkty są zapisane w pamięci lokalnej Twojej przeglądarki. Trafiają do nas dopiero po złożeniu zamówienia."
+          ]
+        },
+        {
+          "title": "Cookie języka",
+          "blocks": [
+            {
+              "rows": [
+                ["Nazwa", "lang"],
+                [
+                  "Cel",
+                  "Zapamiętuje wybrany język lub język przeglądarki przy pierwszej wizycie"
+                ],
+                ["Okres", "1 rok"],
+                ["Udostępnianie", "Nie, nie służy do analityki ani reklamy"]
+              ]
+            },
+            "Zapamiętuje tylko ustawienie, o które prosisz, więc nie wymaga zgody."
+          ]
+        },
+        {
+          "title": "Analityka i reklama",
+          "blocks": [
+            "Sklep nie używa narzędzi analitycznych ani reklamowych. Jeśli to się zmieni, najpierw poprosimy o zgodę i wskażemy dostawców oraz cele."
+          ]
+        },
+        {
+          "title": "Twoje ustawienia",
+          "blocks": [
+            {
+              "list": [
+                "Wyczyszczenie danych strony w przeglądarce usuwa zapisany koszyk, wybory i język.",
+                "Usunięcie cookie „lang” przywraca język przeglądarki.",
+                "Cookies hostingu i logowania zarządza usługa hostingu, a nie sklep."
+              ]
+            }
+          ]
+        }
       ]
     ],
     "safetyTitle": "Informacje o bezpieczeństwie",
-    "safety": [
-      [
-        "Producent",
-        "1DNT, prowadzone przez Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa. E-mail: do uzupełnienia."
-      ],
-      [
-        "Identyfikacja produktu",
-        "Kolekcja, rodzaj produktu, kolor i rozmiar są podane na tej stronie i w potwierdzeniu zamówienia."
-      ],
-      [
-        "Użytkowanie",
-        "Akcesoria służą do spacerów zgodnie z przeznaczeniem. Przed użyciem sprawdź taśmę, mocowania, klamry i karabińczyki. Nie używaj uszkodzonego produktu ani niesprawnego zapięcia."
-      ],
-      [
-        "Ostrzeżenia",
-        "Nie zostawiaj psa bez nadzoru w obroży, szelkach ani przywiązanego na smyczy. Produkt nie służy do zabezpieczania psa w samochodzie."
-      ]
-    ],
     "safetyMore": "Wszystkie informacje o bezpieczeństwie"
   },
   "uk": {
     "heading": "Для покупців",
     "close": "Закрити",
-    "draft": "Інформація перед запуском. Тут поки неможливо оформити чи оплатити замовлення. Поля «Буде уточнено» заповнимо до початку продажів.",
+    "draft": "Інформація перед запуском: замовлення й оплата поки не приймаються. Усе, що позначено «Буде уточнено», додамо до початку продажів.",
+    "pending": "Буде уточнено",
     "labels": [
       "Контакти та продавець",
       "Доставка й оплата",
@@ -468,127 +952,303 @@
     ],
     "pages": [
       [
-        [
-          "ONE IDENTITY",
-          "Аксесуари ручної роботи для вашого повсякденного життя разом."
-        ],
-        [
-          "Дані продавця",
-          "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa (юридична адреса). NIP: 5213641211. ONE IDENTITY (1DNT) працює під цим фондом."
-        ],
-        [
-          "Контакти",
-          "Пошта: буде уточнена. Відповідаємо електронною поштою, телефонної лінії немає. Адреса для повернень і претензій: ul. Nowa 17d/13, 05-500 Stara Iwiczna."
-        ]
+        {
+          "title": "ONE IDENTITY",
+          "blocks": [
+            "Аксесуари ручної роботи для вашого повсякденного життя разом."
+          ]
+        },
+        {
+          "title": "Продавець",
+          "blocks": [
+            {
+              "rows": [
+                ["Назва", "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”"],
+                [
+                  "Юридична адреса",
+                  "ul. Żurawia 6/12 lok. 766\n00-503 Warszawa"
+                ],
+                ["NIP", "5213641211"]
+              ]
+            },
+            "ONE IDENTITY (1DNT) працює в межах цього фонду."
+          ]
+        },
+        {
+          "title": "Контакти",
+          "blocks": [
+            {
+              "rows": [
+                ["Пошта", "1dntbrand@gmail.com"],
+                ["Телефон", "Немає, відповідаємо поштою"]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Адреса для повернень і претензій",
+          "blocks": [
+            {
+              "address": "1DNT\nul. Nowa 17d/13\n05-500 Stara Iwiczna"
+            }
+          ]
+        }
       ],
       [
-        [
-          "Доставка",
-          "Доставляємо в межах Польщі до пунктів InPost. Доставка коштує {shippingPrice}. Вартість доставки видно в кошику й під час оформлення до оплати."
-        ],
-        [
-          "Оплата",
-          "Банківські картки та BLIK, а також інші популярні в Польщі способи, наприклад Przelewy24. Доступні для замовлення способи показуються під час оформлення. Цей приклад не збирає платіжних даних. До оформлення платного замовлення буде показано підсумкову суму з податками та доставкою."
-        ]
+        {
+          "title": "Доставка",
+          "blocks": [
+            {
+              "rows": [
+                ["Куди", "Пункти InPost у межах Польщі"],
+                ["Вартість", "{shippingPrice} за замовлення"],
+                ["Відправлення", null]
+              ]
+            },
+            "Вартість доставки видно в кошику до оплати."
+          ]
+        },
+        {
+          "title": "Оплата",
+          "blocks": [
+            {
+              "list": [
+                "Банківські картки",
+                "BLIK",
+                "Przelewy24 та інші популярні в Польщі способи"
+              ]
+            },
+            "Доступні для замовлення способи показуються під час оформлення."
+          ]
+        },
+        {
+          "title": "Перед замовленням",
+          "blocks": [
+            "Підсумкову суму з ПДВ і доставкою ви побачите до оформлення замовлення з обов’язком оплати."
+          ]
+        }
       ],
       [
-        [
-          "Відмова від покупки",
-          "Для стандартних споживчих покупок онлайн звичайний строк відмови — 14 днів після отримання. Ручна робота сама собою не скасовує це право. Законний виняток для справді індивідуального виробу має бути пояснено до покупки."
-        ],
-        [
-          "Повернення",
-          "Надішліть виріб на адресу для повернень: ul. Nowa 17d/13, 05-500 Stara Iwiczna. Буде уточнено: пошта для повідомлень, витрати на пересилання та порядок повернення грошей. Зразок заяви про відмову від договору додамо до початку продажів."
-        ],
-        [
-          "Претензії",
-          "Претензія щодо невідповідності товару договору відрізняється від повернення через зміну рішення. Добровільна гарантія не замінює законні права. Напишіть нам на пошту (адреса буде уточнена) або надішліть виріб на ul. Nowa 17d/13, 05-500 Stara Iwiczna. Вкажіть номер замовлення, проблему та бажане рішення; фото можуть допомогти."
-        ]
+        {
+          "title": "Відмова від покупки",
+          "blocks": [
+            {
+              "list": [
+                "У вас є 14 днів від отримання посилки, щоб відмовитися від покупки без пояснення причин.",
+                "Вироби ручної роботи теж можна повернути.",
+                "Якщо виріб зроблено за вашими індивідуальними параметрами і його не можна повернути, ми скажемо про це до покупки."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Як оформити повернення",
+          "blocks": [
+            {
+              "steps": [
+                "Напишіть на 1dntbrand@gmail.com, що відмовляєтеся від покупки.",
+                "Надішліть виріб на адресу для повернень нижче."
+              ]
+            },
+            {
+              "address": "1DNT\nul. Nowa 17d/13\n05-500 Stara Iwiczna"
+            },
+            {
+              "rows": [
+                ["Зворотна пересилка", null],
+                ["Повернення грошей", null]
+              ]
+            },
+            "До початку продажів додамо зразок заяви про відмову від договору."
+          ]
+        },
+        {
+          "title": "Претензії щодо якості",
+          "blocks": [
+            "Якщо виріб має дефект або не відповідає опису, це претензія, а не повернення через зміну рішення. Ваші права за законом зберігаються; добровільна гарантія їх не замінює."
+          ]
+        },
+        {
+          "title": "Як подати претензію",
+          "blocks": [
+            "Напишіть на 1dntbrand@gmail.com або надішліть виріб на адресу для повернень. Вкажіть:",
+            {
+              "list": [
+                "номер замовлення",
+                "у чому проблема",
+                "яке рішення ви хочете",
+                "фото, якщо вони допоможуть"
+              ]
+            }
+          ]
+        }
       ],
       [
-        [
-          "Виробник",
-          "1DNT під управлінням Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa. Пошта: буде уточнена."
-        ],
-        [
-          "Ідентифікація виробу",
-          "Колекція, тип виробу, колір і розмір вказані на цій сторінці та в підтвердженні замовлення."
-        ],
-        [
-          "Використання",
-          "Використовуйте аксесуар за призначенням для прогулянок. Перед використанням перевіряйте стрічку, кріплення, застібки й карабіни. Не використовуйте пошкоджений виріб або несправну застібку."
-        ],
-        [
-          "Попередження",
-          "Не залишайте собаку без нагляду в нашийнику чи шлеї та прив’язаною на повідці. Виріб не призначений для фіксації собаки в автомобілі."
-        ]
+        {
+          "title": "Виробник",
+          "blocks": [
+            {
+              "rows": [
+                ["Бренд", "1DNT"],
+                [
+                  "Під управлінням",
+                  "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”"
+                ],
+                ["Адреса", "ul. Żurawia 6/12 lok. 766\n00-503 Warszawa"],
+                ["Пошта", "1dntbrand@gmail.com"]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Ідентифікація виробу",
+          "blocks": [
+            "Колекція, тип виробу, колір і розмір вказані на сторінці товару та в підтвердженні замовлення."
+          ]
+        },
+        {
+          "title": "Використання та перевірка",
+          "blocks": [
+            {
+              "list": [
+                "Використовуйте аксесуар для прогулянок із собакою.",
+                "Перед кожною прогулянкою перевіряйте стрічку, пряжки й карабіни.",
+                "Не користуйтеся виробом, якщо він пошкоджений або застібка працює неправильно."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Попередження",
+          "blocks": [
+            {
+              "list": [
+                "Не залишайте собаку без нагляду в нашийнику чи шлеї та прив’язаною на повідку.",
+                "Не призначено для фіксації собаки в автомобілі."
+              ]
+            }
+          ]
+        }
       ],
       [
-        [
-          "Статус сайту",
-          "Каталог, кошик і розрахунок комплектів демонструють майбутній магазин. Укладення договору продажу, оформлення та оплата зараз недоступні."
-        ],
-        [
-          "До початку продажів",
-          "Остаточні умови міститимуть дані продавця, порядок замовлення й укладення договору, оплату, виготовлення, доставку, відмову від покупки, претензії та належну інформацію про позасудове вирішення спорів."
-        ],
-        [
-          "Акаунти й комплекти",
-          "Повідець + нашийник або шлея — знижка 5%. Усі три — 10%. Будь-які кольори та розміри."
-        ]
+        {
+          "title": "Комплекти та знижки",
+          "blocks": [
+            {
+              "list": [
+                "Повідок + нашийник або шлея: −5%",
+                "Повідок + нашийник + шлея: −10%",
+                "Кольори й розміри можна поєднувати будь-які."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Остаточні умови",
+          "blocks": [
+            "До початку продажів умови магазину міститимуть:",
+            {
+              "list": [
+                "дані продавця",
+                "оформлення замовлення та укладення договору",
+                "оплату, виготовлення й доставку",
+                "відмову від покупки та претензії",
+                "позасудове врегулювання спорів"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Акаунти та розсилка",
+          "blocks": [
+            "Акаунтів і розсилки поки немає. Якщо вони з’являться, додамо їхні умови."
+          ]
+        }
       ],
       [
-        [
-          "Відповідальний за дані",
-          "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa, NIP: 5213641211. Пошта для зв’язку: буде уточнена. Це проєкт інформаційної сторінки, а не остаточна політика."
-        ],
-        [
-          "Поточний приклад",
-          "Немає активного оформлення замовлень, реєстрації, розсилки та контактної форми. Кошик, мова й варіанти товарів зберігаються локально в браузері. Хостинг і система доступу можуть обробляти технічні дані з’єднання."
-        ],
-        [
-          "До запуску",
-          "Укажемо реальні цілі й правові підстави, одержувачів та сервіси, строки зберігання, передачі за межі ЄЕЗ, права користувачів, контакти та порядок звернення до UODO. Платіжні, логістичні, аналітичні й рекламні сервіси назвемо після вибору, до їх увімкнення."
-        ]
+        {
+          "title": "Відповідальний за дані",
+          "blocks": [
+            {
+              "rows": [
+                ["Назва", "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”"],
+                ["Адреса", "ul. Żurawia 6/12 lok. 766\n00-503 Warszawa"],
+                ["NIP", "5213641211"],
+                ["Пошта", "1dntbrand@gmail.com"]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Що сайт зберігає зараз",
+          "blocks": [
+            "Оформлення замовлень, реєстрації, розсилки та контактної форми поки немає. Кошик, мова та вибір виробів зберігаються лише у вашому браузері. Хостинг може обробляти технічні дані підключення, щоб показувати сайт."
+          ]
+        },
+        {
+          "title": "До початку продажів",
+          "blocks": [
+            "Тут буде вказано:",
+            {
+              "list": [
+                "цілі та правові підстави обробки",
+                "одержувачів, зокрема платіжні, логістичні та аналітичні сервіси",
+                "строки зберігання даних",
+                "передавання даних за межі ЄЕЗ, якщо воно є",
+                "ваші права і як подати скаргу до UODO, польського органу із захисту даних"
+              ]
+            }
+          ]
+        }
       ],
       [
-        [
-          "Сховище браузера",
-          "Кошик і обрані варіанти товарів зберігаються в локальному сховищі браузера на вашому пристрої. Вони не передаються нам, доки ви не оформите замовлення."
-        ],
-        [
-          "Cookie мови",
-          "Одна власна cookie «lang» запам’ятовує обрану мову (під час першого візиту — мову браузера), щоб сторінка одразу відкривалася нею. Вона зберігається рік, нікому не передається й не використовується для аналітики чи реклами. Вона лише зберігає налаштування, яке ви обрали, тому згоди не потребує."
-        ],
-        [
-          "Аналітика й реклама",
-          "Код магазину не містить аналітичних або рекламних трекерів. Перед додаванням необов’язкового відстеження з’являться налаштування згоди та інформація про цілі й провайдерів."
-        ],
-        [
-          "Керування",
-          "Видалити вибір і кошик можна в налаштуваннях даних сайту вашого браузера. Мова також скинеться. Cookies хостингу та входу керуються сервісом розміщення, поза інтерфейсом магазину. Якщо видалити cookie «lang», сторінка знову відкриється мовою браузера."
-        ]
+        {
+          "title": "Зберігання в браузері",
+          "blocks": [
+            "Кошик і вибір виробів зберігаються в локальному сховищі вашого браузера. Ми отримуємо їх, лише коли ви оформлюєте замовлення."
+          ]
+        },
+        {
+          "title": "Cookie мови",
+          "blocks": [
+            {
+              "rows": [
+                ["Назва", "lang"],
+                [
+                  "Навіщо",
+                  "Запам’ятовує вибрану мову або мову браузера під час першого візиту"
+                ],
+                ["Строк", "1 рік"],
+                [
+                  "Передається",
+                  "Ні, не використовується для аналітики й реклами"
+                ]
+              ]
+            },
+            "Він лише зберігає налаштування, яке ви вибрали, тому згода не потрібна."
+          ]
+        },
+        {
+          "title": "Аналітика й реклама",
+          "blocks": [
+            "Аналітики та рекламних трекерів на сайті немає. Якщо вони з’являться, спершу попросимо згоду й назвемо сервіси та цілі."
+          ]
+        },
+        {
+          "title": "Ваші налаштування",
+          "blocks": [
+            {
+              "list": [
+                "Очищення даних сайту в браузері видаляє збережений кошик, вибір і мову.",
+                "Якщо видалити cookie «lang», сайт відкриється мовою браузера.",
+                "Cookies хостингу та входу керує хостинг, а не магазин."
+              ]
+            }
+          ]
+        }
       ]
     ],
     "safetyTitle": "Інформація про безпеку",
-    "safety": [
-      [
-        "Виробник",
-        "1DNT під управлінням Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa. Пошта: буде уточнена."
-      ],
-      [
-        "Ідентифікація виробу",
-        "Колекція, тип виробу, колір і розмір вказані на цій сторінці та в підтвердженні замовлення."
-      ],
-      [
-        "Використання",
-        "Використовуйте аксесуар за призначенням для прогулянок. Перед використанням перевіряйте стрічку, кріплення, застібки й карабіни. Не використовуйте пошкоджений виріб або несправну застібку."
-      ],
-      [
-        "Попередження",
-        "Не залишайте собаку без нагляду в нашийнику чи шлеї та прив’язаною на повідці. Виріб не призначений для фіксації собаки в автомобілі."
-      ]
-    ],
     "safetyMore": "Уся інформація про безпеку"
   }
 }
