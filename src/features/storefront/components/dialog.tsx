@@ -30,6 +30,8 @@ export function Dialog({
     if (!dialog || !isOpen) return;
     const previousOverflow = document.body.style.overflow;
     const previousFocus = captureReturnFocus();
+    const pageScroll = window.scrollY;
+    const pageHash = window.location.hash;
     // Reopened while it was still fading out: keep it, drop the exit.
     exit.current?.cancel();
     exit.current = null;
@@ -41,6 +43,15 @@ export function Dialog({
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = previousOverflow;
+      // The page under a dialog should not move, but iPhone can still pan
+      // it (a field focused inside a sheet, the keyboard, rubber-banding).
+      // Closing puts the shopper back exactly where they opened it; a link
+      // in the dialog scrolls on its own afterwards.
+      if (
+        window.location.hash === pageHash &&
+        Math.abs(window.scrollY - pageScroll) > 1
+      )
+        window.scrollTo({ top: pageScroll, behavior: "instant" });
       const finish = () => {
         if (exit.current !== running) return;
         exit.current = null;

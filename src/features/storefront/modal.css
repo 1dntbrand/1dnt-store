@@ -408,9 +408,29 @@ dialog:focus-visible {
 }
 
 @media (max-width: 720px) {
+  /* The drawing stays beside its legend, small enough to keep the size
+     table within reach. */
+  .guide-body {
+    gap: var(--space-5);
+  }
   .guide-measure {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: var(--space-4);
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: start;
+    gap: var(--space-3) var(--space-4);
+  }
+  .measure-drawing img {
+    max-height: 240px;
+  }
+  .guide-measure-text {
+    gap: var(--space-3);
+    font-size: 13px;
+  }
+  .guide-measure-text .measure-legend {
+    font-size: 13px;
+  }
+  .guide-measure-text .guide-tip {
+    padding: var(--space-2) var(--space-3);
+    font-size: 12px;
   }
   .leash-modes {
     grid-template-columns: minmax(0, 1fr);

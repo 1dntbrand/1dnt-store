@@ -71,7 +71,12 @@ export function FitFinder({ kind }: { kind: "collar" | "harness" }) {
   }
 
   return (
-    <form className="fit-finder" onSubmit={checkFit} noValidate>
+    <form
+      className="fit-finder"
+      data-kind={kind}
+      onSubmit={checkFit}
+      noValidate
+    >
       <div className="fit-form-fields">
         <label>
           {t("neckCm")}
