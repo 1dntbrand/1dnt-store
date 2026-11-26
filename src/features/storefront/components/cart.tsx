@@ -350,7 +350,8 @@ export function OrderTotals({ withTotal = true }: { withTotal?: boolean }) {
 /**
  * The pinned end of the bag: what to pay and the button to pay it. The
  * total doubles as the switch for the breakdown that unfolds above it,
- * folded on phones so the pieces keep the room, open on larger screens.
+ * folded on phones and short screens so the pieces keep the room, open
+ * on large ones.
  * Delivery is always counted in, and a saving is named right away.
  */
 function CheckoutBar({
@@ -370,7 +371,7 @@ function CheckoutBar({
   const [open, setOpen] = useState(
     () =>
       typeof window !== "undefined" &&
-      window.matchMedia("(min-width: 641px)").matches,
+      window.matchMedia("(min-width: 641px) and (min-height: 720px)").matches,
   );
   const breakdownId = useId();
   return (
@@ -443,20 +444,22 @@ function SetSuggestionNote() {
   );
 }
 
+/* The same upright shots as the catalogue's category previews: each piece
+   whole in the 4:5 frame. */
 const emptyBagPicks = [
   {
     href: "#collection/collars",
-    src: "/assets/collar-khaki.webp",
+    src: "/assets/collar-orange.webp",
     label: "cat_collars",
   },
   {
     href: "#collection/leashes",
-    src: "/assets/leash-black.webp",
+    src: "/assets/leash-khaki.webp",
     label: "cat_leashes",
   },
   {
     href: "#collection/harnesses",
-    src: "/assets/harness-khaki.webp",
+    src: "/assets/harness-black-orange.webp",
     label: "cat_harnesses",
   },
 ];

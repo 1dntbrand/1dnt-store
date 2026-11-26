@@ -120,7 +120,12 @@ export function CheckoutPhone({
         />
       </div>
       <span id={`${id}-error`} className="field-error" aria-live="polite">
-        {invalid && <span className="state-in">{t("validPhone")}</span>}
+        {invalid && (
+          <span className="state-in">
+            {/* An empty field asks to be filled; a typed one to be fixed. */}
+            {t(value.trim() ? "validPhone" : "requiredField")}
+          </span>
+        )}
       </span>
     </div>
   );

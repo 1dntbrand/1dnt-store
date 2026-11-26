@@ -240,7 +240,7 @@ export function Checkout() {
                         {showError(field.name) && (
                           <span className="state-in">
                             {t(
-                              field.name === "email"
+                              field.name === "email" && values.email.trim()
                                 ? "validEmail"
                                 : "requiredField",
                             )}

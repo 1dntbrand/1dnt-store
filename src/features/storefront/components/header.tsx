@@ -3,6 +3,8 @@ import { brandLinks } from "../data/brand";
 import { languages } from "../lib/catalog";
 import { useStorefront } from "../storefront-context";
 import { InstagramIcon } from "./instagram-icon";
+import { flushSync } from "react-dom";
+import { keepReadingPlace } from "../lib/keep-reading-place";
 
 export function Header() {
   const { t, language, setLanguage, openDialog, cartCount, lastAdded } =
@@ -58,7 +60,11 @@ export function Header() {
           className="language-select select-control"
           aria-label={t("languageLabel")}
           value={language}
-          onChange={(event) => setLanguage(event.target.value)}
+          onChange={(event) => {
+            const next = event.target.value;
+            // Same place on the page in the new language.
+            keepReadingPlace(() => flushSync(() => setLanguage(next)));
+          }}
         >
           {languages.map((code) => (
             <option key={code} value={code}>

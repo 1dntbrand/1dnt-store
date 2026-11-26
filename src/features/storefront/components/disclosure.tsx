@@ -14,8 +14,6 @@ import { EASE_OUT, MOTION, prefersReducedMotion } from "../lib/motion";
 
 const DURATION_MS = MOTION.slow;
 const EASE = EASE_OUT;
-/** Room kept between the sticky site header and a tapped accordion header. */
-const HEADER_GAP = 12;
 
 interface GroupItem {
   isOpen: () => boolean;
@@ -33,26 +31,26 @@ export function DisclosureGroup({ children }: { children: ReactNode }) {
 }
 
 /**
- * Keeps a tapped header from sliding under the sticky site header while the
- * item above it folds away. The page only moves if it has to, and only by
- * the distance that would otherwise hide the header.
+ * Keeps a tapped header where it was while the open item above it folds
+ * away: the page follows the fold, so the header stays under the finger
+ * and the folding text leaves upward instead of the header jumping.
  */
-function keepBelowSiteHeader(header: HTMLElement, duration: number) {
-  const end = performance.now() + duration + 60;
+function keepInPlace(header: HTMLElement, start: number, duration: number) {
   const root = document.documentElement;
+  const hold = () => {
+    const drift = header.getBoundingClientRect().top - start;
+    if (Math.abs(drift) <= 0.5) return;
+    // Instant, whatever the page's smooth-scroll setting says.
+    const behaviour = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    window.scrollBy(0, drift);
+    root.style.scrollBehavior = behaviour;
+  };
+  // Without motion the fold is already done: one correction is enough.
+  if (!duration) return hold();
+  const end = performance.now() + duration + 60;
   const step = () => {
-    const siteHeader =
-      document.querySelector(".site-header")?.getBoundingClientRect().bottom ??
-      0;
-    const overlap =
-      siteHeader + HEADER_GAP - header.getBoundingClientRect().top;
-    if (overlap > 0.5) {
-      // Instant, whatever the page's smooth-scroll setting says.
-      const behaviour = root.style.scrollBehavior;
-      root.style.scrollBehavior = "auto";
-      window.scrollBy(0, -overlap);
-      root.style.scrollBehavior = behaviour;
-    }
+    hold();
     if (performance.now() < end) window.requestAnimationFrame(step);
   };
   window.requestAnimationFrame(step);
@@ -176,6 +174,7 @@ export function Disclosure({
       return;
     }
     const header = event.currentTarget;
+    const headerTop = header.getBoundingClientRect().top;
     let foldsAbove = false;
     if (group)
       for (const [key, item] of group) {
@@ -184,8 +183,8 @@ export function Disclosure({
         foldsAbove ||= isAbove(key, header);
       }
     animateTo("open");
-    if (foldsAbove && !prefersReducedMotion())
-      keepBelowSiteHeader(header, DURATION_MS);
+    if (foldsAbove)
+      keepInPlace(header, headerTop, prefersReducedMotion() ? 0 : DURATION_MS);
   }
 
   return (

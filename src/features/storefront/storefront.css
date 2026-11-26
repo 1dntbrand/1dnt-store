@@ -1110,6 +1110,13 @@ summary::-webkit-details-marker {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
+/* Small text links get a full-height tap area without moving the text:
+   the padding is taken back by an equal negative margin. */
+:is(.product-information, .service-section) .text-link,
+.set-suggestion a {
+  padding-block: 11px;
+  margin-block: -11px;
+}
 .product-safety .service-section {
   margin-top: 16px;
 }
