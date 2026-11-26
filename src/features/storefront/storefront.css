@@ -795,7 +795,7 @@ html:lang(uk) .hero-copy h1 em {
 }
 .product-price {
   color: var(--ink);
-  font-size: 23px;
+  font-size: 24px;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
@@ -932,7 +932,7 @@ html:lang(uk) .hero-copy h1 em {
   border-radius: 999px;
   background: var(--error-tint);
   color: var(--error);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 1.6;
 }
@@ -969,7 +969,7 @@ html:lang(uk) .hero-copy h1 em {
 }
 .size-options small {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.4;
 }
 .field-hint {
@@ -1072,10 +1072,10 @@ summary::-webkit-details-marker {
   color: var(--muted);
 }
 .product-information ul {
-  padding-left: 18px;
+  padding-left: 20px;
 }
 .product-information li + li {
-  margin-top: 6px;
+  margin-top: var(--space-2);
 }
 .product-information .text-link {
   color: var(--ink);
@@ -1228,7 +1228,7 @@ summary::-webkit-details-marker {
 .bundle-discount {
   grid-row: 1;
   grid-column: 2;
-  font-size: 26px;
+  font-size: 24px;
   color: var(--olive);
   white-space: nowrap;
 }
@@ -1531,7 +1531,7 @@ summary::-webkit-details-marker {
 /* The frame is reserved before the video loads, so playing it never moves
    the text below. */
 .hardware-video {
-  margin-block: 20px 12px;
+  margin-block: var(--space-5) var(--space-3);
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: var(--control-radius);
@@ -1655,9 +1655,9 @@ summary::-webkit-details-marker {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 16px;
-  padding-top: 20px;
+  padding-top: var(--space-5);
   border-top: 1px solid #4e5548;
-  font-size: 11px;
+  font-size: 12px;
   color: #bfc4b6;
 }
 
@@ -1704,8 +1704,8 @@ dialog::backdrop {
 .menu-collections > summary {
   display: flex;
   justify-content: space-between;
-  padding-block: 18px;
-  font-size: 21px;
+  padding-block: var(--space-4);
+  font-size: 20px;
   border-bottom: 1px solid var(--line);
 }
 .menu-collections > summary {
@@ -1724,7 +1724,7 @@ dialog::backdrop {
 .menu-collection-links {
   display: flex;
   flex-direction: column;
-  padding: 10px 0 14px;
+  padding: var(--space-2) 0 var(--space-4);
   font-size: 16px;
 }
 /* Same rhythm as before, but each link is a full 44px row to tap. */
@@ -1888,7 +1888,7 @@ dialog::backdrop {
 /* Customer-care copy: one section per topic, details as label/value rows. */
 .service-section {
   display: grid;
-  gap: 10px;
+  gap: var(--space-3);
   font-size: 14px;
   line-height: 1.55;
 }
@@ -1896,7 +1896,7 @@ dialog::backdrop {
   margin: 0;
 }
 .service-section h3 {
-  font-size: 17px;
+  font-size: 18px;
 }
 #serviceContent .service-section + .service-section {
   margin-top: var(--space-5);
@@ -1924,7 +1924,7 @@ dialog::backdrop {
   padding-left: 20px;
 }
 .service-list li + li {
-  margin-top: 6px;
+  margin-top: var(--space-2);
 }
 .service-steps {
   list-style: decimal;
@@ -2124,7 +2124,7 @@ dialog::backdrop {
   padding: var(--space-6) var(--panel-gutter);
 }
 .cart-empty h3 {
-  font-size: 25px;
+  font-size: 24px;
 }
 .cart-empty p {
   margin-block: var(--space-3) var(--space-5);
@@ -2366,7 +2366,7 @@ dialog::backdrop {
   font-size: 14px;
 }
 .mobile-order-toggle strong {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 500;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
@@ -2442,7 +2442,7 @@ dialog::backdrop {
     gap: 16px;
   }
   .catalog-preview h3 {
-    font-size: 17px;
+    font-size: 18px;
   }
   .product-layout {
     grid-template-columns: minmax(0, 1fr);
@@ -2607,16 +2607,16 @@ dialog::backdrop {
     width: 100%;
   }
   .bundle-heading h4 {
-    font-size: 22px;
+    font-size: 24px;
   }
   .bundle-discount {
-    font-size: 23px;
+    font-size: 24px;
   }
   .bundle-fields {
     grid-template-columns: minmax(0, 1fr);
   }
   .bundle-bottom strong {
-    font-size: 23px;
+    font-size: 24px;
   }
   .footer-title {
     font-size: 26px;
@@ -2642,7 +2642,7 @@ dialog::backdrop {
     width: calc(100% - 24px);
   }
   .size-guide table {
-    font-size: 11px;
+    font-size: 12px;
   }
   .size-guide th,
   .size-guide td {
@@ -2661,7 +2661,7 @@ dialog::backdrop {
     grid-column: 1 / -1;
   }
   .pickup-button {
-    gap: 10px;
+    gap: var(--space-3);
     padding: 14px 12px;
   }
   input,
