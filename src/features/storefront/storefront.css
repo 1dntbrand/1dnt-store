@@ -2261,19 +2261,89 @@ dialog::backdrop {
   gap: var(--space-3) var(--space-4);
 }
 .cart-total {
+  /* Takes the room the button leaves; the saving line may wrap, the
+     amount never does. */
+  flex: 1 1 0;
   display: grid;
-  margin: 0;
+  justify-items: start;
+  gap: 2px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
   line-height: 1.2;
+  text-align: start;
 }
-.cart-total span {
+.cart-total-label {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-3);
   color: var(--muted);
   font-size: 12px;
+}
+/* The way into the breakdown is spelled out, not just a small chevron. */
+.cart-total-details {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--control-line);
+  text-underline-offset: 3px;
+  transition:
+    color var(--control-transition),
+    text-decoration-color var(--control-transition);
+}
+@media (hover: hover) {
+  .cart-total:hover .cart-total-details {
+    color: var(--olive);
+    text-decoration-color: currentColor;
+  }
+}
+.cart-total-details .disclosure-chevron {
+  width: 6px;
+  height: 6px;
+  margin-inline: 2px 0;
+}
+/* Folded, the chevron points up: the breakdown opens above the total. */
+.cart-total[aria-expanded="false"] .disclosure-chevron {
+  transform: translateY(2px) rotate(225deg);
 }
 .cart-total strong {
   font-size: 20px;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+}
+.cart-total-note {
+  color: var(--olive);
+  font-size: 12px;
+}
+/* The breakdown unfolds upward from the total, inside the pinned block. */
+.cart-breakdown {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--motion-slow) var(--ease-out);
+}
+.cart-breakdown > div {
+  min-height: 0;
+  overflow: hidden;
+}
+.cart-breakdown[data-open] {
+  grid-template-rows: 1fr;
+}
+.cart-breakdown .order-totals {
+  display: grid;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  padding: var(--space-1) 0 var(--space-4);
+  border-bottom: 1px solid var(--line);
+}
+.cart-breakdown .order-totals .field-hint {
+  margin-top: var(--space-1);
 }
 /* The label never breaks: where the row is too narrow for both, the
    button takes its own full-width row under the total. */

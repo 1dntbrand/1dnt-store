@@ -1474,5 +1474,23 @@
     "pl": "Szerokość, mm",
     "ru": "Ширина, мм",
     "uk": "Ширина, мм"
+  },
+  "totalWithDelivery": {
+    "en": "Delivery included",
+    "pl": "Z dostawą",
+    "ru": "С доставкой",
+    "uk": "З доставкою"
+  },
+  "breakdownShow": {
+    "en": "Details",
+    "pl": "Szczegóły",
+    "ru": "Подробнее",
+    "uk": "Детальніше"
+  },
+  "breakdownHide": {
+    "en": "Hide",
+    "pl": "Ukryj",
+    "ru": "Скрыть",
+    "uk": "Сховати"
   }
 }

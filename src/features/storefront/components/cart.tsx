@@ -347,19 +347,78 @@ export function OrderTotals({ withTotal = true }: { withTotal?: boolean }) {
 }
 
 /** The amount to pay, pinned beside the checkout button. */
-function CartTotal() {
+/**
+ * The pinned end of the bag: what to pay and the button to pay it. The
+ * total doubles as the switch for the breakdown that unfolds above it,
+ * folded on phones so the pieces keep the room, open on larger screens.
+ * Delivery is always counted in, and a saving is named right away.
+ */
+function CheckoutBar({
+  disabled,
+  onCheckout,
+}: {
+  disabled: boolean;
+  onCheckout: () => void;
+}) {
   const { t, money, pricing } = useStorefront((state) => ({
     t: state.t,
     money: state.money,
     pricing: state.pricing,
   }));
+  // Lines only render in the browser (the bag is restored there), so the
+  // screen size is known when this first renders.
+  const [open, setOpen] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(min-width: 641px)").matches,
+  );
+  const breakdownId = useId();
   return (
-    <p className="cart-total" aria-live="polite" aria-atomic="true">
-      <span>{t("totalLabel")}</span>
-      <Figure as="strong" value={pricing.grandTotal}>
-        {money(pricing.grandTotal)}
-      </Figure>
-    </p>
+    <>
+      <div
+        id={breakdownId}
+        className="cart-breakdown"
+        data-open={open || undefined}
+        inert={!open}
+      >
+        <div>
+          <OrderTotals withTotal={false} />
+        </div>
+      </div>
+      <div className="cart-total-bar">
+        <button
+          type="button"
+          className="cart-total"
+          aria-expanded={open}
+          aria-controls={breakdownId}
+          onClick={() => setOpen((value) => !value)}
+        >
+          <span className="cart-total-label">
+            {t("totalLabel")}
+            <span className="cart-total-details">
+              {t(open ? "breakdownHide" : "breakdownShow")}
+              <span className="disclosure-chevron" aria-hidden="true" />
+            </span>
+          </span>
+          <Figure as="strong" value={pricing.grandTotal}>
+            {money(pricing.grandTotal)}
+          </Figure>
+          <span className="cart-total-note" aria-live="polite">
+            {pricing.discount > 0
+              ? `${t("saveLabel")}${money(pricing.discount)}`
+              : t("totalWithDelivery")}
+          </span>
+        </button>
+        <button
+          type="button"
+          className="btn"
+          disabled={disabled}
+          onClick={onCheckout}
+        >
+          {t("checkoutAction")}
+        </button>
+      </div>
+    </>
   );
 }
 
@@ -471,11 +530,8 @@ export function Cart() {
               </p>
             )}
             <OrderItems editable />
-            {/* The breakdown scrolls with the bag; only the total and the
-                way forward stay pinned, so the pieces keep the room. */}
             <div className="cart-summary">
               <SetSuggestionNote />
-              <OrderTotals withTotal={false} />
               <button
                 type="button"
                 className="text-button continue-shopping"
@@ -491,17 +547,10 @@ export function Cart() {
                 {t("cartStockIssue")}
               </p>
             )}
-            <div className="cart-total-bar">
-              <CartTotal />
-              <button
-                type="button"
-                className="btn"
-                disabled={cartHasStockIssue}
-                onClick={() => openDialog("checkoutPanel")}
-              >
-                {t("checkoutAction")}
-              </button>
-            </div>
+            <CheckoutBar
+              disabled={cartHasStockIssue}
+              onCheckout={() => openDialog("checkoutPanel")}
+            />
           </div>
         </>
       )}
