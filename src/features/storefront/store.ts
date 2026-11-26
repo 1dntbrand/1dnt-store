@@ -135,6 +135,8 @@ interface StorefrontActions {
   openService: (id: ServiceId) => void;
   addItems: (variants: readonly ProductVariant[]) => void;
   changeQuantity: (id: string, quantity: number) => void;
+  /** Several lines at once, e.g. every piece of a set: one update. */
+  changeQuantities: (changes: { id: string; qty: number }[]) => void;
   dismissAdded: () => void;
 }
 
@@ -282,6 +284,22 @@ export function createStorefrontStore(initialLanguage: Language = "en") {
         const cart = get()
           .cart.map((item) =>
             item.id === id ? { ...item, qty: quantity } : item,
+          )
+          .filter((item) => item.qty > 0);
+        set({ ...cartState(cart), cartNotice: null });
+        saveCartAndLanguage(get());
+      },
+      changeQuantities(changes) {
+        const next = new Map(changes.map(({ id, qty }) => [id, qty]));
+        for (const line of get().cart) {
+          const quantity = next.get(line.id);
+          if (quantity === undefined) continue;
+          if (!Number.isInteger(quantity) || quantity < 0) return;
+          if (quantity > line.qty && quantity > variantLimit(line)) return;
+        }
+        const cart = get()
+          .cart.map((item) =>
+            next.has(item.id) ? { ...item, qty: next.get(item.id)! } : item,
           )
           .filter((item) => item.qty > 0);
         set({ ...cartState(cart), cartNotice: null });

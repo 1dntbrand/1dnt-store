@@ -108,7 +108,11 @@ function priceCollection(items: CartItem[], collection: Collection) {
     group.reduce((sum, item) => sum + remaining.get(item.id)!, 0);
   const groupsByItemId: Record<string, { qty: number; unitAmount: number }[]> =
     {};
+  /** One discounted set: the unit of each item it was built from. */
+  const sets: CartSet[] = [];
+  /** Returns the item id of every unit taken, in allocation order. */
   const allocate = (group: CartItem[], units: number, rate: number) => {
+    const taken: string[] = [];
     let left = units;
     for (const item of group) {
       if (!left) break;
@@ -128,18 +132,34 @@ function priceCollection(items: CartItem[], collection: Collection) {
           unitAmount: itemPrice(item) - discountPerUnit,
         });
       }
+      for (let unit = 0; unit < quantity; unit++) taken.push(item.id);
     }
+    return taken;
+  };
+  /** The n-th unit taken from each group forms the n-th set. */
+  const recordSets = (units: string[][], rate: number) => {
+    for (let index = 0; index < (units[0]?.length ?? 0); index++)
+      sets.push({ rate, ids: units.map((group) => group[index]) });
   };
   const trios = Math.min(count(leashes), count(collars), count(harnesses));
-  for (const group of [leashes, collars, harnesses])
-    allocate(group, trios, TRIO_DISCOUNT);
+  recordSets(
+    [leashes, collars, harnesses].map((group) =>
+      allocate(group, trios, TRIO_DISCOUNT),
+    ),
+    TRIO_DISCOUNT,
+  );
   const accessories =
     collection === "elegant"
       ? collars
       : [...collars, ...harnesses].sort(byPrice);
   const pairs = Math.min(count(leashes), count(accessories));
-  allocate(leashes, pairs, PAIR_DISCOUNT);
-  allocate(accessories, pairs, PAIR_DISCOUNT);
+  recordSets(
+    [
+      allocate(leashes, pairs, PAIR_DISCOUNT),
+      allocate(accessories, pairs, PAIR_DISCOUNT),
+    ],
+    PAIR_DISCOUNT,
+  );
   for (const item of items) {
     const qty = remaining.get(item.id) ?? 0;
     if (qty > 0) {
@@ -149,7 +169,13 @@ function priceCollection(items: CartItem[], collection: Collection) {
       });
     }
   }
-  return { discounts, trios, pairs, groupsByItemId };
+  return { discounts, trios, pairs, groupsByItemId, sets };
+}
+
+/** A set the discount was given for: its rate and one unit of each item. */
+export interface CartSet {
+  rate: number;
+  ids: string[];
 }
 
 /** Allocate each unit once, within its own collection. */
@@ -185,5 +211,7 @@ export function calculateCart(items: CartItem[]) {
     trios: base.trios + elegant.trios,
     pairs: base.pairs + elegant.pairs,
     groupsByItemId: { ...base.groupsByItemId, ...elegant.groupsByItemId },
+    /** Which units make up each discounted set, trios before pairs. */
+    sets: [...base.sets, ...elegant.sets],
   };
 }

@@ -2093,6 +2093,63 @@ dialog::backdrop {
   text-align: center;
   font-size: 13px;
 }
+/* A set reads as one entry: a quiet framed group with its saving, its
+   pieces, and one control and price for the whole set. */
+.cart-set {
+  margin-block: var(--space-3);
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--media-radius);
+  background: var(--surface);
+}
+.cart-set-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding-bottom: var(--space-2);
+}
+.cart-set .cart-set-head h3 {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.cart-set-rate {
+  color: var(--olive);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.cart-set-pieces {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cart-item.cart-set-piece {
+  --cart-photo-width: 56px;
+  grid-template-columns: var(--cart-photo-width) minmax(0, 1fr);
+  grid-template-areas: "photo item";
+  padding-block: var(--space-2);
+  border-bottom: 0;
+}
+.cart-set-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  margin-top: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--line);
+}
+.cart-set-foot .cart-item-quantity {
+  font-size: 12px;
+}
+.checkout-summary .cart-set {
+  padding: var(--space-3);
+}
+.checkout-summary .cart-set-piece {
+  --cart-photo-width: 40px;
+}
 .cart-remove {
   color: var(--muted);
   font-size: 12px;
