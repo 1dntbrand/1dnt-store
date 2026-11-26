@@ -76,24 +76,29 @@
     right: var(--page-gutter);
     bottom: max(var(--space-3), env(safe-area-inset-bottom));
   }
+  /* Rises above the sticky bar by moving, not by changing its layout. */
   body:has(.purchase-dock[data-visible]) .added-toast-region {
-    bottom: calc(68px + env(safe-area-inset-bottom));
+    translate: 0
+      calc(
+        max(var(--space-3), env(safe-area-inset-bottom)) - 68px -
+          env(safe-area-inset-bottom)
+      );
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   /* Rises with the sticky bar instead of jumping over it. */
   .added-toast-region {
-    transition: bottom 260ms var(--ease-out);
+    transition: translate var(--motion-slow) var(--ease-out);
   }
   .added-toast {
-    animation: toast-in 420ms var(--ease-out) both;
+    animation: toast-in var(--motion-slow) var(--ease-out) both;
   }
 }
 @keyframes toast-in {
   from {
     opacity: 0;
-    transform: translateY(-10px) scale(0.98);
+    transform: translateY(-8px);
   }
   to {
     opacity: 1;

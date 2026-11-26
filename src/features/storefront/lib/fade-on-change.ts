@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, type RefObject } from "react";
-import { prefersReducedMotion } from "./motion";
+import { prefersReducedMotion, EASE_OUT, MOTION } from "./motion";
 
 /** Set once the first frame is on screen; before that nothing animates. */
 export function markPageReady() {
@@ -34,8 +34,8 @@ export function useFadeOnChange(
     const element = ref.current;
     if (!when || !element || !pageReady() || prefersReducedMotion()) return;
     element.animate(keyframes, {
-      duration: 220,
-      easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+      duration: MOTION.base,
+      easing: EASE_OUT,
     });
   }, [ref, value, when, keyframes]);
 }

@@ -1,7 +1,7 @@
-import { prefersReducedMotion } from "./motion";
+import { EASE_IN, EASE_OUT, MOTION, prefersReducedMotion } from "./motion";
 
-const EXIT_MS = 180;
-const EXIT_EASE = "cubic-bezier(0.4, 0, 1, 1)";
+const EXIT_MS = MOTION.exit;
+const EXIT_EASE = EASE_IN;
 
 /** Where a closing overlay goes: back the way it came in. */
 function exitTransform(element: HTMLElement) {
@@ -54,8 +54,8 @@ export function foldAway(element: HTMLElement | null, done: () => void) {
         { height: "0px", opacity: 0, paddingBlock: "0px", marginBlock: "0px" },
       ],
       {
-        duration: 240,
-        easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+        duration: MOTION.base,
+        easing: EASE_OUT,
         fill: "forwards",
       },
     )

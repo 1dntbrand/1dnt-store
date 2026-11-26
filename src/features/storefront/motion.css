@@ -63,12 +63,12 @@
      shopper switches; nothing replays on page load. */
   /* The sticky bar switches between the product and the set in place. */
   .purchase-dock-content {
-    animation: swap-in 200ms var(--ease-out) both;
+    animation: swap-in var(--motion-base) var(--ease-out) both;
   }
 
   /* A message the shopper caused (an error, a confirmation) arrives softly. */
   .state-in {
-    animation: state-in 220ms var(--ease-out) both;
+    animation: state-in var(--motion-base) var(--ease-out) both;
   }
   .spinner {
     animation: spin 800ms linear infinite;
@@ -95,21 +95,14 @@
     transition:
       background-color var(--control-transition),
       border-color var(--control-transition),
-      opacity var(--control-transition),
-      transform 140ms var(--ease-out);
+      opacity var(--control-transition);
   }
-  .btn:active:not(:disabled),
-  .size-options button:active,
-  .icon-button:active {
-    transform: scale(0.97);
-  }
-  .swatch:active {
-    transform: scale(0.92);
-  }
+  /* No squash on press: a tap answers with colour and border, the way a
+     well-made physical control does, not with a bounce. */
 
-  /* The bag count confirms that something was added. */
+  /* The bag count confirms that something was added: it fades in anew. */
   .cart-count[data-bump] {
-    animation: count-bump 360ms var(--ease-out);
+    animation: count-bump var(--motion-slow) var(--ease-out);
   }
 
   /* Sticky header: a hairline shadow only once something scrolls beneath it. */
@@ -147,8 +140,8 @@
   }
 }
 @keyframes count-bump {
-  45% {
-    transform: scale(1.25);
+  from {
+    opacity: 0.2;
   }
 }
 @keyframes header-lift {

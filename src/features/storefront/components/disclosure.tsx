@@ -10,10 +10,10 @@ import {
   type MouseEvent,
   type ReactNode,
 } from "react";
-import { prefersReducedMotion } from "../lib/motion";
+import { EASE_OUT, MOTION, prefersReducedMotion } from "../lib/motion";
 
-const DURATION_MS = 280;
-const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
+const DURATION_MS = MOTION.slow;
+const EASE = EASE_OUT;
 /** Room kept between the sticky site header and a tapped accordion header. */
 const HEADER_GAP = 12;
 
