@@ -26,8 +26,11 @@ dialog:focus-visible {
   gap: var(--space-4);
   padding: var(--space-3) var(--panel-gutter);
 }
+/* The close button lines up with the title's first line, also when a long
+   title wraps: both start at the top, the title nudged to the button's
+   centre. */
 .panel-top h2 {
-  margin: 0;
+  margin: calc((44px - 1.2em) / 2) 0;
   font-size: clamp(19px, 2.4vw, 24px);
   line-height: 1.2;
   letter-spacing: -0.02em;
