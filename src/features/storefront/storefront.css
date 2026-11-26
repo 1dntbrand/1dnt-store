@@ -2285,6 +2285,11 @@ dialog::backdrop {
 .contact-fields input[aria-invalid="true"] {
   border-color: var(--error);
 }
+/* Name and surname share a row; email and phone take the full width, so
+   no field sits alone beside an empty half. */
+.contact-wide {
+  grid-column: 1 / -1;
+}
 .checkout-phone {
   display: grid;
   grid-column: 1 / -1;
@@ -2470,6 +2475,12 @@ dialog::backdrop {
 .checkout-order-content .cart-list {
   max-height: 300px;
   overflow-y: auto;
+}
+/* Desktop: the order list uses the height the screen has. */
+@media (min-width: 801px) {
+  .checkout-order-content .cart-list {
+    max-height: max(300px, calc(100dvh - 560px));
+  }
 }
 .checkout-order-content > .text-button {
   margin-top: var(--space-2);
@@ -2752,9 +2763,6 @@ dialog::backdrop {
   }
   .contact-fields {
     gap: var(--space-3);
-  }
-  .contact-wide {
-    grid-column: 1 / -1;
   }
   .pickup-button {
     gap: var(--space-3);
