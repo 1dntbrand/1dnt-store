@@ -87,6 +87,22 @@ summary:focus-visible {
   outline: 2px solid var(--olive);
   outline-offset: 4px;
 }
+/* A text field shows focus on its own edge, not with a second ring. */
+input:is(
+    [type="text"],
+    [type="email"],
+    [type="tel"],
+    :not([type])
+  ):focus-visible {
+  outline: 0;
+  border-color: var(--olive);
+  box-shadow: inset 0 0 0 1px var(--olive);
+}
+/* Full-width sections land flush under the header; cards and blocks keep
+   the breathing room of scroll-padding. */
+:is(#collection, #elegant, #philosophy, #faq) {
+  scroll-margin-top: calc(-1 * var(--space-4));
+}
 h1,
 h2,
 h3,
@@ -1588,8 +1604,22 @@ summary::-webkit-details-marker {
   align-items: center;
   min-height: 44px;
   font-size: 13px;
+}
+/* Links to the FIDLOCK video: YouTube's mark, then the underlined words. */
+.video-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+}
+.video-link > span {
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+.video-link > .icon {
+  flex: none;
+  width: 20px;
+  height: 20px;
 }
 
 /* Footer. */
@@ -2268,9 +2298,10 @@ dialog::backdrop {
   gap: var(--space-3);
 }
 .cart-total {
-  /* Takes the room the button leaves; the saving line may wrap, the
-     amount never does. */
-  flex: 1 1 0;
+  /* Takes all the room the button leaves (the weight keeps the button at
+     its half); the saving line wraps only when even that is too narrow,
+     the amount never does. */
+  flex: 999 1 0;
   display: grid;
   justify-items: start;
   gap: 2px;
@@ -2338,6 +2369,7 @@ dialog::backdrop {
   }
 }
 .cart-total strong {
+  color: var(--ink);
   font-size: 22px;
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -2372,10 +2404,11 @@ dialog::backdrop {
 .cart-breakdown .order-totals .field-hint {
   margin-top: var(--space-1);
 }
-/* The label never breaks: where the row is too narrow for both, the
+/* Half the row, so the total and its saving fit on one line beside it.
+   The label never breaks: where the row is too narrow for both, the
    button takes its own full-width row under the total. */
 .cart-total-bar .btn {
-  flex: 1 0 auto;
+  flex: 1 0 50%;
   min-width: max-content;
   padding-inline: var(--space-4);
   white-space: nowrap;
@@ -2385,7 +2418,7 @@ dialog::backdrop {
     font-size: 24px;
   }
   .cart-total-bar .btn {
-    flex-grow: 0;
+    flex: 0 0 auto;
     min-width: 220px;
   }
 }

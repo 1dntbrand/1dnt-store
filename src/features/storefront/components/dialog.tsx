@@ -47,22 +47,26 @@ export function Dialog({
       // it (a field focused inside a sheet, the keyboard, rubber-banding).
       // Closing puts the shopper back exactly where they opened it; a link
       // in the dialog scrolls on its own afterwards.
-      if (
+      const panned =
         window.location.hash === pageHash &&
-        Math.abs(window.scrollY - pageScroll) > 1
-      )
-        window.scrollTo({ top: pageScroll, behavior: "instant" });
+        Math.abs(window.scrollY - pageScroll) > 1;
       const finish = () => {
         if (exit.current !== running) return;
         exit.current = null;
         dialog.close();
         dialog.getAnimations().forEach((animation) => animation.cancel());
+        // Only once the dialog is closed: scrolled back while it is still
+        // modal, iPhone Safari keeps hit-testing the sticky header where it
+        // sat while panned, and taps on it miss until the next scroll.
+        if (panned) window.scrollTo({ top: pageScroll, behavior: "instant" });
         // Another dialog may have opened meanwhile; it keeps the focus.
         if (!document.querySelector("dialog[open]"))
           returnFocus(previousFocus, dialog);
       };
-      // A short exit the way it came in, then the real close.
-      const running = playDialogExit(dialog);
+      // A short exit the way it came in, then the real close. A panned page
+      // skips it: the sheet goes and the page returns in the same frame, so
+      // nothing is seen jumping.
+      const running = panned ? null : playDialogExit(dialog);
       exit.current = running;
       if (running) running.finished.then(finish, () => {});
       else finish();

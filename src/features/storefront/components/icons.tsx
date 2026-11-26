@@ -59,10 +59,12 @@ export function PlayIcon({ className = "icon" }: { className?: string }) {
   );
 }
 
-export function ExternalIcon({ className = "icon" }: { className?: string }) {
+/** YouTube's mark in the icon set's own line weight, for links to a video. */
+export function YouTubeIcon({ className = "icon" }: { className?: string }) {
   return (
     <svg {...base} className={className}>
-      <path d="M8 16 16.5 7.5M9.5 7.5h7v7" />
+      <rect x="2.75" y="5.75" width="18.5" height="12.5" rx="3.75" />
+      <path d="M10.25 9.25v5.5l4.75-2.75z" fill="currentColor" stroke="none" />
     </svg>
   );
 }

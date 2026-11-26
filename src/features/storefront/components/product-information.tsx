@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalIcon } from "./icons";
+import { YouTubeIcon } from "./icons";
 import type { Collection, ProductKind } from "@/domain/commerce/catalog";
 import { useStorefront } from "../storefront-context";
 import { ProductSafety } from "./product-safety";
@@ -55,13 +55,13 @@ export function ProductInformation({
               <p>{t("baseHardwareFastening")}</p>
               <p>
                 <a
-                  className="text-link"
+                  className="text-link video-link"
                   href={fidlockVideo.watch}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {t("hardwareHowWorks")}
-                  <ExternalIcon />
+                  <YouTubeIcon />
+                  <span>{t("hardwareHowWorks")}</span>
                 </a>
               </p>
             </>

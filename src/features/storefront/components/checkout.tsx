@@ -63,11 +63,15 @@ export function Checkout() {
   const [reviewOpen, setReviewOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   // Show a field's error once the shopper has left it, not while typing.
+  // Passing through an empty field (or closing the checkout from it) is
+  // not a mistake yet: "required" waits for the submit.
   const [touched, setTouched] = useState<ReadonlySet<ContactField>>(
     () => new Set(),
   );
-  const leave = (name: ContactField) =>
-    setTouched((current) => new Set(current).add(name));
+  const leave = (name: ContactField) => {
+    if (values[name].trim())
+      setTouched((current) => new Set(current).add(name));
+  };
   const showError = (name: ContactField) =>
     (submitted || touched.has(name)) && invalid(name);
   const [pickupNotice, setPickupNotice] = useState(false);

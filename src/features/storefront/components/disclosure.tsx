@@ -17,7 +17,8 @@ const EASE = EASE_OUT;
 
 interface GroupItem {
   isOpen: () => boolean;
-  collapse: () => void;
+  /** Folds the item; resolves once it has finished folding. */
+  collapse: () => Promise<void>;
 }
 
 const GroupContext = createContext<Map<string, GroupItem> | null>(null);
@@ -35,7 +36,11 @@ export function DisclosureGroup({ children }: { children: ReactNode }) {
  * away: the page follows the fold, so the header stays under the finger
  * and the folding text leaves upward instead of the header jumping.
  */
-function keepInPlace(header: HTMLElement, start: number, duration: number) {
+function keepInPlace(
+  header: HTMLElement,
+  start: number,
+  folded: Promise<unknown>,
+) {
   const root = document.documentElement;
   const hold = () => {
     const drift = header.getBoundingClientRect().top - start;
@@ -46,12 +51,30 @@ function keepInPlace(header: HTMLElement, start: number, duration: number) {
     window.scrollBy(0, drift);
     root.style.scrollBehavior = behaviour;
   };
-  // Without motion the fold is already done: one correction is enough.
-  if (!duration) return hold();
-  const end = performance.now() + duration + 60;
+  // Hold until the fold has really finished (browsers start animations a
+  // frame apart), then once more; let go at once if the shopper scrolls.
+  let done = false;
+  let released = false;
+  const release = () => {
+    released = true;
+    for (const type of ["touchstart", "wheel", "keydown"])
+      window.removeEventListener(type, release);
+  };
+  for (const type of ["touchstart", "wheel", "keydown"])
+    window.addEventListener(type, release, { passive: true });
+  const cap = performance.now() + 1000;
+  folded.finally(() => {
+    done = true;
+  });
+  hold();
   const step = () => {
+    if (released) return;
     hold();
-    if (performance.now() < end) window.requestAnimationFrame(step);
+    if (done || performance.now() > cap) {
+      hold();
+      return release();
+    }
+    window.requestAnimationFrame(step);
   };
   window.requestAnimationFrame(step);
 }
@@ -103,10 +126,10 @@ export function Disclosure({
   });
 
   /** Animate the content to open or closed from wherever it is now. */
-  function animateTo(state: "open" | "closed") {
+  function animateTo(state: "open" | "closed"): Promise<void> {
     const element = details.current;
     const body = content.current;
-    if (!element || !body) return;
+    if (!element || !body) return Promise.resolve();
     const from = element.open ? body.getBoundingClientRect().height : 0;
     animation.current?.cancel();
     animation.current = null;
@@ -125,7 +148,10 @@ export function Disclosure({
       // The +/− flips at once; the panel folds away underneath.
       element.dataset.state = "closing";
     }
-    if (prefersReducedMotion()) return settle();
+    if (prefersReducedMotion()) {
+      settle();
+      return Promise.resolve();
+    }
 
     const to = state === "open" ? body.scrollHeight : 0;
     body.style.overflow = "hidden";
@@ -139,7 +165,7 @@ export function Disclosure({
     animation.current = running;
     // The promise settles even when the page is not rendering (background
     // tab); a cancelled run rejects and simply does nothing.
-    running.finished
+    return running.finished
       .then(() => {
         if (animation.current !== running) return;
         animation.current = null;
@@ -175,16 +201,16 @@ export function Disclosure({
     }
     const header = event.currentTarget;
     const headerTop = header.getBoundingClientRect().top;
-    let foldsAbove = false;
+    const foldingAbove: Promise<void>[] = [];
     if (group)
       for (const [key, item] of group) {
         if (key === id || !item.isOpen()) continue;
-        item.collapse();
-        foldsAbove ||= isAbove(key, header);
+        const folded = item.collapse();
+        if (isAbove(key, header)) foldingAbove.push(folded);
       }
-    animateTo("open");
-    if (foldsAbove)
-      keepInPlace(header, headerTop, prefersReducedMotion() ? 0 : DURATION_MS);
+    void animateTo("open");
+    if (foldingAbove.length)
+      keepInPlace(header, headerTop, Promise.all(foldingAbove));
   }
 
   return (

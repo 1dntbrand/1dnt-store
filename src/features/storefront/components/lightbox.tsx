@@ -49,6 +49,9 @@ export function Lightbox({
     const previousFocus = captureReturnFocus();
     element.getAnimations().forEach((animation) => animation.cancel());
     if (!element.open) element.showModal();
+    // As in every dialog: start on the lightbox itself, so a tap shows no
+    // ring on the close button; Tab and the arrow keys work from here.
+    element.focus({ preventScroll: true });
     pushOverlayEntry();
     const stopBack = onOverlayBack(onClose);
     document.body.style.overflow = "hidden";
@@ -104,6 +107,7 @@ export function Lightbox({
       ref={dialog}
       className="lightbox"
       aria-label={t("productPhotos")}
+      tabIndex={-1}
       data-zoomed={zoomed !== null || undefined}
       onCancel={(event) => {
         event.preventDefault();

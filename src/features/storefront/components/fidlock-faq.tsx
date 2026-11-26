@@ -1,5 +1,5 @@
 "use client";
-import { PlayIcon } from "./icons";
+import { PlayIcon, YouTubeIcon } from "./icons";
 import { useState } from "react";
 import { useStorefront } from "../storefront-context";
 import { fidlockVideo } from "../data/brand";
@@ -40,12 +40,13 @@ export function FidlockFaq() {
         )}
       </div>
       <a
-        className="video-source"
+        className="video-source video-link"
         href={fidlockVideo.watch}
         target="_blank"
         rel="noopener noreferrer"
       >
-        {t("watchYoutube")}
+        <YouTubeIcon />
+        <span>{t("watchYoutube")}</span>
       </a>
     </Disclosure>
   );
