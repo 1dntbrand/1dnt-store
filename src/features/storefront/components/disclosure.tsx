@@ -1,102 +1,19 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useId,
-  useMemo,
-  useRef,
-  type MouseEvent,
-  type ReactNode,
-} from "react";
-import { EASE_OUT, MOTION, prefersReducedMotion } from "../lib/motion";
-
-const DURATION_MS = MOTION.slow;
-const EASE = EASE_OUT;
-
-interface GroupItem {
-  isOpen: () => boolean;
-  /** Folds the item; resolves once it has finished folding. */
-  collapse: () => Promise<void>;
-}
-
-const GroupContext = createContext<Map<string, GroupItem> | null>(null);
-
-/** Disclosures inside a group behave as one accordion: one open at a time. */
-export function DisclosureGroup({ children }: { children: ReactNode }) {
-  const items = useMemo(() => new Map<string, GroupItem>(), []);
-  return (
-    <GroupContext.Provider value={items}>{children}</GroupContext.Provider>
-  );
-}
+import { useId, useState, type ReactNode } from "react";
 
 /**
- * Keeps a tapped header where it was while the open item above it folds
- * away: the page follows the fold, so the header stays under the finger
- * and the folding text leaves upward instead of the header jumping.
- */
-function keepInPlace(
-  header: HTMLElement,
-  start: number,
-  folded: Promise<unknown>,
-) {
-  const root = document.documentElement;
-  const hold = () => {
-    const drift = header.getBoundingClientRect().top - start;
-    if (Math.abs(drift) <= 0.5) return;
-    // Instant, whatever the page's smooth-scroll setting says.
-    const behaviour = root.style.scrollBehavior;
-    root.style.scrollBehavior = "auto";
-    window.scrollBy(0, drift);
-    root.style.scrollBehavior = behaviour;
-  };
-  // Hold until the fold has really finished (browsers start animations a
-  // frame apart), then once more; let go at once if the shopper scrolls.
-  let done = false;
-  let released = false;
-  const release = () => {
-    released = true;
-    for (const type of ["touchstart", "wheel", "keydown"])
-      window.removeEventListener(type, release);
-  };
-  for (const type of ["touchstart", "wheel", "keydown"])
-    window.addEventListener(type, release, { passive: true });
-  const cap = performance.now() + 1000;
-  folded.finally(() => {
-    done = true;
-  });
-  hold();
-  const step = () => {
-    if (released) return;
-    hold();
-    if (done || performance.now() > cap) {
-      hold();
-      return release();
-    }
-    window.requestAnimationFrame(step);
-  };
-  window.requestAnimationFrame(step);
-}
-
-/** Whether the group item `key` sits above `header` in the page. */
-function isAbove(key: string, header: HTMLElement) {
-  const other = document.querySelector(
-    `[data-disclosure="${CSS.escape(key)}"]`,
-  );
-  return (
-    !!other &&
-    !!(other.compareDocumentPosition(header) & Node.DOCUMENT_POSITION_FOLLOWING)
-  );
-}
-
-/**
- * A native <details> that opens and closes smoothly in every browser
- * (Safari cannot animate to height: auto in CSS).
+ * An accordion item: a button and the panel it opens.
  *
- * In a group, opening an item folds the open one at the same time, so the
- * page reflows in one smooth movement instead of jumping. A second tap
- * mid-way reverses from the current height.
+ * Deliberately simple, so it behaves the same in every browser:
+ * - the panel folds on its own grid row (0fr ↔ 1fr), a plain CSS
+ *   transition with nothing measured or animated from script;
+ * - items open and close independently. Opening one never folds another,
+ *   so nothing above the tapped header changes and the page never has to
+ *   be moved to keep it under the finger.
+ *
+ * A closed panel stays in the page, folded and inert: hidden from screen
+ * readers and the keyboard, and a second tap mid-way simply reverses.
  */
 export function Disclosure({
   summary,
@@ -115,123 +32,41 @@ export function Disclosure({
   defaultOpen?: boolean;
   onToggle?: (open: boolean) => void;
 }) {
-  const group = useContext(GroupContext);
-  const id = useId();
-  const details = useRef<HTMLDetailsElement>(null);
-  const content = useRef<HTMLDivElement>(null);
-  const animation = useRef<Animation | null>(null);
-  const toggled = useRef(onToggle);
-  useEffect(() => {
-    toggled.current = onToggle;
-  });
-
-  /** Animate the content to open or closed from wherever it is now. */
-  function animateTo(state: "open" | "closed"): Promise<void> {
-    const element = details.current;
-    const body = content.current;
-    if (!element || !body) return Promise.resolve();
-    const from = element.open ? body.getBoundingClientRect().height : 0;
-    animation.current?.cancel();
-    animation.current = null;
-
-    const settle = () => {
-      body.style.overflow = "";
-      if (state === "closed") element.open = false;
-      delete element.dataset.state;
-      toggled.current?.(state === "open");
-    };
-
-    if (state === "open") {
-      delete element.dataset.state;
-      element.open = true;
-    } else {
-      // The +/− flips at once; the panel folds away underneath.
-      element.dataset.state = "closing";
-    }
-    if (prefersReducedMotion()) {
-      settle();
-      return Promise.resolve();
-    }
-
-    const to = state === "open" ? body.scrollHeight : 0;
-    body.style.overflow = "hidden";
-    const running = body.animate(
-      [
-        { height: `${from}px`, opacity: state === "open" ? 0.25 : 1 },
-        { height: `${to}px`, opacity: state === "open" ? 1 : 0 },
-      ],
-      { duration: DURATION_MS, easing: EASE },
-    );
-    animation.current = running;
-    // The promise settles even when the page is not rendering (background
-    // tab); a cancelled run rejects and simply does nothing.
-    return running.finished
-      .then(() => {
-        if (animation.current !== running) return;
-        animation.current = null;
-        settle();
-      })
-      .catch(() => {});
-  }
-
-  // The group calls the latest animateTo through a ref.
-  const animateRef = useRef(animateTo);
-  useEffect(() => {
-    animateRef.current = animateTo;
-  });
-  useEffect(() => {
-    if (!group) return;
-    group.set(id, {
-      isOpen: () =>
-        !!details.current?.open && details.current.dataset.state !== "closing",
-      collapse: () => animateRef.current("closed"),
-    });
-    return () => {
-      group.delete(id);
-    };
-  }, [group, id]);
-
-  function onSummaryClick(event: MouseEvent<HTMLElement>) {
-    event.preventDefault();
-    const element = details.current;
-    if (!element) return;
-    if (element.open && element.dataset.state !== "closing") {
-      animateTo("closed");
-      return;
-    }
-    const header = event.currentTarget;
-    const headerTop = header.getBoundingClientRect().top;
-    const foldingAbove: Promise<void>[] = [];
-    if (group)
-      for (const [key, item] of group) {
-        if (key === id || !item.isOpen()) continue;
-        const folded = item.collapse();
-        if (isAbove(key, header)) foldingAbove.push(folded);
-      }
-    void animateTo("open");
-    if (foldingAbove.length)
-      keepInPlace(header, headerTop, Promise.all(foldingAbove));
-  }
+  const [open, setOpen] = useState(defaultOpen);
+  const panelId = useId();
 
   return (
-    <details
-      ref={details}
-      className={className}
-      open={defaultOpen}
-      data-disclosure={id}
+    <div
+      className={className ? `disclosure ${className}` : "disclosure"}
+      data-open={open || undefined}
     >
-      <summary className={summaryClassName} onClick={onSummaryClick}>
+      <button
+        type="button"
+        className={
+          summaryClassName
+            ? `disclosure-summary ${summaryClassName}`
+            : "disclosure-summary"
+        }
+        aria-expanded={open}
+        aria-controls={panelId}
+        onClick={() => {
+          setOpen(!open);
+          onToggle?.(!open);
+        }}
+      >
         {summary}
-      </summary>
-      {/* The animated wrapper has no padding or layout of its own, so it can
-          fold to exactly zero; the styled content sits inside it. */}
-      <div ref={content} className="disclosure-content">
-        {contentClassName ? (
-          <div className={contentClassName}>{children}</div>
-        ) : (
-          children
-        )}
+      </button>
+      <div id={panelId} className="disclosure-panel" inert={!open}>
+        {/* The row that folds has no padding of its own, so it can reach
+            exactly zero; the styled content sits inside it. */}
+        <div className="disclosure-content">
+          {contentClassName ? (
+            <div className={contentClassName}>{children}</div>
+          ) : (
+            children
+          )}
+        </div>
       </div>
-    </details>
+    </div>
   );
 }

@@ -82,8 +82,7 @@ select {
 button:focus-visible,
 a:focus-visible,
 select:focus-visible,
-input:focus-visible,
-summary:focus-visible {
+input:focus-visible {
   outline: 2px solid var(--olive);
   outline-offset: 4px;
 }
@@ -209,7 +208,7 @@ button:disabled {
   .instagram-footer,
   .footer-links a,
   .service-links button,
-  summary
+  .disclosure-summary
 ) {
   transition:
     color var(--control-transition),
@@ -1060,37 +1059,71 @@ html:lang(uk) .hero-copy h1 em {
 .product-information {
   margin-top: var(--space-5);
 }
-/* Accordion content is its own formatting context, so margins inside never
-   collapse through it: the height measured is the height shown, and the
-   animation ends without a final nudge. */
+/* Accordions (disclosure.tsx): the header is a plain button, the panel
+   folds on its own grid row. Only the panel's height changes; it eases
+   the same way open and closed, and the text fades with it. */
+.disclosure-summary {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+.disclosure-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition:
+    grid-template-rows var(--motion-slow) var(--ease-out),
+    visibility 0s var(--motion-slow);
+}
+.disclosure[data-open] > .disclosure-panel {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition:
+    grid-template-rows var(--motion-slow) var(--ease-out),
+    visibility 0s;
+}
+/* Its own formatting context, so margins inside never stick out of the
+   fold; no padding, so it folds to exactly zero. */
 .disclosure-content {
   display: flow-root;
+  min-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity var(--motion-base) var(--ease-out);
 }
-/* Accordions manage their own movement (disclosure.tsx); the browser must
-   not shift the page on its own when a panel above folds. */
+.disclosure[data-open] > .disclosure-panel > .disclosure-content {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .disclosure-panel,
+  .disclosure[data-open] > .disclosure-panel,
+  .disclosure-content {
+    transition: none;
+  }
+}
+/* The browser must not shift the page on its own when a panel folds. */
 .product-information,
 .faq-questions,
 .bundle-parts {
   overflow-anchor: none;
 }
-/* Every "open" look below applies only while the item is not folding
-   away: the moment it starts to close, its icon and frame already show
-   the closed state, each in its own style (+/− or chevron). */
-.product-information details {
+/* The open look (−, turned chevron, framed heading) follows the button's
+   state at once; the panel folds underneath. */
+.product-information .disclosure {
   border-top: 1px solid var(--line);
 }
-.product-information details:last-child {
+.product-information .disclosure:last-child {
   border-bottom: 1px solid var(--line);
 }
-summary {
-  list-style: none;
-  cursor: pointer;
-}
-summary::-webkit-details-marker {
-  display: none;
-}
-.product-information summary,
-.faq-question > summary {
+.product-information .disclosure-summary,
+.faq-question > .disclosure-summary {
   display: flex;
   min-height: 48px;
   align-items: center;
@@ -1098,15 +1131,17 @@ summary::-webkit-details-marker {
   gap: var(--space-4);
   padding-block: var(--space-3);
 }
-.product-information summary::after,
-.faq-question > summary::after {
+.product-information .disclosure-summary::after,
+.faq-question > .disclosure-summary::after {
   content: "+";
   flex-shrink: 0;
   font-size: 18px;
   line-height: 1;
 }
-.product-information details[open]:not([data-state="closing"]) > summary::after,
-.faq-question[open]:not([data-state="closing"]) > summary::after {
+.product-information
+  .disclosure
+  > .disclosure-summary[aria-expanded="true"]::after,
+.faq-question > .disclosure-summary[aria-expanded="true"]::after {
   content: "−";
 }
 .product-information p,
@@ -1235,8 +1270,8 @@ summary::-webkit-details-marker {
   transform: translateY(-2px) rotate(45deg);
   transition: transform var(--control-transition);
 }
-.bundle-part-options[open]:not([data-state="closing"])
-  > summary
+.bundle-part-options
+  > .disclosure-summary[aria-expanded="true"]
   .disclosure-chevron,
 .mobile-order-toggle[aria-expanded="true"] .disclosure-chevron {
   transform: translateY(2px) rotate(225deg);
@@ -1317,7 +1352,7 @@ summary::-webkit-details-marker {
     border-color var(--control-transition),
     background-color var(--control-transition);
 }
-.bundle-part-options[open]:not([data-state="closing"]) > .bundle-part-heading {
+.bundle-part-options > .bundle-part-heading[aria-expanded="true"] {
   background-color: var(--surface);
   border-color: var(--control-line);
 }
@@ -1556,7 +1591,7 @@ summary::-webkit-details-marker {
 .faq-question:last-child {
   border-bottom: 1px solid var(--line);
 }
-.faq-question > summary {
+.faq-question > .disclosure-summary {
   font-size: 14px;
 }
 .faq-question p,
@@ -1757,23 +1792,23 @@ dialog::backdrop {
   padding: var(--space-4) var(--panel-gutter);
 }
 .drawer-nav > a,
-.menu-collections > summary {
+.menu-collections > .disclosure-summary {
   display: flex;
   justify-content: space-between;
   padding-block: var(--space-4);
   font-size: 20px;
   border-bottom: 1px solid var(--line);
 }
-.menu-collections > summary {
+.menu-collections > .disclosure-summary {
   align-items: center;
 }
-.menu-collections > summary .disclosure-chevron {
+.menu-collections > .disclosure-summary .disclosure-chevron {
   width: 9px;
   height: 9px;
   margin-inline-end: 6px;
 }
-.menu-collections[open]:not([data-state="closing"])
-  > summary
+.menu-collections
+  > .disclosure-summary[aria-expanded="true"]
   .disclosure-chevron {
   transform: translateY(2px) rotate(225deg);
 }
@@ -3093,9 +3128,9 @@ dialog::backdrop {
     color: var(--olive);
   }
   :is(
-    .product-information summary,
-    .faq-question > summary,
-    .menu-collections > summary
+    .product-information .disclosure-summary,
+    .faq-question > .disclosure-summary,
+    .menu-collections > .disclosure-summary
   ):hover {
     color: var(--olive);
   }
@@ -3143,9 +3178,9 @@ dialog::backdrop {
     .catalog-filters a,
     .elegant-tabs button,
     .drawer-nav a,
-    .menu-collections > summary,
+    .menu-collections > .disclosure-summary,
     .site-footer a,
-    details > summary
+    .disclosure-summary
   ):active {
     opacity: 0.6;
   }
