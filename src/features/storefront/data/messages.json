@@ -1445,12 +1445,6 @@
     "ru": "Совет: оставьте под лентой место для двух пальцев — так будет комфортно.",
     "uk": "Порада: залиште під стрічкою місце для двох пальців — так буде комфортно."
   },
-  "leashActiveRing": {
-    "en": "Orange ring — the attachment point in use.",
-    "pl": "Pomarańczowy pierścień — używany punkt mocowania.",
-    "ru": "Оранжевое кольцо — используемая точка крепления.",
-    "uk": "Помаранчеве кільце — точка кріплення, що використовується."
-  },
   "chooseThisSize": {
     "en": "Choose {size}",
     "pl": "Wybierz {size}",

@@ -12,6 +12,8 @@ function LeashFigure({
   dimension,
   caption,
   index,
+  width,
+  height,
   tall = false,
 }: {
   src: string;
@@ -19,6 +21,8 @@ function LeashFigure({
   dimension: string;
   caption: string;
   index?: string;
+  width: number;
+  height: number;
   tall?: boolean;
 }) {
   return (
@@ -32,13 +36,7 @@ function LeashFigure({
       <div className="leash-card-art">
         {/* Static vector illustration; next/image adds nothing for SVG. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={src}
-          alt=""
-          width={tall ? 880 : 640}
-          height={tall ? 1000 : 170}
-          decoding="async"
-        />
+        <img src={src} alt="" width={width} height={height} decoding="async" />
       </div>
       <p className="leash-card-dimension">{dimension}</p>
       <figcaption>{caption}</figcaption>
@@ -91,6 +89,8 @@ export function LeashGuide() {
         <GuideSection title={t("shortGuideNote")}>
           <LeashFigure
             src="/assets/guides/leash-standard.svg"
+            width={640}
+            height={170}
             dimension={metres(1.5, 2)}
             caption={t("shortLeashGuideCaption")}
           />
@@ -100,14 +100,18 @@ export function LeashGuide() {
           <div className="leash-modes">
             <LeashFigure
               index="01"
-              src="/assets/guides/leash-full.svg"
+              src="/assets/guides/leash-full-line.webp"
+              width={1630}
+              height={265}
               title={t("leashFixedTitle")}
               dimension={metres(2.5, 2)}
               caption={t("leashFixedCaption")}
             />
             <LeashFigure
               index="02"
-              src="/assets/guides/leash-shortened.svg"
+              src="/assets/guides/leash-shortened-line.webp"
+              width={1486}
+              height={294}
               title={t("leashLongTitle")}
               dimension={metres(2, 2)}
               caption={t("leashLongCaption")}
@@ -115,16 +119,14 @@ export function LeashGuide() {
             <LeashFigure
               index="03"
               tall
-              src="/assets/guides/leash-hands-free.svg"
+              src="/assets/guides/leash-hands-free-walk.webp"
+              width={919}
+              height={1064}
               title={t("leashHandsFreeTitle")}
               dimension={centimetres("150")}
               caption={t("leashHandsFreeCaption")}
             />
           </div>
-          <p className="guide-note leash-active-note">
-            <span className="leash-active-ring" aria-hidden="true" />
-            {t("leashActiveRing")}
-          </p>
           <p className="guide-note">{t("leashHandsFreeNote")}</p>
         </GuideSection>
       )}

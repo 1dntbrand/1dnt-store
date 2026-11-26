@@ -253,6 +253,8 @@ dialog:focus-visible {
   display: block;
   width: 100%;
   height: auto;
+  /* The line drawings sit on white; on the card they take its tone. */
+  mix-blend-mode: multiply;
 }
 .leash-card[data-tall] .leash-card-art {
   display: flex;
@@ -273,19 +275,6 @@ dialog:focus-visible {
 .leash-card figcaption {
   color: var(--muted);
   font-size: 13px;
-}
-.leash-active-note {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-.leash-active-ring {
-  flex: none;
-  width: 14px;
-  height: 14px;
-  border: 2px solid #e0702f;
-  border-radius: 50%;
-  background: rgb(224 112 47 / 0.16);
 }
 .guide-actions {
   position: sticky;
