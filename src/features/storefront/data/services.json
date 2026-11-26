@@ -20,13 +20,16 @@
         ],
         [
           "Seller details",
-          "To be confirmed: legal business name, business address, NIP and applicable registration details."
+          "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa (registered address). NIP: 5213641211. ONE IDENTITY (1DNT) is run under this foundation."
         ],
         [
           "Contact",
-          "To be confirmed: customer service email, telephone number and service hours."
+          "Email: to be confirmed. We answer by email; there is no phone line."
         ],
-        ["Returns and complaints address", "To be confirmed before sales open."]
+        [
+          "Returns and complaints address",
+          "ul. Nowa 17d/13, 05-500 Stara Iwiczna"
+        ]
       ],
       [
         [
@@ -35,7 +38,7 @@
         ],
         [
           "Payment",
-          "Payment methods and providers will be confirmed before sales open. No payment details are collected in this preview."
+          "Card payments and BLIK, plus other popular methods in Poland such as Przelewy24. The methods available for your order are shown at checkout. No payment details are collected in this preview."
         ],
         [
           "Before ordering",
@@ -49,7 +52,7 @@
         ],
         [
           "How to return",
-          "To be confirmed: notification email, return address, return shipping costs and refund procedure. A model withdrawal form will be available before sales open."
+          "Send the item to our returns address: ul. Nowa 17d/13, 05-500 Stara Iwiczna. To be confirmed: notification email, return shipping costs and refund procedure. A model withdrawal form will be available before sales open."
         ],
         [
           "Complaints",
@@ -57,13 +60,13 @@
         ],
         [
           "Submitting a complaint",
-          "To be confirmed: contact channel and address. Provide the order reference, description of the problem and requested remedy; photographs may help explain the issue."
+          "Write to us by email (address to be confirmed) or send the item to ul. Nowa 17d/13, 05-500 Stara Iwiczna. Provide the order reference, description of the problem and requested remedy; photographs may help explain the issue."
         ]
       ],
       [
         [
           "Manufacturer",
-          "To be confirmed: manufacturer’s legal name, postal address and electronic contact."
+          "1DNT, run by Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa. Email: to be confirmed."
         ],
         [
           "Product identification",
@@ -99,7 +102,7 @@
       [
         [
           "Controller",
-          "To be confirmed: the legal entity responsible for personal data and its contact details. This is a draft information page, not the final privacy notice."
+          "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa, NIP: 5213641211. Contact email: to be confirmed. This is a draft information page, not the final privacy notice."
         ],
         [
           "Current preview",
@@ -137,7 +140,7 @@
     "safety": [
       [
         "Manufacturer",
-        "To be confirmed: manufacturer’s legal name, postal address and electronic contact."
+        "1DNT, run by Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa. Email: to be confirmed."
       ],
       [
         "Product identification",
@@ -175,13 +178,16 @@
         ],
         [
           "Данные продавца",
-          "Будет уточнено: юридическое название бизнеса, адрес, NIP и применимые регистрационные данные."
+          "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa (юридический адрес). NIP: 5213641211. ONE IDENTITY (1DNT) работает под этим фондом."
         ],
         [
           "Связь с нами",
-          "Будет уточнено: электронная почта, телефон и часы работы поддержки."
+          "Почта: будет уточнена. Отвечаем по электронной почте, телефонной линии нет."
         ],
-        ["Адрес для возвратов и претензий", "Будет указан до начала продаж."]
+        [
+          "Адрес для возвратов и претензий",
+          "ul. Nowa 17d/13, 05-500 Stara Iwiczna"
+        ]
       ],
       [
         [
@@ -190,7 +196,7 @@
         ],
         [
           "Оплата",
-          "Способы оплаты и платёжные операторы будут указаны до начала продаж. В этом примере платёжные данные не собираются."
+          "Банковские карты и BLIK, а также другие популярные в Польше способы, например Przelewy24. Доступные для заказа способы показываются при оформлении. В этом примере платёжные данные не собираются."
         ],
         [
           "Перед оформлением",
@@ -204,7 +210,7 @@
         ],
         [
           "Как оформить возврат",
-          "Будет уточнено: почта для уведомления, адрес возврата, расходы на пересылку и порядок возврата денег. До начала продаж добавим образец заявления об отказе от договора."
+          "Отправьте изделие на адрес для возвратов: ul. Nowa 17d/13, 05-500 Stara Iwiczna. Будет уточнено: почта для уведомления, расходы на пересылку и порядок возврата денег. До начала продаж добавим образец заявления об отказе от договора."
         ],
         [
           "Претензии к качеству",
@@ -212,13 +218,13 @@
         ],
         [
           "Как подать претензию",
-          "Контакты и адрес будут уточнены. Укажите номер заказа, описание проблемы и желаемое решение; фотографии помогут пояснить ситуацию."
+          "Напишите нам на почту (адрес будет уточнён) или отправьте изделие на ul. Nowa 17d/13, 05-500 Stara Iwiczna. Укажите номер заказа, описание проблемы и желаемое решение; фотографии помогут пояснить ситуацию."
         ]
       ],
       [
         [
           "Производитель",
-          "Будет уточнено: юридическое название производителя, почтовый адрес и электронный контакт."
+          "1DNT под управлением Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa. Почта: будет уточнена."
         ],
         [
           "Идентификация изделия",
@@ -254,7 +260,7 @@
       [
         [
           "Ответственный за данные",
-          "Будет уточнено: юридическое лицо или предприниматель, отвечающий за обработку персональных данных, и его контакты. Это проект информационной страницы, а не окончательная политика."
+          "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa, NIP: 5213641211. Почта для связи: будет уточнена. Это проект информационной страницы, а не окончательная политика."
         ],
         [
           "Текущий пример сайта",
@@ -292,7 +298,7 @@
     "safety": [
       [
         "Производитель",
-        "Будет уточнено: юридическое название производителя, почтовый адрес и электронный контакт."
+        "1DNT под управлением Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa. Почта: будет уточнена."
       ],
       [
         "Идентификация изделия",
@@ -330,11 +336,11 @@
         ],
         [
           "Dane sprzedawcy",
-          "Do uzupełnienia: pełna nazwa firmy, adres, NIP oraz właściwe dane rejestrowe."
+          "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa (adres rejestrowy). NIP: 5213641211. ONE IDENTITY (1DNT) działa w ramach tej fundacji."
         ],
         [
           "Kontakt",
-          "Do uzupełnienia: e-mail, telefon, godziny obsługi oraz adres do zwrotów i reklamacji."
+          "E-mail: do uzupełnienia. Odpowiadamy mailowo, nie prowadzimy infolinii. Adres do zwrotów i reklamacji: ul. Nowa 17d/13, 05-500 Stara Iwiczna."
         ]
       ],
       [
@@ -344,7 +350,7 @@
         ],
         [
           "Płatności",
-          "Metody i operatorzy płatności: do uzupełnienia. Podgląd nie zbiera danych płatniczych. Przed złożeniem płatnego zamówienia zostanie pokazana łączna cena z podatkami i dostawą."
+          "Karty płatnicze i BLIK oraz inne popularne w Polsce metody, np. Przelewy24. Metody dostępne dla zamówienia są pokazywane przy składaniu zamówienia. Podgląd nie zbiera danych płatniczych. Przed złożeniem płatnego zamówienia zostanie pokazana łączna cena z podatkami i dostawą."
         ]
       ],
       [
@@ -354,17 +360,17 @@
         ],
         [
           "Zwroty",
-          "Do uzupełnienia: e-mail do zgłoszeń, adres zwrotu, koszty przesyłki oraz procedura zwrotu pieniędzy. Wzór formularza odstąpienia zostanie dodany przed sprzedażą."
+          "Odeślij produkt na adres do zwrotów: ul. Nowa 17d/13, 05-500 Stara Iwiczna. Do uzupełnienia: e-mail do zgłoszeń, koszty przesyłki oraz procedura zwrotu pieniędzy. Wzór formularza odstąpienia zostanie dodany przed sprzedażą."
         ],
         [
           "Reklamacje",
-          "Niezgodność towaru z umową to inna kwestia niż zwrot po zmianie decyzji. Gwarancja dobrowolna nie zastępuje praw ustawowych. Kontakt: do uzupełnienia. Podaj numer zamówienia, opis problemu i żądanie; zdjęcia mogą pomóc."
+          "Niezgodność towaru z umową to inna kwestia niż zwrot po zmianie decyzji. Gwarancja dobrowolna nie zastępuje praw ustawowych. Napisz do nas (e-mail do uzupełnienia) lub odeślij produkt na ul. Nowa 17d/13, 05-500 Stara Iwiczna. Podaj numer zamówienia, opis problemu i żądanie; zdjęcia mogą pomóc."
         ]
       ],
       [
         [
           "Producent",
-          "Do uzupełnienia: pełna nazwa producenta, adres pocztowy i elektroniczny."
+          "1DNT, prowadzone przez Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa. E-mail: do uzupełnienia."
         ],
         [
           "Identyfikacja produktu",
@@ -396,7 +402,7 @@
       [
         [
           "Administrator danych",
-          "Do uzupełnienia: tożsamość administratora i kontakt. To projekt informacji, nie ostateczna polityka prywatności."
+          "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa, NIP: 5213641211. E-mail kontaktowy: do uzupełnienia. To projekt informacji, nie ostateczna polityka prywatności."
         ],
         [
           "Obecny podgląd",
@@ -430,7 +436,7 @@
     "safety": [
       [
         "Producent",
-        "Do uzupełnienia: pełna nazwa producenta, adres pocztowy i elektroniczny."
+        "1DNT, prowadzone przez Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa. E-mail: do uzupełnienia."
       ],
       [
         "Identyfikacja produktu",
@@ -468,11 +474,11 @@
         ],
         [
           "Дані продавця",
-          "Буде уточнено: юридична назва бізнесу, адреса, NIP та відповідні реєстраційні дані."
+          "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa (юридична адреса). NIP: 5213641211. ONE IDENTITY (1DNT) працює під цим фондом."
         ],
         [
           "Контакти",
-          "Буде уточнено: електронна пошта, телефон, години підтримки та адреса для повернень і претензій."
+          "Пошта: буде уточнена. Відповідаємо електронною поштою, телефонної лінії немає. Адреса для повернень і претензій: ul. Nowa 17d/13, 05-500 Stara Iwiczna."
         ]
       ],
       [
@@ -482,7 +488,7 @@
         ],
         [
           "Оплата",
-          "Способи й оператори оплати будуть уточнені. Цей приклад не збирає платіжних даних. До оформлення платного замовлення буде показано підсумкову суму з податками та доставкою."
+          "Банківські картки та BLIK, а також інші популярні в Польщі способи, наприклад Przelewy24. Доступні для замовлення способи показуються під час оформлення. Цей приклад не збирає платіжних даних. До оформлення платного замовлення буде показано підсумкову суму з податками та доставкою."
         ]
       ],
       [
@@ -492,17 +498,17 @@
         ],
         [
           "Повернення",
-          "Буде уточнено: пошта для повідомлень, адреса, витрати на пересилання та порядок повернення грошей. Зразок заяви про відмову від договору додамо до початку продажів."
+          "Надішліть виріб на адресу для повернень: ul. Nowa 17d/13, 05-500 Stara Iwiczna. Буде уточнено: пошта для повідомлень, витрати на пересилання та порядок повернення грошей. Зразок заяви про відмову від договору додамо до початку продажів."
         ],
         [
           "Претензії",
-          "Претензія щодо невідповідності товару договору відрізняється від повернення через зміну рішення. Добровільна гарантія не замінює законні права. Контакти будуть уточнені. Вкажіть номер замовлення, проблему та бажане рішення; фото можуть допомогти."
+          "Претензія щодо невідповідності товару договору відрізняється від повернення через зміну рішення. Добровільна гарантія не замінює законні права. Напишіть нам на пошту (адреса буде уточнена) або надішліть виріб на ul. Nowa 17d/13, 05-500 Stara Iwiczna. Вкажіть номер замовлення, проблему та бажане рішення; фото можуть допомогти."
         ]
       ],
       [
         [
           "Виробник",
-          "Буде уточнено: юридична назва виробника, поштова адреса й електронний контакт."
+          "1DNT під управлінням Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa. Пошта: буде уточнена."
         ],
         [
           "Ідентифікація виробу",
@@ -534,7 +540,7 @@
       [
         [
           "Відповідальний за дані",
-          "Буде уточнено: особа, відповідальна за обробку даних, та її контакти. Це проєкт інформаційної сторінки, а не остаточна політика."
+          "Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa, NIP: 5213641211. Пошта для зв’язку: буде уточнена. Це проєкт інформаційної сторінки, а не остаточна політика."
         ],
         [
           "Поточний приклад",
@@ -568,7 +574,7 @@
     "safety": [
       [
         "Виробник",
-        "Буде уточнено: юридична назва виробника, поштова адреса й електронний контакт."
+        "1DNT під управлінням Fundacja Rozwoju Przedsiębiorczości „TwójStartUp”, ul. Żurawia 6/12 lok. 766, 00-503 Warszawa. Пошта: буде уточнена."
       ],
       [
         "Ідентифікація виробу",
