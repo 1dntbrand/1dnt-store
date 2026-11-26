@@ -585,11 +585,9 @@ html:lang(uk) .hero-copy h1 em {
 .leash-gallery {
   --frame: 0.8;
 }
+/* Elegant photos are all 4:5; the gallery sizes and sticks like Base. */
 .elegant-gallery {
-  width: min(100%, 560px);
-}
-.elegant-gallery .media-stage {
-  aspect-ratio: 4 / 5;
+  --frame: 0.8;
 }
 .media-track {
   display: flex;
@@ -1403,15 +1401,13 @@ summary::-webkit-details-marker {
   font-style: italic;
   font-size: clamp(40px, 4vw, 54px);
 }
+/* Same grid as a Base product, so the details column lines up across
+   both collections. */
 .elegant-product {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
   align-items: start;
   gap: clamp(24px, 4vw, 64px);
-}
-.elegant-product .product-info h3 {
-  font-size: clamp(26px, 2.5vw, 38px);
-  letter-spacing: -0.025em;
 }
 .elegant-note {
   margin-top: var(--space-3);
@@ -2594,9 +2590,6 @@ dialog::backdrop {
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-5);
   }
-  .elegant-gallery {
-    width: min(100%, 416px);
-  }
   .philosophy {
     grid-template-columns: minmax(0, 520px);
     grid-template-rows: auto;
@@ -2688,15 +2681,39 @@ dialog::backdrop {
   .hero-art img {
     object-position: center 45%;
   }
+  /* Phones: the categories read as a short index, one row each, with the
+     same upright photo as on larger screens. */
   .catalog-overview {
     grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-5);
+    gap: 0;
+    border-top: 1px solid var(--line);
   }
-  .catalog-preview-media > img {
-    aspect-ratio: 5 / 4;
+  .catalog-preview {
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-4);
+    padding-block: var(--space-3);
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+  }
+  .catalog-preview::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    margin-inline-end: var(--space-1);
+    border-top: 1.5px solid currentColor;
+    border-right: 1.5px solid currentColor;
+    transform: rotate(45deg);
+  }
+  .catalog-preview > div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+    padding-top: 0;
   }
   .catalog-preview h3 {
-    font-size: 20px;
+    font-size: 18px;
   }
   .catalog-filters,
   .elegant-tabs {

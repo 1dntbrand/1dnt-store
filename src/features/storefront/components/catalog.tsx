@@ -18,8 +18,9 @@ import { useTabIndicator } from "../lib/use-tab-indicator";
 import { isPlainClick, showCategory } from "../lib/category-nav";
 import type { Category } from "../lib/storage";
 
+/* Upright shots that fit the 4:5 frame whole, one per colour family. */
 const categoryImageSizes =
-  "(max-width: 540px) 94vw, (max-width: 1480px) 31vw, 424px";
+  "(max-width: 540px) 96px, (max-width: 1480px) 31vw, 424px";
 
 const baseCategories = [
   ["all", "allCategories"],
@@ -89,12 +90,12 @@ export function Catalog() {
           >
             <span className="catalog-preview-media">
               <Image
-                src="/assets/collar-khaki.webp"
-                {...blurProps("/assets/collar-khaki.webp")}
+                src="/assets/collar-orange.webp"
+                {...blurProps("/assets/collar-orange.webp")}
                 alt=""
                 loading="lazy"
-                width={1312}
-                height={1199}
+                width={1086}
+                height={1448}
                 sizes={categoryImageSizes}
               />
             </span>
@@ -118,8 +119,8 @@ export function Catalog() {
           >
             <span className="catalog-preview-media">
               <Image
-                src="/assets/leash-black.webp"
-                {...blurProps("/assets/leash-black.webp")}
+                src="/assets/leash-khaki.webp"
+                {...blurProps("/assets/leash-khaki.webp")}
                 alt=""
                 loading="lazy"
                 width={1086}
@@ -147,12 +148,12 @@ export function Catalog() {
           >
             <span className="catalog-preview-media">
               <Image
-                src="/assets/harness-khaki.webp"
-                {...blurProps("/assets/harness-khaki.webp")}
+                src="/assets/harness-black-orange.webp"
+                {...blurProps("/assets/harness-black-orange.webp")}
                 alt=""
                 loading="lazy"
-                width={1312}
-                height={1199}
+                width={1122}
+                height={1402}
                 sizes={categoryImageSizes}
               />
             </span>

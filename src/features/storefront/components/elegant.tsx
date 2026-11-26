@@ -181,7 +181,7 @@ function ElegantProductPanel({
       >
         <div className="elegant-product">
           <MediaGallery
-            className="elegant-gallery"
+            className="product-gallery elegant-gallery"
             photos={elegantViews.map(({ id, label }) => ({
               src: `/assets/${product.gallery[colour][id]}`,
               alt: `${title} · ${colourName} · ${t(label)}`,
