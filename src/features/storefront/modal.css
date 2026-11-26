@@ -463,13 +463,10 @@ dialog:focus-visible {
   }
   .guide-body th,
   .guide-body td {
-    padding: 10px 6px;
+    padding: 10px 5px;
   }
   .guide-body :is(th, td):first-child {
     padding-left: 12px;
-  }
-  .guide-body thead th {
-    font-size: 11px;
   }
 }
 @media (max-width: 640px) and (prefers-reduced-motion: no-preference) {
