@@ -6,7 +6,7 @@ import { useRecentlyAdded } from "../lib/use-recently-added";
 import { useId, useRef } from "react";
 import { usePublishSetOffer } from "./sticky-buy";
 import { SwapLabel } from "./swap-label";
-import { Disclosure, DisclosureGroup } from "./disclosure";
+import { Disclosure } from "./disclosure";
 import { variantLimit } from "@/domain/commerce/availability";
 import {
   calculateCart,
@@ -163,11 +163,11 @@ export function BundleOffer({
           gridTemplateColumns: `repeat(${selected.length}, minmax(0, 1fr))`,
         }}
       >
-        <DisclosureGroup>
+        <>
           {selected.map((part) => (
             <BundlePart key={part.variant.kind} {...part} />
           ))}
-        </DisclosureGroup>
+        </>
       </div>
       <div className="bundle-bottom">
         <div>

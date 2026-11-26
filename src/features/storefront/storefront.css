@@ -1101,11 +1101,6 @@ html:lang(uk) .hero-copy h1 em {
 .disclosure[data-open] > .disclosure-panel > .disclosure-content {
   opacity: 1;
 }
-/* An item above the tapped one closes at once (see disclosure.tsx). */
-.disclosure[data-instant] > .disclosure-panel,
-.disclosure[data-instant] > .disclosure-panel > .disclosure-content {
-  transition: none;
-}
 @media (prefers-reduced-motion: reduce) {
   .disclosure-panel,
   .disclosure[data-open] > .disclosure-panel,
