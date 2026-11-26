@@ -1482,15 +1482,15 @@
     "uk": "З доставкою"
   },
   "breakdownShow": {
-    "en": "Details",
-    "pl": "Szczegóły",
-    "ru": "Подробнее",
-    "uk": "Детальніше"
+    "en": "Order details",
+    "pl": "Szczegóły zamówienia",
+    "ru": "Детали заказа",
+    "uk": "Деталі замовлення"
   },
   "breakdownHide": {
-    "en": "Hide",
-    "pl": "Ukryj",
-    "ru": "Скрыть",
-    "uk": "Сховати"
+    "en": "Hide details",
+    "pl": "Ukryj szczegóły",
+    "ru": "Скрыть детали",
+    "uk": "Сховати деталі"
   }
 }

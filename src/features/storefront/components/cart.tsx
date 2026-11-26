@@ -385,21 +385,22 @@ function CheckoutBar({
           <OrderTotals withTotal={false} />
         </div>
       </div>
-      <div className="cart-total-bar">
+      {/* The total's own line carries the switch for the breakdown above. */}
+      <div className="cart-total-head">
+        <span className="cart-total-label">{t("totalLabel")}</span>
         <button
           type="button"
-          className="cart-total"
+          className="cart-breakdown-toggle"
           aria-expanded={open}
           aria-controls={breakdownId}
           onClick={() => setOpen((value) => !value)}
         >
-          <span className="cart-total-label">
-            {t("totalLabel")}
-            <span className="cart-total-details">
-              {t(open ? "breakdownHide" : "breakdownShow")}
-              <span className="disclosure-chevron" aria-hidden="true" />
-            </span>
-          </span>
+          {t(open ? "breakdownHide" : "breakdownShow")}
+          <span className="disclosure-chevron" aria-hidden="true" />
+        </button>
+      </div>
+      <div className="cart-total-bar">
+        <p className="cart-total">
           <Figure as="strong" value={pricing.grandTotal}>
             {money(pricing.grandTotal)}
           </Figure>
@@ -408,7 +409,7 @@ function CheckoutBar({
               ? `${t("saveLabel")}${money(pricing.discount)}`
               : t("totalWithDelivery")}
           </span>
-        </button>
+        </p>
         <button
           type="button"
           className="btn"
