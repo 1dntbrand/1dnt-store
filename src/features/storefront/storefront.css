@@ -2098,17 +2098,34 @@ dialog::backdrop {
   border-radius: var(--media-radius);
   background: var(--surface);
 }
-.cart-set-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: var(--space-3);
-  padding-bottom: var(--space-2);
-}
-.cart-set .cart-set-head h3 {
+.cart-set .cart-set-head {
+  margin: 0 0 var(--space-2);
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0;
+}
+.cart-set-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: 44px;
+  margin-block: calc(-1 * var(--space-2));
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+}
+.cart-set-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.cart-set-toggle[aria-expanded="true"] .disclosure-chevron {
+  transform: translateY(2px) rotate(225deg);
 }
 .cart-set-rate {
   color: var(--olive);
@@ -2120,12 +2137,38 @@ dialog::backdrop {
   padding: 0;
   list-style: none;
 }
+/* Each piece is a card. Folded, the cards lie on one another like a card
+   file: every name shows on its card's edge, the last card in full. Open,
+   they spread into a list. */
 .cart-item.cart-set-piece {
   --cart-photo-width: 56px;
+  position: relative;
   grid-template-columns: var(--cart-photo-width) minmax(0, 1fr);
   grid-template-areas: "photo item";
-  padding-block: var(--space-2);
-  border-bottom: 0;
+  max-height: 160px;
+  margin-bottom: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--control-radius);
+  background: var(--paper);
+  transition:
+    max-height var(--motion-slow) var(--ease-out),
+    margin var(--motion-slow) var(--ease-out),
+    box-shadow var(--motion-slow) var(--ease-out);
+}
+.cart-item.cart-set-piece:last-child {
+  margin-bottom: 0;
+}
+.cart-set[data-collapsed] .cart-set-pieces {
+  cursor: pointer;
+}
+.cart-set[data-collapsed] .cart-set-piece:not(:last-child) {
+  max-height: 36px;
+  margin-bottom: -4px;
+}
+.cart-set[data-collapsed] .cart-set-piece + .cart-set-piece {
+  box-shadow: 0 -6px 12px -10px rgb(37 38 34 / 0.35);
 }
 .cart-set-foot {
   display: flex;

@@ -12,7 +12,13 @@ import { Dialog } from "./dialog";
 import { CloseButton } from "./close-button";
 import { BrandText } from "./brand-text";
 import { foldAway } from "../lib/exit-motion";
-import { useRef, type MouseEvent, type ReactNode } from "react";
+import {
+  useId,
+  useRef,
+  useState,
+  type MouseEvent,
+  type ReactNode,
+} from "react";
 import { useFadeOnChange, useTickOnChange } from "../lib/fade-on-change";
 import { blurProps } from "../lib/image-placeholder";
 
@@ -231,19 +237,40 @@ function SetGroup({ group, editable }: { group: BagSet; editable: boolean }) {
   const canAdd = members.every(
     (member) => total(member.id) < variantLimit(member),
   );
+  // A set starts as a card file: its pieces stacked, each name showing.
+  const [open, setOpen] = useState(false);
+  const piecesId = useId();
   return (
     <li
       className="cart-set"
       data-cart-item
+      data-collapsed={!open || undefined}
       data-sold-out={
         members.some((member) => variantLimit(member) === 0) || undefined
       }
     >
-      <div className="cart-set-head">
-        <h3>{label}</h3>
-        <span className="cart-set-rate">−{Math.round(rate * 100)}%</span>
-      </div>
-      <ul className="cart-set-pieces">
+      <h3 className="cart-set-head">
+        <button
+          type="button"
+          className="cart-set-toggle"
+          aria-expanded={open}
+          aria-controls={piecesId}
+          onClick={() => setOpen((value) => !value)}
+        >
+          <span>{label}</span>
+          <span className="cart-set-meta">
+            <span className="cart-set-rate">−{Math.round(rate * 100)}%</span>
+            <span className="disclosure-chevron" aria-hidden="true" />
+          </span>
+        </button>
+      </h3>
+      {/* A tap on the stack opens it too; the button above is the control
+          for keyboards and screen readers. */}
+      <ul
+        id={piecesId}
+        className="cart-set-pieces"
+        onClick={open ? undefined : () => setOpen(true)}
+      >
         {members.map((member) => (
           <li key={member.id} className="cart-item cart-set-piece">
             <PieceInfo item={member} />
