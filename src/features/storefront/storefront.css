@@ -2258,7 +2258,7 @@ dialog::backdrop {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-3) var(--space-4);
+  gap: var(--space-3);
 }
 .cart-total {
   /* Takes the room the button leaves; the saving line may wrap, the
@@ -2272,14 +2272,15 @@ dialog::backdrop {
 }
 .cart-total-label {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
+  line-height: 20px;
 }
 /* "Total" and the details switch share the line above the amount: the
    switch reads as a control (ink, medium, chevron) without a box. */
 .cart-total-head {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   gap: var(--space-3);
   margin-bottom: 2px;
 }
@@ -2287,15 +2288,18 @@ dialog::backdrop {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  min-height: 32px;
-  margin-block: -6px;
-  padding: 0;
+  /* Same line box as "Total", so both sit on one baseline; the padding
+     only widens the tap area. */
+  padding-block: 12px;
+  margin-block: -12px;
+  padding-inline: 0;
   border: 0;
   background: transparent;
   color: var(--ink);
   font: inherit;
   font-size: 13px;
   font-weight: 500;
+  line-height: 20px;
   transition: color var(--control-transition);
 }
 @media (hover: hover) {
@@ -2307,15 +2311,36 @@ dialog::backdrop {
 .cart-breakdown-toggle[aria-expanded="false"] .disclosure-chevron {
   transform: translateY(2px) rotate(225deg);
 }
+/* Folded, the chevron nudges upward now and then: there is more here. */
+@media (prefers-reduced-motion: no-preference) {
+  .cart-breakdown-toggle[aria-expanded="false"] .disclosure-chevron {
+    animation: details-nudge 2.6s var(--ease-out) 1.2s infinite;
+  }
+}
+@keyframes details-nudge {
+  0%,
+  62%,
+  100% {
+    transform: translateY(2px) rotate(225deg);
+  }
+  76% {
+    transform: translateY(-2px) rotate(225deg);
+  }
+  88% {
+    transform: translateY(2px) rotate(225deg);
+  }
+}
 .cart-total strong {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
+  letter-spacing: -0.01em;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 .cart-total-note {
   color: var(--olive);
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 500;
 }
 /* The breakdown unfolds upward from the total, inside the pinned block. */
 .cart-breakdown {
@@ -2349,6 +2374,9 @@ dialog::backdrop {
   white-space: nowrap;
 }
 @media (min-width: 641px) {
+  .cart-total strong {
+    font-size: 24px;
+  }
   .cart-total-bar .btn {
     flex-grow: 0;
     min-width: 220px;
