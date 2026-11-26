@@ -37,11 +37,11 @@ export function HarnessGuide() {
             <thead>
               <tr>
                 <th scope="col">{t("sizeOnly")}</th>
-                <th scope="col">{t("neckCm")}</th>
-                <th scope="col">{t("chestCm")}</th>
-                <th scope="col">{t("harnessLowerCm")}</th>
-                <th scope="col">{t("harnessUpperCm")}</th>
-                <th scope="col">{t("collarWidthMm")}</th>
+                <th scope="col">{t("tableNeck")}</th>
+                <th scope="col">{t("tableChest")}</th>
+                <th scope="col">{t("tableLower")}</th>
+                <th scope="col">{t("tableUpper")}</th>
+                <th scope="col">{t("tableWidth")}</th>
               </tr>
             </thead>
             <tbody>

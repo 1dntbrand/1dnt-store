@@ -1444,11 +1444,17 @@ summary::-webkit-details-marker {
 .faq > h2 {
   font-size: clamp(28px, 3vw, 38px);
 }
+/* Topics sit in an even grid: equal widths, rows that line up. */
 .faq-topics {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-2);
   padding-bottom: var(--space-4);
+}
+@media (min-width: 1024px) {
+  .faq-topics {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
 }
 .faq-topics button {
   min-height: 44px;

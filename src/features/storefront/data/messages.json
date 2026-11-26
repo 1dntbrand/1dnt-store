@@ -377,12 +377,6 @@
     "ru": "Длина указана вместе с ручкой.",
     "uk": "Довжину вказано разом із ручкою."
   },
-  "collarWidthMm": {
-    "en": "Strap width (mm)",
-    "pl": "Szerokość paska (mm)",
-    "ru": "Ширина ленты (мм)",
-    "uk": "Ширина стрічки (мм)"
-  },
   "baseDescriptionTitle": {
     "en": "Description",
     "pl": "Opis",
@@ -574,18 +568,6 @@
     "pl": "Nie chłonie zapachów",
     "ru": "Не впитывает запахи",
     "uk": "Не вбирає запахи"
-  },
-  "harnessLowerCm": {
-    "en": "Lower strap (cm)",
-    "pl": "Dolny pasek (cm)",
-    "ru": "Нижняя перемычка (см)",
-    "uk": "Нижня перемичка (см)"
-  },
-  "harnessUpperCm": {
-    "en": "Upper back strap (cm)",
-    "pl": "Pasek grzbietowy (cm)",
-    "ru": "Верхняя перемычка (см)",
-    "uk": "Верхня перемичка (см)"
   },
   "harnessSTableNote": {
     "en": "Neck, chest and lower strap are adjustable; the upper back strap is fixed.",
@@ -1480,5 +1462,35 @@
     "pl": "Dodaj zestaw",
     "ru": "Добавить комплект",
     "uk": "Додати комплект"
+  },
+  "tableNeck": {
+    "en": "Neck, cm",
+    "pl": "Szyja, cm",
+    "ru": "Шея, см",
+    "uk": "Шия, см"
+  },
+  "tableChest": {
+    "en": "Chest, cm",
+    "pl": "Klatka, cm",
+    "ru": "Грудь, см",
+    "uk": "Груди, см"
+  },
+  "tableLower": {
+    "en": "Lower strap, cm",
+    "pl": "Dolny pasek, cm",
+    "ru": "Нижний ремень, см",
+    "uk": "Нижній ремінь, см"
+  },
+  "tableUpper": {
+    "en": "Back strap, cm",
+    "pl": "Grzbiet, cm",
+    "ru": "Ремень на спине, см",
+    "uk": "Ремінь на спині, см"
+  },
+  "tableWidth": {
+    "en": "Width, mm",
+    "pl": "Szerokość, mm",
+    "ru": "Ширина, мм",
+    "uk": "Ширина, мм"
   }
 }

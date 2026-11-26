@@ -34,8 +34,8 @@ export function CollarGuide() {
             <thead>
               <tr>
                 <th scope="col">{t("sizeOnly")}</th>
-                <th scope="col">{t("neckCm")}</th>
-                <th scope="col">{t("collarWidthMm")}</th>
+                <th scope="col">{t("tableNeck")}</th>
+                <th scope="col">{t("tableWidth")}</th>
               </tr>
             </thead>
             <tbody>

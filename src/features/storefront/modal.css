@@ -180,6 +180,10 @@ dialog:focus-visible {
   background: var(--surface);
   color: var(--muted);
   font-size: 12px;
+  /* Long headings wrap instead of pushing the table off the sheet. */
+  white-space: normal;
+  vertical-align: bottom;
+  line-height: 1.35;
 }
 .guide-body tbody tr:last-child > * {
   border-bottom: 0;
@@ -459,7 +463,13 @@ dialog:focus-visible {
   }
   .guide-body th,
   .guide-body td {
-    padding: 10px;
+    padding: 10px 6px;
+  }
+  .guide-body :is(th, td):first-child {
+    padding-left: 12px;
+  }
+  .guide-body thead th {
+    font-size: 11px;
   }
 }
 @media (max-width: 640px) and (prefers-reduced-motion: no-preference) {
