@@ -1192,46 +1192,42 @@ html:lang(uk) .hero-copy h1 em {
 .product-purchase > .stock-announcement:not(:empty) {
   margin-top: var(--space-5);
 }
-/* Under the sold-out slot: one quiet line on what to do, no second box. */
-.restock-form.restock-soon {
-  display: block;
+/* Restock sits below the product's availability message. */
+.restock-soon {
   margin-top: var(--space-3);
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--muted);
   font-size: 14px;
-  line-height: 1.5;
 }
-.restock-soon p {
-  margin: 0;
-}
-.restock-soon .text-button {
-  color: var(--ink);
-}
-.restock-form {
-  display: grid;
-  gap: var(--space-2);
-  padding: var(--space-4);
-  margin-top: var(--space-2);
+.restock-panel {
+  min-width: 0;
+  margin-top: var(--space-3);
+  padding: clamp(var(--space-3), 3vw, var(--space-4));
   border: 1px solid var(--line);
   border-radius: var(--control-radius);
   background: var(--brand-warm);
 }
+.restock-form {
+  display: grid;
+  min-width: 0;
+  gap: var(--space-2);
+}
 .restock-intro {
-  font-size: 14px;
-  overflow-wrap: anywhere;
+  margin-bottom: var(--space-1);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.35;
 }
 .restock-form label {
   font-size: 13px;
   font-weight: 500;
 }
 .restock-controls {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 172px), 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--space-2);
 }
 .restock-controls input {
+  flex: 2 1 11rem;
   min-width: 0;
   min-height: var(--control-height);
   padding: var(--space-2) var(--space-3);
@@ -1241,22 +1237,44 @@ html:lang(uk) .hero-copy h1 em {
   color: var(--ink);
   font-size: 16px;
 }
+.restock-controls input[aria-invalid="true"] {
+  border-color: var(--error);
+}
 .restock-controls .btn {
-  min-height: var(--control-height);
+  flex: 1 1 9rem;
+  min-width: 0;
   padding-inline: var(--space-3);
+}
+.restock-controls .btn[aria-disabled="true"] {
+  cursor: progress;
+}
+.restock-controls .swap-label > span {
+  white-space: normal;
 }
 .restock-form .field-hint {
   margin: 0;
 }
-.restock-status,
-.restock-error {
-  font-size: 13px;
-}
-.restock-status:empty {
-  margin-top: calc(-1 * var(--space-2));
-}
 .restock-error {
   color: var(--error);
+  font-size: 13px;
+}
+.restock-success {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: 14px;
+}
+.restock-success:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: var(--space-1);
+}
+.restock-success .icon {
+  flex: 0 0 20px;
+  color: var(--olive);
+}
+.restock-success p {
+  min-width: 0;
+  color: var(--ink);
 }
 .disclosure-chevron {
   content: "";
@@ -2475,7 +2493,6 @@ dialog::backdrop {
   max-width: 300px;
 }
 
-/* Checkout is presentation-only until the integration exercises are completed. */
 .checkout-panel {
   --panel-gutter: clamp(16px, 4vw, 32px);
   width: min(1120px, calc(100% - 48px));

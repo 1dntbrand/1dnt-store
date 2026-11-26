@@ -1104,22 +1104,22 @@
     "uk": "Немає в наявності"
   },
   "restockIntro": {
-    "en": "Leave your email to hear when this variant is available.",
-    "pl": "Zostaw adres e-mail, a damy znać, gdy ten wariant będzie dostępny.",
-    "ru": "Оставьте почту, и мы сообщим, когда этот вариант появится.",
-    "uk": "Залиште пошту, і ми повідомимо, коли цей варіант з’явиться."
+    "en": "Get a restock notification",
+    "pl": "Powiadomienie o dostępności",
+    "ru": "Уведомление о поступлении",
+    "uk": "Сповіщення про надходження"
   },
   "restockAction": {
     "en": "Notify me",
     "pl": "Powiadom mnie",
-    "ru": "Сообщить о поступлении",
-    "uk": "Повідомити про надходження"
+    "ru": "Уведомить",
+    "uk": "Сповістити"
   },
   "restockEmailUse": {
-    "en": "We’ll use this email to let you know when this variant is back in stock.",
-    "pl": "Użyjemy tego adresu tylko do powiadomienia o dostępności tego wariantu.",
-    "ru": "Эта почта нужна только для уведомления о поступлении выбранного варианта.",
-    "uk": "Ця пошта потрібна лише для сповіщення про надходження вибраного варіанта."
+    "en": "We’ll use your email only for this notification.",
+    "pl": "Użyjemy adresu e-mail tylko do tego powiadomienia.",
+    "ru": "Используем адрес только для этого уведомления.",
+    "uk": "Використаємо адресу лише для цього сповіщення."
   },
   "restockSending": {
     "en": "Saving…",
@@ -1138,6 +1138,24 @@
     "pl": "Nie udało się zapisać zgłoszenia. Spróbuj ponownie.",
     "ru": "Не удалось сохранить заявку. Попробуйте ещё раз.",
     "uk": "Не вдалося зберегти заявку. Спробуйте ще раз."
+  },
+  "restockInvalidEmail": {
+    "en": "Check your email address and try again.",
+    "pl": "Sprawdź adres e-mail i spróbuj ponownie.",
+    "ru": "Проверьте адрес почты и попробуйте ещё раз.",
+    "uk": "Перевірте адресу пошти й спробуйте ще раз."
+  },
+  "restockRateLimited": {
+    "en": "Too many attempts. Wait a little and try again.",
+    "pl": "Za dużo prób. Odczekaj chwilę i spróbuj ponownie.",
+    "ru": "Слишком много попыток. Подождите немного и попробуйте ещё раз.",
+    "uk": "Забагато спроб. Зачекайте трохи й спробуйте знову."
+  },
+  "restockAvailable": {
+    "en": "This variant is now available. Refresh the page to order.",
+    "pl": "Ten wariant jest już dostępny. Odśwież stronę, aby zamówić.",
+    "ru": "Этот вариант уже в наличии. Обновите страницу, чтобы заказать.",
+    "uk": "Цей варіант уже в наявності. Оновіть сторінку, щоб замовити."
   },
   "bundleStockIssue": {
     "en": "Choose an available variant for each item to add the set.",
