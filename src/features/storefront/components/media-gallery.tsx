@@ -25,7 +25,11 @@ function scrollToSlide(
   if (!track) return;
   const left = index * track.clientWidth;
   if (Math.abs(track.scrollLeft - left) < 2) return;
-  track.scrollTo({ left, behavior: instant ? "instant" : scrollBehavior() });
+  const behavior = instant ? "instant" : scrollBehavior();
+  // While an arrow or thumbnail glides the track, its passing positions are
+  // not the shopper choosing a photo; the sync waits for the target.
+  if (behavior === "smooth") track.dataset.gliding = String(left);
+  track.scrollTo({ left, behavior });
 }
 
 /** Keep the active index in step with a horizontally scrolled snap track. */
@@ -46,7 +50,26 @@ export function useSlideSync(
     const element = track.current;
     if (!element) return;
     let frame = 0;
+    let settle = 0;
+    const stopGliding = () => {
+      window.clearTimeout(settle);
+      delete element.dataset.gliding;
+    };
     const onScroll = () => {
+      const gliding = element.dataset.gliding;
+      if (gliding !== undefined) {
+        // Not there yet: let the glide finish (with a safety net in case
+        // the browser never reports the end).
+        if (Math.abs(element.scrollLeft - Number(gliding)) >= 2) {
+          window.clearTimeout(settle);
+          settle = window.setTimeout(() => {
+            stopGliding();
+            onScroll();
+          }, 600);
+          return;
+        }
+        stopGliding();
+      }
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         // A hidden track (closed viewer, inactive tab) has no width; its
@@ -57,10 +80,21 @@ export function useSlideSync(
         if (next !== latest.current.index) latest.current.onIndexChange(next);
       });
     };
+    // A finger or wheel on the track takes over from any glide at once.
+    const takeOver = () => stopGliding();
     element.addEventListener("scroll", onScroll, { passive: true });
+    element.addEventListener("scrollend", onScroll);
+    element.addEventListener("pointerdown", takeOver, { passive: true });
+    element.addEventListener("touchstart", takeOver, { passive: true });
+    element.addEventListener("wheel", takeOver, { passive: true });
     return () => {
       cancelAnimationFrame(frame);
+      stopGliding();
       element.removeEventListener("scroll", onScroll);
+      element.removeEventListener("scrollend", onScroll);
+      element.removeEventListener("pointerdown", takeOver);
+      element.removeEventListener("touchstart", takeOver);
+      element.removeEventListener("wheel", takeOver);
     };
   }, [track]);
 
