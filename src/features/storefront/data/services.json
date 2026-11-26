@@ -2,7 +2,7 @@
   "en": {
     "heading": "Customer care",
     "close": "Close",
-    "draft": "Pre-launch information: orders and payments are not accepted yet. Anything marked “To be confirmed” will be added before sales open.",
+    "draft": "Pre-launch information: orders and payments are not accepted yet.",
     "pending": "To be confirmed",
     "labels": [
       "Contact & seller details",
@@ -16,10 +16,6 @@
     "pages": [
       [
         {
-          "title": "ONE IDENTITY",
-          "blocks": ["Handmade accessories for your everyday life together."]
-        },
-        {
           "title": "Seller",
           "blocks": [
             {
@@ -31,26 +27,14 @@
                 ],
                 ["NIP", "5213641211"]
               ]
-            },
-            "ONE IDENTITY (1DNT) is run under this foundation."
+            }
           ]
         },
         {
           "title": "Contact",
           "blocks": [
             {
-              "rows": [
-                ["Email", "1dntbrand@gmail.com"],
-                ["Phone", "No phone line, we answer by email"]
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Returns and complaints address",
-          "blocks": [
-            {
-              "address": "1DNT\nul. Nowa 17d/13\n05-500 Stara Iwiczna"
+              "rows": [["Email", "1dntbrand@gmail.com"]]
             }
           ]
         }
@@ -65,27 +49,15 @@
                 ["Cost", "{shippingPrice} per order"],
                 ["Dispatch", null]
               ]
-            },
-            "The delivery cost is shown in your bag before you pay."
+            }
           ]
         },
         {
           "title": "Payment",
           "blocks": [
             {
-              "list": [
-                "Payment cards",
-                "BLIK",
-                "Przelewy24 and other popular methods in Poland"
-              ]
-            },
-            "The methods available for your order are shown at checkout."
-          ]
-        },
-        {
-          "title": "Before you order",
-          "blocks": [
-            "You will see the final total, including VAT and delivery, before placing an order with an obligation to pay."
+              "list": ["Payment cards", "BLIK", "Przelewy24"]
+            }
           ]
         }
       ],
@@ -93,13 +65,7 @@
         {
           "title": "Withdrawal from a purchase",
           "blocks": [
-            {
-              "list": [
-                "You have 14 days from receiving the parcel to withdraw, without giving a reason.",
-                "Handmade items can be returned too.",
-                "If an item made to your personal specification cannot be returned, we will say so before you buy."
-              ]
-            }
+            "You can withdraw from a purchase within 14 days of receiving it, without giving a reason."
           ]
         },
         {
@@ -119,20 +85,13 @@
                 ["Return shipping", null],
                 ["Refund", null]
               ]
-            },
-            "A model withdrawal form will be added before sales open."
+            }
           ]
         },
         {
           "title": "Complaints",
           "blocks": [
-            "If an item is faulty or does not match its description, this is a complaint, separate from a change-of-mind return. Your statutory rights apply; an optional guarantee does not replace them."
-          ]
-        },
-        {
-          "title": "Submitting a complaint",
-          "blocks": [
-            "Email us at 1dntbrand@gmail.com or send the item to the returns address. Please include:",
+            "If an item is faulty or does not match its description, email us at 1dntbrand@gmail.com or send it to the returns address. Please include:",
             {
               "list": [
                 "your order number",
@@ -159,17 +118,10 @@
           ]
         },
         {
-          "title": "Product identification",
-          "blocks": [
-            "Collection, product type, colour and size are shown on the product page and in your order confirmation."
-          ]
-        },
-        {
           "title": "Use and inspection",
           "blocks": [
             {
               "list": [
-                "Use the accessory for walking your dog.",
                 "Check the webbing, buckles and snap hooks before each walk.",
                 "Stop using it if it is damaged or a closure does not work properly."
               ]
@@ -200,27 +152,6 @@
               ]
             }
           ]
-        },
-        {
-          "title": "Final terms",
-          "blocks": [
-            "Before sales open, the store terms will cover:",
-            {
-              "list": [
-                "seller details",
-                "ordering and how the contract is concluded",
-                "payment, production and delivery",
-                "withdrawal and complaints",
-                "out-of-court dispute resolution"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Accounts and newsletter",
-          "blocks": [
-            "Customer accounts and the newsletter are not active. Their terms will be added if they are introduced."
-          ]
         }
       ],
       [
@@ -236,34 +167,13 @@
               ]
             }
           ]
-        },
-        {
-          "title": "What the site stores now",
-          "blocks": [
-            "There is no checkout, registration, newsletter or contact form yet. Your bag, language and product choices are saved only in your browser. The hosting provider may process technical connection data to serve the site."
-          ]
-        },
-        {
-          "title": "Before sales open",
-          "blocks": [
-            "This notice will describe:",
-            {
-              "list": [
-                "the purposes and legal bases of processing",
-                "recipients, including payment, delivery and any analytics providers",
-                "how long data is kept",
-                "any transfers outside the EEA",
-                "your rights and how to complain to UODO, the Polish data protection authority"
-              ]
-            }
-          ]
         }
       ],
       [
         {
           "title": "Browser storage",
           "blocks": [
-            "Your bag and product choices are kept in your browser’s local storage. They reach us only when you place an order."
+            "Your bag and product choices are saved in your browser. Clearing this site’s data removes them."
           ]
         },
         {
@@ -276,30 +186,14 @@
                   "Purpose",
                   "Remembers the language you chose, or your browser’s language on your first visit"
                 ],
-                ["Kept for", "1 year"],
-                ["Shared", "No, and not used for analytics or advertising"]
+                ["Kept for", "1 year"]
               ]
-            },
-            "It only provides a setting you asked for, so it does not need consent."
+            }
           ]
         },
         {
           "title": "Analytics and advertising",
-          "blocks": [
-            "The store uses no analytics or advertising trackers. If that changes, we will ask for your consent first and name the providers and purposes."
-          ]
-        },
-        {
-          "title": "Your controls",
-          "blocks": [
-            {
-              "list": [
-                "Clearing this site’s data in your browser removes your saved bag, choices and language.",
-                "Deleting the “lang” cookie returns the page to your browser’s language.",
-                "Hosting and sign-in cookies are managed by the hosting service, not by the store."
-              ]
-            }
-          ]
+          "blocks": ["The store uses no analytics or advertising trackers."]
         }
       ]
     ],
@@ -309,7 +203,7 @@
   "ru": {
     "heading": "Для покупателей",
     "close": "Закрыть",
-    "draft": "Информация перед запуском: заказы и оплата пока не принимаются. Всё, что отмечено «Будет уточнено», добавим до начала продаж.",
+    "draft": "Информация перед запуском: заказы и оплата пока не принимаются.",
     "pending": "Будет уточнено",
     "labels": [
       "Контакты и продавец",
@@ -322,12 +216,6 @@
     ],
     "pages": [
       [
-        {
-          "title": "ONE IDENTITY",
-          "blocks": [
-            "Аксессуары ручной работы для вашей повседневной жизни вместе."
-          ]
-        },
         {
           "title": "Продавец",
           "blocks": [
@@ -343,26 +231,14 @@
                 ],
                 ["NIP", "5213641211"]
               ]
-            },
-            "ONE IDENTITY (1DNT) работает в рамках этого фонда."
+            }
           ]
         },
         {
           "title": "Связь с нами",
           "blocks": [
             {
-              "rows": [
-                ["Почта", "1dntbrand@gmail.com"],
-                ["Телефон", "Нет, отвечаем по почте"]
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Адрес для возвратов и претензий",
-          "blocks": [
-            {
-              "address": "1DNT\nul. Nowa 17d/13\n05-500 Stara Iwiczna"
+              "rows": [["Почта", "1dntbrand@gmail.com"]]
             }
           ]
         }
@@ -377,27 +253,15 @@
                 ["Стоимость", "{shippingPrice} за заказ"],
                 ["Отправка", null]
               ]
-            },
-            "Стоимость доставки видна в корзине до оплаты."
+            }
           ]
         },
         {
           "title": "Оплата",
           "blocks": [
             {
-              "list": [
-                "Банковские карты",
-                "BLIK",
-                "Przelewy24 и другие популярные в Польше способы"
-              ]
-            },
-            "Доступные для заказа способы показываются при оформлении."
-          ]
-        },
-        {
-          "title": "Перед заказом",
-          "blocks": [
-            "Итоговую сумму с НДС и доставкой вы увидите до оформления заказа с обязанностью оплаты."
+              "list": ["Банковские карты", "BLIK", "Przelewy24"]
+            }
           ]
         }
       ],
@@ -405,13 +269,7 @@
         {
           "title": "Отказ от покупки",
           "blocks": [
-            {
-              "list": [
-                "У вас есть 14 дней с момента получения посылки, чтобы отказаться от покупки без объяснения причин.",
-                "Изделия ручной работы тоже можно вернуть.",
-                "Если изделие сделано по вашим индивидуальным параметрам и не подлежит возврату, мы скажем об этом до покупки."
-              ]
-            }
+            "Вы можете отказаться от покупки в течение 14 дней после получения, без объяснения причин."
           ]
         },
         {
@@ -431,20 +289,13 @@
                 ["Обратная пересылка", null],
                 ["Возврат денег", null]
               ]
-            },
-            "До начала продаж добавим образец заявления об отказе от договора."
+            }
           ]
         },
         {
           "title": "Претензии к качеству",
           "blocks": [
-            "Если изделие с дефектом или не соответствует описанию, это претензия, а не возврат по желанию. Ваши права по закону сохраняются; добровольная гарантия их не заменяет."
-          ]
-        },
-        {
-          "title": "Как подать претензию",
-          "blocks": [
-            "Напишите на 1dntbrand@gmail.com или отправьте изделие на адрес для возвратов. Укажите:",
+            "Если изделие с дефектом или не соответствует описанию, напишите на 1dntbrand@gmail.com или отправьте его на адрес для возвратов. Укажите:",
             {
               "list": [
                 "номер заказа",
@@ -474,17 +325,10 @@
           ]
         },
         {
-          "title": "Идентификация изделия",
-          "blocks": [
-            "Коллекция, тип изделия, цвет и размер указаны на странице товара и в подтверждении заказа."
-          ]
-        },
-        {
           "title": "Использование и проверка",
           "blocks": [
             {
               "list": [
-                "Используйте аксессуар для прогулок с собакой.",
                 "Перед каждой прогулкой проверяйте стропу, пряжки и карабины.",
                 "Не используйте изделие, если оно повреждено или застёжка работает неправильно."
               ]
@@ -515,27 +359,6 @@
               ]
             }
           ]
-        },
-        {
-          "title": "Окончательные условия",
-          "blocks": [
-            "До начала продаж в условиях магазина будут:",
-            {
-              "list": [
-                "данные продавца",
-                "оформление заказа и заключение договора",
-                "оплата, изготовление и доставка",
-                "отказ от покупки и претензии",
-                "внесудебное урегулирование споров"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Аккаунты и рассылка",
-          "blocks": [
-            "Аккаунтов и рассылки пока нет. Если они появятся, добавим их условия."
-          ]
         }
       ],
       [
@@ -554,34 +377,13 @@
               ]
             }
           ]
-        },
-        {
-          "title": "Что сайт хранит сейчас",
-          "blocks": [
-            "Оформления заказа, регистрации, рассылки и формы связи пока нет. Корзина, язык и выбор изделий сохраняются только в вашем браузере. Хостинг может обрабатывать технические данные подключения, чтобы показывать сайт."
-          ]
-        },
-        {
-          "title": "До начала продаж",
-          "blocks": [
-            "Здесь будет указано:",
-            {
-              "list": [
-                "цели и правовые основания обработки",
-                "получатели, в том числе платёжные, логистические и аналитические сервисы",
-                "сроки хранения данных",
-                "передача данных за пределы ЕЭЗ, если она есть",
-                "ваши права и как подать жалобу в UODO, польский орган по защите данных"
-              ]
-            }
-          ]
         }
       ],
       [
         {
           "title": "Хранение в браузере",
           "blocks": [
-            "Корзина и выбор изделий хранятся в локальном хранилище вашего браузера. Мы получаем их, только когда вы оформляете заказ."
+            "Корзина и выбор изделий сохраняются в вашем браузере. Если очистить данные сайта, они удалятся."
           ]
         },
         {
@@ -594,30 +396,14 @@
                   "Зачем",
                   "Запоминает выбранный язык или язык браузера при первом визите"
                 ],
-                ["Срок", "1 год"],
-                ["Передаётся", "Нет, не используется для аналитики и рекламы"]
+                ["Срок", "1 год"]
               ]
-            },
-            "Он только сохраняет настройку, которую вы выбрали, поэтому согласие не требуется."
+            }
           ]
         },
         {
           "title": "Аналитика и реклама",
-          "blocks": [
-            "Аналитики и рекламных трекеров на сайте нет. Если они появятся, сначала спросим согласие и назовём сервисы и цели."
-          ]
-        },
-        {
-          "title": "Ваши настройки",
-          "blocks": [
-            {
-              "list": [
-                "Очистка данных сайта в браузере удаляет сохранённую корзину, выбор и язык.",
-                "Если удалить cookie «lang», сайт откроется на языке браузера.",
-                "Cookies хостинга и входа управляются хостингом, а не магазином."
-              ]
-            }
-          ]
+          "blocks": ["Аналитики и рекламных трекеров на сайте нет."]
         }
       ]
     ],
@@ -627,7 +413,7 @@
   "pl": {
     "heading": "Obsługa klienta",
     "close": "Zamknij",
-    "draft": "Informacje przed premierą: zamówienia i płatności nie są jeszcze przyjmowane. Wszystko oznaczone „Do uzupełnienia” dodamy przed rozpoczęciem sprzedaży.",
+    "draft": "Informacje przed premierą: zamówienia i płatności nie są jeszcze przyjmowane.",
     "pending": "Do uzupełnienia",
     "labels": [
       "Kontakt i dane sprzedawcy",
@@ -641,12 +427,6 @@
     "pages": [
       [
         {
-          "title": "ONE IDENTITY",
-          "blocks": [
-            "Ręcznie tworzone akcesoria do Waszej wspólnej codzienności."
-          ]
-        },
-        {
           "title": "Sprzedawca",
           "blocks": [
             {
@@ -658,26 +438,14 @@
                 ],
                 ["NIP", "5213641211"]
               ]
-            },
-            "ONE IDENTITY (1DNT) działa w ramach tej fundacji."
+            }
           ]
         },
         {
           "title": "Kontakt",
           "blocks": [
             {
-              "rows": [
-                ["E-mail", "1dntbrand@gmail.com"],
-                ["Telefon", "Brak, odpowiadamy mailowo"]
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Adres do zwrotów i reklamacji",
-          "blocks": [
-            {
-              "address": "1DNT\nul. Nowa 17d/13\n05-500 Stara Iwiczna"
+              "rows": [["E-mail", "1dntbrand@gmail.com"]]
             }
           ]
         }
@@ -692,27 +460,15 @@
                 ["Koszt", "{shippingPrice} za zamówienie"],
                 ["Wysyłka", null]
               ]
-            },
-            "Koszt dostawy widzisz w koszyku przed płatnością."
+            }
           ]
         },
         {
           "title": "Płatności",
           "blocks": [
             {
-              "list": [
-                "Karty płatnicze",
-                "BLIK",
-                "Przelewy24 i inne popularne w Polsce metody"
-              ]
-            },
-            "Metody dostępne dla zamówienia są widoczne przy jego składaniu."
-          ]
-        },
-        {
-          "title": "Przed zamówieniem",
-          "blocks": [
-            "Łączną cenę z VAT i dostawą zobaczysz przed złożeniem zamówienia z obowiązkiem zapłaty."
+              "list": ["Karty płatnicze", "BLIK", "Przelewy24"]
+            }
           ]
         }
       ],
@@ -720,13 +476,7 @@
         {
           "title": "Odstąpienie od umowy",
           "blocks": [
-            {
-              "list": [
-                "Masz 14 dni od otrzymania przesyłki, aby odstąpić od umowy bez podania przyczyny.",
-                "Produkty ręcznie robione również można zwrócić.",
-                "Jeśli produkt wykonany według Twojej specyfikacji nie podlega zwrotowi, poinformujemy o tym przed zakupem."
-              ]
-            }
+            "Możesz odstąpić od umowy w ciągu 14 dni od otrzymania przesyłki, bez podania przyczyny."
           ]
         },
         {
@@ -746,20 +496,13 @@
                 ["Koszt odesłania", null],
                 ["Zwrot pieniędzy", null]
               ]
-            },
-            "Wzór formularza odstąpienia dodamy przed rozpoczęciem sprzedaży."
+            }
           ]
         },
         {
           "title": "Reklamacje",
           "blocks": [
-            "Wada produktu lub niezgodność z opisem to reklamacja, a nie zwrot po zmianie decyzji. Masz pełne prawa ustawowe; gwarancja dobrowolna ich nie zastępuje."
-          ]
-        },
-        {
-          "title": "Jak złożyć reklamację",
-          "blocks": [
-            "Napisz na 1dntbrand@gmail.com lub odeślij produkt na adres do zwrotów. Podaj:",
+            "Jeśli produkt jest wadliwy lub niezgodny z opisem, napisz na 1dntbrand@gmail.com lub odeślij go na adres do zwrotów. Podaj:",
             {
               "list": [
                 "numer zamówienia",
@@ -789,17 +532,10 @@
           ]
         },
         {
-          "title": "Identyfikacja produktu",
-          "blocks": [
-            "Kolekcja, rodzaj produktu, kolor i rozmiar są podane na stronie produktu i w potwierdzeniu zamówienia."
-          ]
-        },
-        {
           "title": "Użytkowanie i kontrola",
           "blocks": [
             {
               "list": [
-                "Używaj akcesoriów do spacerów z psem.",
                 "Przed każdym spacerem sprawdź taśmę, sprzączki i karabińczyki.",
                 "Nie używaj produktu, jeśli jest uszkodzony lub zapięcie nie działa prawidłowo."
               ]
@@ -830,27 +566,6 @@
               ]
             }
           ]
-        },
-        {
-          "title": "Ostateczny regulamin",
-          "blocks": [
-            "Przed rozpoczęciem sprzedaży regulamin obejmie:",
-            {
-              "list": [
-                "dane sprzedawcy",
-                "składanie zamówień i zawarcie umowy",
-                "płatność, wykonanie i dostawę",
-                "odstąpienie od umowy i reklamacje",
-                "pozasądowe rozwiązywanie sporów"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Konta i newsletter",
-          "blocks": [
-            "Konta klientów i newsletter nie są aktywne. Jeśli się pojawią, dodamy ich regulamin."
-          ]
         }
       ],
       [
@@ -866,34 +581,13 @@
               ]
             }
           ]
-        },
-        {
-          "title": "Co strona zapisuje teraz",
-          "blocks": [
-            "Nie ma jeszcze składania zamówień, rejestracji, newslettera ani formularza kontaktowego. Koszyk, język i wybrane produkty są zapisane tylko w Twojej przeglądarce. Hosting może przetwarzać techniczne dane połączenia, aby wyświetlić stronę."
-          ]
-        },
-        {
-          "title": "Przed rozpoczęciem sprzedaży",
-          "blocks": [
-            "Ta informacja opisze:",
-            {
-              "list": [
-                "cele i podstawy prawne przetwarzania",
-                "odbiorców, w tym dostawców płatności, dostawy i ewentualnej analityki",
-                "okres przechowywania danych",
-                "ewentualne przekazywanie danych poza EOG",
-                "Twoje prawa i możliwość złożenia skargi do UODO"
-              ]
-            }
-          ]
         }
       ],
       [
         {
           "title": "Pamięć przeglądarki",
           "blocks": [
-            "Koszyk i wybrane produkty są zapisane w pamięci lokalnej Twojej przeglądarki. Trafiają do nas dopiero po złożeniu zamówienia."
+            "Koszyk i wybrane produkty są zapisane w Twojej przeglądarce. Wyczyszczenie danych strony je usuwa."
           ]
         },
         {
@@ -906,30 +600,14 @@
                   "Cel",
                   "Zapamiętuje wybrany język lub język przeglądarki przy pierwszej wizycie"
                 ],
-                ["Okres", "1 rok"],
-                ["Udostępnianie", "Nie, nie służy do analityki ani reklamy"]
+                ["Okres", "1 rok"]
               ]
-            },
-            "Zapamiętuje tylko ustawienie, o które prosisz, więc nie wymaga zgody."
+            }
           ]
         },
         {
           "title": "Analityka i reklama",
-          "blocks": [
-            "Sklep nie używa narzędzi analitycznych ani reklamowych. Jeśli to się zmieni, najpierw poprosimy o zgodę i wskażemy dostawców oraz cele."
-          ]
-        },
-        {
-          "title": "Twoje ustawienia",
-          "blocks": [
-            {
-              "list": [
-                "Wyczyszczenie danych strony w przeglądarce usuwa zapisany koszyk, wybory i język.",
-                "Usunięcie cookie „lang” przywraca język przeglądarki.",
-                "Cookies hostingu i logowania zarządza usługa hostingu, a nie sklep."
-              ]
-            }
-          ]
+          "blocks": ["Sklep nie używa narzędzi analitycznych ani reklamowych."]
         }
       ]
     ],
@@ -939,7 +617,7 @@
   "uk": {
     "heading": "Для покупців",
     "close": "Закрити",
-    "draft": "Інформація перед запуском: замовлення й оплата поки не приймаються. Усе, що позначено «Буде уточнено», додамо до початку продажів.",
+    "draft": "Інформація перед запуском: замовлення й оплата поки не приймаються.",
     "pending": "Буде уточнено",
     "labels": [
       "Контакти та продавець",
@@ -953,12 +631,6 @@
     "pages": [
       [
         {
-          "title": "ONE IDENTITY",
-          "blocks": [
-            "Аксесуари ручної роботи для вашого повсякденного життя разом."
-          ]
-        },
-        {
           "title": "Продавець",
           "blocks": [
             {
@@ -970,26 +642,14 @@
                 ],
                 ["NIP", "5213641211"]
               ]
-            },
-            "ONE IDENTITY (1DNT) працює в межах цього фонду."
+            }
           ]
         },
         {
           "title": "Контакти",
           "blocks": [
             {
-              "rows": [
-                ["Пошта", "1dntbrand@gmail.com"],
-                ["Телефон", "Немає, відповідаємо поштою"]
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Адреса для повернень і претензій",
-          "blocks": [
-            {
-              "address": "1DNT\nul. Nowa 17d/13\n05-500 Stara Iwiczna"
+              "rows": [["Пошта", "1dntbrand@gmail.com"]]
             }
           ]
         }
@@ -1004,27 +664,15 @@
                 ["Вартість", "{shippingPrice} за замовлення"],
                 ["Відправлення", null]
               ]
-            },
-            "Вартість доставки видно в кошику до оплати."
+            }
           ]
         },
         {
           "title": "Оплата",
           "blocks": [
             {
-              "list": [
-                "Банківські картки",
-                "BLIK",
-                "Przelewy24 та інші популярні в Польщі способи"
-              ]
-            },
-            "Доступні для замовлення способи показуються під час оформлення."
-          ]
-        },
-        {
-          "title": "Перед замовленням",
-          "blocks": [
-            "Підсумкову суму з ПДВ і доставкою ви побачите до оформлення замовлення з обов’язком оплати."
+              "list": ["Банківські картки", "BLIK", "Przelewy24"]
+            }
           ]
         }
       ],
@@ -1032,13 +680,7 @@
         {
           "title": "Відмова від покупки",
           "blocks": [
-            {
-              "list": [
-                "У вас є 14 днів від отримання посилки, щоб відмовитися від покупки без пояснення причин.",
-                "Вироби ручної роботи теж можна повернути.",
-                "Якщо виріб зроблено за вашими індивідуальними параметрами і його не можна повернути, ми скажемо про це до покупки."
-              ]
-            }
+            "Ви можете відмовитися від покупки протягом 14 днів після отримання, без пояснення причин."
           ]
         },
         {
@@ -1058,20 +700,13 @@
                 ["Зворотна пересилка", null],
                 ["Повернення грошей", null]
               ]
-            },
-            "До початку продажів додамо зразок заяви про відмову від договору."
+            }
           ]
         },
         {
           "title": "Претензії щодо якості",
           "blocks": [
-            "Якщо виріб має дефект або не відповідає опису, це претензія, а не повернення через зміну рішення. Ваші права за законом зберігаються; добровільна гарантія їх не замінює."
-          ]
-        },
-        {
-          "title": "Як подати претензію",
-          "blocks": [
-            "Напишіть на 1dntbrand@gmail.com або надішліть виріб на адресу для повернень. Вкажіть:",
+            "Якщо виріб має дефект або не відповідає опису, напишіть на 1dntbrand@gmail.com або надішліть його на адресу для повернень. Вкажіть:",
             {
               "list": [
                 "номер замовлення",
@@ -1101,17 +736,10 @@
           ]
         },
         {
-          "title": "Ідентифікація виробу",
-          "blocks": [
-            "Колекція, тип виробу, колір і розмір вказані на сторінці товару та в підтвердженні замовлення."
-          ]
-        },
-        {
           "title": "Використання та перевірка",
           "blocks": [
             {
               "list": [
-                "Використовуйте аксесуар для прогулянок із собакою.",
                 "Перед кожною прогулянкою перевіряйте стрічку, пряжки й карабіни.",
                 "Не користуйтеся виробом, якщо він пошкоджений або застібка працює неправильно."
               ]
@@ -1142,27 +770,6 @@
               ]
             }
           ]
-        },
-        {
-          "title": "Остаточні умови",
-          "blocks": [
-            "До початку продажів умови магазину міститимуть:",
-            {
-              "list": [
-                "дані продавця",
-                "оформлення замовлення та укладення договору",
-                "оплату, виготовлення й доставку",
-                "відмову від покупки та претензії",
-                "позасудове врегулювання спорів"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Акаунти та розсилка",
-          "blocks": [
-            "Акаунтів і розсилки поки немає. Якщо вони з’являться, додамо їхні умови."
-          ]
         }
       ],
       [
@@ -1178,34 +785,13 @@
               ]
             }
           ]
-        },
-        {
-          "title": "Що сайт зберігає зараз",
-          "blocks": [
-            "Оформлення замовлень, реєстрації, розсилки та контактної форми поки немає. Кошик, мова та вибір виробів зберігаються лише у вашому браузері. Хостинг може обробляти технічні дані підключення, щоб показувати сайт."
-          ]
-        },
-        {
-          "title": "До початку продажів",
-          "blocks": [
-            "Тут буде вказано:",
-            {
-              "list": [
-                "цілі та правові підстави обробки",
-                "одержувачів, зокрема платіжні, логістичні та аналітичні сервіси",
-                "строки зберігання даних",
-                "передавання даних за межі ЄЕЗ, якщо воно є",
-                "ваші права і як подати скаргу до UODO, польського органу із захисту даних"
-              ]
-            }
-          ]
         }
       ],
       [
         {
           "title": "Зберігання в браузері",
           "blocks": [
-            "Кошик і вибір виробів зберігаються в локальному сховищі вашого браузера. Ми отримуємо їх, лише коли ви оформлюєте замовлення."
+            "Кошик і вибір виробів зберігаються у вашому браузері. Якщо очистити дані сайту, вони видаляться."
           ]
         },
         {
@@ -1218,33 +804,14 @@
                   "Навіщо",
                   "Запам’ятовує вибрану мову або мову браузера під час першого візиту"
                 ],
-                ["Строк", "1 рік"],
-                [
-                  "Передається",
-                  "Ні, не використовується для аналітики й реклами"
-                ]
+                ["Строк", "1 рік"]
               ]
-            },
-            "Він лише зберігає налаштування, яке ви вибрали, тому згода не потрібна."
+            }
           ]
         },
         {
           "title": "Аналітика й реклама",
-          "blocks": [
-            "Аналітики та рекламних трекерів на сайті немає. Якщо вони з’являться, спершу попросимо згоду й назвемо сервіси та цілі."
-          ]
-        },
-        {
-          "title": "Ваші налаштування",
-          "blocks": [
-            {
-              "list": [
-                "Очищення даних сайту в браузері видаляє збережений кошик, вибір і мову.",
-                "Якщо видалити cookie «lang», сайт відкриється мовою браузера.",
-                "Cookies хостингу та входу керує хостинг, а не магазин."
-              ]
-            }
-          ]
+          "blocks": ["Аналітики та рекламних трекерів на сайті немає."]
         }
       ]
     ],

@@ -354,10 +354,10 @@
     "uk": "Використовуйте те саме друге кріплення та надягніть петлю через плече."
   },
   "leashHandsFreeNote": {
-    "en": "150 cm is the circumference of the body loop, not the distance from you to your dog. Diagrams are not to scale.",
-    "pl": "150 cm to obwód pętli wokół ciała, a nie odległość od Ciebie do psa. Schematy nie są wykonane w skali.",
-    "ru": "150 см — это обхват петли вокруг тела, а не расстояние от вас до собаки. Схемы выполнены не в масштабе.",
-    "uk": "150 см — це обхват петлі навколо тіла, а не відстань від вас до собаки. Схеми виконано не в масштабі."
+    "en": "150 cm is the circumference of the body loop, not the distance from you to your dog.",
+    "pl": "150 cm to obwód pętli wokół ciała, a nie odległość od Ciebie do psa.",
+    "ru": "150 см — это обхват петли вокруг тела, а не расстояние от вас до собаки.",
+    "uk": "150 см — це обхват петлі навколо тіла, а не відстань від вас до собаки."
   },
   "leashStrapWidth": {
     "en": "Strap width: 19 mm.",
@@ -708,10 +708,10 @@
     "uk": "Скільки коштує доставка?"
   },
   "faqDeliveryCostA": {
-    "en": "Delivery to an InPost pickup point in Poland costs {shippingPrice}. The delivery cost is shown in your bag before you pay.",
-    "pl": "Dostawa do punktu InPost na terenie Polski kosztuje {shippingPrice}. Koszt dostawy widzisz w koszyku przed płatnością.",
-    "ru": "Доставка в пункт InPost по Польше стоит {shippingPrice}. Стоимость доставки видна в корзине до оплаты.",
-    "uk": "Доставка до пункту InPost у межах Польщі коштує {shippingPrice}. Вартість доставки видно в кошику до оплати."
+    "en": "Delivery to an InPost pickup point in Poland costs {shippingPrice}.",
+    "pl": "Dostawa do punktu InPost na terenie Polski kosztuje {shippingPrice}.",
+    "ru": "Доставка в пункт InPost по Польше стоит {shippingPrice}.",
+    "uk": "Доставка до пункту InPost у межах Польщі коштує {shippingPrice}."
   },
   "faqDeliveryTimeQ": {
     "en": "How long does delivery take?",
@@ -738,10 +738,10 @@
     "uk": "Які способи оплати доступні?"
   },
   "faqPayA": {
-    "en": "Online ordering and payment are not available in this collection preview yet. Available payment methods will be listed here before the store launches.",
-    "pl": "W tym podglądzie kolekcji zamówienia i płatności online nie są jeszcze dostępne. Dostępne metody płatności opublikujemy tutaj przed uruchomieniem sklepu.",
-    "ru": "В текущей версии сайта представлены образцы коллекции: оформление и оплата заказов пока недоступны. Доступные способы оплаты будут опубликованы здесь перед запуском магазина.",
-    "uk": "У поточній версії сайту представлені зразки колекції: оформлення та оплата замовлень поки недоступні. Доступні способи оплати будуть опубліковані тут перед запуском магазину."
+    "en": "Payment cards, BLIK and Przelewy24. Ordering on the site is not open yet.",
+    "pl": "Karty płatnicze, BLIK i Przelewy24. Zamówienia na stronie nie są jeszcze przyjmowane.",
+    "ru": "Банковские карты, BLIK и Przelewy24. Заказы на сайте пока не принимаются.",
+    "uk": "Банківські картки, BLIK і Przelewy24. Замовлення на сайті поки не приймаються."
   },
   "faqReturnTitle": {
     "en": "Returns",
@@ -756,10 +756,10 @@
     "uk": "Чи можна змінити або скасувати замовлення?"
   },
   "faqChangeA": {
-    "en": "Contact us as soon as possible with your order number and the change you need. We will check the order status and confirm whether it can be updated before dispatch. If it has already been sent, we will explain the return process. This does not limit your statutory right to withdraw from an online purchase.",
-    "pl": "Skontaktuj się z nami jak najszybciej, podając numer zamówienia i opis zmiany. Sprawdzimy status i potwierdzimy, czy możemy wprowadzić zmianę przed wysyłką. Jeśli przesyłka została już nadana, wyjaśnimy procedurę zwrotu. Nie ogranicza to ustawowego prawa odstąpienia od umowy zawartej przez internet.",
-    "ru": "Свяжитесь с нами как можно скорее, указав номер заказа и желаемое изменение. Мы проверим статус заказа и подтвердим, можем ли внести изменения до отправки. Если посылка уже отправлена, подскажем порядок возврата. Это не ограничивает ваше законное право отказаться от покупки, оформленной через интернет.",
-    "uk": "Зв’яжіться з нами якомога швидше, вказавши номер замовлення та бажану зміну. Ми перевіримо статус замовлення й підтвердимо, чи можемо внести зміни до відправлення. Якщо посилку вже відправлено, пояснимо порядок повернення. Це не обмежує ваше законне право відмовитися від покупки, оформленої через інтернет."
+    "en": "Contact us as soon as possible with your order number and the change you need. We will check the order status and confirm whether it can be updated before dispatch. If it has already been sent, we will explain the return process.",
+    "pl": "Skontaktuj się z nami jak najszybciej, podając numer zamówienia i opis zmiany. Sprawdzimy status i potwierdzimy, czy możemy wprowadzić zmianę przed wysyłką. Jeśli przesyłka została już nadana, wyjaśnimy procedurę zwrotu.",
+    "ru": "Свяжитесь с нами как можно скорее, указав номер заказа и желаемое изменение. Мы проверим статус заказа и подтвердим, можем ли внести изменения до отправки. Если посылка уже отправлена, подскажем порядок возврата.",
+    "uk": "Зв’яжіться з нами якомога швидше, вказавши номер замовлення та бажану зміну. Ми перевіримо статус замовлення й підтвердимо, чи можемо внести зміни до відправлення. Якщо посилку вже відправлено, пояснимо порядок повернення."
   },
   "faqFitReturnQ": {
     "en": "What if the size does not fit?",
@@ -780,16 +780,16 @@
     "uk": "Чи можу я повернути виріб?"
   },
   "faqReturnA": {
-    "en": "Yes. For a standard online consumer purchase, you can notify us that you wish to withdraw without giving a reason within 14 days of receiving the accessory. Send the item back within 14 days of that notification. You may inspect and try it on as you would in a shop; handling beyond what is necessary to check its nature, features and fit may result in a deduction for diminished value.",
-    "pl": "Tak. W przypadku standardowego zakupu konsumenckiego przez internet możesz poinformować nas o odstąpieniu od umowy bez podawania przyczyny w ciągu 14 dni od otrzymania produktu. Odeślij produkt w ciągu kolejnych 14 dni od zgłoszenia odstąpienia. Możesz go obejrzeć i przymierzyć tak jak w sklepie; korzystanie wykraczające poza sprawdzenie charakteru, cech i dopasowania może skutkować pomniejszeniem zwrotu o utratę wartości.",
-    "ru": "Да. При обычной потребительской покупке через интернет вы можете сообщить нам об отказе от покупки без объяснения причин в течение 14 дней после получения изделия. После уведомления отправьте изделие обратно в течение следующих 14 дней. Его можно осмотреть и примерить, как в магазине; использование сверх необходимого для проверки свойств и посадки может повлечь удержание суммы уменьшения стоимости.",
-    "uk": "Так. За звичайної споживчої покупки через інтернет ви можете повідомити нас про відмову від покупки без пояснення причин протягом 14 днів після отримання виробу. Після повідомлення надішліть виріб назад протягом наступних 14 днів. Його можна оглянути та приміряти, як у магазині; використання понад необхідне для перевірки властивостей і посадки може спричинити утримання суми зменшення вартості."
+    "en": "Yes. Within 14 days of receiving the accessory, let us know you are withdrawing, no reason needed, then send it back within 14 days. You can try it on as you would in a shop.",
+    "pl": "Tak. W ciągu 14 dni od otrzymania poinformuj nas o odstąpieniu, bez podawania przyczyny, i odeślij produkt w ciągu kolejnych 14 dni. Możesz go przymierzyć tak jak w sklepie.",
+    "ru": "Да. В течение 14 дней после получения сообщите нам об отказе, без объяснения причин, и отправьте изделие обратно в течение следующих 14 дней. Примерить его можно, как в магазине.",
+    "uk": "Так. Протягом 14 днів після отримання повідомте нас про відмову, без пояснення причин, і надішліть виріб назад протягом наступних 14 днів. Приміряти його можна, як у магазині."
   },
   "faqReturnNote": {
-    "en": "Before the store launches, we will publish the return address and detailed instructions in Returns & complaints. Contacting us for guidance is not a requirement for exercising your statutory withdrawal right.",
-    "pl": "Przed uruchomieniem sklepu opublikujemy adres zwrotów i szczegółowe instrukcje w sekcji Zwroty i reklamacje. Kontakt z prośbą o instrukcje nie jest warunkiem skorzystania z ustawowego prawa odstąpienia.",
-    "ru": "До запуска магазина мы опубликуем адрес возврата и подробные инструкции в разделе «Возвраты и претензии». Обращение за инструкцией не является условием реализации законного права на отказ от покупки.",
-    "uk": "До запуску магазину ми опублікуємо адресу повернення та докладні інструкції в розділі «Повернення та претензії». Звернення за інструкцією не є умовою реалізації законного права на відмову від покупки."
+    "en": "The return address and steps are in Returns & complaints.",
+    "pl": "Adres i kroki zwrotu znajdziesz w sekcji Zwroty i reklamacje.",
+    "ru": "Адрес и порядок возврата — в разделе «Возвраты и претензии».",
+    "uk": "Адреса й порядок повернення — у розділі «Повернення та претензії»."
   },
   "elegantLeash": {
     "en": "Leash Elegant BioThane®",

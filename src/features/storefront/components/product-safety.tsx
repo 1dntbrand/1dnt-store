@@ -14,9 +14,9 @@ export function ProductSafety() {
     service: state.service,
     openService: state.openService,
   }));
-  // Same order in every language: manufacturer, identification, use, warnings.
-  const [manufacturer, , , warnings] =
-    service.pages[serviceIds.indexOf("safety")];
+  // Same order in every language: manufacturer first, warnings last.
+  const page = service.pages[serviceIds.indexOf("safety")];
+  const [manufacturer, warnings] = [page[0], page[page.length - 1]];
   return (
     <Disclosure className="product-safety" summary={service.safetyTitle}>
       <ServiceSections
