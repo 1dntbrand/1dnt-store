@@ -9,7 +9,7 @@ import "@/features/storefront/modal.css";
 
 const title = "ONE IDENTITY — Everyday, together.";
 const description =
-  "Minimalist dog essentials. Handmade BioThane® collars, leashes and harnesses. Your dog. Your style. One identity.";
+  "Handmade BioThane® collars, leashes and harnesses for dogs. Your dog. Your style. One identity.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://1dnt.eu"),

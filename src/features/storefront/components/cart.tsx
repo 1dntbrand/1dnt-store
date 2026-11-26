@@ -256,7 +256,6 @@ export function Cart() {
       {cartCount === 0 ? (
         <div className="cart-empty" ref={empty}>
           <h3>{t("cartEmpty")}</h3>
-          <p>{t("cartIntro")}</p>
           <p className="cart-empty-label">{t("emptyBagPick")}</p>
           <div className="cart-empty-picks">
             {emptyBagPicks.map(({ href, src, label }) => (

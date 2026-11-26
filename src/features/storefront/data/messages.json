@@ -53,14 +53,8 @@
     "ru": "Ваша корзина пуста.",
     "uk": "Ваш кошик порожній."
   },
-  "cartIntro": {
-    "en": "Find an everyday essential for your next journey together.",
-    "pl": "Znajdź coś na Wasz kolejny wspólny spacer.",
-    "ru": "Выберите аксессуар для вашего следующего совместного маршрута.",
-    "uk": "Оберіть аксесуар для вашого наступного спільного маршруту."
-  },
   "cartBrowse": {
-    "en": "See Collection",
+    "en": "See the collection",
     "pl": "Zobacz kolekcję",
     "ru": "Смотреть коллекцию",
     "uk": "Переглянути колекцію"
@@ -120,7 +114,7 @@
     "uk": "Довжина"
   },
   "addCart": {
-    "en": "Add to Cart",
+    "en": "Add to bag",
     "pl": "Dodaj do koszyka",
     "ru": "Добавить в корзину",
     "uk": "Додати до кошика"
@@ -288,22 +282,10 @@
     "uk": "Собака з пунктирними лініями навколо основи шиї (A) та грудей за передніми лапами (B)."
   },
   "leashGuideTitle": {
-    "en": "Leash — size guide",
-    "pl": "Smycz — tabela rozmiarów",
-    "ru": "Поводок — длина и способы использования",
-    "uk": "Повідець — довжина та способи використання"
-  },
-  "leashTotalLength": {
-    "en": "Total length",
-    "pl": "Długość całkowita",
-    "ru": "Общая длина",
-    "uk": "Загальна довжина"
-  },
-  "leashUse": {
-    "en": "Ways to wear",
-    "pl": "Sposób użycia",
-    "ru": "Способы использования",
-    "uk": "Способи використання"
+    "en": "Leash length",
+    "pl": "Długość smyczy",
+    "ru": "Длина поводка",
+    "uk": "Довжина повідця"
   },
   "handHeldOnly": {
     "en": "Hand-held · fixed handle",
@@ -426,10 +408,10 @@
     "uk": "Простий догляд"
   },
   "baseVegan": {
-    "en": "100% vegan",
-    "pl": "100% wegańskie",
-    "ru": "100% веган",
-    "uk": "100% веган"
+    "en": "100% vegan material",
+    "pl": "100% wegański materiał",
+    "ru": "100% веганский материал",
+    "uk": "100% веганський матеріал"
   },
   "baseLeashAdjustable": {
     "en": "2.5 m model: adjustable length and hands-free use",
@@ -457,9 +439,9 @@
   },
   "heroIdentity": {
     "en": "One identity.",
-    "pl": "Jedna tożsamość.",
-    "ru": "Одна идентичность.",
-    "uk": "Одна ідентичність."
+    "pl": "One identity.",
+    "ru": "One identity.",
+    "uk": "One identity."
   },
   "footerTogether": {
     "en": "Everyday, together.",
@@ -584,8 +566,8 @@
   "faqCleanQuestion": {
     "en": "How can I clean my accessory?",
     "pl": "Jak wyczyścić akcesorium?",
-    "ru": "Как я могу очистить изделие?",
-    "uk": "Як я можу очистити виріб?"
+    "ru": "Как очистить изделие?",
+    "uk": "Як очистити виріб?"
   },
   "faqMachineQuestion": {
     "en": "Can I wash it in a washing machine?",
@@ -595,9 +577,9 @@
   },
   "faqMachineAnswer": {
     "en": "No. Machine washing can damage the hardware on the accessory. Please clean it by hand.",
-    "pl": "Nie. Pranie w pralce może uszkodzić okucia produktu. Czyść go ręcznie.",
-    "ru": "Нет. Машинная стирка может повредить фурнитуру изделия. Очищайте изделие вручную.",
-    "uk": "Ні. Машинне прання може пошкодити фурнітуру виробу. Очищуйте виріб вручну."
+    "pl": "Nie: pranie w pralce może uszkodzić okucia. Czyść produkt ręcznie.",
+    "ru": "Нет: машинная стирка может повредить фурнитуру. Очищайте изделие вручную.",
+    "uk": "Ні: машинне прання може пошкодити фурнітуру. Очищуйте виріб вручну."
   },
   "faqSizesTitle": {
     "en": "Sizes",
@@ -621,7 +603,7 @@
     "en": "Neck: for a collar, measure around the neck where the collar will sit. For a harness, measure around the base of the neck, following the diagram in that product’s size guide.",
     "pl": "Szyja: w przypadku obroży zmierz obwód szyi w miejscu, w którym będzie leżeć obroża. W przypadku szelek zmierz obwód u nasady szyi zgodnie ze schematem w tabeli rozmiarów danego produktu.",
     "ru": "Обхват шеи: для ошейника измерьте шею по кругу в месте его посадки. Для шлейки измерьте обхват у основания шеи, ориентируясь на схему в таблице размеров конкретного изделия.",
-    "uk": "Обхват шиї: для нашийника виміряйте шию по колу в місці його посадки. Для шлейки виміряйте обхват біля основи шиї, орієнтуючись на схему в таблиці розмірів конкретного виробу."
+    "uk": "Обхват шиї: для нашийника виміряйте шию по колу в місці його посадки. Для шлеї виміряйте обхват біля основи шиї, орієнтуючись на схему в таблиці розмірів конкретного виробу."
   },
   "faqMeasureChest": {
     "en": "Chest: measure all the way around the widest part of the rib cage, behind the front legs. Make sure the tape is not twisted.",
@@ -636,16 +618,16 @@
     "uk": "Запишіть мірки в сантиметрах і перевірте їх ще раз перед вибором розміру."
   },
   "faqChooseSizeQ": {
-    "en": "How do I choose the right size for my dog?",
-    "pl": "Jak wybrać odpowiedni rozmiar dla psa?",
-    "ru": "Как подобрать правильный размер для собаки?",
-    "uk": "Як підібрати правильний розмір для собаки?"
+    "en": "How do I choose a size?",
+    "pl": "Jak dobrać rozmiar?",
+    "ru": "Как подобрать размер?",
+    "uk": "Як підібрати розмір?"
   },
   "faqChooseSizeA": {
     "en": "Open the guide for the accessory you have chosen and find the range that includes your dog’s measurements. For a collar, compare the neck circumference; for a harness, check both neck and chest measurements — both must fall within the same size’s adjustment ranges.",
     "pl": "Otwórz tabelę wybranego akcesorium i znajdź zakres obejmujący wymiary Twojego psa. Dla obroży porównaj obwód szyi; dla szelek sprawdź obwód szyi i klatki piersiowej — oba wymiary muszą mieścić się w zakresach regulacji tego samego rozmiaru.",
     "ru": "Откройте таблицу выбранного аксессуара и найдите диапазон, в который входят мерки вашей собаки. Для ошейника сравните обхват шеи, для шлейки — обхват шеи и груди. Оба значения должны входить в диапазон регулировки одного размера.",
-    "uk": "Відкрийте таблицю вибраного аксесуара та знайдіть діапазон, до якого входять мірки вашого собаки. Для нашийника порівняйте обхват шиї; для шлейки — обхвати шиї та грудей: обидва значення мають входити в діапазони регулювання одного розміру."
+    "uk": "Відкрийте таблицю вибраного аксесуара та знайдіть діапазон, до якого входять мірки вашого собаки. Для нашийника порівняйте обхват шиї; для шлеї — обхвати шиї та грудей: обидва значення мають входити в діапазони регулювання одного розміру."
   },
   "faqChooseSizeEnd": {
     "en": "Use the chart for the specific product rather than breed or a size used by another brand. If the measurements do not fit one size, contact us before ordering.",
@@ -674,8 +656,8 @@
   "faqDeliveryTrackingQ": {
     "en": "How can I track my order?",
     "pl": "Jak śledzić zamówienie?",
-    "ru": "Как отследить мой заказ?",
-    "uk": "Як відстежити моє замовлення?"
+    "ru": "Как отследить заказ?",
+    "uk": "Як відстежити замовлення?"
   },
   "faqDeliveryTrackingA": {
     "en": "Once your parcel has been dispatched, we will email you a shipping confirmation with a tracking number or link. Use it to check your parcel’s progress on the carrier’s website.",
@@ -758,8 +740,8 @@
   "faqReturnQ": {
     "en": "Can I return an accessory?",
     "pl": "Czy mogę zwrócić produkt?",
-    "ru": "Могу ли я вернуть изделие?",
-    "uk": "Чи можу я повернути виріб?"
+    "ru": "Можно ли вернуть изделие?",
+    "uk": "Чи можна повернути виріб?"
   },
   "faqReturnA": {
     "en": "Yes. Within 14 days of receiving the accessory, let us know you are withdrawing, no reason needed, then send it back within 14 days. You can try it on as you would in a shop.",
@@ -818,8 +800,8 @@
   "skipContent": {
     "en": "Skip to content",
     "pl": "Przejdź do treści",
-    "ru": "К содержимому",
-    "uk": "До вмісту"
+    "ru": "Перейти к содержимому",
+    "uk": "Перейти до вмісту"
   },
   "hardwareTitle": {
     "en": "Hardware",
@@ -888,7 +870,7 @@
     "uk": "ONE IDENTITY створює аксесуари для собак і людей, яким близькі чисті лінії, мінімалізм і стримані однотонні відтінки."
   },
   "faqEyebrow": {
-    "en": "Questions and Answers",
+    "en": "Questions & answers",
     "pl": "Pytania i odpowiedzi",
     "ru": "Вопросы и ответы",
     "uk": "Запитання та відповіді"
@@ -907,7 +889,7 @@
   },
   "footerFaqLink": {
     "en": "FAQ",
-    "pl": "Pytania",
+    "pl": "FAQ",
     "ru": "Вопросы и ответы",
     "uk": "Запитання та відповіді"
   },
@@ -932,8 +914,8 @@
   "productPhotos": {
     "en": "Product photos",
     "pl": "Zdjęcia produktu",
-    "ru": "Фотографии товара",
-    "uk": "Фотографії товару"
+    "ru": "Фото изделия",
+    "uk": "Фото виробу"
   },
   "harnessMeasureHint": {
     "en": "Neck / chest circumference. Check both measurements.",
@@ -1117,7 +1099,7 @@
   },
   "outOfStock": {
     "en": "Out of stock",
-    "pl": "Niedostępny",
+    "pl": "Brak w magazynie",
     "ru": "Нет в наличии",
     "uk": "Немає в наявності"
   },
@@ -1206,10 +1188,10 @@
     "uk": "Введіть додатне число в сантиметрах."
   },
   "fitMatches": {
-    "en": "Sizes within these measurements. Tap a size to select it.",
+    "en": "These sizes fit your measurements. Choose one to select it.",
     "pl": "Rozmiary pasujące do wymiarów. Wybierz jeden, aby go zastosować.",
-    "ru": "Размеры в пределах ваших мерок. Нажмите на размер, чтобы выбрать его.",
-    "uk": "Розміри в межах ваших мірок. Натисніть на розмір, щоб обрати його."
+    "ru": "Эти размеры подходят по меркам. Выберите нужный.",
+    "uk": "Ці розміри підходять за мірками. Оберіть потрібний."
   },
   "fitNoMatch": {
     "en": "These measurements do not fall within one size. Get in touch and we’ll help you choose.",
@@ -1248,10 +1230,10 @@
     "uk": "Elegant — колекція нашийників, повідців і шлей для тих, хто цінує елегантність у повсякденному стилі. Лаконічні форми, глибокі відтінки та виразна фурнітура доповнюють ваш образ — на прогулянці містом, за кавою з друзями чи під час вечірнього виходу із собакою. Продумані деталі поєднують естетику з функціональністю, зберігаючи зручність для вас і комфорт для улюбленця. Кожен виріб ми створюємо вручну, приділяючи увагу формі, поєднанню матеріалів і деталям."
   },
   "elegantHardwareColour": {
-    "en": "Colour: Antique Brass.",
-    "pl": "Kolor: Antique Brass.",
-    "ru": "Цвет: Antique Brass.",
-    "uk": "Колір: Antique Brass."
+    "en": "Colour: antique brass.",
+    "pl": "Kolor: antyczny mosiądz.",
+    "ru": "Цвет: античная латунь.",
+    "uk": "Колір: антична латунь."
   },
   "hardwareMaterials": {
     "en": "Material: steel and die-cast zinc alloy.",
@@ -1260,10 +1242,10 @@
     "uk": "Матеріал: сталь і литий цинковий сплав."
   },
   "elegantHandleMaterial": {
-    "en": "Handle: Solid Wood.",
-    "pl": "Rączka: Solid Wood.",
-    "ru": "Ручка: Solid Wood.",
-    "uk": "Ручка: Solid Wood."
+    "en": "Handle: solid wood.",
+    "pl": "Rączka: lite drewno.",
+    "ru": "Ручка: массив дерева.",
+    "uk": "Ручка: масив дерева."
   },
   "elegantWoodCare": {
     "en": "Wipe the wooden handle with a soft, slightly damp cloth and dry it immediately. Do not soak the handle or leave it in water.",
@@ -1291,7 +1273,7 @@
   },
   "deliveryInpost": {
     "en": "InPost pickup point",
-    "pl": "Paczkomat InPost",
+    "pl": "Punkt odbioru InPost",
     "ru": "Пункт InPost",
     "uk": "Пункт InPost"
   },
