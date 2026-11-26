@@ -624,8 +624,9 @@ html:lang(uk) .hero-copy h1 em {
   border: 0;
   background: transparent;
   cursor: zoom-in;
+  /* No forced stop on every photo: a second flick while the first is
+     still settling carries on to the next photo, as in Photos. */
   scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 .media-slide img {
   object-fit: cover;
@@ -760,7 +761,6 @@ html:lang(uk) .hero-copy h1 em {
   height: 100%;
   overflow: hidden;
   scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 .lightbox[data-zoomed] .lightbox-slide {
   overflow: auto;

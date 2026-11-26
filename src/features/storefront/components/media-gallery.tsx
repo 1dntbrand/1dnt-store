@@ -42,6 +42,9 @@ export function useSlideSync(
 ) {
   const latest = useRef({ index, onIndexChange });
   const shownSet = useRef(resetKey);
+  // The photo the shopper's own swipe has reached: the track is already
+  // moving there, so it must not be scrolled again.
+  const swipedTo = useRef<number | null>(null);
   useEffect(() => {
     latest.current = { index, onIndexChange };
   });
@@ -77,7 +80,9 @@ export function useSlideSync(
         const width = element.clientWidth;
         if (!width) return;
         const next = Math.round(element.scrollLeft / width);
-        if (next !== latest.current.index) latest.current.onIndexChange(next);
+        if (next === latest.current.index) return;
+        swipedTo.current = next;
+        latest.current.onIndexChange(next);
       });
     };
     // A finger or wheel on the track takes over from any glide at once.
@@ -102,6 +107,12 @@ export function useSlideSync(
     // A new colour starts on its first photo at once; arrows and thumbs glide.
     const newSet = shownSet.current !== resetKey;
     shownSet.current = resetKey;
+    // An index that came from the swipe only moves the dots: scrolling
+    // here would take the track out of the shopper's hand mid-flick, and
+    // the next swipe would have to wait for it.
+    const fromSwipe = swipedTo.current === index;
+    swipedTo.current = null;
+    if (fromSwipe && !newSet) return;
     scrollToSlide(track.current, index, newSet);
   }, [track, index, resetKey]);
 }
