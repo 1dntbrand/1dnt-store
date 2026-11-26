@@ -1,13 +1,7 @@
 "use client";
-import {
-  Fragment,
-  useLayoutEffect,
-  useRef,
-  useState,
-  type RefObject,
-} from "react";
+import { useLayoutEffect, useRef, useState, type RefObject } from "react";
 import { useFadeOnChange } from "../lib/fade-on-change";
-import { Disclosure } from "./disclosure";
+import { Disclosure, DisclosureGroup } from "./disclosure";
 import { faqTopics } from "../data/faq";
 import { useStorefront } from "../storefront-context";
 import { BrandText } from "./brand-text";
@@ -107,7 +101,7 @@ function FaqTopic({ id, active }: { id: string; active: boolean }) {
     >
       {/* A topic that is put away starts closed next time: no hidden open
           answer keeps the block tall, and a playing video stops. */}
-      <Fragment key={String(active)}>
+      <DisclosureGroup key={String(active)}>
         {id === "hardware" ? (
           <FidlockFaq />
         ) : (
@@ -123,7 +117,7 @@ function FaqTopic({ id, active }: { id: string; active: boolean }) {
             </Disclosure>
           ))
         )}
-      </Fragment>
+      </DisclosureGroup>
     </div>
   );
 }

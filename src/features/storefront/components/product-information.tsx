@@ -4,7 +4,7 @@ import { YouTubeIcon } from "./icons";
 import type { Collection, ProductKind } from "@/domain/commerce/catalog";
 import { useStorefront } from "../storefront-context";
 import { ProductSafety } from "./product-safety";
-import { Disclosure } from "./disclosure";
+import { Disclosure, DisclosureGroup } from "./disclosure";
 import { fidlockVideo } from "../data/brand";
 
 /** Description, features, hardware, care and safety, shared by both collections. */
@@ -35,7 +35,7 @@ export function ProductInformation({
 
   return (
     <div className="product-information">
-      <>
+      <DisclosureGroup>
         <Disclosure defaultOpen summary={t("baseDescriptionTitle")}>
           <p>{t(elegant ? "elegantFullDescription" : "baseDescription")}</p>
         </Disclosure>
@@ -72,7 +72,7 @@ export function ProductInformation({
           {woodenHandle && <p>{t("elegantWoodCare")}</p>}
         </Disclosure>
         <ProductSafety />
-      </>
+      </DisclosureGroup>
     </div>
   );
 }
