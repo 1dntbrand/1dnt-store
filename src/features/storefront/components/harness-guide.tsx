@@ -5,6 +5,19 @@ import { FitFinder } from "./fit-finder";
 import { GuideDialog, GuideSection } from "./guide-dialog";
 import { MeasureDrawing, MeasureLegend } from "./measure-drawing";
 
+type HarnessSize = (typeof harnessMeasurements)[number];
+
+const harnessRows: {
+  label: string;
+  value: (item: HarnessSize) => string | number;
+}[] = [
+  { label: "tableNeck", value: (item) => item.neck },
+  { label: "tableChest", value: (item) => item.chest },
+  { label: "tableLower", value: (item) => item.lower },
+  { label: "tableUpper", value: (item) => item.upper },
+  { label: "tableWidth", value: (item) => item.widthMm },
+];
+
 export function HarnessGuide() {
   const { t, guideSize } = useStorefront((state) => ({
     t: state.t,
@@ -32,7 +45,7 @@ export function HarnessGuide() {
         </div>
       </GuideSection>
       <GuideSection title={t("sizeGuideLabel")}>
-        <div className="size-table-wrap">
+        <div className="size-table-wrap size-table-wide">
           <table>
             <thead>
               <tr>
@@ -57,6 +70,42 @@ export function HarnessGuide() {
                   <td>{item.lower}</td>
                   <td>{item.upper}</td>
                   <td>{item.widthMm}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {/* Phones: the same table turned on its side, one column per size,
+            so all five measurements fit without scrolling sideways. */}
+        <div className="size-table-wrap size-table-tall">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">{t("sizeOnly")}</th>
+                {harnessMeasurements.map((item) => (
+                  <th
+                    key={item.size}
+                    scope="col"
+                    aria-current={guideSize === item.size}
+                    data-current={guideSize === item.size || undefined}
+                  >
+                    {item.size}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {harnessRows.map(({ label, value }) => (
+                <tr key={label}>
+                  <th scope="row">{t(label)}</th>
+                  {harnessMeasurements.map((item) => (
+                    <td
+                      key={item.size}
+                      data-current={guideSize === item.size || undefined}
+                    >
+                      {value(item)}
+                    </td>
+                  ))}
                 </tr>
               ))}
             </tbody>

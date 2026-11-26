@@ -1497,15 +1497,9 @@ summary::-webkit-details-marker {
   color: var(--paper);
   border-color: var(--ink);
 }
-.faq-stack {
-  display: grid;
-}
-.faq-stack > .faq-questions {
-  grid-area: 1 / 1;
-  align-self: start;
-}
+/* Only the chosen topic takes room: no empty band under a short one. */
 .faq-stack > .faq-questions:not([data-active]) {
-  visibility: hidden;
+  display: none;
 }
 .faq-question {
   border-top: 1px solid var(--line);
@@ -1863,6 +1857,22 @@ dialog::backdrop {
 .size-guide th {
   font-weight: 500;
 }
+.size-table-tall {
+  display: none;
+}
+@media (max-width: 640px) {
+  .size-table-wide {
+    display: none;
+  }
+  .size-table-tall {
+    display: block;
+  }
+}
+/* Row labels may wrap; the numbers stay on one line. */
+.size-guide .size-table-tall tbody th {
+  white-space: normal;
+}
+.size-table-tall :is(th, td)[data-current],
 .size-guide tbody tr[aria-current="true"] {
   background: #e7eddf;
 }

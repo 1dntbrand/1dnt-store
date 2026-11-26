@@ -570,10 +570,10 @@
     "uk": "Не вбирає запахи"
   },
   "harnessSTableNote": {
-    "en": "Neck, chest and lower strap are adjustable; the upper back strap is fixed.",
-    "pl": "Obwód szyi, klatki piersiowej i dolny pasek są regulowane; pasek grzbietowy jest stały.",
-    "ru": "Обхваты шеи и груди и нижняя перемычка регулируются; верхняя спинная перемычка фиксированная.",
-    "uk": "Обхвати шиї та грудей і нижня перемичка регулюються; верхня спинна перемичка фіксована."
+    "en": "Neck and chest circumference and the lower strap are adjustable; the back strap is fixed.",
+    "pl": "Obwód szyi, obwód klatki piersiowej i dolny pasek są regulowane; pasek na grzbiecie jest stały.",
+    "ru": "Обхват шеи, обхват груди и нижний ремень регулируются; ремень на спине фиксированный.",
+    "uk": "Обхват шиї, обхват грудей і нижній ремінь регулюються; ремінь на спині фіксований."
   },
   "faqCareCategory": {
     "en": "BioThane® — care",
