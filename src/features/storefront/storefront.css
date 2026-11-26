@@ -511,9 +511,21 @@ html:lang(uk) .hero-copy h1 em {
   gap: clamp(24px, 4vw, 64px);
 }
 .product-gallery {
+  --frame: 1;
   position: sticky;
   top: calc(var(--header-height) + var(--space-4));
   min-width: 0;
+}
+/* The whole gallery, thumbnails included, stays on screen beside the
+   details: a taller frame is drawn narrower instead of running below the
+   fold. The frame never changes shape, so no photo is cropped further. */
+@media (min-width: 801px) {
+  .product-gallery {
+    width: min(
+      100%,
+      calc((100dvh - var(--header-height) - 140px) * var(--frame))
+    );
+  }
 }
 /* Shared product gallery: swipe track, arrows, dots and thumbnails. */
 .media-gallery {
@@ -525,8 +537,17 @@ html:lang(uk) .hero-copy h1 em {
   border-radius: var(--media-radius);
   background: var(--surface);
 }
+/* Every photo fills its gallery's frame. The frame suits the product's
+   own photos, so none of them crops the piece itself: collars are shot
+   square-ish, harnesses wide, leashes tall. */
 .product-gallery .media-stage {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: var(--frame);
+}
+.harness-gallery {
+  --frame: 0.9;
+}
+.leash-gallery {
+  --frame: 0.8;
 }
 .elegant-gallery {
   width: min(100%, 560px);
@@ -558,7 +579,7 @@ html:lang(uk) .hero-copy h1 em {
   scroll-snap-stop: always;
 }
 .media-slide img {
-  object-fit: contain;
+  object-fit: cover;
 }
 .media-slide:focus-visible {
   outline: 2px solid var(--olive);
@@ -2421,8 +2442,8 @@ dialog::backdrop {
   .product-gallery {
     position: static;
   }
-  .product-gallery .media-stage {
-    max-height: 520px;
+  .product-gallery {
+    width: min(100%, calc(520px * var(--frame)));
   }
   .media-dots {
     display: flex;
@@ -2573,8 +2594,8 @@ dialog::backdrop {
   .product-heading h3 {
     font-size: clamp(24px, 7vw, 30px);
   }
-  .product-gallery .media-stage {
-    max-height: 390px;
+  .product-gallery {
+    width: 100%;
   }
   .bundle-heading h4 {
     font-size: 22px;

@@ -12,6 +12,8 @@ export interface GalleryPhoto {
   src: string;
   alt: string;
   label: string;
+  /** Which part of the photo stays in view when the frame crops it. */
+  position?: string;
 }
 
 /** Scroll a snap track to a slide without fighting the user's own swipe. */
@@ -136,6 +138,11 @@ export function MediaGallery({
                 alt=""
                 fill
                 sizes={sizes}
+                style={
+                  photo.position
+                    ? { objectPosition: photo.position }
+                    : undefined
+                }
                 {...blurProps(photo.src)}
               />
             </button>

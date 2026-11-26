@@ -18,6 +18,14 @@ export function productPhoto(kind: ProductKind, colour: string, view = 0) {
   return `/assets/${kind}-${colour}${suffix ?? ""}.webp`;
 }
 
+/**
+ * Where a gallery frame crops a photo. The collar close-ups are portraits
+ * of the dog: the frame keeps the top, so the ears are never cut.
+ */
+export function productPhotoPosition(kind: ProductKind, view = 0) {
+  return kind === "collar" && view > 0 ? "50% 0%" : undefined;
+}
+
 export function variantPhoto(variant: ProductVariant) {
   if (variant.collection === "base")
     return productPhoto(variant.kind, variant.colour);
